@@ -12,10 +12,17 @@ export default function Footer() {
           {/* Logo + Desc */}
           <div className="md:col-span-1">
             <Link href="/" className="inline-block mb-4">
-              <Logo theme="light" className="text-4xl" />
+              <Logo theme="light" className="text-[2.5rem] md:text-5xl" />
             </Link>
-            <p className="text-sm text-slate-500 leading-relaxed">
-              Transformando Data en Estrategia y Crecimiento. Consultoría en Inteligencia Artificial.
+            <p className="text-xs text-slate-500 leading-relaxed mt-3 tracking-wide">
+              <span className="text-white font-bold">E</span>strategia{" · "}
+              <span className="text-white font-bold">T</span>ecnología{" · "}
+              <span className="text-white font-bold">I</span>mpacto{" · "}
+              <span className="text-cian-light font-bold">I</span>nteligencia{" "}
+              <span className="text-cian-light font-bold">A</span>rtificial
+            </p>
+            <p className="text-sm text-slate-500 leading-relaxed mt-3">
+              Consultoría en Inteligencia Artificial.
             </p>
           </div>
 
@@ -35,7 +42,7 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/la-diferencia" className="hover:text-white transition-colors">Equipo</Link></li>
+              <li><Link href="/equipo" className="hover:text-white transition-colors">Equipo</Link></li>
               <li><Link href="/formacion" className="hover:text-white transition-colors">Formación</Link></li>
               <li><Link href="/contacto" className="hover:text-white transition-colors">Contacto</Link></li>
             </ul>
@@ -47,7 +54,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 shrink-0" />
-                <a href="mailto:contacto@etia.cl" className="hover:text-white transition-colors">contacto@etia.cl</a>
+                <a href="mailto:hola@etiia.com" className="hover:text-white transition-colors">hola@etiia.com</a>
               </li>
               <li className="flex items-center gap-2">
                 <Linkedin className="w-4 h-4 shrink-0" />

@@ -4,10 +4,10 @@ import { cn } from "@/lib/utils";
 import { Outfit } from "next/font/google";
 
 // Outfit perfectly matches the reference: flat 't', circular dots, geometric 'e' and 'a'.
-const logoFont = Outfit({ 
-  subsets: ["latin"], 
-  weight: ["800", "900"], 
-  display: "swap" 
+const logoFont = Outfit({
+  subsets: ["latin"],
+  weight: ["800", "900"],
+  display: "swap"
 });
 
 interface LogoProps {
@@ -21,8 +21,8 @@ interface LogoProps {
  */
 export function Logo({ theme = "dark", className }: LogoProps) {
   // Exact colors from the user's logo reference image
-  const navy = theme === "dark" ? "text-[#121626]" : "text-white";
-  const blue = "text-[#177aff]"; 
+  const navy = theme === "dark" ? "text-[#111827]" : "text-white";
+  const blue = "text-[#2B5797]";
 
   return (
     <span
@@ -34,16 +34,13 @@ export function Logo({ theme = "dark", className }: LogoProps) {
       style={{ lineHeight: "0.8" }}
       aria-label="ETIIA"
     >
-      {/* Bloque 1: Estrategia & Tecnología (Base sólida) */}
+      {/* Bloque 1: Estrategia + Tecnología + Impacto */}
       <span className={cn(navy, "tracking-[-0.04em]")}>et</span>
-      
-      {/* Bloque 2: Inteligencia Humana + IA (Corazón vibrante) */}
+      <span className={navy} style={{ letterSpacing: "-0.07em" }}>i</span>
+
+      {/* Bloque 2: Inteligencia Artificial */}
       <span className={blue}>
-        {/* La doble 'i' como unidad simétrica - kerning más estrecho entre ellas para unirlas visualmente */}
-        <span style={{ letterSpacing: "-0.07em" }}>i</span>
-        {/* Segunda 'i' con kerning estándar hacia la 'a' para mantener ritmo */}
         <span style={{ letterSpacing: "-0.02em" }}>i</span>
-        {/* La 'a' y el punto validatorio final */}
         <span className="tracking-[-0.04em]">a.</span>
       </span>
     </span>

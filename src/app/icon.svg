@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@900&amp;display=swap');
+  </style>
+  <circle cx="256" cy="256" r="256" fill="#111827"/>
+  <text x="256" y="340" text-anchor="middle" font-family="'Outfit',sans-serif" font-weight="900" font-size="320">
+    <tspan fill="#ffffff">e</tspan><tspan fill="#2B5797">a.</tspan>
+  </text>
+</svg>

@@ -21,7 +21,7 @@ const navLinks = [
   { name: "Inicio", href: "/" },
   { name: "Servicios", href: "/servicios", hasDropdown: true },
   { name: "Formación", href: "/formacion" },
-  { name: "Equipo", href: "/la-diferencia" },
+  { name: "Equipo", href: "/equipo" },
   { name: "Contacto", href: "/contacto" },
 ];
 

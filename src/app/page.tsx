@@ -97,7 +97,7 @@ export default function Home() {
             ].map((m, i) => (
               <Reveal key={m.label} delay={0.1 * (i + 1)}>
                 <div>
-                  <p className="text-3xl md:text-4xl font-black text-cian">{m.number}</p>
+                  <p className="text-3xl md:text-4xl font-black text-cian-light">{m.number}</p>
                   <p className="text-xs md:text-sm text-slate-400 mt-1">{m.label}</p>
                 </div>
               </Reveal>
@@ -185,7 +185,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <Reveal>
               <h2 className="text-3xl md:text-[2.5rem] font-black leading-tight">
-                Cuéntanos sobre tu proyecto
+                Cuéntanos sobre tu empresa
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
@@ -203,7 +203,7 @@ export default function Home() {
             ].map((item, i) => (
               <Reveal key={item.step} delay={0.15 * (i + 1)}>
                 <div className="text-center">
-                  <div className="w-14 h-14 rounded-full border-2 border-cian text-cian flex items-center justify-center text-xl font-bold mx-auto mb-5">
+                  <div className="w-14 h-14 rounded-full border-2 border-cian-light text-cian-light flex items-center justify-center text-xl font-bold mx-auto mb-5">
                     {item.step}
                   </div>
                   <h3 className="text-lg font-bold mb-2">{item.title}</h3>
@@ -273,20 +273,20 @@ export default function Home() {
       <section className="py-16 bg-slate-50 border-y border-slate-100">
         <div className="container mx-auto px-6 md:px-12 max-w-4xl text-center">
           <Reveal>
-            <p className="text-sm text-slate-400 font-semibold uppercase tracking-wider mb-8">Partners estratégicos</p>
+            <p className="text-base text-navy font-bold uppercase tracking-wider mb-8">Partners estratégicos</p>
           </Reveal>
           <div className="flex justify-center items-center gap-16 md:gap-24">
             <Reveal delay={0.1}>
-              <div className="opacity-50 hover:opacity-100 transition-opacity">
-                <svg viewBox="0 0 60 24" className="h-8 w-auto">
+              <div className="opacity-80 hover:opacity-100 transition-opacity">
+                <svg viewBox="0 0 60 24" className="h-10 w-auto">
                   <text x="0" y="20" fontFamily="Inter, sans-serif" fontSize="20" fontWeight="800" fill="#252F3E">aws</text>
                   <path d="M0 22h60" stroke="#FF9900" strokeWidth="2.5"/>
                 </svg>
               </div>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="opacity-50 hover:opacity-100 transition-opacity">
-                <svg viewBox="0 0 130 24" className="h-7 w-auto">
+              <div className="opacity-80 hover:opacity-100 transition-opacity">
+                <svg viewBox="0 0 130 24" className="h-9 w-auto">
                   <text x="0" y="18" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="600" fill="#5F6368">Google</text>
                   <text x="60" y="18" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="600" fill="#4285F4"> Cloud</text>
                 </svg>
@@ -350,7 +350,7 @@ export default function Home() {
       <section className="py-16 bg-slate-50 border-y border-slate-100">
         <div className="container mx-auto px-6 md:px-12 text-center max-w-4xl">
           <Reveal>
-            <p className="text-sm text-slate-400 font-semibold uppercase tracking-wider mb-4">Tecnologías que dominamos</p>
+            <p className="text-base text-navy font-bold uppercase tracking-wider mb-4">Tecnologías que dominamos</p>
           </Reveal>
           <TechLogos />
         </div>

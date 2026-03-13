@@ -103,7 +103,7 @@ export function TechLogos() {
                     <motion.div
                         key={tech.name}
                         whileHover={{ scale: 1.05 }}
-                        className="opacity-60 hover:opacity-100 transition-opacity cursor-default"
+                        className="opacity-85 hover:opacity-100 transition-opacity cursor-default"
                         title={tech.name}
                     >
                         {tech.logo}

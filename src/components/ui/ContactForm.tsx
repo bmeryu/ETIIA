@@ -22,6 +22,8 @@ export function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
+    const [error, setError] = useState("");
+
     const {
         register,
         handleSubmit,
@@ -33,14 +35,27 @@ export function ContactForm() {
 
     const onSubmit = async (data: ContactFormValues) => {
         setIsSubmitting(true);
-        // Simulate real API call
+        setError("");
         try {
-            await new Promise((resolve) => setTimeout(resolve, 1500));
-            // In production: await fetch('/api/contact', { ... })
-            setIsSuccess(true);
-            reset();
-        } catch (error) {
-            console.error(error);
+            const res = await fetch("https://formspree.io/f/xjgarjgw", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: data.name,
+                    company: data.company,
+                    role: data.role,
+                    email: data.email,
+                    challenge: data.challenge,
+                }),
+            });
+            if (res.ok) {
+                setIsSuccess(true);
+                reset();
+            } else {
+                setError("Hubo un error al enviar el formulario. Intenta nuevamente.");
+            }
+        } catch {
+            setError("Error de conexión. Verifica tu internet e intenta nuevamente.");
         } finally {
             setIsSubmitting(false);
         }
@@ -137,6 +152,10 @@ export function ContactForm() {
                     />
                     {errors.challenge && <p className="text-red-500 text-xs">{errors.challenge.message}</p>}
                 </div>
+
+                {error && (
+                    <p className="text-red-500 text-sm bg-red-50 border border-red-200 rounded-xl px-4 py-3">{error}</p>
+                )}
 
                 <Button type="submit" className="w-full h-12 text-lg" disabled={isSubmitting}>
                     {isSubmitting ? (
