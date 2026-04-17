@@ -76,7 +76,7 @@ export default function Navbar() {
 
         {/* ═══ Mobile Toggle ═══ */}
         <button
-          className="md:hidden text-slate-700 hover:text-[#0F172A] transition-colors p-1"
+          className="md:hidden text-slate-700 hover:text-[#0F172A] transition-colors p-3 rounded-md"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Abrir menú"
         >

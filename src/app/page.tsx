@@ -150,9 +150,9 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={0.3}>
-              <div className="bg-slate-50 border border-slate-100 p-6 md:p-8 rounded-3xl hover:-translate-y-1 hover:bg-white hover:border-red-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 h-full group">
-                <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-sm text-red-500 font-black mb-5 text-sm group-hover:text-red-600">3</div>
-                <h3 className="font-bold text-red-600 text-lg mb-2">La Parálisis</h3>
+              <div className="bg-slate-50 border border-slate-100 p-6 md:p-8 rounded-3xl hover:-translate-y-1 hover:bg-white hover:border-blue-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 h-full group">
+                <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-sm text-blue-700 font-black mb-5 text-sm group-hover:text-blue-800">3</div>
+                <h3 className="font-bold text-navy text-lg mb-2">La Parálisis</h3>
                 <p className="text-slate-500 text-sm md:text-base leading-relaxed">Las pruebas quedan archivadas en un cajón. La innovación se frena y la empresa sigue operando igual que hace cinco años.</p>
               </div>
             </Reveal>
