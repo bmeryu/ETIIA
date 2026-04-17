@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Fondo cuadrado redondeado dark (#0D1117) — mismo del dark mode del sitio -->
+  <rect width="32" height="32" rx="7" fill="#0D1117"/>
+  
+  <!-- "a." — el único acento del logo, replicado en favicon -->
+  <!-- "a" en blanco -->
+  <text
+    x="4"
+    y="24"
+    font-family="'Plus Jakarta Sans', system-ui, sans-serif"
+    font-size="22"
+    font-weight="800"
+    fill="#FFFFFF"
+    letter-spacing="-1"
+  >a</text>
+  <!-- "." en Blue-400, el sello azul corporativo -->
+  <circle cx="27" cy="23" r="2.8" fill="#60A5FA"/>
+</svg>

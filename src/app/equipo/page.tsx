@@ -91,7 +91,7 @@ export default function EquipoPage() {
                             name="Bernardita Mery Undurraga"
                             role="CEO · Strategy & Growth"
                             bio="+15 años traduciendo datos en ROI, estrategia de marketing y cambio organizacional. Su foco siempre parte desde el cliente: entender qué necesita, cómo retenerlo y cómo crecer las ventas. Ella asegura que la IA genere dinero."
-                            imageSrc="/berni.jpg"
+                            imageSrc="/bernardita-nueva.jpg"
                             imageAlt="Bernardita Mery Undurraga - CEO de ETIIA"
                             linkedinUrl="https://www.linkedin.com/in/bmeryu/"
                             delay={0.1}

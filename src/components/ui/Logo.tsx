@@ -1,13 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Outfit } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
-// Outfit perfectly matches the reference: flat 't', circular dots, geometric 'e' and 'a'.
-const logoFont = Outfit({
+const logoFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["800", "900"],
-  display: "swap"
+  weight: ["800"],
+  display: "swap",
 });
 
 interface LogoProps {
@@ -16,32 +15,32 @@ interface LogoProps {
 }
 
 /**
- * ETIIA Logo — CSS-rendered with exact geometric font matching reference.
- * Navy "et" + bright blue "iia."
+ * ETIIA Logo — Wordmark tipográfico puro.
+ *
+ * Regla simple: toda la palabra "etii" en un solo peso y color.
+ * Solo "a." recibe el acento de color (Blue-700 en fondo claro, Blue-400 en oscuro).
+ * Lectura limpia: el ojo va directo al diferencial — la "A" de Artificial.
  */
 export function Logo({ theme = "dark", className }: LogoProps) {
-  // Exact colors from the user's logo reference image
-  const navy = theme === "dark" ? "text-[#111827]" : "text-white";
-  const blue = "text-[#2B5797]";
+  const baseColor   = theme === "dark" ? "#0F172A" : "#ffffff";
+  const accentColor = theme === "dark" ? "#1D4ED8" : "#60A5FA";
 
   return (
     <span
       className={cn(
         logoFont.className,
-        "inline-flex items-baseline font-[900] select-none",
+        "inline-flex items-baseline select-none leading-none",
         className
       )}
-      style={{ lineHeight: "0.8" }}
       aria-label="ETIIA"
+      style={{ letterSpacing: "-0.04em" }}
     >
-      {/* Bloque 1: Estrategia + Tecnología + Impacto */}
-      <span className={cn(navy, "tracking-[-0.04em]")}>et</span>
-      <span className={navy} style={{ letterSpacing: "-0.07em" }}>i</span>
+      {/* "etii" — todo uniforme, mismo peso, mismo color */}
+      <span style={{ color: baseColor, fontWeight: 800 }}>etii</span>
 
-      {/* Bloque 2: Inteligencia Artificial */}
-      <span className={blue}>
-        <span style={{ letterSpacing: "-0.02em" }}>i</span>
-        <span className="tracking-[-0.04em]">a.</span>
+      {/* "a." — el único acento, Blue-700 */}
+      <span style={{ color: accentColor, fontWeight: 800, letterSpacing: "-0.02em" }}>
+        a.
       </span>
     </span>
   );

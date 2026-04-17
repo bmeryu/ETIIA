@@ -1,21 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #111827;
+  --color-navy: #0F172A;
   --color-navy-dark: #0a0e17;
-  --color-navy-light: #1f2937;
-  
-  --color-cian: #2B5797;
-  --color-cian-dark: #1E3F6F;
-  --color-cian-light: #4A8FE2;
-  
-  --font-sans: var(--font-inter);
+  --color-navy-light: #1e293b;
+
+  /* ═══ Brand Blue — acento unificador del ecosistema ETIIA ═══ */
+  --color-brand:       #1D4ED8;
+  --color-brand-dark:  #1E40AF;
+  --color-brand-light: #3B82F6;
+  --color-brand-glow:  rgba(29, 78, 216, 0.28);
+
+  /* Aliases de compatibilidad con page.tsx (usa "cian") */
+  --color-cian:        #1D4ED8;
+  --color-cian-dark:   #1E40AF;
+  --color-cian-light:  #3B82F6;
+
+  --font-sans: var(--font-jakarta);
 }
 
 @layer base {
   :root {
     --background: #ffffff;
-    --foreground: #111827;
+    --foreground: #0F172A;
+
+    --bg-base:       #FFFFFF;
+    --bg-soft:       #F8FAFC;
+    --bg-dark:       #0D1117;
+    --bg-dark-soft:  #161b22;
+
+    --brand:         #1D4ED8;
+    --brand-dark:    #1E40AF;
+    --brand-light:   #3B82F6;
+    --brand-glow:    rgba(29, 78, 216, 0.28);
+
+    --text-main:     #0F172A;
+    --text-soft:     #64748B;
+    --text-muted:    #94A3B8;
+
+    --border-base:   #E2E8F0;
+    --border-dark:   rgba(255, 255, 255, 0.07);
   }
 }
 
@@ -31,5 +55,139 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* ═══ GRID DECORATOR — Mismo ADN que AulaGenIA ═══ */
+  .bg-grid-light {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.055) 1px, transparent 1px);
+  }
+
+  .bg-grid-dark {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  }
+
+  /* ═══ HERO GLOW — Radial azul centrado ═══ */
+  .hero-glow {
+    position: absolute;
+    width: 900px;
+    height: 700px;
+    background: radial-gradient(ellipse, var(--brand-glow) 0%, rgba(255, 255, 255, 0) 68%);
+    top: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ═══ GLASS CARD ═══ */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 4px 28px -8px rgba(0, 0, 0, 0.06);
+  }
+
+  /* ═══ TEXT GRADIENTS ═══ */
+  .text-gradient {
+    background: linear-gradient(135deg, #0F172A 0%, #475569 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ═══ CARD LIFT ═══ */
+  .lift-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .lift-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 38px -10px rgba(0, 0, 0, 0.11);
+  }
+
+  /* ═══ SCROLL PROGRESS BAR ═══ */
+  #scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #1D4ED8, #3B82F6 55%, #60A5FA);
+    width: 0%;
+    z-index: 10000;
+    border-radius: 0 2px 2px 0;
+    transition: width 0.1s linear;
+  }
+
+  /* ═══ SCROLL REVEAL ═══ */
+  .sr-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .sr-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* ═══ FADE IN UP ═══ */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.65s ease-out forwards;
+  }
+
+  /* ═══ CTA PULSE — Blue version ═══ */
+  @keyframes ctaPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.5); }
+    70%  { box-shadow: 0 0 0 16px rgba(29, 78, 216, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(29, 78, 216, 0); }
+  }
+
+  .btn-pulse {
+    animation: ctaPulse 2.8s ease-out 1.5s infinite;
+  }
+
+  /* ═══ NAV LINK UNDERLINE ANIMATION ═══ */
+  .nav-link-animated {
+    position: relative;
+  }
+
+  .nav-link-animated::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--brand);
+    transition: width 0.25s ease;
+    border-radius: 2px;
+  }
+
+  .nav-link-animated:hover::after {
+    width: 100%;
   }
 }

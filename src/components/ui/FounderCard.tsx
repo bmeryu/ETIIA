@@ -27,13 +27,13 @@ export function FounderCard({
         <FadeIn delay={delay} className="w-full">
             <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 hover:shadow-md transition-all duration-300 h-full flex flex-col sm:flex-row gap-6 items-start">
                 {/* Photo or fallback initials */}
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0">
+                <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full overflow-hidden shrink-0 border-2 border-slate-100 shadow-sm">
                     {imageSrc ? (
                         <Image
                             src={imageSrc}
                             alt={imageAlt}
-                            width={96}
-                            height={96}
+                            width={112}
+                            height={112}
                             className="w-full h-full object-cover"
                         />
                     ) : (

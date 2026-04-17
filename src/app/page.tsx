@@ -1,45 +1,46 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BarChart3, Brain, Cog, Cloud, PieChart, Users, CheckCircle2, GraduationCap } from "lucide-react";
+import { ArrowRight, Calculator, Scale, Users, Stethoscope, Leaf, GraduationCap, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal, FadeIn } from "@/components/ui/Reveal";
 import { TechLogos } from "@/components/ui/TechLogos";
 
-const servicios = [
+const casosUso = [
   {
-    icon: <BarChart3 className="w-7 h-7" />,
-    title: "Estrategia de Datos & IA",
-    desc: "Define una estrategia que permita aprovechar todo el potencial de tu información para cumplir tus objetivos comerciales.",
-    href: "/servicios#estrategia",
+    icon: <Calculator className="w-7 h-7" />,
+    title: "Finanzas y Contabilidad",
+    desc: "Lectura masiva de facturas PDF, conciliación cruzada con cartolas y digitación hacia el ERP local sin tipeo humano.",
+    href: "/contacto?caso=contabilidad",
   },
   {
-    icon: <Brain className="w-7 h-7" />,
-    title: "Machine Learning & IA Generativa",
-    desc: "Modelos predictivos y generativos aplicados a casos de negocio reales. No IA teórica — IA que genera dinero.",
-    href: "/servicios#ml",
-  },
-  {
-    icon: <Cog className="w-7 h-7" />,
-    title: "Automatización de Procesos",
-    desc: "Transforma procesos manuales en flujos inteligentes que reducen costos y eliminan errores.",
-    href: "/servicios#automatizacion",
-  },
-  {
-    icon: <Cloud className="w-7 h-7" />,
-    title: "Arquitectura Cloud",
-    desc: "Ecosistemas de datos en AWS y Google Cloud. Seguros, escalables y listos para producción.",
-    href: "/servicios#cloud",
-  },
-  {
-    icon: <PieChart className="w-7 h-7" />,
-    title: "Business Intelligence & Dashboards",
-    desc: "Visión clara de tu negocio con dashboards automatizados y KPIs que importan.",
-    href: "/servicios#bi",
+    icon: <Scale className="w-7 h-7" />,
+    title: "Legal y Jurídico",
+    desc: "Creamos un 'Google privado' de tus contratos dictando sentencia o jurisprudencia para buscar respuestas y no palabras aisladas.",
+    href: "/contacto?caso=juridico",
   },
   {
     icon: <Users className="w-7 h-7" />,
-    title: "Customer Intelligence",
-    desc: "Conoce a tus clientes en profundidad. Anticipa necesidades, personaliza experiencias, aumenta la retención.",
-    href: "/servicios#customer",
+    title: "Recursos Humanos",
+    desc: "Parseo automático de montañas de CVs. La IA extrae variables críticas y las mapea contra la descripción de tu cargo al instante.",
+    href: "/contacto?caso=rrhh",
+  },
+  {
+    icon: <Stethoscope className="w-7 h-7" />,
+    title: "Salud y Clínicas",
+    desc: "Análisis predictivo de la agenda: la IA detecta inasistencias antes de que ocurran y contacta automáticamente a pacientes en lista de espera.",
+    href: "/contacto?caso=salud",
+  },
+  {
+    icon: <Leaf className="w-7 h-7" />,
+    title: "Agricultura y Viñas",
+    desc: "Cruzamos tus históricos de producción con modelos predictivos para mejorar tremendamente la eficiencia y rentabilidad de exportaciones.",
+    href: "/contacto?caso=agro",
+  },
+  {
+    icon: <GraduationCap className="w-7 h-7" />,
+    title: "Educación y OTECs",
+    desc: "Automatización en la creación de programas y rúbricas de evaluación a medida, multiplicando el volumen sin gastar en más planificadores.",
+    href: "/contacto?caso=educacion",
   },
 ];
 
@@ -47,18 +48,24 @@ export default function Home() {
   return (
     <>
       {/* ══════════ HERO ══════════ */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-white text-center">
-        <div className="container mx-auto px-6 md:px-12 max-w-4xl">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-28 bg-white text-center bg-grid-light relative overflow-hidden">
+        {/* Glow azul centrado — ADN del ecosistema */}
+        <div className="hero-glow" aria-hidden="true" />
+
+        <div className="container mx-auto px-6 md:px-12 max-w-4xl relative z-10">
           <FadeIn delay={0.1}>
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-slate-200 text-sm text-slate-500 font-medium mb-8">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50/60 text-sm text-blue-700 font-semibold mb-8 tracking-wide">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block mr-2 animate-pulse" />
               Transformando Data en Estrategia y Crecimiento
             </div>
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <h1 className="text-4xl md:text-6xl lg:text-[3.5rem] font-black tracking-tight text-navy mb-6 leading-[1.1]">
-              Inteligencia Artificial que se traduce en{" "}
-              <span className="text-cian">resultados</span>
+            <h1 className="text-4xl md:text-6xl lg:text-[3.75rem] font-black tracking-tight text-[#0F172A] mb-6 leading-[1.08]">
+              Inteligencia Artificial que{" "}
+              <br className="hidden md:block" />
+              se traduce en{" "}
+              <span className="text-gradient-blue">resultados</span>
             </h1>
           </FadeIn>
 
@@ -71,7 +78,7 @@ export default function Home() {
           <FadeIn delay={0.5}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contacto">
-                <Button className="h-12 px-8 text-base">
+                <Button className="h-12 px-8 text-base btn-pulse">
                   Solicitar Diagnóstico Gratuito
                 </Button>
               </Link>
@@ -82,12 +89,24 @@ export default function Home() {
               </Link>
             </div>
           </FadeIn>
+
+          <FadeIn delay={0.65}>
+            <p className="mt-6 text-xs text-slate-400 font-medium tracking-widest uppercase">
+              Diagnóstico gratuito · Sin compromiso · 100% confidencial
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       {/* ══════════ RESULTADOS EN NÚMEROS ══════════ */}
-      <section className="py-10 bg-navy">
-        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+      <section className="py-14 bg-grid-dark relative overflow-hidden" style={{ background: '#0D1117' }}>
+        {/* Glow azul sutil radial */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+          style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(29,78,216,0.18) 0%, transparent 65%)' }}
+        />
+        <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { number: "+20", label: "Proyectos de IA implementados" },
@@ -97,8 +116,8 @@ export default function Home() {
             ].map((m, i) => (
               <Reveal key={m.label} delay={0.1 * (i + 1)}>
                 <div>
-                  <p className="text-3xl md:text-4xl font-black text-cian-light">{m.number}</p>
-                  <p className="text-xs md:text-sm text-slate-400 mt-1">{m.label}</p>
+                  <p className="text-3xl md:text-4xl font-black text-blue-400 tabular-nums">{m.number}</p>
+                  <p className="text-xs md:text-sm text-slate-300 mt-2 leading-snug font-medium">{m.label}</p>
                 </div>
               </Reveal>
             ))}
@@ -106,38 +125,169 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════ IMPULSORES DE VALOR (3 cols) ══════════ */}
-      <section className="py-20 bg-slate-50 border-y border-slate-100">
-        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
-          <div className="text-center mb-14">
-            <Reveal>
-              <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight">
-                ¿Por qué las empresas líderes eligen IA?
-              </h2>
-            </Reveal>
+      {/* ══════════ ILUMINACIÓN / MANIFIESTO (El Dolor Real) ══════════ */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-6 md:px-12 max-w-5xl text-center">
+          <Reveal>
+            <h2 className="text-2xl md:text-4xl font-black text-navy leading-tight mb-12">
+              Trabajamos con empresas que ya leyeron suficiente sobre IA y quieren, por fin, <span className="text-blue-700">llevarla a producción.</span>
+            </h2>
+          </Reveal>
+          
+          <div className="grid md:grid-cols-3 gap-6 mb-12 text-left px-2 sm:px-0">
             <Reveal delay={0.1}>
-              <p className="text-lg text-slate-500 max-w-2xl mx-auto mt-4">
-                Aprovecha al máximo el potencial de los datos para transformar tus estrategias y alcanzar nuevos resultados.
-              </p>
+              <div className="bg-slate-50 border border-slate-100 p-6 md:p-8 rounded-3xl hover:-translate-y-1 hover:bg-white hover:border-blue-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 h-full">
+                <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-sm text-blue-700 font-black mb-5 text-sm">1</div>
+                <h3 className="font-bold text-navy text-lg mb-2">Entienden la teoría</h3>
+                <p className="text-slate-500 text-sm md:text-base leading-relaxed">El directorio comprende la disrupción tecnológica y el equipo logra ejecutar un par de pruebas aisladas con éxito.</p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="bg-slate-50 border border-slate-100 p-6 md:p-8 rounded-3xl hover:-translate-y-1 hover:bg-white hover:border-blue-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 h-full">
+                <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-sm text-blue-700 font-black mb-5 text-sm">2</div>
+                <h3 className="font-bold text-navy text-lg mb-2">Aparece la fricción</h3>
+                <p className="text-slate-500 text-sm md:text-base leading-relaxed">Al intentar integrarlo a la operación real saltan alertas de seguridad, trabas de TI y cuestionamientos duros sobre el ROI.</p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <div className="bg-slate-50 border border-slate-100 p-6 md:p-8 rounded-3xl hover:-translate-y-1 hover:bg-white hover:border-red-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 h-full group">
+                <div className="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-sm text-red-500 font-black mb-5 text-sm group-hover:text-red-600">3</div>
+                <h3 className="font-bold text-red-600 text-lg mb-2">La Parálisis</h3>
+                <p className="text-slate-500 text-sm md:text-base leading-relaxed">Las pruebas quedan archivadas en un cajón. La innovación se frena y la empresa sigue operando igual que hace cinco años.</p>
+              </div>
             </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { title: "Eficiencia y rentabilidad", desc: "Mejora la eficiencia operativa, disminuye costos y aumenta la rentabilidad mediante la optimización de procesos." },
-              { title: "Crecimiento de ventas", desc: "Identifica oportunidades de crecimiento al tener una mejor comprensión del mercado y de tus clientes." },
-              { title: "Innovación digital", desc: "Incorpora Machine Learning & IA Generativa con casos de uso que tengan impacto real en tu negocio." },
-            ].map((item, i) => (
-              <Reveal key={item.title} delay={0.1 * (i + 1)}>
-                <div className="bg-white rounded-2xl p-8 border border-slate-200 hover:shadow-md transition-all h-full text-center">
-                  <div className="w-14 h-14 bg-cian/10 rounded-xl flex items-center justify-center mx-auto mb-5">
-                    <CheckCircle2 className="w-7 h-7 text-cian" />
+          <Reveal delay={0.4}>
+            <div className="inline-block bg-gradient-to-b from-blue-50/50 to-white border border-blue-100/50 shadow-sm p-6 sm:p-10 rounded-[2.5rem]">
+              <p className="text-lg md:text-xl text-slate-700 leading-relaxed font-semibold max-w-2xl mx-auto">
+                El espacio entre entender el concepto y rentabilizarlo en una operación concreta es más corto de lo que parece.
+                <span className="text-blue-700 font-black text-xl md:text-2xl mt-4 block">Cerrar esa brecha es nuestra especialidad.</span>
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ══════════ LIDERAZGO / TRANSFERENCIA DE AUTORIDAD ══════════ */}
+      <section className="py-20 bg-slate-50 border-t border-slate-200">
+        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+          <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-200 flex flex-col md:flex-row items-center gap-10">
+            <Reveal className="w-full md:w-1/3 flex flex-col justify-center items-center">
+              <div className="flex flex-row justify-center items-center -space-x-6">
+                <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-md z-20 hover:z-30 hover:scale-105 transition-all outline-none">
+                  <Image src="/bernardita-nueva.jpg" alt="Bernardita Mery" fill className="object-cover" />
+                </div>
+                <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-md z-10 hover:z-30 hover:scale-105 transition-all outline-none">
+                  <Image src="/pablo.jpg" alt="Pablo Olivares" fill className="object-cover object-top" />
+                </div>
+                <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-white shadow-sm flex items-center justify-center bg-navy z-0 hover:z-30 hover:scale-105 transition-all text-white outline-none">
+                  <div className="text-center">
+                    <span className="block font-black text-xl md:text-2xl mt-1">+15</span>
+                    <span className="block text-[0.6rem] md:text-xs font-bold uppercase tracking-wider text-cian-light">Expertos</span>
                   </div>
-                  <h3 className="text-lg font-bold text-navy mb-3">{item.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            </Reveal>
+            <div className="w-full md:w-2/3 text-center md:text-left mt-4 md:mt-0 md:pl-4">
+              <Reveal delay={0.1}>
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-cian/10 text-xs text-cian font-bold uppercase tracking-wider mb-4">
+                  Liderazgo y Equipo
                 </div>
               </Reveal>
-            ))}
+              <Reveal delay={0.2}>
+                <h2 className="text-2xl md:text-3xl font-black text-navy mb-4">
+                  Ingeniería robusta con visión de negocio
+                </h2>
+              </Reveal>
+              <Reveal delay={0.3}>
+                <p className="text-slate-500 mb-6 leading-relaxed">
+                  ETIIA fue fundada por <strong>Bernardita Mery</strong> (Estrategia Comercial) y <strong>Pablo Olivares</strong> (Arquitectura Cloud & Delivery). Combinamos la más rigurosa metodología de negocios con ingeniería de software avanzada. Nos aseguramos de que cada desarrollo de Data, Machine Learning y automatización esté directamente conectado con los KPIs estratégicos de la Alta Dirección.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center gap-6 justify-center md:justify-start">
+                  <Link href="/equipo" className="text-cian font-semibold hover:text-cian-dark transition-colors inline-flex items-center">
+                    Conocer al equipo <ArrowRight className="ml-1 w-4 h-4" />
+                  </Link>
+                  <Link href="https://bernarditamery.cl" target="_blank" className="text-slate-400 font-medium hover:text-slate-600 transition-colors inline-flex items-center text-sm">
+                    Ir a bernarditamery.cl <ArrowRight className="ml-1 w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ LA PREGUNTA REAL / EJEMPLOS B2B ══════════ */}
+      <section className="py-24 bg-slate-50 border-y border-slate-200">
+        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+          <div className="text-center mb-16">
+            <Reveal>
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-50 text-xs text-blue-700 font-bold uppercase tracking-wider mb-4 border border-blue-100">
+                El Desafío Real
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="max-w-2xl mx-auto mt-6 mb-16 flex justify-center px-4 relative z-10">
+                <div className="relative w-full">
+                  {/* Globo principal */}
+                  <div className="bg-white rounded-[2.5rem] p-8 md:p-12 text-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200">
+                    <h2 className="text-2xl md:text-3xl font-semibold text-slate-700 leading-relaxed tracking-tight">
+                      Todo esto suena muy bien,<br/>
+                      ¿pero qué hacen exactamente?<br/>
+                      <span className="font-black text-navy">¿Automatizan?</span>
+                    </h2>
+                  </div>
+                  {/* Cola del globo (Tail) */}
+                  <div className="absolute -bottom-[22px] left-12 w-12 h-12 bg-white border-b border-l border-slate-200 transform -rotate-45 rounded-bl-sm -z-10 shadow-[-4px_4px_10px_rgb(0,0,0,0.02)]"></div>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="bg-white p-6 sm:p-10 rounded-[2.5rem] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 mt-8 mb-16 max-w-4xl mx-auto hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 text-left sm:text-center group">
+                <p className="text-lg md:text-xl font-medium text-slate-600 leading-relaxed">
+                   <strong className="text-navy font-black block sm:inline mb-3 sm:mb-0 text-xl md:text-2xl">¿Automatización? Sí, hoy eso cualquiera lo hace.</strong><br className="hidden sm:block mt-2"/>
+                   <span className="block mt-4">
+                     Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg inline-block mt-2 sm:mt-0 sm:ml-1 border border-blue-100/50 group-hover:bg-blue-100/50 transition-colors">Inteligencia Artificial</span> capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a tus resultados.
+                   </span>
+                </p>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Reveal delay={0.3}>
+              <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all h-full">
+                <h3 className="text-lg font-bold text-navy mb-3">1. Operaciones Inteligentes</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  No es un robot que solo hace clic (RPA clásico). Un modelo de IA puede leer cotizaciones en texto libre, entender qué está pidiendo el cliente, categorizarlo y empujar el dato validado a tu ERP sin intervención manual.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.4}>
+              <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all h-full">
+                <h3 className="text-lg font-bold text-navy mb-3">2. Análisis Predictivo</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Conectamos tu historial con modelos que detectan quién dejará de comprarte el próximo mes o qué producto ofrecer para maximizar ticket. Es pasar de "mirar reportes pasados" a anticiparse al mercado corporativo.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.5}>
+              <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all h-full">
+                <h3 className="text-lg font-bold text-navy mb-3">3. Adopción sin Temor</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  La IA fracasa si tu equipo siente que va a perder su empleo por ella. Nosotros no solo entregamos el software; entrenamos 1 a 1 a tu gerencia para que incorporen las herramientas con criterio de negocio.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="mt-16 text-center">
+             <Reveal delay={0.6}>
+               <p className="text-navy font-bold text-xl drop-shadow-sm">
+                 El mayor riesgo no es "equivocarse" usando Inteligencia Artificial.<br/>Es quedarse con tecnología de la década pasada.
+               </p>
+             </Reveal>
           </div>
         </div>
       </section>
@@ -148,48 +298,70 @@ export default function Home() {
           <div className="text-center mb-16">
             <Reveal>
               <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-100 text-xs text-slate-500 font-semibold uppercase tracking-wider mb-6">
-                Conoce nuestros servicios
+                Casos de Uso Reales
               </div>
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight">
-                Soluciones end-to-end en Inteligencia Artificial
+                No vendemos tecnología teórica.<br/>Resolvemos cuellos de botella específicos.
               </h2>
             </Reveal>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {servicios.map((s, i) => (
+            {casosUso.map((s, i) => (
               <Reveal key={s.title} delay={0.08 * (i + 1)}>
                 <Link href={s.href}>
-                  <div className="bg-white rounded-2xl p-7 border border-slate-200 hover:border-cian/40 hover:shadow-lg transition-all h-full group cursor-pointer">
-                    <div className="w-12 h-12 bg-cian/10 rounded-xl flex items-center justify-center mb-5 text-cian group-hover:bg-cian group-hover:text-white transition-colors">
+                  <div className="bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-300 hover:shadow-[0_8px_28px_-6px_rgba(29,78,216,0.14)] transition-all h-full group cursor-pointer flex flex-col lift-card relative overflow-hidden">
+                    {/* Borde top coloreado al hover — mismo patrón que BernarditaMery */}
+                    <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5 text-blue-600 group-hover:bg-blue-700 group-hover:text-white transition-colors duration-300">
                       {s.icon}
                     </div>
-                    <h3 className="text-base font-bold text-navy mb-2 group-hover:text-cian transition-colors">{s.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
-                    <span className="inline-flex items-center text-sm font-semibold text-cian mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      Ver más <ArrowRight className="ml-1 w-3.5 h-3.5" />
+                    <h3 className="text-base font-bold text-[#0F172A] mb-2 group-hover:text-blue-700 transition-colors">{s.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed flex-grow">{s.desc}</p>
+                    <span className="inline-flex items-center text-sm font-semibold text-blue-600 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      Hablemos de tu caso <ArrowRight className="ml-1 w-3.5 h-3.5" />
                     </span>
                   </div>
                 </Link>
               </Reveal>
             ))}
           </div>
+
+          <div className="mt-14 text-center max-w-3xl mx-auto">
+            <Reveal delay={0.6}>
+              <div className="inline-block bg-cian/5 border border-cian/20 rounded-2xl p-6 text-base text-slate-700 font-medium shadow-sm">
+                <span className="block text-xl font-black text-navy mb-2">Y más...</span> 
+                <span className="font-bold">¿No ves tu industria aquí?</span> Estos casos son referenciales. Nuestra tecnología es transversal: si en tu empresa hay alta volumetría de datos, operativas repetitivas o cuellos de botella para procesar información, <strong className="text-cian font-black">podemos resolverlo</strong>.
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* ══════════ PROCESO 3 PASOS ══════════ */}
-      <section className="py-20 md:py-28 bg-navy text-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+      <section className="py-20 md:py-28 text-white bg-grid-dark relative overflow-hidden" style={{ background: '#0D1117' }}>
+        {/* Glow azul — ADN ecosistema */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+          style={{ background: 'radial-gradient(ellipse at 50% -10%, rgba(29,78,216,0.22) 0%, transparent 60%)' }}
+        />
+        <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10">
           <div className="text-center mb-16">
             <Reveal>
-              <h2 className="text-3xl md:text-[2.5rem] font-black leading-tight">
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-800/60 bg-blue-900/30 text-xs text-blue-400 font-bold uppercase tracking-widest mb-6">
+                Cómo trabajamos
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="text-3xl md:text-[2.5rem] font-black leading-tight text-white">
                 Cuéntanos sobre tu empresa
               </h2>
             </Reveal>
-            <Reveal delay={0.1}>
-              <p className="text-lg text-slate-300 max-w-2xl mx-auto mt-4">
+            <Reveal delay={0.15}>
+              <p className="text-lg text-slate-400 max-w-2xl mx-auto mt-4">
                 Estamos listos para comprender tus metas y transformar tus datos en resultados tangibles.
               </p>
             </Reveal>
@@ -203,10 +375,10 @@ export default function Home() {
             ].map((item, i) => (
               <Reveal key={item.step} delay={0.15 * (i + 1)}>
                 <div className="text-center">
-                  <div className="w-14 h-14 rounded-full border-2 border-cian-light text-cian-light flex items-center justify-center text-xl font-bold mx-auto mb-5">
+                  <div className="w-14 h-14 rounded-full border-2 border-blue-500/60 text-blue-400 flex items-center justify-center text-xl font-bold mx-auto mb-5 bg-blue-900/20">
                     {item.step}
                   </div>
-                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <h3 className="text-lg font-bold mb-2 text-white">{item.title}</h3>
                   <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </Reveal>

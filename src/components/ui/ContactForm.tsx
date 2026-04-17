@@ -46,6 +46,7 @@ export function ContactForm() {
                     role: data.role,
                     email: data.email,
                     challenge: data.challenge,
+                    _subject: "Lead - ETIIA | " + (data.company || data.name),
                 }),
             });
             if (res.ok) {
