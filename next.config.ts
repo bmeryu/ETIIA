@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: "export", // Comentado para correr localmente
+  output: "export",
   images: {
     unoptimized: true,
   },
