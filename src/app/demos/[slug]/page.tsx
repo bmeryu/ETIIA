@@ -80,6 +80,22 @@ const demos: Record<string, {
       { titulo: "Ranking Instantáneo", desc: "Resultado: un ranking ordenado con % de fit. RRHH solo entrevista al top 5-10, no a los 300." },
     ],
   },
+  agendai: {
+    nombre: "AgendAI",
+    industria: "Salud · Clínicas",
+    tagline: "Predice inasistencias antes de que ocurran",
+    descripcion: "Un modelo predictivo que analiza historial del paciente, clima, día y hora para identificar quién no va a llegar. Contacta automáticamente a la lista de espera para reasignar la hora.",
+    resultado: "-62% no-shows",
+    resultadoLabel: "$4.2M CLP recuperados por mes",
+    tags: ["ML Predictivo", "WhatsApp API", "Agenda Médica"],
+    color: "rose",
+    iframeSrc: "/demos/agendai/index.html#demo",
+    pasos: [
+      { titulo: "Análisis Predictivo", desc: "El modelo analiza 14 meses de historial + 6 variables (clima, día, hora, distancia, historial) para calcular riesgo de inasistencia." },
+      { titulo: "Auto-Contacto", desc: "Si el riesgo es >70%, el sistema envía WhatsApp o llamada automática al paciente para confirmar asistencia." },
+      { titulo: "Reasignación Inteligente", desc: "Si no confirma, la hora se ofrece al siguiente paciente en lista de espera automáticamente." },
+    ],
+  },
 };
 
 export function generateStaticParams() {
@@ -114,6 +130,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
     blue: { bg: "bg-blue-50", text: "text-blue-600", border: "border-blue-200" },
     violet: { bg: "bg-violet-50", text: "text-violet-600", border: "border-violet-200" },
     amber: { bg: "bg-amber-50", text: "text-amber-600", border: "border-amber-200" },
+    rose: { bg: "bg-rose-50", text: "text-rose-600", border: "border-rose-200" },
   };
   const c = colorMap[demo.color] || colorMap.blue;
 

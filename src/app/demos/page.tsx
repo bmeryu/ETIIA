@@ -56,13 +56,14 @@ const productos = [
   },
   {
     nombre: "AgendAI",
+    slug: "agendai",
     industria: "Salud · Clínicas",
     icon: <Stethoscope className="w-6 h-6" />,
     descripcion: "Análisis predictivo de agenda médica: detecta inasistencias antes de que ocurran y contacta automáticamente a pacientes en lista de espera.",
     resultado: "-62% no-shows",
     tags: ["Predictivo", "Auto-contacto", "Agenda"],
     color: "rose",
-    disponible: false,
+    disponible: true,
   },
   {
     nombre: "CosechAI",
