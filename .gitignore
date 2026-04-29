@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Private demos & client proposals
+/demos/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
