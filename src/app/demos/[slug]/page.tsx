@@ -64,6 +64,22 @@ const demos: Record<string, {
       { titulo: "Resultado Preciso", desc: "Devuelve la cláusula exacta con su porcentaje de relevancia, documento de origen y página. Sin falsos positivos." },
     ],
   },
+  talentparse: {
+    nombre: "TalentParse",
+    industria: "Recursos Humanos",
+    tagline: "312 CVs evaluados en 8 minutos",
+    descripcion: "La IA parsea CVs en cualquier formato, extrae variables críticas (experiencia, skills, educación) y las mapea contra la descripción del cargo, generando un ranking instantáneo con scoring multidimensional.",
+    resultado: "300 CVs en 8 min",
+    resultadoLabel: "95% menos tiempo en screening",
+    tags: ["NLP", "CV Parsing", "Scoring", "Ranking"],
+    color: "amber",
+    iframeSrc: "/demos/talentparse/index.html#demo",
+    pasos: [
+      { titulo: "Parsing Universal", desc: "La IA extrae datos de cualquier formato: PDF, DOCX, imágenes, LinkedIn exports. No importa cómo venga el CV." },
+      { titulo: "Scoring Multidimensional", desc: "Cada candidato se evalúa en experiencia relevante, stack técnico y habilidades de liderazgo contra el perfil del cargo." },
+      { titulo: "Ranking Instantáneo", desc: "Resultado: un ranking ordenado con % de fit. RRHH solo entrevista al top 5-10, no a los 300." },
+    ],
+  },
 };
 
 export function generateStaticParams() {
@@ -97,6 +113,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
     emerald: { bg: "bg-emerald-50", text: "text-emerald-600", border: "border-emerald-200" },
     blue: { bg: "bg-blue-50", text: "text-blue-600", border: "border-blue-200" },
     violet: { bg: "bg-violet-50", text: "text-violet-600", border: "border-violet-200" },
+    amber: { bg: "bg-amber-50", text: "text-amber-600", border: "border-amber-200" },
   };
   const c = colorMap[demo.color] || colorMap.blue;
 

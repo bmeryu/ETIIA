@@ -45,13 +45,14 @@ const productos = [
   },
   {
     nombre: "TalentParse",
+    slug: "talentparse",
     industria: "Recursos Humanos",
     icon: <Users className="w-6 h-6" />,
     descripcion: "Parseo automático de CVs en cualquier formato. La IA extrae variables críticas y las mapea contra la descripción del cargo, generando un ranking instantáneo.",
     resultado: "300 CVs en 8 min",
     tags: ["CV Parsing", "Scoring", "Ranking"],
     color: "amber",
-    disponible: false,
+    disponible: true,
   },
   {
     nombre: "AgendAI",
