@@ -1,0 +1,840 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta AutoRend IA para COMEDUC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Browser Frame CSS */
+        .browser-frame {
+            box-shadow: 0 0 0 1px #e2e8f0, 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            background: white;
+            z-index: 10;
+            width: 100%;
+            max-width: 800px;
+            height: 520px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .browser-header {
+            background: #f8fafc;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 8px;
+            border-bottom: 1px solid #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        /* Animations */
+        @keyframes scanline {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .scan-line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #3b82f6;
+            box-shadow: 0 0 15px #3b82f6;
+            animation: scanline 2.5s linear infinite;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background-color: #94a3b8;
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out both;
+            margin: 0 2px;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
+
+    <!-- Navigation / Header -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-700 rounded-md flex items-center justify-center text-white font-bold text-lg">
+                        <span class="material-symbols-outlined text-sm">smart_toy</span>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">AutoRend IA</span>
+                    <span class="hidden md:block text-slate-300 mx-2">|</span>
+                    <span class="hidden md:block text-slate-600 text-sm font-medium">Propuesta Técnica para COMEDUC</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="#demo" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition hidden sm:block">Demo Panel</a>
+                    <a href="#arquitectura" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition hidden sm:block">Solución</a>
+                    <a href="#roadmap" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition hidden sm:block">Roadmap</a>
+                    <a href="#demo" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg font-medium hover:bg-blue-700 transition">Ver Demo</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- Abstract background -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50 opacity-80"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+            <div class="absolute top-40 right-10 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 text-xs font-semibold uppercase tracking-wide mb-6 shadow-sm">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png" alt="AI" class="w-4 h-4">
+                Resolución de Observaciones Automatizada
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
+                El fin de los atrasos en las <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Rendiciones de COMEDUC</span>
+            </h1>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-600 leading-relaxed">
+                Un agente de IA diseñado para leer los PDFs de observaciones, conectarse en tiempo real con <strong>Qbiz</strong>, razonar la información y responder automáticamente. Si falta un dato, redacta y envía el correo al colegio correspondiente de forma autónoma.
+            </p>
+            <div class="mt-10 flex justify-center gap-4">
+                <button onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition transform hover:-translate-y-1 flex items-center gap-2">
+                    <span class="material-symbols-outlined">play_circle</span>
+                    Probar el Sistema
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Interactive Demo Section -->
+    <section id="demo" class="py-20 bg-white relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Panel de Control: Simulación en Vivo</h2>
+                <p class="text-slate-500 mt-2 max-w-2xl mx-auto">Interactúa libremente con el flujo exacto que tendrán tus ejecutivos. Haz clic en los botones resaltados para ver cómo la IA hace el trabajo pesado.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 items-center justify-center">
+                
+                <!-- Browser Device -->
+                <div class="browser-frame w-full max-w-4xl shadow-2xl transition-all duration-500">
+                    
+                    <!-- MacOS style header -->
+                    <div class="browser-header">
+                        <div class="flex gap-2">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <div class="flex-1 text-center">
+                            <div class="inline-block bg-white rounded-md px-4 py-1 text-xs text-slate-500 border border-slate-200 w-1/2">
+                                <span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>
+                                comeduc.autorend.ai/dashboard
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic App Screen Container -->
+                    <div id="app-screen" class="w-full h-full relative bg-slate-50 overflow-hidden flex flex-col">
+                        <!-- Content rendered by JS -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Context & Architecture Section -->
+    <section id="arquitectura" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                
+                <div>
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-6">
+                        <span class="material-symbols-outlined text-2xl">account_tree</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">¿Cómo resolvemos el problema?</h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Actualmente, las ejecutivas de COMEDUC pierden tiempo valioso buscando datos en Qbiz o persiguiendo a los colegios para responder PDFs gigantes. Nuestra solución automatiza el flujo completo.
+                    </p>
+
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center shrink-0 mt-1">
+                                <span class="text-indigo-600 font-bold text-sm">1</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">Ingesta y Razonamiento</h4>
+                                <p class="text-slate-600 text-sm mt-1">El sistema lee el PDF de preguntas/respuestas, extrae cada observación individualmente y comprende qué se está pidiendo.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-1">
+                                <span class="text-blue-600 font-bold text-sm">2</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">Cruce con ERP Qbiz</h4>
+                                <p class="text-slate-600 text-sm mt-1">Mediante integración API, la IA busca de forma autónoma facturas, folios y rendiciones en Qbiz para dar respuesta inmediata.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center shrink-0 mt-1">
+                                <span class="text-orange-600 font-bold text-sm">3</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">Gestión de Excepciones (Mails)</h4>
+                                <p class="text-slate-600 text-sm mt-1">Si la información NO está en el ERP, la IA identifica el colegio/región involucrado, redacta un correo solicitando el dato exacto y lo envía.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Visión de Futuro Box -->
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-3xl transform rotate-3 scale-105 opacity-20"></div>
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-slate-100 relative z-10">
+                        <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+                            <span class="material-symbols-outlined text-purple-500 text-3xl">psychology</span>
+                            <h3 class="text-2xl font-bold text-slate-800">Visión de Futuro</h3>
+                        </div>
+                        <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+                            Responder automáticamente es solo el primer paso. El verdadero objetivo es <strong>prevenir que las observaciones existan.</strong>
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-slate-800 text-sm mb-1 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm text-green-500">troubleshoot</span>
+                                    Filtro Preventivo
+                                </h5>
+                                <p class="text-xs text-slate-500">En una fase 2, el sistema auditará las rendiciones *antes* de ser enviadas al ente regulador, alertando de discrepancias.</p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-slate-800 text-sm mb-1 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm text-blue-500">insights</span>
+                                    Analítica Predictiva
+                                </h5>
+                                <p class="text-xs text-slate-500">Identificación de colegios reincidentes y recomendación de capacitaciones específicas basadas en el volumen histórico de errores.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Infraestructura GCP -->
+    <section id="gcp" class="py-16 bg-slate-900 text-white relative overflow-hidden border-t border-slate-800">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900 z-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center p-3 bg-white/10 rounded-2xl mb-4 border border-white/20 backdrop-blur-sm">
+                    <span class="material-symbols-outlined text-blue-400 text-3xl">cloud</span>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Sustentado en Google Cloud Platform (GCP)</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Toda la solución está diseñada sobre la infraestructura de Google, garantizando alta disponibilidad, seguridad de grado empresarial y un procesamiento de documentos ultra-rápido.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl hover:border-blue-500/50 transition">
+                    <h4 class="font-bold text-blue-300 mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">lock</span> Seguridad y Privacidad</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Los documentos de rendición viajan encriptados. Los datos no se utilizan para entrenar modelos públicos, asegurando la privacidad absoluta del colegio.</p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl hover:border-emerald-500/50 transition">
+                    <h4 class="font-bold text-emerald-300 mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">speed</span> Serverless & Auto-escalable</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">No hay servidores fijos que mantener. Si un día llegan 1.000 observaciones de golpe, la nube de Google escala automáticamente para procesarlas sin caídas.</p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl hover:border-purple-500/50 transition">
+                    <h4 class="font-bold text-purple-300 mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">api</span> Arquitectura API</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Infraestructura moderna mediante microservicios que permite conectar el ERP Qbiz de forma segura a través de pasarelas monitoreadas 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap & Implementation -->
+    <section id="roadmap" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4 text-center">Cronograma de Implementación</h2>
+            <p class="text-center text-slate-500 mb-12 max-w-2xl mx-auto">Un plan acelerado de ~2 meses diseñado para generar impacto rápido minimizando la interrupción operativa.</p>
+            
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Timeline Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-slate-100 hidden md:block"></div>
+                
+                <div class="space-y-8">
+                    <!-- Semanas 1-3 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                        <div class="md:w-5/12 text-center md:text-right p-4">
+                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold mb-2">Semanas 1 - 3</span>
+                            <h3 class="text-xl font-bold text-slate-900">Análisis & Integración</h3>
+                            <p class="text-slate-500 mt-2 text-sm">Levantamiento de tipologías de observaciones. Configuración de conexión segura (API) con el ERP Qbiz. Diseño de arquitectura Cloud.</p>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-white rounded-full border-4 border-slate-300 group-hover:border-blue-500 transition shadow hidden md:flex items-center justify-center z-10">
+                            <div class="w-2 h-2 bg-slate-300 group-hover:bg-blue-500 rounded-full transition"></div>
+                        </div>
+                        <div class="md:w-5/12 p-4"></div>
+                    </div>
+
+                    <!-- Semanas 4-6 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                        <div class="md:w-5/12 p-4 hidden md:block"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-white rounded-full border-4 border-slate-300 group-hover:border-indigo-500 transition shadow hidden md:flex items-center justify-center z-10">
+                            <div class="w-2 h-2 bg-slate-300 group-hover:bg-indigo-500 rounded-full transition"></div>
+                        </div>
+                        <div class="md:w-5/12 text-center md:text-left p-4">
+                            <span class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-xs font-bold mb-2">Semanas 4 - 6</span>
+                            <h3 class="text-xl font-bold text-slate-900">Motor IA y Dashboard</h3>
+                            <p class="text-slate-500 mt-2 text-sm">Desarrollo del modelo de extracción de PDFs, lógica de razonamiento para cruzar datos y armado del panel de visualización de métricas.</p>
+                        </div>
+                    </div>
+
+                    <!-- Semanas 7-8 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                        <div class="md:w-5/12 text-center md:text-right p-4">
+                            <span class="inline-block px-3 py-1 bg-green-50 text-green-600 rounded-full text-xs font-bold mb-2">Semanas 7 - 8</span>
+                            <h3 class="text-xl font-bold text-slate-900">Marcha Blanca y PAP</h3>
+                            <p class="text-slate-500 mt-2 text-sm">Pruebas en entorno real con ejecutivas de COMEDUC (Shadowing). Corrección de falsos positivos y Puesta a Producción (PAP) definitiva.</p>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-white rounded-full border-4 border-slate-300 group-hover:border-green-500 transition shadow hidden md:flex items-center justify-center z-10">
+                            <div class="w-2 h-2 bg-slate-300 group-hover:bg-green-500 rounded-full transition"></div>
+                        </div>
+                        <div class="md:w-5/12 p-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Costos y Garantía -->
+    <section id="costos" class="py-16 bg-slate-900 text-white border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Garantía -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-blue-400">verified_user</span>
+                        Garantía y Soporte
+                    </h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Nuestro compromiso no termina con la Puesta a Producción. Entregamos una solución robusta y aseguramos su adopción.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <span class="material-symbols-outlined text-green-400 text-lg">check_circle</span>
+                            30 días de garantía post-lanzamiento (resolución de bugs sin costo).
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <span class="material-symbols-outlined text-green-400 text-lg">check_circle</span>
+                            Capacitación formal al equipo de rendiciones.
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <span class="material-symbols-outlined text-green-400 text-lg">check_circle</span>
+                            Monitoreo proactivo de estabilidad de APIs.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- API Costs -->
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <span class="material-symbols-outlined text-8xl">payments</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Costos Operativos (Mensuales)</h3>
+                    <p class="text-slate-400 text-sm mb-6">
+                        El sistema utiliza modelos de lenguaje (IA) e infraestructura Cloud (GCP). El cobro es estrictamente por consumo ("Pay-as-you-go").
+                    </p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between items-center bg-slate-900 p-3 rounded-lg border border-slate-700 shadow-inner">
+                            <span class="text-slate-300 text-sm flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-blue-400">psychology</span> Motor de IA</span>
+                            <span class="font-bold text-white">~$40 USD</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-900 p-3 rounded-lg border border-slate-700 shadow-inner">
+                            <span class="text-slate-300 text-sm flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-indigo-400">cloud</span> Infraestructura GCP</span>
+                            <span class="font-bold text-white">~$20 USD</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xs text-slate-500 mb-6">
+                        *Estimación basada en el procesamiento de 500 páginas de PDFs de observaciones al mes.
+                    </p>
+
+                    <div class="mt-6 pt-6 border-t border-slate-700">
+                        <h4 class="text-sm font-semibold text-slate-300 mb-3 uppercase tracking-wider">Inversión Total de Implementación</h4>
+                        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-5 shadow-lg w-full transform transition hover:scale-[1.02]">
+                            <div class="text-4xl font-extrabold text-white flex items-baseline gap-2">
+                                132 <span class="text-xl font-medium opacity-90">UF chilenas</span>
+                            </div>
+                            <p class="text-blue-100 text-sm mt-2 font-medium mb-4">Costo único por desarrollo, integración ERP, QA y puesta en marcha.</p>
+                            
+                            <div class="inline-flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded-lg text-white text-sm font-semibold backdrop-blur-sm border border-white/10 shadow-sm">
+                                <span class="material-symbols-outlined text-[18px]">timer</span>
+                                Tiempo de ejecución: 2 meses
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm">
+                Propuesta técnica preparada exclusivamente para <strong>Fundación Educacional COMEDUC</strong>.<br/>
+                Automatizando el futuro de la educación. © 2026.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JS for Interactive Browser Demo -->
+    <script>
+        const appScreen = document.getElementById('app-screen');
+
+        // Flow Stage to guide the user with tooltips (1 = Start, 2 = Validation)
+        let demoFlowStage = 1;
+
+        // State Machine for the Demo Dashboard
+        const states = {
+            DASHBOARD: 'dashboard',
+            UPLOAD: 'upload',
+            PROCESSING: 'processing',
+            RESULTS: 'results',
+            VALIDATION_LIST: 'validation_list',
+            VALIDATION_DETAIL: 'validation_detail'
+        };
+
+        // Render Functions for each state
+        const render = (state) => {
+            appScreen.innerHTML = ''; // Clear current
+            
+            switch(state) {
+                
+                // 1. Initial Dashboard View
+                case states.DASHBOARD:
+                    appScreen.innerHTML = `
+                        <div class="flex h-full animate-fade-in text-slate-800">
+                            <!-- Sidebar -->
+                            <div class="w-48 bg-white border-r border-slate-200 p-4 flex flex-col gap-2 relative z-20">
+                                <div class="font-bold text-sm mb-4 text-slate-400 uppercase tracking-wider">Menú</div>
+                                <div class="flex items-center gap-2 p-2 bg-blue-50 text-blue-600 rounded-lg cursor-pointer font-medium text-sm">
+                                    <span class="material-symbols-outlined text-[18px]">grid_view</span> Panel
+                                </div>
+                                <div class="relative flex items-center gap-2 p-2 hover:bg-slate-50 text-slate-600 rounded-lg cursor-pointer font-medium text-sm transition ${demoFlowStage === 2 ? 'ring-2 ring-amber-400 ring-offset-1' : ''}" onclick="goToState('VALIDATION_LIST')">
+                                    ${demoFlowStage === 2 ? '<div class="absolute left-full ml-4 top-1/2 transform -translate-y-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-[0_10px_25px_rgba(0,0,0,0.3)] animate-bounce whitespace-nowrap border border-slate-700 z-[100]">👈 4. Revisa aquí</div>' : ''}
+                                    <span class="material-symbols-outlined text-[18px]">fact_check</span> Por Validar
+                                </div>
+                                <div class="flex items-center gap-2 p-2 hover:bg-slate-50 text-slate-600 rounded-lg cursor-pointer font-medium text-sm transition" onclick="goToState('UPLOAD')">
+                                    <span class="material-symbols-outlined text-[18px]">upload_file</span> Subir PDF
+                                </div>
+                                <div class="flex items-center gap-2 p-2 hover:bg-slate-50 text-slate-600 rounded-lg cursor-pointer font-medium text-sm transition">
+                                    <span class="material-symbols-outlined text-[18px]">dns</span> Logs Qbiz
+                                </div>
+                            </div>
+                            
+                            <!-- Main Content -->
+                            <div class="flex-1 p-6 bg-slate-50 overflow-y-auto relative">
+                                <div class="flex justify-between items-center mb-6">
+                                    <h1 class="text-2xl font-bold">Resumen de Observaciones</h1>
+                                    <button onclick="goToState('UPLOAD')" class="relative z-10 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition shadow-sm flex items-center gap-2 ${demoFlowStage === 1 ? 'ring-4 ring-amber-400 ring-offset-2' : ''}">
+                                        ${demoFlowStage === 1 ? '<div class="absolute top-full mt-4 right-0 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-[0_10px_25px_rgba(0,0,0,0.3)] animate-bounce whitespace-nowrap border border-slate-700 z-[100]">1. Simula una carga 👆</div>' : ''}
+                                        <span class="material-symbols-outlined text-[18px]">add</span> Nueva Rendición
+                                    </button>
+                                </div>
+
+                                <!-- Metric Cards -->
+                                <div class="grid grid-cols-3 gap-4 mb-6 relative z-0">
+                                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                                        <div class="text-slate-500 text-xs font-semibold mb-1">Total Observaciones (Mes)</div>
+                                        <div class="text-3xl font-bold text-slate-800">142</div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                                        <div class="text-slate-500 text-xs font-semibold mb-1">Resueltas Automáticamente</div>
+                                        <div class="text-3xl font-bold text-green-600">89%</div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                                        <div class="text-slate-500 text-xs font-semibold mb-1">Correos Enviados a Colegios</div>
+                                        <div class="text-3xl font-bold text-orange-500">15</div>
+                                    </div>
+                                </div>
+
+                                <!-- Alert Table -->
+                                <h3 class="font-bold text-slate-700 text-sm mb-3">Zonas con más reincidencias</h3>
+                                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden text-sm shadow-sm relative z-0">
+                                    <table class="w-full text-left">
+                                        <thead class="bg-slate-50 border-b border-slate-200">
+                                            <tr>
+                                                <th class="p-3 font-semibold text-slate-600">Colegio / Liceo</th>
+                                                <th class="p-3 font-semibold text-slate-600">Región</th>
+                                                <th class="p-3 font-semibold text-slate-600">Observaciones Pendientes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-slate-100">
+                                                <td class="p-3 font-medium">Liceo Comercial V Región</td>
+                                                <td class="p-3 text-slate-500">Valparaíso</td>
+                                                <td class="p-3 text-red-600 font-bold">8</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-3 font-medium">Colegio Técnico RM</td>
+                                                <td class="p-3 text-slate-500">Metropolitana</td>
+                                                <td class="p-3 text-orange-500 font-bold">3</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                // 2. Upload view
+                case states.UPLOAD:
+                    appScreen.innerHTML = `
+                        <div class="flex h-full flex-col p-8 bg-slate-50 animate-fade-in items-center justify-center">
+                            <button onclick="goToState('DASHBOARD')" class="absolute top-4 left-4 text-slate-500 hover:text-slate-800 flex items-center gap-1 text-sm font-medium">
+                                <span class="material-symbols-outlined text-[18px]">arrow_back</span> Volver
+                            </button>
+                            
+                            <h2 class="text-2xl font-bold text-slate-800 mb-2">Subir Documento de Observaciones</h2>
+                            <p class="text-slate-500 text-sm mb-8 text-center">Carga el PDF recibido. La IA lo leerá, separará las preguntas y buscará las respuestas en Qbiz.</p>
+                            
+                            <!-- Dropzone -->
+                            <div onclick="goToState('PROCESSING')" class="relative z-10 w-full max-w-lg border-2 border-dashed border-blue-300 bg-blue-50/50 rounded-2xl p-10 flex flex-col items-center justify-center cursor-pointer hover:bg-blue-50 hover:border-blue-400 transition group ${demoFlowStage === 1 ? 'ring-4 ring-amber-400 ring-offset-4 ring-opacity-50' : ''}">
+                                ${demoFlowStage === 1 ? '<div class="absolute bottom-full mb-6 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.3)] animate-bounce whitespace-nowrap border border-slate-700 z-[100]">2. Carga el PDF aquí 👇</div>' : ''}
+                                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition transform">
+                                    <span class="material-symbols-outlined text-blue-500 text-3xl">picture_as_pdf</span>
+                                </div>
+                                <h3 class="font-bold text-blue-900 text-lg">Haz clic o arrastra un PDF aquí</h3>
+                                <p class="text-blue-600/70 text-sm mt-1">Soporta documentos escaneados (OCR incluido)</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                // 3. Processing AI View
+                case states.PROCESSING:
+                    appScreen.innerHTML = `
+                        <div class="h-full bg-slate-900 flex flex-col items-center justify-center relative overflow-hidden animate-fade-in p-8 text-white">
+                             
+                            <!-- Background Grid Effect -->
+                            <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
+                            
+                            <!-- Scanner line -->
+                            <div class="scan-line top-0 z-10"></div>
+
+                            <div class="z-20 w-full max-w-md">
+                                <div class="flex items-center justify-center gap-4 mb-8">
+                                    <div class="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center border border-red-500/30">
+                                        <span class="material-symbols-outlined text-red-400 text-2xl">picture_as_pdf</span>
+                                    </div>
+                                    <div class="typing-indicator flex items-center">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                    <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center border border-blue-500/30 animate-pulse">
+                                        <span class="material-symbols-outlined text-blue-400 text-2xl">smart_toy</span>
+                                    </div>
+                                    <div class="typing-indicator flex items-center">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                    <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30">
+                                        <span class="font-bold text-emerald-400 text-xs">Qbiz</span>
+                                    </div>
+                                </div>
+
+                                <h3 class="text-xl font-bold text-center mb-6">Procesando Observaciones...</h3>
+
+                                <div class="space-y-3">
+                                    <div id="log1" class="bg-slate-800 p-3 rounded-lg flex items-center gap-3 border border-slate-700 opacity-0 transform translate-y-2 transition-all duration-500">
+                                        <span class="material-symbols-outlined text-green-400 text-sm">check_circle</span>
+                                        <span class="text-sm">Leyendo PDF: Se encontraron <strong>3 observaciones</strong>.</span>
+                                    </div>
+                                    <div id="log2" class="bg-slate-800 p-3 rounded-lg flex items-center gap-3 border border-slate-700 opacity-0 transform translate-y-2 transition-all duration-500 delay-500">
+                                        <span class="material-symbols-outlined text-blue-400 text-sm animate-spin">sync</span>
+                                        <span class="text-sm">Consultando Factura #4521 en API Qbiz...</span>
+                                    </div>
+                                    <div id="log3" class="bg-slate-800 p-3 rounded-lg flex items-center gap-3 border border-slate-700 opacity-0 transform translate-y-2 transition-all duration-500 delay-1000">
+                                        <span class="material-symbols-outlined text-orange-400 text-sm">warning</span>
+                                        <span class="text-sm">Falta boleta #8892 del <strong>Liceo Comercial V Reg.</strong></span>
+                                    </div>
+                                    <div id="log4" class="bg-slate-800 p-3 rounded-lg flex items-center gap-3 border border-slate-700 opacity-0 transform translate-y-2 transition-all duration-500 delay-[1500ms]">
+                                        <span class="material-symbols-outlined text-purple-400 text-sm">mail</span>
+                                        <span class="text-sm">Redactando correo automático...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    // Trigger animations
+                    setTimeout(() => { document.getElementById('log1').classList.remove('translate-y-2', 'opacity-0'); }, 800);
+                    setTimeout(() => { 
+                        let l2 = document.getElementById('log2');
+                        l2.classList.remove('translate-y-2', 'opacity-0'); 
+                        setTimeout(() => {
+                            l2.innerHTML = `<span class="material-symbols-outlined text-green-400 text-sm">check_circle</span><span class="text-sm">Factura #4521 encontrada en Qbiz. (Respondida)</span>`;
+                        }, 1200);
+                    }, 1800);
+                    setTimeout(() => { document.getElementById('log3').classList.remove('translate-y-2', 'opacity-0'); }, 3500);
+                    setTimeout(() => { document.getElementById('log4').classList.remove('translate-y-2', 'opacity-0'); }, 4500);
+                    
+                    // Proceed to Results
+                    setTimeout(() => { goToState('RESULTS'); }, 6500);
+                    break;
+
+                // 4. Results View
+                case states.RESULTS:
+                    demoFlowStage = 2; // Advance the flow stage to guide them back
+                    appScreen.innerHTML = `
+                        <div class="h-full bg-slate-50 flex flex-col p-6 animate-fade-in relative">
+                            <div class="flex justify-between items-center mb-6">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-slate-800">Análisis Completado</h2>
+                                    <p class="text-slate-500 text-sm">Archivo: rendicion_marzo.pdf</p>
+                                </div>
+                                <button onclick="goToState('DASHBOARD')" class="relative z-10 bg-slate-200 text-slate-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-300 transition ${demoFlowStage === 2 ? 'ring-4 ring-amber-400 ring-offset-2' : ''}">
+                                    ${demoFlowStage === 2 ? '<div class="absolute top-full mt-4 right-0 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-[0_10px_25px_rgba(0,0,0,0.3)] animate-bounce whitespace-nowrap border border-slate-700 z-[100]">3. Volver al panel 👆</div>' : ''}
+                                    Cerrar y volver
+                                </button>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="bg-green-50 border border-green-200 p-4 rounded-xl flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                        <span class="material-symbols-outlined">auto_awesome</span>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-green-700">2</div>
+                                        <div class="text-xs text-green-600 uppercase font-semibold">Resueltas con Qbiz</div>
+                                    </div>
+                                </div>
+                                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-600">
+                                        <span class="material-symbols-outlined">mark_email_unread</span>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-orange-700">1</div>
+                                        <div class="text-xs text-orange-600 uppercase font-semibold">Correos Pendientes</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="font-bold text-slate-700 text-sm mb-3">Acciones Requeridas Generadas por IA</h3>
+                            
+                            <!-- Email Draft Preview -->
+                            <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden flex flex-col flex-1">
+                                <div class="bg-slate-100 border-b border-slate-200 p-3 flex gap-2 items-center">
+                                    <div class="text-xs text-slate-500 font-medium w-12">Para:</div>
+                                    <div class="text-sm font-medium">direccion@liceocomercial-valpo.cl</div>
+                                </div>
+                                <div class="bg-slate-50 border-b border-slate-200 p-3 flex gap-2 items-center">
+                                    <div class="text-xs text-slate-500 font-medium w-12">Asunto:</div>
+                                    <div class="text-sm font-bold">URGENTE: Información faltante Rendición Folio #8892</div>
+                                </div>
+                                <div class="p-4 text-sm text-slate-600 flex-1 bg-white">
+                                    <p class="mb-2">Estimado equipo del Liceo Comercial V Región,</p>
+                                    <p class="mb-2">En la revisión de observaciones del ente regulador, se nos solicita justificar el gasto asociado a la boleta <strong>#8892</strong>, cuyo registro no se encuentra adjunto en el sistema central Qbiz.</p>
+                                    <p class="mb-4">Por favor, responder a este correo adjuntando el documento para proceder con el cierre.</p>
+                                    <p class="text-xs text-slate-400 italic">-- Este es un correo automatizado por AutoRend IA --</p>
+                                </div>
+                                <div class="p-3 bg-slate-50 border-t border-slate-200 flex justify-end gap-2">
+                                    <button class="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-100 transition">Editar</button>
+                                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition shadow-sm flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[16px]">send</span> Aprobar y Enviar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                // 5. Validation List View
+                case states.VALIDATION_LIST:
+                    appScreen.innerHTML = `
+                        <div class="flex h-full animate-fade-in text-slate-800">
+                            <!-- Sidebar -->
+                            <div class="w-48 bg-white border-r border-slate-200 p-4 flex flex-col gap-2">
+                                <div class="font-bold text-sm mb-4 text-slate-400 uppercase tracking-wider">Menú</div>
+                                <div class="flex items-center gap-2 p-2 hover:bg-slate-50 text-slate-600 rounded-lg cursor-pointer font-medium text-sm transition" onclick="goToState('DASHBOARD')">
+                                    <span class="material-symbols-outlined text-[18px]">grid_view</span> Panel
+                                </div>
+                                <div class="flex items-center gap-2 p-2 bg-blue-50 text-blue-600 rounded-lg cursor-pointer font-medium text-sm">
+                                    <span class="material-symbols-outlined text-[18px]">fact_check</span> Por Validar
+                                </div>
+                                <div class="flex items-center gap-2 p-2 hover:bg-slate-50 text-slate-600 rounded-lg cursor-pointer font-medium text-sm transition" onclick="goToState('UPLOAD')">
+                                    <span class="material-symbols-outlined text-[18px]">upload_file</span> Subir PDF
+                                </div>
+                                <div class="flex items-center gap-2 p-2 hover:bg-slate-50 text-slate-600 rounded-lg cursor-pointer font-medium text-sm transition">
+                                    <span class="material-symbols-outlined text-[18px]">dns</span> Logs Qbiz
+                                </div>
+                            </div>
+                            
+                            <!-- Main Content -->
+                            <div class="flex-1 p-6 bg-slate-50 overflow-y-auto">
+                                <h1 class="text-2xl font-bold mb-2">Documentos por Validar</h1>
+                                <p class="text-slate-500 text-sm mb-6">Revisa las respuestas automáticas antes de enviarlas a Qbiz o a los colegios.</p>
+
+                                <div class="bg-white border border-slate-200 rounded-xl text-sm shadow-sm relative">
+                                    <table class="w-full text-left">
+                                        <thead class="bg-slate-50 border-b border-slate-200">
+                                            <tr>
+                                                <th class="p-4 font-semibold text-slate-600 rounded-tl-xl">Documento</th>
+                                                <th class="p-4 font-semibold text-slate-600">Fecha</th>
+                                                <th class="p-4 font-semibold text-slate-600">Estado IA</th>
+                                                <th class="p-4 font-semibold text-slate-600 text-right rounded-tr-xl">Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-slate-100 hover:bg-slate-50 transition">
+                                                <td class="p-4 font-medium flex items-center gap-2">
+                                                    <span class="material-symbols-outlined text-red-400">picture_as_pdf</span>
+                                                    rendicion_marzo_liceov.pdf
+                                                </td>
+                                                <td class="p-4 text-slate-500">Hoy, 14:30</td>
+                                                <td class="p-4">
+                                                    <span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-md text-xs font-bold border border-yellow-200">Requiere revisión (1 correo)</span>
+                                                </td>
+                                                <td class="p-4 text-right">
+                                                    <button onclick="goToState('VALIDATION_DETAIL')" class="relative z-10 bg-blue-50 text-blue-600 px-3 py-1 rounded-lg font-semibold hover:bg-blue-100 transition ${demoFlowStage === 2 ? 'ring-4 ring-amber-400 ring-offset-1' : ''}">
+                                                        ${demoFlowStage === 2 ? '<div class="absolute right-full mr-4 top-1/2 transform -translate-y-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-[0_10px_25px_rgba(0,0,0,0.3)] animate-bounce whitespace-nowrap border border-slate-700 z-[100]">5. Entra aquí 👉</div>' : ''}
+                                                        Revisar
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="hover:bg-slate-50 transition">
+                                                <td class="p-4 font-medium flex items-center gap-2 rounded-bl-xl">
+                                                    <span class="material-symbols-outlined text-red-400">picture_as_pdf</span>
+                                                    obs_febrero_colegio_rm.pdf
+                                                </td>
+                                                <td class="p-4 text-slate-500">Ayer, 09:15</td>
+                                                <td class="p-4">
+                                                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-bold border border-green-200">100% Resuelto en Qbiz</span>
+                                                </td>
+                                                <td class="p-4 text-right rounded-br-xl">
+                                                    <button onclick="demoFlowStage=3; goToState('VALIDATION_DETAIL')" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-lg font-semibold hover:bg-blue-100 transition">Revisar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                // 6. Validation Detail View
+                case states.VALIDATION_DETAIL:
+                    appScreen.innerHTML = `
+                        <div class="h-full bg-slate-50 flex flex-col animate-fade-in relative">
+                            <!-- Header -->
+                            <div class="bg-white border-b border-slate-200 p-4 flex justify-between items-center z-10 shadow-sm">
+                                <div class="flex items-center gap-4">
+                                    <button onclick="goToState('VALIDATION_LIST')" class="text-slate-500 hover:text-slate-800 flex items-center gap-1 text-sm font-medium bg-slate-100 px-3 py-1.5 rounded-lg transition">
+                                        <span class="material-symbols-outlined text-[18px]">arrow_back</span> Volver
+                                    </button>
+                                    <div>
+                                        <h2 class="text-lg font-bold text-slate-800 leading-tight">rendicion_marzo_liceov.pdf</h2>
+                                        <p class="text-slate-500 text-xs">Liceo Comercial V Región</p>
+                                    </div>
+                                </div>
+                                <button onclick="demoFlowStage=3; goToState('VALIDATION_LIST')" class="relative z-10 bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition shadow-sm flex items-center gap-2 ${demoFlowStage === 2 ? 'ring-4 ring-amber-400 ring-offset-2' : ''}">
+                                    ${demoFlowStage === 2 ? '<div class="absolute top-full mt-4 right-0 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-[0_10px_25px_rgba(0,0,0,0.3)] animate-bounce whitespace-nowrap border border-slate-700 z-[100]">6. Aprueba todo 👆</div>' : ''}
+                                    <span class="material-symbols-outlined text-[18px]">done_all</span> Aprobar Todo
+                                </button>
+                            </div>
+
+                            <!-- Detail Content -->
+                            <div class="p-6 flex-1 overflow-y-auto space-y-4">
+                                <!-- Observation 1 -->
+                                <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:border-blue-300 transition">
+                                    <div class="flex gap-2 mb-3">
+                                        <span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded">Obs #1</span>
+                                        <p class="text-sm font-medium text-slate-800">Se solicita verificar la existencia de la factura N° 4521 por compra de insumos.</p>
+                                    </div>
+                                    <div class="bg-green-50 border border-green-200 rounded-lg p-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="material-symbols-outlined text-green-600 text-[16px]">check_circle</span>
+                                            <span class="text-xs font-bold text-green-700 uppercase">Resuelto por IA (Hallado en Qbiz)</span>
+                                        </div>
+                                        <label class="text-xs text-slate-500 mb-1 block">Respuesta automática a adjuntar:</label>
+                                        <textarea class="w-full bg-white border border-green-300 rounded p-2 text-sm text-slate-700 focus:outline-none focus:ring-1 focus:ring-green-500 resize-none" rows="2">Factura validada en sistema central Qbiz, folio interno 4521 asociado a la cuenta de gastos correspondiente.</textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Observation 2 -->
+                                <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm border-l-4 border-l-orange-400">
+                                    <div class="flex gap-2 mb-3">
+                                        <span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded">Obs #2</span>
+                                        <p class="text-sm font-medium text-slate-800">No se adjunta comprobante de pago de la boleta #8892 referida en planilla.</p>
+                                    </div>
+                                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="material-symbols-outlined text-orange-600 text-[16px]">mail</span>
+                                            <span class="text-xs font-bold text-orange-700 uppercase">Acción Requerida: Correo a enviar</span>
+                                        </div>
+                                        <div class="bg-white border border-orange-200 rounded p-3 mb-2">
+                                            <div class="flex items-center gap-2 mb-2 border-b border-orange-100 pb-2">
+                                                <div class="text-xs text-slate-500 font-medium w-8">Para:</div>
+                                                <input type="text" class="text-sm font-medium text-slate-800 w-full focus:outline-none" value="direccion@liceocomercial-valpo.cl" />
+                                            </div>
+                                            <textarea class="w-full text-sm text-slate-700 focus:outline-none resize-none" rows="3">Junto con saludar, informamos que en la revisión de rendiciones falta justificar la boleta #8892. Por favor adjuntar a la brevedad respondiendo a este correo.</textarea>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button class="text-xs font-bold text-orange-600 hover:text-orange-800 transition flex items-center gap-1">
+                                                <span class="material-symbols-outlined text-[14px]">edit</span> Regenerar Borrador
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+        };
+
+        // Navigation Helper
+        const goToState = (stateName) => {
+            render(states[stateName]);
+        };
+
+        // Initialize application on Dashboard
+        render(states.DASHBOARD);
+
+    </script>
+</body>
+</html>

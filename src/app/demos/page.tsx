@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/Button";
 import { Reveal, FadeIn } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Casos y Demos",
+  title: "Demos Interactivas",
   description: "Portfolio de soluciones de IA implementadas por ETIIA. Demos interactivas de productos reales en contabilidad, legal, RRHH, salud y más.",
 };
 
 const productos = [
   {
     nombre: "AutoRend IA",
+    slug: "autorend",
     industria: "Educación · Rendiciones",
     icon: <FileText className="w-6 h-6" />,
     descripcion: "Agente de IA que lee PDFs de observaciones, cruza datos con el ERP y responde automáticamente. Si falta información, redacta y envía el correo al colegio.",
@@ -22,6 +23,7 @@ const productos = [
   },
   {
     nombre: "FacturAI",
+    slug: "facturai",
     industria: "Finanzas · Contabilidad",
     icon: <Calculator className="w-6 h-6" />,
     descripcion: "Lectura masiva de facturas PDF con OCR inteligente, conciliación cruzada automática con cartolas bancarias y digitación directa al ERP sin intervención humana.",
@@ -116,56 +118,36 @@ export default function CasosPage() {
               const c = colorMap[p.color];
               return (
                 <Reveal key={p.nombre} delay={0.08 * (i + 1)}>
-                  <div className={`bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-300 hover:shadow-[0_8px_28px_-6px_rgba(29,78,216,0.14)] transition-all h-full group cursor-pointer flex flex-col lift-card relative overflow-hidden`}>
-                    {/* Top accent bar on hover */}
-                    <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`w-12 h-12 ${c.bg} rounded-xl flex items-center justify-center ${c.text} group-hover:bg-blue-700 group-hover:text-white transition-colors duration-300`}>
-                        {p.icon}
+                  {p.disponible && p.slug ? (
+                    <Link href={`/demos/${p.slug}`} className="block h-full">
+                      <div className={`bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-300 hover:shadow-[0_8px_28px_-6px_rgba(29,78,216,0.14)] transition-all h-full group cursor-pointer flex flex-col lift-card relative overflow-hidden`}>
+                        <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                        <div className="flex items-start justify-between mb-4">
+                          <div className={`w-12 h-12 ${c.bg} rounded-xl flex items-center justify-center ${c.text} group-hover:bg-blue-700 group-hover:text-white transition-colors duration-300`}>{p.icon}</div>
+                          <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-green-50 text-green-700 text-[0.65rem] font-bold uppercase tracking-wider border border-green-200">● Demo live</span>
+                        </div>
+                        <span className={`text-xs font-semibold ${c.text} uppercase tracking-wider mb-1`}>{p.industria}</span>
+                        <h3 className="text-xl font-black text-[#0F172A] mb-2 group-hover:text-blue-700 transition-colors">{p.nombre}</h3>
+                        <p className="text-slate-500 text-sm leading-relaxed flex-grow mb-4">{p.descripcion}</p>
+                        <div className={`${c.bg} ${c.border} border rounded-xl px-4 py-3 mb-4`}><p className={`text-lg font-black ${c.text}`}>{p.resultado}</p></div>
+                        <div className="flex flex-wrap gap-1.5 mb-4">{p.tags.map(tag => (<span key={tag} className={`${c.tagBg} ${c.tagText} text-[0.6rem] font-bold px-2 py-0.5 rounded-md uppercase tracking-wide`}>{tag}</span>))}</div>
+                        <span className="inline-flex items-center text-sm font-semibold text-blue-600 mt-auto opacity-0 group-hover:opacity-100 transition-opacity">Ver demo interactiva <ArrowRight className="ml-1 w-3.5 h-3.5" /></span>
                       </div>
-                      {p.disponible ? (
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-green-50 text-green-700 text-[0.65rem] font-bold uppercase tracking-wider border border-green-200">
-                          ● Demo live
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-slate-50 text-slate-400 text-[0.65rem] font-bold uppercase tracking-wider border border-slate-200">
-                          Próximamente
-                        </span>
-                      )}
+                    </Link>
+                  ) : (
+                    <div className={`bg-white rounded-2xl p-7 border border-slate-200 transition-all h-full flex flex-col relative overflow-hidden opacity-75`}>
+                      <div className="flex items-start justify-between mb-4">
+                        <div className={`w-12 h-12 ${c.bg} rounded-xl flex items-center justify-center ${c.text}`}>{p.icon}</div>
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-slate-50 text-slate-400 text-[0.65rem] font-bold uppercase tracking-wider border border-slate-200">Próximamente</span>
+                      </div>
+                      <span className={`text-xs font-semibold ${c.text} uppercase tracking-wider mb-1`}>{p.industria}</span>
+                      <h3 className="text-xl font-black text-[#0F172A] mb-2">{p.nombre}</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed flex-grow mb-4">{p.descripcion}</p>
+                      <div className={`${c.bg} ${c.border} border rounded-xl px-4 py-3 mb-4`}><p className={`text-lg font-black ${c.text}`}>{p.resultado}</p></div>
+                      <div className="flex flex-wrap gap-1.5 mb-4">{p.tags.map(tag => (<span key={tag} className={`${c.tagBg} ${c.tagText} text-[0.6rem] font-bold px-2 py-0.5 rounded-md uppercase tracking-wide`}>{tag}</span>))}</div>
+                      <span className="inline-flex items-center text-sm font-medium text-slate-400 mt-auto">Demo en desarrollo</span>
                     </div>
-
-                    {/* Content */}
-                    <span className={`text-xs font-semibold ${c.text} uppercase tracking-wider mb-1`}>{p.industria}</span>
-                    <h3 className="text-xl font-black text-[#0F172A] mb-2 group-hover:text-blue-700 transition-colors">{p.nombre}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed flex-grow mb-4">{p.descripcion}</p>
-
-                    {/* Result metric */}
-                    <div className={`${c.bg} ${c.border} border rounded-xl px-4 py-3 mb-4`}>
-                      <p className={`text-lg font-black ${c.text}`}>{p.resultado}</p>
-                    </div>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {p.tags.map(tag => (
-                        <span key={tag} className={`${c.tagBg} ${c.tagText} text-[0.6rem] font-bold px-2 py-0.5 rounded-md uppercase tracking-wide`}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* CTA */}
-                    {p.disponible ? (
-                      <span className="inline-flex items-center text-sm font-semibold text-blue-600 mt-auto opacity-0 group-hover:opacity-100 transition-opacity">
-                        Ver demo interactiva <ArrowRight className="ml-1 w-3.5 h-3.5" />
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center text-sm font-medium text-slate-400 mt-auto">
-                        Demo en desarrollo
-                      </span>
-                    )}
-                  </div>
+                  )}
                 </Reveal>
               );
             })}
