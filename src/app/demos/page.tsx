@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import { ArrowRight, FileText, Scale, Users, Stethoscope, Leaf, Calculator } from "lucide-react";
+import { ArrowRight, FileText, Scale, Users, Stethoscope, Leaf, Calculator, Mic } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal, FadeIn } from "@/components/ui/Reveal";
 
@@ -73,6 +73,16 @@ const productos = [
     color: "green",
     disponible: false,
   },
+  {
+    nombre: "TranscribAI",
+    industria: "Legal · Compliance · Corporativo",
+    icon: <Mic className="w-6 h-6" />,
+    descripcion: "Transcripción segura de audios con IA. Genera resúmenes ejecutivos, detecta discrepancias entre participantes y levanta alertas automáticas sobre compromisos incumplidos.",
+    resultado: "2hrs audio → 5 min",
+    tags: ["Whisper", "Diarización", "NLP", "Alertas"],
+    color: "cyan",
+    disponible: false,
+  },
 ];
 
 const colorMap: Record<string, { bg: string; text: string; border: string; tagBg: string; tagText: string }> = {
@@ -82,6 +92,7 @@ const colorMap: Record<string, { bg: string; text: string; border: string; tagBg
   amber:   { bg: "bg-amber-50",   text: "text-amber-600",   border: "border-amber-200",   tagBg: "bg-amber-100",   tagText: "text-amber-700" },
   rose:    { bg: "bg-rose-50",    text: "text-rose-600",    border: "border-rose-200",    tagBg: "bg-rose-100",    tagText: "text-rose-700" },
   green:   { bg: "bg-green-50",   text: "text-green-600",   border: "border-green-200",   tagBg: "bg-green-100",   tagText: "text-green-700" },
+  cyan:    { bg: "bg-cyan-50",    text: "text-cyan-600",    border: "border-cyan-200",    tagBg: "bg-cyan-100",    tagText: "text-cyan-700" },
 };
 
 export default function CasosPage() {
