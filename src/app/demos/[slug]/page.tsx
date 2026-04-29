@@ -48,6 +48,22 @@ const demos: Record<string, {
       { titulo: "Gestión de Excepciones", desc: "Si la información NO está en el ERP, la IA identifica el colegio, redacta un correo y lo envía automáticamente." },
     ],
   },
+  lexsearch: {
+    nombre: "LexSearch",
+    industria: "Legal · Jurídico",
+    tagline: "Encuentra la cláusula exacta, no palabras sueltas",
+    descripcion: "Un buscador semántico privado sobre tu base de contratos y jurisprudencia. La IA entiende contexto legal y devuelve la cláusula específica que necesitas, no un listado interminable.",
+    resultado: "4hrs → 12min búsqueda",
+    resultadoLabel: "Reducción del 95% en tiempo de búsqueda",
+    tags: ["RAG", "Embeddings", "Pinecone", "NLP Legal"],
+    color: "violet",
+    iframeSrc: "/demos/lexsearch/index.html#demo",
+    pasos: [
+      { titulo: "Indexación Semántica", desc: "Cada cláusula de tus contratos se convierte en un vector de 768 dimensiones usando modelos de lenguaje legal." },
+      { titulo: "Búsqueda por Concepto", desc: "Cuando preguntas en lenguaje natural, la IA compara tu consulta contra 48,000+ cláusulas por similitud semántica." },
+      { titulo: "Resultado Preciso", desc: "Devuelve la cláusula exacta con su porcentaje de relevancia, documento de origen y página. Sin falsos positivos." },
+    ],
+  },
 };
 
 export function generateStaticParams() {
@@ -80,6 +96,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
   const colorMap: Record<string, { bg: string; text: string; border: string }> = {
     emerald: { bg: "bg-emerald-50", text: "text-emerald-600", border: "border-emerald-200" },
     blue: { bg: "bg-blue-50", text: "text-blue-600", border: "border-blue-200" },
+    violet: { bg: "bg-violet-50", text: "text-violet-600", border: "border-violet-200" },
   };
   const c = colorMap[demo.color] || colorMap.blue;
 

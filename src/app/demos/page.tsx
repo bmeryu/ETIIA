@@ -34,13 +34,14 @@ const productos = [
   },
   {
     nombre: "LexSearch",
+    slug: "lexsearch",
     industria: "Legal · Jurídico",
     icon: <Scale className="w-6 h-6" />,
     descripcion: "Buscador semántico privado sobre tu base de contratos y jurisprudencia. La IA entiende contexto legal y devuelve la cláusula exacta, no palabras aisladas.",
     resultado: "4hrs → 12min búsqueda",
     tags: ["RAG", "Embeddings", "NLP Legal"],
     color: "violet",
-    disponible: false,
+    disponible: true,
   },
   {
     nombre: "TalentParse",
