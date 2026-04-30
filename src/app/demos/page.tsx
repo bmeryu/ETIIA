@@ -78,13 +78,14 @@ const productos = [
   },
   {
     nombre: "TranscribAI",
+    slug: "transcribai",
     industria: "Legal · Compliance · Corporativo",
     icon: <Mic className="w-6 h-6" />,
     descripcion: "Transcripción segura de audios con IA. Genera resúmenes ejecutivos, detecta discrepancias entre participantes y levanta alertas automáticas sobre compromisos incumplidos.",
     resultado: "2hrs audio → 5 min",
     tags: ["Whisper", "Diarización", "NLP", "Alertas"],
     color: "cyan",
-    disponible: false,
+    disponible: true,
   },
 ];
 

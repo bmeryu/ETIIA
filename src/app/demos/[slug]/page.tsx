@@ -112,6 +112,22 @@ const demos: Record<string, {
       { titulo: "Predicción + Alertas", desc: "El modelo cruza todo para predecir rendimiento por parcela y lanzar alertas tempranas de estrés." },
     ],
   },
+  transcribai: {
+    nombre: "TranscribAI",
+    industria: "Legal · Compliance · Corporativo",
+    tagline: "Transcribe, resume y detecta discrepancias",
+    descripcion: "Sube el audio de cualquier reunión. Whisper transcribe con 98% de precisión, la IA identifica quién habla, genera un resumen ejecutivo y levanta alertas si hay contradicciones o compromisos sin asignar.",
+    resultado: "2hrs audio → 5 min",
+    resultadoLabel: "Transcripción + análisis completo",
+    tags: ["Whisper V3", "Diarización", "NLP", "On-premise"],
+    color: "cyan",
+    iframeSrc: "/demos/transcribai/index.html#demo",
+    pasos: [
+      { titulo: "Transcripción Whisper", desc: "El modelo Whisper Large V3 transcribe el audio con 98.4% de precisión, incluso con ruido de fondo o acentos." },
+      { titulo: "Diarización + Análisis", desc: "La IA identifica cada participante, asigna su voz y analiza el contenido buscando discrepancias y compromisos." },
+      { titulo: "Resumen + Alertas", desc: "Genera un resumen ejecutivo y levanta alertas automáticas sobre contradicciones, riesgos legales y tareas sin asignar." },
+    ],
+  },
 };
 
 export function generateStaticParams() {
@@ -148,6 +164,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
     amber: { bg: "bg-amber-50", text: "text-amber-600", border: "border-amber-200" },
     rose: { bg: "bg-rose-50", text: "text-rose-600", border: "border-rose-200" },
     green: { bg: "bg-green-50", text: "text-green-600", border: "border-green-200" },
+    cyan: { bg: "bg-cyan-50", text: "text-cyan-600", border: "border-cyan-200" },
   };
   const c = colorMap[demo.color] || colorMap.blue;
 
