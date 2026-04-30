@@ -102,13 +102,17 @@
                             <div class="dot dot-green"></div>
                         </div>
                         <div class="flex-1 text-center">
-                            <div class="inline-block bg-white rounded-md px-4 py-1 text-xs text-slate-500 border border-slate-200 w-1/2">
+                            <div id="app-url" class="inline-block bg-white rounded-md px-4 py-1 text-xs text-slate-500 border border-slate-200 w-1/2">
                                 <span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>
                                 app.lexsearch.cl/search
                             </div>
                         </div>
                     </div>
                     <div id="app-screen" class="w-full h-full relative bg-slate-50 overflow-hidden flex flex-col"></div>
+                    <div class="absolute bottom-2 right-3 bg-slate-900/80 text-white text-[10px] px-2 py-1 rounded-md backdrop-blur-sm flex items-center gap-1 z-30">
+                        <span class="font-bold">etiia</span>
+                        <span class="text-slate-400">· IA Consulting</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -172,10 +176,71 @@
         </div>
     </section>
 
-    <footer class="bg-black text-white py-10">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-slate-500 text-sm">
-                Demo técnica preparada por <strong>ETIIA</strong> — Consultoría en Inteligencia Artificial. © 2026.
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">Preguntas Frecuentes</h2>
+            <div class="space-y-4">
+                <details class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
+                        ¿Mis documentos salen de mi infraestructura?
+                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                        No. LexSearch se despliega dentro de tu VPC privada (GCP o AWS). Los documentos 
+                        se indexan localmente y los vectores se almacenan en tu instancia de Pinecone/Weaviate. 
+                        Ningún dato sale de tu perímetro.
+                    </p>
+                </details>
+                <details class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
+                        ¿Funciona con documentos en inglés y español?
+                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                        Sí. El modelo de embeddings es multilingüe. Puedes buscar en español y encontrar 
+                        cláusulas escritas en inglés, y viceversa. Ideal para contratos internacionales.
+                    </p>
+                </details>
+                <details class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
+                        ¿Cuánto toma indexar una base de 10.000 contratos?
+                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                        La indexación inicial de 10.000 documentos toma aproximadamente 4-6 horas 
+                        (procesamiento batch). Documentos nuevos se indexan en tiempo real (~2-5 seg cada uno).
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <footer class="bg-slate-900 text-white py-16 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-violet-600/20 border border-violet-500/30 mb-6">
+                <span class="material-symbols-outlined text-violet-400 text-3xl">rocket_launch</span>
+            </div>
+            <h2 class="text-3xl font-bold mb-4">¿Tu equipo legal aún busca por palabras clave?</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-8">
+                Agenda una sesión de diagnóstico gratuita. Te mostramos cómo LexSearch 
+                navega tu base de contratos en segundos, no en horas.
+            </p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="https://etiia.com/contacto" 
+                   class="px-8 py-4 bg-violet-600 text-white rounded-xl font-semibold shadow-lg shadow-violet-500/30 hover:bg-violet-700 transition transform hover:-translate-y-1 flex items-center gap-2">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    Agendar Diagnóstico Gratuito
+                </a>
+                <a href="https://etiia.com" 
+                   class="px-8 py-4 bg-white/10 text-white rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition flex items-center gap-2">
+                    <span class="material-symbols-outlined">language</span>
+                    Ver más soluciones ETIIA
+                </a>
+            </div>
+            <p class="text-slate-600 text-xs mt-12">
+                Demo técnica por <strong class="text-slate-400">ETIIA</strong> · Consultoría en Inteligencia Artificial · etiia.com
             </p>
         </div>
     </footer>

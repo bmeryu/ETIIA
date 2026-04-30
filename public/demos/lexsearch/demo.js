@@ -1,6 +1,17 @@
 const scr = document.getElementById('app-screen');
 let stage = 1;
 
+const urlMap = {
+  SEARCH: 'app.lexsearch.cl/search',
+  SEARCHING: 'app.lexsearch.cl/search?q=terminacion+anticipada',
+  RESULTS: 'app.lexsearch.cl/results?q=terminacion+anticipada',
+  DOC_DETAIL: 'app.lexsearch.cl/doc/contrato-arriendo-204#cl-12.3'
+};
+function updateUrl(s) {
+  const bar = document.getElementById('app-url');
+  if (bar) bar.innerHTML = '<span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>' + (urlMap[s] || 'app.lexsearch.cl');
+}
+
 const results = [
   { doc: 'Contrato Arriendo — Local 204, Strip Center Vitacura', clausula: 'Cláusula 12.3 — Terminación Anticipada', texto: '"El arrendatario podrá poner término anticipado al contrato con un preaviso mínimo de <mark>90 días corridos</mark>, pagando una multa equivalente a <mark>3 meses de renta</mark>."', relevancia: 98, pagina: 'Pág. 8' },
   { doc: 'Contrato Marco Servicios — Minera Centinela SpA', clausula: 'Cláusula 15.1 — Resolución Unilateral', texto: '"Cualquiera de las partes podrá resolver el contrato de forma unilateral, mediando aviso escrito con <mark>60 días de anticipación</mark>. En caso de resolución por el mandante, se pagarán los servicios efectivamente prestados."', relevancia: 91, pagina: 'Pág. 14' },
@@ -34,6 +45,7 @@ function sidebar(active) {
 
 function go(state) {
   scr.innerHTML = '';
+  updateUrl(state);
   switch(state) {
     case 'SEARCH':
       scr.innerHTML = `<div class="flex h-full animate-fade-in text-slate-800">
@@ -135,7 +147,7 @@ function go(state) {
 
           <div class="space-y-4">
             ${results.map((r, i) => `
-              <div class="bg-white rounded-xl border border-slate-200 p-5 hover:border-violet-300 hover:shadow-sm transition cursor-pointer group">
+               <div onclick="go('DOC_DETAIL')" class="bg-white rounded-xl border border-slate-200 p-5 hover:border-violet-300 hover:shadow-sm transition cursor-pointer group">
                 <div class="flex items-start justify-between mb-2">
                   <div>
                     <div class="flex items-center gap-2 mb-1">
@@ -152,6 +164,39 @@ function go(state) {
                 <blockquote class="text-sm text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-lg border-l-3 border-violet-300 mt-3">${r.texto}</blockquote>
               </div>
             `).join('')}
+          </div>
+        </div>
+      </div>`;
+      break;
+
+    case 'DOC_DETAIL':
+      scr.innerHTML = `<div class="flex h-full animate-fade-in text-slate-800">
+        ${sidebar('SEARCH')}
+        <div class="flex-1 p-6 bg-slate-50 overflow-y-auto">
+          <button onclick="go('RESULTS')" class="text-sm text-violet-600 font-medium hover:underline flex items-center gap-1 mb-4">
+            <span class="material-symbols-outlined text-[14px]">arrow_back</span> Volver a resultados
+          </button>
+          <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm mb-4">
+            <div class="flex items-center gap-2 mb-1 text-xs text-slate-400">
+              <span class="material-symbols-outlined text-[14px]">description</span>
+              Contrato Arriendo — Local 204, Strip Center Vitacura
+            </div>
+            <h2 class="text-xl font-bold text-slate-800 mb-1">Cláusula 12.3 — Terminación Anticipada</h2>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-bold">Relevancia: 98%</span>
+              <span class="text-xs text-slate-400">Pág. 8 · Firmado 15/01/2024</span>
+            </div>
+            <div class="bg-violet-50 border border-violet-200 rounded-lg p-4 text-sm text-slate-700 leading-relaxed">
+              <p class="mb-3">"El arrendatario podrá poner término anticipado al contrato con un preaviso mínimo de <mark>90 días corridos</mark>, pagando una multa equivalente a <mark>3 meses de renta</mark>. El arrendador deberá restituir la garantía dentro de los 30 días siguientes a la entrega del inmueble."</p>
+              <p>"En caso de terminación por fuerza mayor debidamente acreditada, no se aplicará la multa del inciso anterior, debiendo las partes llegar a un acuerdo de buena fe sobre las condiciones de restitución."</p>
+            </div>
+          </div>
+          <div class="bg-violet-50 border border-violet-200 rounded-xl p-4 flex items-start gap-3">
+            <span class="material-symbols-outlined text-violet-500 mt-0.5">psychology</span>
+            <div>
+              <p class="text-sm font-semibold text-violet-800 mb-1">Resumen de la IA</p>
+              <p class="text-xs text-violet-600">Esta cláusula permite terminar antes de plazo con <strong>90 días de aviso + multa de 3 meses</strong>. Existe una excepción por fuerza mayor que elimina la multa. Comparado con el estándar del mercado (60 días + 2 meses), las condiciones son ligeramente más restrictivas.</p>
+            </div>
           </div>
         </div>
       </div>`;
