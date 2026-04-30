@@ -1,0 +1,103 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CosechAI — Optimización Agrícola Inteligente | ETIIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body{font-family:'Inter',sans-serif}
+        .browser-frame{box-shadow:0 0 0 1px #e2e8f0,0 25px 50px -12px rgba(0,0,0,.5);border-radius:12px;overflow:hidden;background:#fff;width:100%;max-width:960px;height:540px;display:flex;flex-direction:column}
+        .browser-header{background:#f8fafc;height:40px;display:flex;align-items:center;padding:0 16px;gap:8px;border-bottom:1px solid #e2e8f0;flex-shrink:0}
+        .dot{width:12px;height:12px;border-radius:50%}.dot-red{background:#ff5f56}.dot-yellow{background:#ffbd2e}.dot-green{background:#27c93f}
+        @keyframes scanline{0%{top:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
+        .scan-line{position:absolute;left:0;width:100%;height:3px;background:#16a34a;box-shadow:0 0 15px #16a34a;animation:scanline 2.5s linear infinite}
+        .animate-fade-in{animation:fadeIn .4s ease-in-out}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-green-600 rounded-md flex items-center justify-center text-white"><span class="material-symbols-outlined text-sm">eco</span></div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">CosechAI</span>
+                    <span class="hidden md:block text-slate-300 mx-2">|</span>
+                    <span class="hidden md:block text-slate-600 text-sm font-medium">Optimización Agrícola</span>
+                </div>
+                <a href="#demo" class="px-4 py-2 bg-green-600 text-white text-sm rounded-lg font-medium hover:bg-green-700 transition">Probar</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-slate-50 to-emerald-50 opacity-80"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 text-xs font-semibold uppercase tracking-wide mb-6 shadow-sm">
+                <span class="material-symbols-outlined text-green-500 text-sm">satellite_alt</span>
+                Satellite NDVI + IoT + ML Predictivo
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
+                Más rendimiento,<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-500">menos merma</span>
+            </h1>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-600 leading-relaxed">
+                Cruzamos datos satelitales, sensores IoT y modelos predictivos para optimizar cada hectárea. <strong>+28% eficiencia comprobada.</strong>
+            </p>
+            <div class="mt-10 flex justify-center">
+                <button onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})" class="px-8 py-4 bg-green-600 text-white rounded-xl font-semibold shadow-lg shadow-green-500/30 hover:bg-green-700 transition transform hover:-translate-y-1 flex items-center gap-2">
+                    <span class="material-symbols-outlined">play_circle</span> Ver Análisis en Acción
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="demo" class="py-20 bg-white relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Simulación: Viña Valle Central</h2>
+                <p class="text-slate-500 mt-2 max-w-2xl mx-auto">42.6 hectáreas, 4 variedades, 6 sensores IoT. La IA predice rendimiento y detecta riesgos.</p>
+            </div>
+            <div class="flex justify-center">
+                <div class="browser-frame w-full max-w-4xl shadow-2xl">
+                    <div class="browser-header">
+                        <div class="flex gap-2"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="flex-1 text-center"><div class="inline-block bg-white rounded-md px-4 py-1 text-xs text-slate-500 border border-slate-200 w-1/2"><span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>app.cosechai.cl/dashboard</div></div>
+                    </div>
+                    <div id="app-screen" class="w-full h-full relative bg-slate-50 overflow-hidden flex flex-col"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 text-center">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                <div class="text-4xl font-black text-green-600 mb-2">+28%</div>
+                <div class="text-sm text-slate-500 font-medium">Eficiencia de rendimiento</div>
+                <p class="text-xs text-slate-400 mt-2">vs temporada anterior sin IA</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                <div class="text-4xl font-black text-blue-600 mb-2">-40%</div>
+                <div class="text-sm text-slate-500 font-medium">Reducción de merma</div>
+                <p class="text-xs text-slate-400 mt-2">Alertas tempranas de estrés hídrico</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                <div class="text-4xl font-black text-amber-500 mb-2">24/7</div>
+                <div class="text-sm text-slate-500 font-medium">Monitoreo continuo</div>
+                <p class="text-xs text-slate-400 mt-2">Satelital + IoT en tiempo real</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm">Demo técnica preparada por <strong>ETIIA</strong> — Consultoría en IA. © 2026.</p>
+        </div>
+    </footer>
+    <script src="demo.js"></script>
+</body>
+</html>

@@ -67,13 +67,14 @@ const productos = [
   },
   {
     nombre: "CosechAI",
+    slug: "cosechai",
     industria: "Agricultura · Viñas",
     icon: <Leaf className="w-6 h-6" />,
     descripcion: "Cruzamos históricos de producción con modelos predictivos para optimizar rendimiento, reducir merma y maximizar la rentabilidad de exportaciones.",
     resultado: "+28% eficiencia",
     tags: ["ML Predictivo", "IoT", "Dashboard"],
     color: "green",
-    disponible: false,
+    disponible: true,
   },
   {
     nombre: "TranscribAI",

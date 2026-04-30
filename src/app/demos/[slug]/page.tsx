@@ -96,6 +96,22 @@ const demos: Record<string, {
       { titulo: "Reasignación Inteligente", desc: "Si no confirma, la hora se ofrece al siguiente paciente en lista de espera automáticamente." },
     ],
   },
+  cosechai: {
+    nombre: "CosechAI",
+    industria: "Agricultura · Viñas",
+    tagline: "Más rendimiento, menos merma",
+    descripcion: "Cruzamos datos satelitales NDVI, sensores IoT en campo y modelos predictivos sobre 5 temporadas para optimizar cada hectárea, detectar estrés hídrico temprano y maximizar rentabilidad.",
+    resultado: "+28% eficiencia",
+    resultadoLabel: "vs temporada anterior sin IA",
+    tags: ["Satellite NDVI", "IoT", "ML Predictivo", "Dashboard"],
+    color: "green",
+    iframeSrc: "/demos/cosechai/index.html#demo",
+    pasos: [
+      { titulo: "Monitoreo Satelital", desc: "Imágenes NDVI periódicas miden la salud vegetativa de cada parcela desde el espacio." },
+      { titulo: "Datos IoT en Campo", desc: "Sensores de temperatura, humedad y riego alimentan el modelo en tiempo real cada 15 minutos." },
+      { titulo: "Predicción + Alertas", desc: "El modelo cruza todo para predecir rendimiento por parcela y lanzar alertas tempranas de estrés." },
+    ],
+  },
 };
 
 export function generateStaticParams() {
@@ -131,6 +147,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
     violet: { bg: "bg-violet-50", text: "text-violet-600", border: "border-violet-200" },
     amber: { bg: "bg-amber-50", text: "text-amber-600", border: "border-amber-200" },
     rose: { bg: "bg-rose-50", text: "text-rose-600", border: "border-rose-200" },
+    green: { bg: "bg-green-50", text: "text-green-600", border: "border-green-200" },
   };
   const c = colorMap[demo.color] || colorMap.blue;
 
