@@ -117,13 +117,18 @@
                             <div class="dot dot-green"></div>
                         </div>
                         <div class="flex-1 text-center">
-                            <div class="inline-block bg-white rounded-md px-4 py-1 text-xs text-slate-500 border border-slate-200 w-1/2">
+                    <div id="app-url" class="inline-block bg-white rounded-md px-4 py-1 text-xs text-slate-500 border border-slate-200 w-1/2">
                                 <span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>
                                 app.facturai.cl/dashboard
                             </div>
                         </div>
                     </div>
                     <div id="app-screen" class="w-full h-full relative bg-slate-50 overflow-hidden flex flex-col"></div>
+                    <!-- Powered by ETIIA badge -->
+                    <div class="absolute bottom-2 right-3 bg-slate-900/80 text-white text-[10px] px-2 py-1 rounded-md backdrop-blur-sm flex items-center gap-1 z-30">
+                        <span class="font-bold">etiia</span>
+                        <span class="text-slate-400">· IA Consulting</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -214,18 +219,22 @@
                 <h2 class="text-3xl font-bold mb-4">Infraestructura Google Cloud</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto">Procesamiento de documentos en la nube de Google con seguridad empresarial y escalabilidad automática.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl hover:border-emerald-500/50 transition">
                     <h4 class="font-bold text-emerald-300 mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">lock</span> Privacidad Total</h4>
                     <p class="text-sm text-slate-400 leading-relaxed">Tus facturas se procesan en una instancia privada. Ningún dato se usa para entrenar modelos públicos. Cumplimiento SOC 2.</p>
                 </div>
                 <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl hover:border-teal-500/50 transition">
-                    <h4 class="font-bold text-teal-300 mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">speed</span> 500+ Facturas/hora</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">Cloud Vision procesa en paralelo. Lo que le toma a un contador 2 días, FacturAI lo resuelve antes del café.</p>
+                    <h4 class="font-bold text-teal-300 mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">speed</span> 3.000+ Facturas/hora</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Cloud Vision procesa en paralelo con hasta 50 workers simultáneos. Lo que le toma a un contador 2 días, FacturAI lo resuelve en menos de 30 minutos.</p>
                 </div>
                 <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl hover:border-purple-500/50 transition">
                     <h4 class="font-bold text-purple-300 mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">api</span> API Abierta</h4>
                     <p class="text-sm text-slate-400 leading-relaxed">Integración con SAP, Softland, Defontana, Bsale y cualquier ERP que exponga API REST o SOAP.</p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700 p-6 rounded-2xl hover:border-amber-500/50 transition">
+                    <h4 class="font-bold text-amber-300 mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">psychology</span> Motor LLM</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Gemini Pro interpreta la estructura de cada factura y extrae RUT, monto, folio y fecha. Compatible con factura electrónica SII.</p>
                 </div>
             </div>
         </div>
@@ -298,7 +307,7 @@
                         </li>
                         <li class="flex items-center gap-3 text-sm text-slate-300">
                             <span class="material-symbols-outlined text-green-400 text-lg">check_circle</span>
-                            Precisión mínima garantizada: 95% en OCR.
+                             Precisión promedio de OCR: 95%+ en PDF digital, 88%+ en documentos escaneados.
                         </li>
                     </ul>
                 </div>
@@ -341,12 +350,71 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black text-white py-10">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-slate-500 text-sm">
-                Demo técnica preparada por <strong>ETIIA</strong> — Consultoría en Inteligencia Artificial.<br/>
-                Automatizando la contabilidad del futuro. © 2026.
+    <!-- FAQ Section -->
+    <section class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">Preguntas Frecuentes</h2>
+            <div class="space-y-4">
+                <details class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
+                        ¿Maneja notas de crédito, débito y facturas exentas?
+                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                        Sí. El motor de extracción distingue entre facturas afectas, exentas, notas de crédito y notas de débito. 
+                        Las NC se vinculan automáticamente a su factura origen para el cálculo de saldos.
+                    </p>
+                </details>
+                <details class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
+                        ¿Se conecta al portal del SII para validación?
+                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                        En fase 2, FacturAI puede validar contra el registro del SII vía API para confirmar 
+                        que los folios correspondan a DTEs válidos y vigentes, eliminando riesgo de facturas falsas.
+                    </p>
+                </details>
+                <details class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
+                        ¿Qué pasa cuando un pago agrupa múltiples facturas?
+                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                        El algoritmo de matching soporta conciliación N:1 (varias facturas → un pago) y 1:N 
+                        (una factura → pagos parciales). Utiliza fuzzy matching por monto y ventana temporal 
+                        para identificar agrupaciones.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <footer class="bg-slate-900 text-white py-16 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-600/20 border border-emerald-500/30 mb-6">
+                <span class="material-symbols-outlined text-emerald-400 text-3xl">rocket_launch</span>
+            </div>
+            <h2 class="text-3xl font-bold mb-4">¿Cuántas horas pierde tu equipo tipeando facturas?</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-8">
+                Agenda una sesión de diagnóstico gratuita. Analizamos tu volumen mensual de facturas 
+                y te mostramos el ahorro proyectado en 30 minutos.
+            </p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="https://etiia.com/contacto" 
+                   class="px-8 py-4 bg-emerald-600 text-white rounded-xl font-semibold shadow-lg shadow-emerald-500/30 hover:bg-emerald-700 transition transform hover:-translate-y-1 flex items-center gap-2">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    Agendar Diagnóstico Gratuito
+                </a>
+                <a href="https://etiia.com" 
+                   class="px-8 py-4 bg-white/10 text-white rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition flex items-center gap-2">
+                    <span class="material-symbols-outlined">language</span>
+                    Ver más soluciones ETIIA
+                </a>
+            </div>
+            <p class="text-slate-600 text-xs mt-12">
+                Demo técnica por <strong class="text-slate-400">ETIIA</strong> · Consultoría en Inteligencia Artificial · etiia.com
             </p>
         </div>
     </footer>

@@ -1,11 +1,24 @@
 const scr = document.getElementById('app-screen');
 let stage = 1;
 
+const urlMap = {
+  DASHBOARD: 'app.facturai.cl/dashboard',
+  UPLOAD: 'app.facturai.cl/facturas/subir',
+  PROCESSING: 'app.facturai.cl/procesando',
+  RESULTS: 'app.facturai.cl/conciliacion/resultado',
+  DIFF_DETAIL: 'app.facturai.cl/conciliacion/diferencia/4901',
+  PUSHED: 'app.facturai.cl/erp/sync-completado'
+};
+function updateUrl(state) {
+  const bar = document.getElementById('app-url');
+  if (bar) bar.innerHTML = '<span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>' + (urlMap[state] || 'app.facturai.cl');
+}
+
 const facturas = [
   { folio: '4892', rut: '76.543.210-K', proveedor: 'Distribuidora Los Andes Ltda.', monto: '$1.247.500', fecha: '12/03/2026', estado: 'match' },
   { folio: '4893', rut: '77.891.234-5', proveedor: 'Servicios Informáticos SpA', monto: '$890.000', fecha: '14/03/2026', estado: 'match' },
   { folio: '4895', rut: '79.456.789-0', proveedor: 'Transportes Ruta Sur Ltda.', monto: '$3.120.000', fecha: '15/03/2026', estado: 'match' },
-  { folio: '4901', rut: '78.123.456-7', proveedor: 'Comercial El Puerto S.A.', monto: '$2.350.800', fecha: '18/03/2026', estado: 'diff', cartola: '$2.150.800' },
+  { folio: '4901', rut: '78.123.456-7', proveedor: 'Comercial El Puerto S.A.', monto: '$2.350.800', fecha: '18/03/2026', estado: 'diff', cartola: '$2.151.252' },
   { folio: '4908', rut: '80.321.654-3', proveedor: 'Alimentos del Valle SpA', monto: '$675.400', fecha: '22/03/2026', estado: 'match' },
 ];
 
@@ -32,6 +45,7 @@ function sidebar(active) {
 
 function go(state) {
   scr.innerHTML = '';
+  updateUrl(state);
   switch(state) {
     case 'DASHBOARD':
       scr.innerHTML = `<div class="flex h-full animate-fade-in text-slate-800">
@@ -50,8 +64,8 @@ function go(state) {
               <div class="text-3xl font-bold text-slate-800">247</div>
             </div>
             <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-              <div class="text-slate-500 text-xs font-semibold mb-1">Conciliadas Automáticamente</div>
-              <div class="text-3xl font-bold text-emerald-600">95%</div>
+              <div class="text-slate-500 text-xs font-semibold mb-1">Conciliación Automática (mes 3)</div>
+              <div class="text-3xl font-bold text-emerald-600">82%</div>
             </div>
             <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
               <div class="text-slate-500 text-xs font-semibold mb-1">Diferencias Detectadas</div>
@@ -63,8 +77,11 @@ function go(state) {
             <table class="w-full text-left"><thead class="bg-slate-50 border-b border-slate-200">
               <tr><th class="p-3 font-semibold text-slate-600">Folio</th><th class="p-3 font-semibold text-slate-600">Proveedor</th><th class="p-3 font-semibold text-slate-600">Monto</th><th class="p-3 font-semibold text-slate-600">Estado</th></tr>
             </thead><tbody>
-              <tr class="border-b border-slate-100"><td class="p-3 font-medium">#4892</td><td class="p-3 text-slate-500">Dist. Los Andes</td><td class="p-3">$1.247.500</td><td class="p-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-bold">Conciliada</span></td></tr>
-              <tr><td class="p-3 font-medium">#4901</td><td class="p-3 text-slate-500">Comercial El Puerto</td><td class="p-3">$2.350.800</td><td class="p-3"><span class="px-2 py-1 bg-orange-100 text-orange-700 rounded-md text-xs font-bold">Diferencia</span></td></tr>
+              <tr class="border-b border-slate-100"><td class="p-3 font-medium">#4892</td><td class="p-3 text-slate-500">Dist. Los Andes Ltda.</td><td class="p-3">$1.247.500</td><td class="p-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-bold">Conciliada</span></td></tr>
+              <tr class="border-b border-slate-100"><td class="p-3 font-medium">#4893</td><td class="p-3 text-slate-500">Serv. Informáticos SpA</td><td class="p-3">$890.000</td><td class="p-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-bold">Conciliada</span></td></tr>
+              <tr class="border-b border-slate-100"><td class="p-3 font-medium">#4901</td><td class="p-3 text-slate-500">Comercial El Puerto S.A.</td><td class="p-3">$2.350.800</td><td class="p-3"><span class="px-2 py-1 bg-orange-100 text-orange-700 rounded-md text-xs font-bold">Diferencia</span></td></tr>
+              <tr class="border-b border-slate-100"><td class="p-3 font-medium">#4908</td><td class="p-3 text-slate-500">Alimentos del Valle SpA</td><td class="p-3">$675.400</td><td class="p-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-bold">Conciliada</span></td></tr>
+              <tr><td class="p-3 font-medium">#4895</td><td class="p-3 text-slate-500">Transportes Ruta Sur</td><td class="p-3">$3.120.000</td><td class="p-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-bold">Conciliada</span></td></tr>
             </tbody></table>
           </div>
         </div>
@@ -117,11 +134,11 @@ function go(state) {
             </div>
           </div>
           <h3 class="text-xl font-bold text-center mb-2">Procesando 247 Facturas...</h3>
-          <p class="text-slate-400 text-xs text-center mb-6">Procesamiento masivo en paralelo vía Google Cloud Vision</p>
+          <p class="text-slate-400 text-xs text-center mb-6">Tiempo estimado: <strong>3-5 min</strong> para lote completo (OCR + matching en paralelo)</p>
           <div class="space-y-3">
             <div id="l1" class="bg-slate-800 p-3 rounded-lg flex items-center gap-3 border border-slate-700 opacity-0 translate-y-2 transition-all duration-500">
               <span class="material-symbols-outlined text-green-400 text-sm">check_circle</span>
-              <span class="text-sm">OCR masivo completado: <strong>247 facturas</strong> extraídas en 38 seg.</span>
+              <span class="text-sm">OCR masivo completado: <strong>247 facturas</strong> extraídas en 4 min 12 seg.</span>
             </div>
             <div id="l2" class="bg-slate-800 p-3 rounded-lg flex items-center gap-3 border border-slate-700 opacity-0 translate-y-2 transition-all duration-500">
               <span class="material-symbols-outlined text-emerald-400 text-sm animate-spin">sync</span>
@@ -129,7 +146,7 @@ function go(state) {
             </div>
             <div id="l3" class="bg-slate-800 p-3 rounded-lg flex items-center gap-3 border border-slate-700 opacity-0 translate-y-2 transition-all duration-500">
               <span class="material-symbols-outlined text-green-400 text-sm">check_circle</span>
-              <span class="text-sm"><strong>235 facturas</strong> conciliadas automáticamente (match exacto ✓)</span>
+              <span class="text-sm"><strong>203 facturas</strong> conciliadas automáticamente (match exacto ✓)</span>
             </div>
             <div id="l4" class="bg-slate-800 p-3 rounded-lg flex items-center gap-3 border border-slate-700 opacity-0 translate-y-2 transition-all duration-500">
               <span class="material-symbols-outlined text-orange-400 text-sm">warning</span>
@@ -151,7 +168,7 @@ function go(state) {
       stage = 2;
       scr.innerHTML = `<div class="h-full bg-slate-50 flex flex-col p-6 animate-fade-in relative">
         <div class="flex justify-between items-center mb-5">
-          <div><h2 class="text-2xl font-bold text-slate-800">Conciliación Completada</h2><p class="text-slate-500 text-sm">247 facturas procesadas en 42 segundos — marzo 2026</p></div>
+          <div><h2 class="text-2xl font-bold text-slate-800">Conciliación Completada</h2><p class="text-slate-500 text-sm">247 facturas procesadas en 4:52 min — marzo 2026</p></div>
           <button onclick="go('DASHBOARD')" class="relative z-10 bg-slate-200 text-slate-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-300 transition ${stage===2?'ring-4 ring-amber-400 ring-offset-2':''}">
             ${stage===2?'<div class="absolute top-full mt-4 right-0 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-lg animate-bounce whitespace-nowrap z-[100]">3. Volver al panel 👆</div>':''}
             Cerrar
@@ -160,7 +177,7 @@ function go(state) {
         <div class="grid grid-cols-3 gap-4 mb-5">
           <div class="bg-green-50 border border-green-200 p-4 rounded-xl flex items-center gap-3">
             <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600"><span class="material-symbols-outlined">check_circle</span></div>
-            <div><div class="text-2xl font-bold text-green-700">235</div><div class="text-xs text-green-600 font-semibold uppercase">Match Exacto</div></div>
+            <div><div class="text-2xl font-bold text-green-700">203</div><div class="text-xs text-green-600 font-semibold uppercase">Match Exacto</div></div>
           </div>
           <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl flex items-center gap-3">
             <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-600"><span class="material-symbols-outlined">warning</span></div>
@@ -168,7 +185,7 @@ function go(state) {
           </div>
           <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl flex items-center gap-3">
             <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600"><span class="material-symbols-outlined">send</span></div>
-            <div><div class="text-2xl font-bold text-blue-700">235</div><div class="text-xs text-blue-600 font-semibold uppercase">Listas para ERP</div></div>
+            <div><div class="text-2xl font-bold text-blue-700">203</div><div class="text-xs text-blue-600 font-semibold uppercase">Listas para ERP</div></div>
           </div>
         </div>
         <div class="bg-white border border-slate-200 rounded-xl overflow-hidden text-sm shadow-sm flex-1 overflow-y-auto">
@@ -182,16 +199,73 @@ function go(state) {
               <td class="p-3 ${f.estado==='diff'?'text-orange-600 font-bold':'text-slate-500'}">${f.estado==='diff'?f.cartola:f.monto}</td>
               <td class="p-3">${f.estado==='match'
                 ?'<span class="px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs font-bold border border-green-200">✓ Conciliada</span>'
-                :'<span class="px-2 py-1 bg-orange-100 text-orange-700 rounded-md text-xs font-bold border border-orange-200">⚠ Dif. $200.000</span>'
+                :'<span onclick="go(\'DIFF_DETAIL\')" class="px-2 py-1 bg-orange-100 text-orange-700 rounded-md text-xs font-bold border border-orange-200 cursor-pointer hover:bg-orange-200 transition">⚠ Dif. $199.548 →</span>'
               }</td>
             </tr>`).join('')}
           </tbody></table>
         </div>
         <div class="mt-4 flex justify-end gap-3">
           <button class="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-100 transition">Exportar CSV</button>
-          <button class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition shadow-sm flex items-center gap-1">
+          <button onclick="go('PUSHED')" class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition shadow-sm flex items-center gap-1">
             <span class="material-symbols-outlined text-[16px]">publish</span> Enviar a ERP
           </button>
+        </div>
+      </div>`;
+      break;
+
+    case 'DIFF_DETAIL':
+      scr.innerHTML = `<div class="h-full bg-slate-50 flex flex-col animate-fade-in relative">
+        <div class="bg-white border-b border-slate-200 p-4 flex justify-between items-center shadow-sm">
+          <div class="flex items-center gap-4">
+            <button onclick="go('RESULTS')" class="text-slate-500 hover:text-slate-800 flex items-center gap-1 text-sm font-medium bg-slate-100 px-3 py-1.5 rounded-lg"><span class="material-symbols-outlined text-[18px]">arrow_back</span> Volver</button>
+            <div><h2 class="text-lg font-bold text-slate-800">Factura #4901 — Diferencia Detectada</h2><p class="text-slate-500 text-xs">Comercial El Puerto S.A. · RUT 78.123.456-7</p></div>
+          </div>
+          <button onclick="go('RESULTS')" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition shadow-sm flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">done</span> Aprobar Manualmente</button>
+        </div>
+        <div class="p-6 flex-1 overflow-y-auto">
+          <div class="grid grid-cols-2 gap-6 mb-6">
+            <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+              <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3"><span class="material-symbols-outlined text-red-400">picture_as_pdf</span><h3 class="font-bold text-slate-800">Factura #4901</h3></div>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between"><span class="text-slate-500">Monto Neto</span><span class="font-medium">$1.975.462</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">IVA (19%)</span><span class="font-medium">$375.338</span></div>
+                <div class="flex justify-between border-t border-slate-100 pt-2"><span class="text-slate-700 font-bold">Total</span><span class="font-bold text-lg text-slate-900">$2.350.800</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Fecha emisión</span><span class="font-medium">18/03/2026</span></div>
+              </div>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+              <div class="flex items-center gap-2 mb-4 border-b border-slate-100 pb-3"><span class="material-symbols-outlined text-blue-400">account_balance</span><h3 class="font-bold text-slate-800">Movimiento Cartola</h3></div>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between"><span class="text-slate-500">Banco</span><span class="font-medium">BancoEstado</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Referencia</span><span class="font-medium">TEF-2026031845</span></div>
+                <div class="flex justify-between border-t border-slate-100 pt-2"><span class="text-slate-700 font-bold">Monto Pagado</span><span class="font-bold text-lg text-orange-600">$2.151.252</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Fecha cargo</span><span class="font-medium">20/03/2026</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-3"><span class="material-symbols-outlined text-orange-600">psychology</span><h4 class="font-bold text-orange-800">Análisis de la IA</h4><span class="ml-auto text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-bold">Confianza: 87%</span></div>
+            <p class="text-sm text-orange-700 mb-3">Diferencia de <strong>-$199.548</strong> entre factura y pago. Posibles causas detectadas:</p>
+            <ul class="space-y-2 text-sm text-orange-700">
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">arrow_right</span> <strong>Retención de garantía (5%)</strong> — patrón detectado en pagos anteriores de este proveedor</li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">arrow_right</span> Nota de crédito pendiente no registrada en sistema</li>
+            </ul>
+          </div>
+        </div>
+      </div>`;
+      break;
+
+    case 'PUSHED':
+      scr.innerHTML = `<div class="h-full bg-white flex flex-col items-center justify-center animate-fade-in p-8">
+        <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-emerald-600 text-4xl">cloud_done</span>
+        </div>
+        <h2 class="text-2xl font-bold text-slate-800 mb-2">203 registros enviados al ERP</h2>
+        <p class="text-slate-500 text-sm mb-2 text-center max-w-md">Las facturas conciliadas fueron empujadas exitosamente a <strong>Softland</strong>. 12 diferencias quedaron en cola de revisión manual.</p>
+        <p class="text-slate-400 text-xs mb-8">Sincronización completada · 30 abr 2026, 14:32</p>
+        <div class="flex gap-3">
+          <button onclick="go('DASHBOARD')" class="px-6 py-3 bg-slate-100 text-slate-700 rounded-xl text-sm font-medium hover:bg-slate-200 transition">Volver al Panel</button>
+          <button onclick="stage=1; go('DASHBOARD')" class="px-6 py-3 bg-emerald-600 text-white rounded-xl text-sm font-medium hover:bg-emerald-700 transition shadow-lg shadow-emerald-500/25 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">replay</span> Reiniciar Demo</button>
         </div>
       </div>`;
       break;
