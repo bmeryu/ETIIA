@@ -152,7 +152,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
     return (
       <section className="pt-40 pb-20 text-center">
         <h1 className="text-3xl font-black text-navy">Demo no encontrada</h1>
-        <Link href="/demos" className="text-blue-600 mt-4 inline-block">← Volver a Demos</Link>
+        <Link href="/demos" className="text-blue-600 mt-4 inline-block">← Volver al Portfolio</Link>
       </section>
     );
   }
@@ -176,7 +176,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
         <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10">
           <FadeIn delay={0.1}>
             <Link href="/demos" className="inline-flex items-center text-sm text-slate-400 hover:text-slate-600 transition mb-6 font-medium">
-              <ArrowLeft className="w-4 h-4 mr-1" /> Volver a Demos
+              <ArrowLeft className="w-4 h-4 mr-1" /> Volver al Portfolio
             </Link>
           </FadeIn>
 
@@ -325,7 +325,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
               </Link>
               <Link href="/demos">
                 <Button variant="outline" className="h-12 px-8 text-base">
-                  Ver más demos <ArrowRight className="ml-2 w-4 h-4" />
+                  Ver más soluciones <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
             </div>

@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/Button";
 import { Reveal, FadeIn } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Demos Interactivas",
-  description: "Portfolio de soluciones de IA implementadas por ETIIA. Demos interactivas de productos reales en contabilidad, legal, RRHH, salud y más.",
+  title: "Portfolio de Soluciones IA",
+  description: "Portfolio de soluciones de IA implementadas por ETIIA. Productos interactivos reales en contabilidad, legal, RRHH, salud y más.",
 };
 
 const productos = [
@@ -120,7 +120,7 @@ export default function CasosPage() {
           </FadeIn>
           <FadeIn delay={0.35}>
             <p className="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Cada solución nace de un problema real de negocio. Explora demos interactivas de lo que hacemos — desde la lectura inteligente de documentos hasta análisis predictivo.
+              Cada solución nace de un problema real de negocio. Explora nuestro portfolio interactivo — desde la lectura inteligente de documentos hasta análisis predictivo.
             </p>
           </FadeIn>
         </div>
