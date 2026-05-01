@@ -150,6 +150,36 @@ export default function RootLayout({
                   "publisher": {
                     "@id": "https://www.etiia.com/#organization"
                   }
+                },
+                {
+                  "@type": "FAQPage",
+                  "@id": "https://www.etiia.com/#faq",
+                  "mainEntity": [
+                    {
+                      "@type": "Question",
+                      "name": "¿Cuál es la diferencia entre automatización tradicional y los Agentes IA de ETIIA?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "La automatización tradicional (ej. RPA) se rompe cuando cambian las reglas o formatos. En ETIIA implementamos Agentes de Inteligencia Artificial basados en LLMs corporativos que entienden contexto, toman micro-decisiones escalables y se adaptan a excepciones, conectándose directamente a los KPIs de negocio B2B."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "¿Qué es una arquitectura RAG y por qué ETIIA la implementa en empresas?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "RAG (Retrieval-Augmented Generation) es una arquitectura que conecta Modelos de Lenguaje (como GPT-4 o Claude) de forma segura con las bases de datos privadas de una empresa. ETIIA implementa RAG para asegurar que la IA genere respuestas precisas basadas 100% en la data corporativa interna, eliminando el riesgo de alucinaciones."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "¿Cuánto tarda ETIIA en implementar una solución de Inteligencia Artificial B2B?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Dependiendo de la complejidad operativa y la limpieza de los datos, ETIIA despliega productos de Inteligencia Artificial (como motores de recomendación, OCR inteligente o agentes de atención) en entornos de producción en un plazo promedio de 2 a 4 semanas."
+                      }
+                    }
+                  ]
                 }
               ]
             })
