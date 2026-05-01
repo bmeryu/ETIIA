@@ -1,6 +1,18 @@
 const scr = document.getElementById('app-screen');
 let stage = 1;
 
+const urlMap = {
+  DASHBOARD: 'app.talentparse.cl/dashboard',
+  UPLOAD: 'app.talentparse.cl/proceso/upload',
+  PROCESSING: 'app.talentparse.cl/proceso/scoring',
+  RESULTS: 'app.talentparse.cl/ranking/data-engineer-sr',
+  CANDIDATE_DETAIL: 'app.talentparse.cl/candidato/maria-gonzalez'
+};
+function updateUrl(s) {
+  const bar = document.getElementById('app-url');
+  if (bar) bar.innerHTML = '<span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>' + (urlMap[s] || 'app.talentparse.cl');
+}
+
 const candidatos = [
   { nombre: 'María González Soto', score: 96, exp: '8 años', actual: 'Gerente de Proyectos TI — Falabella', skills: ['Python','AWS','Scrum','SQL','Power BI'], match: { experiencia: 98, tech: 95, liderazgo: 94 }, foto: '👩‍💼' },
   { nombre: 'Andrés Muñoz Parra', score: 89, exp: '6 años', actual: 'Lead Developer — Mercado Libre', skills: ['Node.js','AWS','Docker','React','MongoDB'], match: { experiencia: 85, tech: 97, liderazgo: 82 }, foto: '👨‍💻' },
@@ -40,6 +52,7 @@ function scoreBar(val, color) {
 
 function go(state) {
   scr.innerHTML = '';
+  updateUrl(state);
   switch(state) {
     case 'DASHBOARD':
       scr.innerHTML = `<div class="flex h-full animate-fade-in text-slate-800">
@@ -155,7 +168,7 @@ function go(state) {
           </div>
           <div class="space-y-3">
             ${candidatos.map((c, i) => `
-              <div class="bg-white rounded-xl border border-slate-200 p-4 hover:border-amber-300 hover:shadow-sm transition cursor-pointer ${i===0?'ring-2 ring-amber-400':''}">
+              <div onclick="go('CANDIDATE_DETAIL')" class="bg-white rounded-xl border border-slate-200 p-4 hover:border-amber-300 hover:shadow-sm transition cursor-pointer ${i===0?'ring-2 ring-amber-400':''}">
                 <div class="flex items-start gap-3">
                   <div class="text-3xl">${c.foto}</div>
                   <div class="flex-1 min-w-0">
@@ -175,6 +188,42 @@ function go(state) {
                 </div>
               </div>
             `).join('')}
+          </div>
+        </div>
+      </div>`;
+      break;
+
+    case 'CANDIDATE_DETAIL':
+      const c = candidatos[0];
+      scr.innerHTML = `<div class="flex h-full animate-fade-in text-slate-800">
+        ${sidebar('RANKING')}
+        <div class="flex-1 p-5 bg-slate-50 overflow-y-auto">
+          <button onclick="go('RESULTS')" class="text-sm text-amber-600 font-medium hover:underline flex items-center gap-1 mb-4">
+            <span class="material-symbols-outlined text-[14px]">arrow_back</span> Volver al ranking
+          </button>
+          <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm mb-4">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="text-4xl">${c.foto}</div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2"><span class="px-1.5 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold rounded uppercase">⭐ #1</span><h2 class="text-xl font-bold text-slate-800">${c.nombre}</h2></div>
+                <p class="text-sm text-slate-400">${c.actual} · ${c.exp}</p>
+              </div>
+              <div class="w-16 h-16 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-2xl font-bold">${c.score}%</div>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-4">
+              <div class="bg-slate-50 p-3 rounded-lg"><div class="text-xs text-slate-400 mb-1">Experiencia</div>${scoreBar(c.match.experiencia,'bg-green-500')}<div class="text-sm font-bold text-slate-700 mt-1">${c.match.experiencia}%</div></div>
+              <div class="bg-slate-50 p-3 rounded-lg"><div class="text-xs text-slate-400 mb-1">Tech Stack</div>${scoreBar(c.match.tech,'bg-blue-500')}<div class="text-sm font-bold text-slate-700 mt-1">${c.match.tech}%</div></div>
+              <div class="bg-slate-50 p-3 rounded-lg"><div class="text-xs text-slate-400 mb-1">Liderazgo</div>${scoreBar(c.match.liderazgo,'bg-amber-500')}<div class="text-sm font-bold text-slate-700 mt-1">${c.match.liderazgo}%</div></div>
+            </div>
+            <div class="mb-3"><span class="text-xs font-semibold text-slate-500 uppercase">Skills detectados</span></div>
+            <div class="flex flex-wrap gap-1.5 mb-4">${c.skills.map(s => '<span class="bg-amber-50 text-amber-700 text-xs font-semibold px-2 py-1 rounded-lg border border-amber-200">'+s+'</span>').join('')}</div>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+            <span class="material-symbols-outlined text-amber-500 mt-0.5">psychology</span>
+            <div>
+              <p class="text-sm font-semibold text-amber-800 mb-1">Análisis de la IA</p>
+              <p class="text-xs text-amber-700">Candidata con <strong>perfil altamente alineado</strong> al cargo. 8 años de experiencia progresiva en TI, incluyendo 3 años en posición de liderazgo. Domina el stack completo requerido (Python, AWS, SQL). Única candidata con experiencia en gestión de proyectos a gran escala en retail.</p>
+            </div>
           </div>
         </div>
       </div>`;
