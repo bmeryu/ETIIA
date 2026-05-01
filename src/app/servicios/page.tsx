@@ -21,6 +21,7 @@ const servicios = [
             "Hoja de ruta priorizada con plazos y costos estimados",
             "Alineamiento entre áreas comerciales y técnicas",
         ],
+        productos: [],
     },
     {
         id: "ml",
@@ -32,6 +33,12 @@ const servicios = [
             "Motores de recomendación personalizados",
             "IA Generativa aplicada a contenido, atención y automatización",
             "MLOps para monitoreo y reentrenamiento continuo",
+        ],
+        productos: [
+            { nombre: "VentaAI", slug: "ventaai", label: "Recomendaciones" },
+            { nombre: "AgendAI", slug: "agendai", label: "Predicción" },
+            { nombre: "CosechAI", slug: "cosechai", label: "ML Predictivo" },
+            { nombre: "AtendeAI", slug: "atendeai", label: "LLM Agents" },
         ],
     },
     {
@@ -45,6 +52,11 @@ const servicios = [
             "Procesamiento inteligente de documentos",
             "Reducción medible de costos operativos",
         ],
+        productos: [
+            { nombre: "FacturAI", slug: "facturai", label: "OCR + ERP" },
+            { nombre: "AutoRend IA", slug: "autorend", label: "Auto-respuesta" },
+            { nombre: "AtendeAI", slug: "atendeai", label: "Auto-resolución" },
+        ],
     },
     {
         id: "cloud",
@@ -57,6 +69,7 @@ const servicios = [
             "Pipelines de datos en tiempo real",
             "Seguridad, compliance y gobernanza de datos",
         ],
+        productos: [],
     },
     {
         id: "bi",
@@ -69,6 +82,10 @@ const servicios = [
             "Integración de múltiples fuentes de datos",
             "Capacitación para autonomía analítica del equipo",
         ],
+        productos: [
+            { nombre: "TranscribAI", slug: "transcribai", label: "Alertas NLP" },
+            { nombre: "CosechAI", slug: "cosechai", label: "Dashboard Agro" },
+        ],
     },
     {
         id: "customer",
@@ -80,6 +97,11 @@ const servicios = [
             "Customer lifetime value y predicción de churn",
             "Personalización de ofertas y comunicaciones",
             "Scoring de leads y propensión de compra",
+        ],
+        productos: [
+            { nombre: "VentaAI", slug: "ventaai", label: "Segmentación" },
+            { nombre: "AtendeAI", slug: "atendeai", label: "Atención IA" },
+            { nombre: "TalentParse", slug: "talentparse", label: "Scoring" },
         ],
     },
 ];
@@ -144,6 +166,18 @@ export default function ServiciosPage() {
                                                 </li>
                                             ))}
                                         </ul>
+                                        {s.productos.length > 0 && (
+                                            <div className="mt-5 pt-4 border-t border-slate-100">
+                                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Ver en el Portfolio</p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {s.productos.map((p) => (
+                                                        <Link key={p.slug} href={`/demos/${p.slug}`} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-100 text-xs font-semibold text-blue-700 hover:bg-blue-100 hover:border-blue-200 transition-colors">
+                                                            {p.nombre} <span className="text-blue-400 font-normal">· {p.label}</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
