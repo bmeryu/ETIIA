@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { getInsightsList } from '@/lib/markdown';
 
 export const dynamic = "force-static";
 
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/soluciones',
     '/demos',
+    '/insights',
     '/formacion',
     '/equipo',
     '/contacto',
@@ -21,15 +23,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/demos/facturai',
   ];
 
-  const routes = [...baseRoutes, ...demoRoutes].map((route) => ({
+  const insights = getInsightsList();
+  const insightRoutes = insights.map((insight) => `/insights/${insight.slug}`);
+
+  const routes = [...baseRoutes, ...demoRoutes, ...insightRoutes].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : (route.includes('/demos/') ? 0.9 : 0.8),
+    priority: route === '' ? 1 : (route.includes('/insights/') ? 0.85 : 0.8),
   }));
-
-  // Aquí en el futuro se podrían agregar dinámicamente las rutas de cada demo individual
-  // consultando a la base de datos o al CMS.
 
   return [...routes];
 }
