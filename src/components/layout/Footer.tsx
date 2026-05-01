@@ -34,7 +34,7 @@ export default function Footer() {
               <li><Link href="/soluciones" className="hover:text-white transition-colors">Automatización Inteligente</Link></li>
               <li><Link href="/soluciones" className="hover:text-white transition-colors">Estrategia & Datos</Link></li>
               <li><Link href="/demos" className="hover:text-white transition-colors">Catálogo de Demos</Link></li>
-              <li><Link href="/formacion" className="hover:text-white transition-colors">Capacitación de Equipos</Link></li>
+              <li><Link href="/formacion" className="hover:text-white transition-colors">Formación de Equipos</Link></li>
             </ul>
           </div>
 

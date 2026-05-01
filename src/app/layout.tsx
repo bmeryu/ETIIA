@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: "ETIIA | Consultoría e Implementación de Inteligencia Artificial",
   },
   description: "Firma especializada en Inteligencia Artificial y Automatización Inteligente B2B. Conectamos tecnología con KPIs de negocio reales.",
-  keywords: ["Inteligencia Artificial", "Consultoría IA Chile", "Automatización de Procesos", "Machine Learning", "IA Generativa B2B", "Capacitación IA Empresas", "Agentes IA"],
+  keywords: ["Inteligencia Artificial", "Consultoría IA Chile", "Automatización de Procesos", "Machine Learning", "IA Generativa B2B", "Formación IA Empresas", "Agentes IA"],
   authors: [{ name: "Bernardita Mery" }, { name: "Pablo E. Olivares" }],
   creator: "ETIIA",
   publisher: "ETIIA",

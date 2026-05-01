@@ -45,7 +45,7 @@ export default function FormacionPage() {
       <section className="container mx-auto px-6 md:px-12 mb-16 text-center max-w-4xl">
         <FadeIn delay={0.1}>
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-100 text-xs text-slate-500 font-semibold uppercase tracking-wider mb-6">
-            Capacitación a Equipos
+            Formación de Equipos
           </div>
         </FadeIn>
         <FadeIn delay={0.2}>
