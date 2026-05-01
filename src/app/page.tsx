@@ -113,17 +113,16 @@ export default function Home() {
           style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(29,78,216,0.18) 0%, transparent 65%)' }}
         />
         <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
             {[
-              { number: "+10", label: "Productos listos para escoger" },
-              { number: "3.2x", label: "ROI promedio en el primer año" },
-              { number: "+8", label: "Industrias atendidas" },
-              { number: "2-4 sem", label: "Tiempo de implementación" },
+              { number: "+15 Años", label: "Experiencia corporativa integrando negocios y tecnología." },
+              { number: "2-4 Semanas", label: "Tiempo promedio de implementación de productos listos." },
+              { number: "ROI Medible", label: "Soluciones atadas directamente a los KPIs de la empresa." },
             ].map((m, i) => (
               <Reveal key={m.label} delay={0.1 * (i + 1)}>
                 <div>
-                  <p className="text-3xl md:text-4xl font-black text-blue-400 tabular-nums">{m.number}</p>
-                  <p className="text-xs md:text-sm text-slate-300 mt-2 leading-snug font-medium">{m.label}</p>
+                  <p className="text-3xl md:text-5xl font-black text-blue-400 tabular-nums mb-3 tracking-tight">{m.number}</p>
+                  <p className="text-sm md:text-base text-slate-300 leading-relaxed font-medium px-4">{m.label}</p>
                 </div>
               </Reveal>
             ))}
@@ -236,7 +235,7 @@ export default function Home() {
       </section>
 
       {/* ══════════ LIDERAZGO / TRANSFERENCIA DE AUTORIDAD ══════════ */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200">
+      <section id="equipo" className="py-20 bg-slate-50 border-t border-slate-200 scroll-mt-24">
         <div className="container mx-auto px-6 md:px-12 max-w-5xl">
           <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-200 flex flex-col md:flex-row items-center gap-10">
             <Reveal className="w-full md:w-1/3 flex flex-col justify-center items-center">
@@ -285,7 +284,7 @@ export default function Home() {
       </section>
 
       {/* ══════════ LA PREGUNTA REAL / EJEMPLOS B2B ══════════ */}
-      <section className="py-24 bg-slate-50 border-y border-slate-200">
+      <section id="soluciones" className="py-24 bg-slate-50 border-y border-slate-200 scroll-mt-24">
         <div className="container mx-auto px-6 md:px-12 max-w-5xl">
           <div className="text-center mb-16">
             <Reveal>
@@ -423,26 +422,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════ ANTI-ALUCINACIÓN (CRITERIO) ══════════ */}
-      <section className="py-16 md:py-20 bg-blue-50/50 border-t border-blue-100/50">
-        <div className="container mx-auto px-6 md:px-12 max-w-4xl text-center">
-          <Reveal>
-            <div className="w-16 h-16 mx-auto bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
-              <svg className="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-black text-navy mb-4">
-              Criterio Técnico: Cero Alucinaciones
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed md:text-center text-left">
-              No dejamos el output al azar. Implementamos arquitecturas <strong>RAG</strong> (Retrieval-Augmented Generation) con validación humana en el loop y guardrails estrictos. Si la IA no sabe, no inventa; escala a un agente humano. <strong>Esa es la diferencia entre un prototipo y un producto Enterprise.</strong>
-            </p>
-          </Reveal>
-        </div>
-      </section>
+
 
       {/* ══════════ PROCESO 3 PASOS ══════════ */}
       <section className="py-20 md:py-28 text-white bg-grid-dark relative overflow-hidden" style={{ background: '#0D1117' }}>
@@ -491,20 +471,22 @@ export default function Home() {
 
           {/* UpSkilling como complemento dentro del dark section */}
           <Reveal delay={0.5}>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 max-w-3xl mx-auto mt-4">
-              <div className="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center shrink-0">
-                <GraduationCap className="w-7 h-7 text-blue-400" />
+            <div id="formacion" className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12 flex flex-col items-center gap-8 max-w-4xl mx-auto mt-12 scroll-mt-24 text-center">
+              <div className="w-20 h-20 bg-blue-600/20 rounded-2xl flex items-center justify-center shrink-0">
+                <GraduationCap className="w-10 h-10 text-blue-400" />
               </div>
-              <div className="text-center md:text-left">
-                <div className="flex items-center gap-2 justify-center md:justify-start mb-1">
-                  <h3 className="text-base font-bold text-white">UpSkilling & ReSkilling en IA</h3>
-                  <span className="text-[10px] font-bold text-blue-400 bg-blue-900/50 px-2 py-0.5 rounded-full border border-blue-800/50">Complementario</span>
+              <div>
+                <div className="flex flex-col sm:flex-row items-center gap-3 justify-center mb-4">
+                  <h3 className="text-2xl md:text-3xl font-black text-white">UpSkilling & Formación Corporativa</h3>
+                  <span className="text-xs font-bold text-blue-400 bg-blue-900/50 px-3 py-1 rounded-full border border-blue-800/50">OTEC AulaGenIA</span>
                 </div>
-                <p className="text-sm text-slate-400">Capacitamos a tu equipo para que adopte las herramientas con criterio de negocio. IA Generativa, automatización inteligente y análisis de datos — in-company.</p>
+                <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                  Capacitamos a los equipos humanos de tu empresa para que adopten y operen herramientas de IA con criterio de negocio. Reducimos el rechazo cultural, instalamos capacidades instaladas de Prompt Engineering y aseguramos que la inversión en tecnología se utilice correctamente.
+                </p>
               </div>
-              <Link href="/contacto" className="shrink-0">
-                <Button variant="outline" className="h-10 px-5 text-sm border-white/20 text-white hover:bg-white/10">
-                  Más info
+              <Link href="https://aulagenia.cl" target="_blank" className="shrink-0 mt-2">
+                <Button variant="outline" className="h-12 px-8 text-base border-white/20 text-white hover:bg-white/10 transition-colors">
+                  Ir a sitio web de AulaGenIA <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
             </div>
