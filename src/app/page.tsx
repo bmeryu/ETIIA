@@ -1,66 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Calculator, Scale, Users, Stethoscope, Leaf, GraduationCap, CheckCircle2, Headset, ShoppingBag, Mic } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal, FadeIn } from "@/components/ui/Reveal";
 import { TechLogos } from "@/components/ui/TechLogos";
-
-const casosUso = [
-  {
-    icon: <Headset className="w-7 h-7" />,
-    title: "Atención al Cliente",
-    desc: "Agentes de IA que resuelven consultas en tiempo real: cambian planes, agendan técnicos, generan boletas. Sin intervención humana.",
-    href: "/demos/atendeai",
-  },
-  {
-    icon: <ShoppingBag className="w-7 h-7" />,
-    title: "Retail y eCommerce",
-    desc: "Motores de recomendación que personalizan la experiencia de cada cliente. +34% cross-sell con campañas automáticas por segmento.",
-    href: "/demos/ventaai",
-  },
-  {
-    icon: <Calculator className="w-7 h-7" />,
-    title: "Finanzas y Contabilidad",
-    desc: "Lectura masiva de facturas PDF, conciliación cruzada con cartolas y digitación directa al ERP. Sin tipeo humano.",
-    href: "/demos/facturai",
-  },
-  {
-    icon: <Scale className="w-7 h-7" />,
-    title: "Legal y Compliance",
-    desc: "Búsqueda semántica sobre contratos y transcripción segura de reuniones con detección de compromisos incumplidos.",
-    href: "/demos/lexsearch",
-  },
-  {
-    icon: <Users className="w-7 h-7" />,
-    title: "Recursos Humanos",
-    desc: "Parseo automático de CVs en cualquier formato. La IA extrae variables críticas y genera un ranking instantáneo por cargo.",
-    href: "/demos/talentparse",
-  },
-  {
-    icon: <Stethoscope className="w-7 h-7" />,
-    title: "Salud y Clínicas",
-    desc: "Predicción de inasistencias médicas y contacto automático a pacientes en lista de espera. -62% no-shows.",
-    href: "/demos/agendai",
-  },
-  {
-    icon: <Leaf className="w-7 h-7" />,
-    title: "Agricultura y Viñas",
-    desc: "Modelos predictivos con datos satelitales e IoT para optimizar rendimiento y reducir merma en exportaciones.",
-    href: "/demos/cosechai",
-  },
-  {
-    icon: <GraduationCap className="w-7 h-7" />,
-    title: "Educación",
-    desc: "Agente de IA que lee rendiciones, cruza datos con el ERP y responde automáticamente. Si falta información, redacta y envía el correo.",
-    href: "/demos/autorend",
-  },
-  {
-    icon: <Mic className="w-7 h-7" />,
-    title: "Compliance Corporativo",
-    desc: "Transcripción segura de reuniones con diarización, resúmenes ejecutivos y alertas automáticas de compromisos.",
-    href: "/demos/transcribai",
-  },
-];
+import { UseCaseCarousel } from "@/components/ui/UseCaseCarousel";
 
 export default function Home() {
   return (
@@ -306,7 +250,7 @@ export default function Home() {
               </div>
             </Reveal>
           </div>
-          <div className="mt-16 mb-8 px-4 md:px-0 text-center md:text-left">
+          <div className="mt-16 mb-4 px-4 md:px-0 text-center md:text-left">
              <Reveal delay={0.2}>
                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-50 text-xs text-blue-700 font-bold uppercase tracking-wider mb-3 border border-blue-100">
                   Portfolio de Soluciones
@@ -317,25 +261,7 @@ export default function Home() {
              </Reveal>
           </div>
           
-          <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory px-4 md:px-4 carousel-scrollbar cursor-grab active:cursor-grabbing -mx-4 md:mx-0">
-            {casosUso.map((s, i) => (
-              <Reveal key={s.title} delay={0.08 * (i + 1)} className="w-[85vw] sm:w-[320px] flex-shrink-0 snap-start h-auto">
-                <Link href={s.href} className="block h-full">
-                  <div className="bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-300 hover:shadow-[0_8px_28px_-6px_rgba(29,78,216,0.14)] transition-all h-full group cursor-pointer flex flex-col relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5 text-blue-600 group-hover:bg-blue-700 group-hover:text-white transition-colors duration-300">
-                      {s.icon}
-                    </div>
-                    <h3 className="text-base font-bold text-[#0F172A] mb-2 group-hover:text-blue-700 transition-colors">{s.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed flex-grow">{s.desc}</p>
-                    <span className="inline-flex items-center text-sm font-semibold text-blue-600 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      Ver demo <ArrowRight className="ml-1 w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+          <UseCaseCarousel />
 
           <div className="mt-16 text-center">
              <Reveal delay={0.6}>
