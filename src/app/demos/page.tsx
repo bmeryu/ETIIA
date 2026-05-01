@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import { ArrowRight, FileText, Scale, Users, Stethoscope, Leaf, Calculator, Mic } from "lucide-react";
+import { ArrowRight, FileText, Scale, Users, Stethoscope, Leaf, Calculator, Mic, Headset } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal, FadeIn } from "@/components/ui/Reveal";
 
@@ -10,6 +10,17 @@ export const metadata: Metadata = {
 };
 
 const productos = [
+  {
+    nombre: "AtendeAI",
+    slug: "atendeai",
+    industria: "Transversal · Atención al Cliente",
+    icon: <Headset className="w-6 h-6" />,
+    descripcion: "Agente de IA que entiende lenguaje natural, accede a tu CRM y ejecuta acciones reales: cambia planes, agenda técnicos, genera boletas. No es un chatbot — es un agente.",
+    resultado: "73% resolución sin humano",
+    tags: ["LLM Agents", "RAG", "CRM", "Multicanal"],
+    color: "teal",
+    disponible: true,
+  },
   {
     nombre: "AutoRend IA",
     slug: "autorend",
@@ -97,6 +108,7 @@ const colorMap: Record<string, { bg: string; text: string; border: string; tagBg
   rose:    { bg: "bg-rose-50",    text: "text-rose-600",    border: "border-rose-200",    tagBg: "bg-rose-100",    tagText: "text-rose-700" },
   green:   { bg: "bg-green-50",   text: "text-green-600",   border: "border-green-200",   tagBg: "bg-green-100",   tagText: "text-green-700" },
   cyan:    { bg: "bg-cyan-50",    text: "text-cyan-600",    border: "border-cyan-200",    tagBg: "bg-cyan-100",    tagText: "text-cyan-700" },
+  teal:    { bg: "bg-teal-50",    text: "text-teal-600",    border: "border-teal-200",    tagBg: "bg-teal-100",    tagText: "text-teal-700" },
 };
 
 export default function CasosPage() {

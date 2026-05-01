@@ -16,6 +16,22 @@ const demos: Record<string, {
   iframeSrc: string;
   pasos: { titulo: string; desc: string }[];
 }> = {
+  atendeai: {
+    nombre: "AtendeAI",
+    industria: "Transversal · Atención al Cliente",
+    tagline: "Tu mejor agente nunca descansa",
+    descripcion: "Un agente de IA que entiende lenguaje natural, accede a tus sistemas internos (CRM, ERP, base de conocimiento) y resuelve consultas en tiempo real. No es un chatbot — es un agente que ejecuta acciones.",
+    resultado: "73% resolución sin humano",
+    resultadoLabel: "-58% costo vs call center tradicional",
+    tags: ["LLM Agents", "RAG", "CRM Integration", "Conversational AI"],
+    color: "teal",
+    iframeSrc: "/demos/atendeai/index.html#demo",
+    pasos: [
+      { titulo: "Comprensión Natural", desc: "El cliente escribe como quiera — con errores, abreviaciones o en chileno. La IA entiende la intención real detrás del mensaje." },
+      { titulo: "Acceso a Sistemas", desc: "El agente consulta tu CRM, ERP o base de conocimiento en tiempo real para dar respuestas precisas, no genéricas." },
+      { titulo: "Ejecución de Acciones", desc: "No solo responde — cambia planes, genera boletas, agenda técnicos, aplica descuentos. Todo sin intervención humana." },
+    ],
+  },
   facturai: {
     nombre: "FacturAI",
     industria: "Finanzas · Contabilidad",
@@ -165,6 +181,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
     rose: { bg: "bg-rose-50", text: "text-rose-600", border: "border-rose-200" },
     green: { bg: "bg-green-50", text: "text-green-600", border: "border-green-200" },
     cyan: { bg: "bg-cyan-50", text: "text-cyan-600", border: "border-cyan-200" },
+    teal: { bg: "bg-teal-50", text: "text-teal-600", border: "border-teal-200" },
   };
   const c = colorMap[demo.color] || colorMap.blue;
 
