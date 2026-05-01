@@ -239,10 +239,11 @@ export default function Home() {
                 {/* Respuesta (ETIIA) */}
                 <Reveal delay={0.2}>
                   <div className="flex justify-end">
-                    <div className="bg-gradient-to-br from-blue-700 to-blue-900 p-7 md:p-10 rounded-[2.5rem] rounded-br-sm max-w-3xl shadow-xl shadow-blue-900/10 text-white border border-blue-600/50">
-                      <p className="text-lg md:text-xl font-medium leading-relaxed text-blue-50">
-                        <strong className="font-black text-white text-xl md:text-2xl block mb-4 tracking-tight">¿Automatización? Sí, hoy eso cualquiera lo hace.</strong>
-                        Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-blue-900 bg-blue-100 px-3 py-1.5 rounded-lg inline-block mt-3 md:mt-0 shadow-sm whitespace-nowrap">Inteligencia Artificial</span> capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a los resultados de tu negocio.
+                    <div className="bg-white p-7 md:p-10 rounded-[2.5rem] rounded-br-sm max-w-3xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200 relative">
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1/2 bg-blue-600 rounded-l-full opacity-20"></div>
+                      <p className="text-lg md:text-xl font-medium leading-relaxed text-slate-600">
+                        <strong className="font-black text-navy text-xl md:text-2xl block mb-4 tracking-tight">¿Automatización? Sí, hoy eso cualquiera lo hace.</strong>
+                        Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg inline-block mt-3 md:mt-0 shadow-sm border border-blue-100 whitespace-nowrap">Inteligencia Artificial</span> capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a los resultados de tu negocio.
                       </p>
                     </div>
                   </div>
