@@ -1,6 +1,16 @@
 const scr = document.getElementById('app-screen');
 let stage = 1;
 
+const urlMap = {
+  UPLOAD: 'app.transcribai.cl/upload',
+  PROCESSING: 'app.transcribai.cl/processing',
+  RESULTS: 'app.transcribai.cl/transcript/minera-norte-300426'
+};
+function updateUrl(s) {
+  const bar = document.getElementById('app-url');
+  if (bar) bar.innerHTML = '<span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>' + (urlMap[s] || 'app.transcribai.cl');
+}
+
 const speakers = [
   { id: 'S1', nombre: 'Gerente Comercial', color: 'blue' },
   { id: 'S2', nombre: 'Director Financiero', color: 'emerald' },
@@ -49,6 +59,7 @@ function sidebar(active) {
 
 function go(state) {
   scr.innerHTML = '';
+  updateUrl(state);
   switch(state) {
     case 'UPLOAD':
       scr.innerHTML = `<div class="flex h-full animate-fade-in text-slate-800">
@@ -79,7 +90,7 @@ function go(state) {
           <div class="space-y-3">
             <div id="l1" class="bg-slate-800 p-3 rounded-lg flex items-center gap-3 border border-slate-700 opacity-0 translate-y-2 transition-all duration-500">
               <span class="material-symbols-outlined text-green-400 text-sm">check_circle</span>
-              <span class="text-sm">Transcripción Whisper: <strong>98.4% accuracy</strong></span>
+              <span class="text-sm">Transcripción Whisper: <strong>96.8% accuracy</strong></span>
             </div>
             <div id="l2" class="bg-slate-800 p-3 rounded-lg flex items-center gap-3 border border-slate-700 opacity-0 translate-y-2 transition-all duration-500">
               <span class="material-symbols-outlined text-cyan-400 text-sm animate-spin">sync</span>
@@ -98,7 +109,7 @@ function go(state) {
       </div>`;
       setTimeout(()=>{const e=document.getElementById('l1'); if(e) e.classList.remove('translate-y-2','opacity-0');}, 600);
       setTimeout(()=>{const e=document.getElementById('l2'); if(e) {e.classList.remove('translate-y-2','opacity-0');
-        setTimeout(()=>{if(e) e.innerHTML=`<span class="material-symbols-outlined text-green-400 text-sm">check_circle</span><span class="text-sm">Diarización completada en <strong>2.1 seg</strong></span>`;},1100);
+        setTimeout(()=>{if(e) e.innerHTML=`<span class="material-symbols-outlined text-green-400 text-sm">check_circle</span><span class="text-sm">Diarización completada en <strong>3 min 42 seg</strong></span>`;},1100);
       }}, 1400);
       setTimeout(()=>{const e=document.getElementById('l3'); if(e) e.classList.remove('translate-y-2','opacity-0');}, 3000);
       setTimeout(()=>{const e=document.getElementById('l4'); if(e) e.classList.remove('translate-y-2','opacity-0');}, 4000);
