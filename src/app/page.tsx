@@ -89,7 +89,7 @@ export default function Home() {
 
           <FadeIn delay={0.35}>
             <p className="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Combinamos IA con visión estratégica para convertir tus desafíos de negocio en resultados medibles. Desde el diagnóstico hasta la implementación en producción.
+              No vendemos promesas. Tenemos soluciones de IA funcionando en producción que puedes <strong>probar ahora mismo</strong>. Atención al cliente, retail, contabilidad, legal y más.
             </p>
           </FadeIn>
 
@@ -100,9 +100,9 @@ export default function Home() {
                   Solicitar Diagnóstico Gratuito
                 </Button>
               </Link>
-              <Link href="/servicios">
+              <Link href="/demos">
                 <Button variant="outline" className="h-12 px-8 text-base">
-                  ¿Cómo Funciona? <ArrowRight className="ml-2 w-4 h-4" />
+                  Probar un Producto <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
             </div>
@@ -127,10 +127,10 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { number: "+20", label: "Proyectos de IA implementados" },
+              { number: "+10", label: "Productos listos para escoger" },
               { number: "3.2x", label: "ROI promedio en el primer año" },
               { number: "+8", label: "Industrias atendidas" },
-              { number: "100%", label: "Proyectos entregados a tiempo" },
+              { number: "2-4 sem", label: "Tiempo de implementación" },
             ].map((m, i) => (
               <Reveal key={m.label} delay={0.1 * (i + 1)}>
                 <div>
