@@ -1,46 +1,64 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Calculator, Scale, Users, Stethoscope, Leaf, GraduationCap, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Calculator, Scale, Users, Stethoscope, Leaf, GraduationCap, CheckCircle2, Headset, ShoppingBag, Mic } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal, FadeIn } from "@/components/ui/Reveal";
 import { TechLogos } from "@/components/ui/TechLogos";
 
 const casosUso = [
   {
+    icon: <Headset className="w-7 h-7" />,
+    title: "Atención al Cliente",
+    desc: "Agentes de IA que resuelven consultas en tiempo real: cambian planes, agendan técnicos, generan boletas. Sin intervención humana.",
+    href: "/demos/atendeai",
+  },
+  {
+    icon: <ShoppingBag className="w-7 h-7" />,
+    title: "Retail y eCommerce",
+    desc: "Motores de recomendación que personalizan la experiencia de cada cliente. +34% cross-sell con campañas automáticas por segmento.",
+    href: "/demos/ventaai",
+  },
+  {
     icon: <Calculator className="w-7 h-7" />,
     title: "Finanzas y Contabilidad",
-    desc: "Lectura masiva de facturas PDF, conciliación cruzada con cartolas y digitación hacia el ERP local sin tipeo humano.",
-    href: "/contacto?caso=contabilidad",
+    desc: "Lectura masiva de facturas PDF, conciliación cruzada con cartolas y digitación directa al ERP. Sin tipeo humano.",
+    href: "/demos/facturai",
   },
   {
     icon: <Scale className="w-7 h-7" />,
-    title: "Legal y Jurídico",
-    desc: "Creamos un 'Google privado' de tus contratos dictando sentencia o jurisprudencia para buscar respuestas y no palabras aisladas.",
-    href: "/contacto?caso=juridico",
+    title: "Legal y Compliance",
+    desc: "Búsqueda semántica sobre contratos y transcripción segura de reuniones con detección de compromisos incumplidos.",
+    href: "/demos/lexsearch",
   },
   {
     icon: <Users className="w-7 h-7" />,
     title: "Recursos Humanos",
-    desc: "Parseo automático de montañas de CVs. La IA extrae variables críticas y las mapea contra la descripción de tu cargo al instante.",
-    href: "/contacto?caso=rrhh",
+    desc: "Parseo automático de CVs en cualquier formato. La IA extrae variables críticas y genera un ranking instantáneo por cargo.",
+    href: "/demos/talentparse",
   },
   {
     icon: <Stethoscope className="w-7 h-7" />,
     title: "Salud y Clínicas",
-    desc: "Análisis predictivo de la agenda: la IA detecta inasistencias antes de que ocurran y contacta automáticamente a pacientes en lista de espera.",
-    href: "/contacto?caso=salud",
+    desc: "Predicción de inasistencias médicas y contacto automático a pacientes en lista de espera. -62% no-shows.",
+    href: "/demos/agendai",
   },
   {
     icon: <Leaf className="w-7 h-7" />,
     title: "Agricultura y Viñas",
-    desc: "Cruzamos tus históricos de producción con modelos predictivos para mejorar tremendamente la eficiencia y rentabilidad de exportaciones.",
-    href: "/contacto?caso=agro",
+    desc: "Modelos predictivos con datos satelitales e IoT para optimizar rendimiento y reducir merma en exportaciones.",
+    href: "/demos/cosechai",
   },
   {
     icon: <GraduationCap className="w-7 h-7" />,
-    title: "Educación y OTECs",
-    desc: "Automatización en la creación de programas y rúbricas de evaluación a medida, multiplicando el volumen sin gastar en más planificadores.",
-    href: "/contacto?caso=educacion",
+    title: "Educación",
+    desc: "Agente de IA que lee rendiciones, cruza datos con el ERP y responde automáticamente. Si falta información, redacta y envía el correo.",
+    href: "/demos/autorend",
+  },
+  {
+    icon: <Mic className="w-7 h-7" />,
+    title: "Compliance Corporativo",
+    desc: "Transcripción segura de reuniones con diarización, resúmenes ejecutivos y alertas automáticas de compromisos.",
+    href: "/demos/transcribai",
   },
 ];
 
@@ -111,7 +129,7 @@ export default function Home() {
             {[
               { number: "+20", label: "Proyectos de IA implementados" },
               { number: "3.2x", label: "ROI promedio en el primer año" },
-              { number: "+5", label: "Industrias atendidas" },
+              { number: "+8", label: "Industrias atendidas" },
               { number: "100%", label: "Proyectos entregados a tiempo" },
             ].map((m, i) => (
               <Reveal key={m.label} delay={0.1 * (i + 1)}>
@@ -308,7 +326,7 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {casosUso.map((s, i) => (
               <Reveal key={s.title} delay={0.08 * (i + 1)}>
                 <Link href={s.href}>
