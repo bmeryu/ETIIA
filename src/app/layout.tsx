@@ -94,6 +94,7 @@ export default function RootLayout({
                   ],
                   "areaServed": ["CL", "US", "MX", "ES", "CO"],
                   "priceRange": "$$$",
+                  "telephone": "+56976305985",
                   "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Santiago",
@@ -101,6 +102,7 @@ export default function RootLayout({
                   },
                   "contactPoint": {
                     "@type": "ContactPoint",
+                    "telephone": "+56976305985",
                     "email": "hola@etiia.com",
                     "contactType": "customer support"
                   },
