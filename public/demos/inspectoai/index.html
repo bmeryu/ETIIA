@@ -1,0 +1,173 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InspectoAI — Inspección Visual Inteligente | ETIIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body{font-family:'Inter',sans-serif}
+        .browser-frame{box-shadow:0 0 0 1px #e2e8f0,0 25px 50px -12px rgba(0,0,0,.5);border-radius:12px;overflow:hidden;background:#fff;width:100%;max-width:960px;height:540px;display:flex;flex-direction:column;position:relative}
+        .browser-header{background:#f8fafc;height:40px;display:flex;align-items:center;padding:0 16px;gap:8px;border-bottom:1px solid #e2e8f0;flex-shrink:0}
+        .dot{width:12px;height:12px;border-radius:50%}.dot-red{background:#ff5f56}.dot-yellow{background:#ffbd2e}.dot-green{background:#27c93f}
+        @keyframes scanline{0%{top:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
+        .scan-line{position:absolute;left:0;width:100%;height:3px;background:#f97316;box-shadow:0 0 15px #f97316;animation:scanline 2.5s linear infinite}
+        .animate-fade-in{animation:fadeIn .4s ease-in-out}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes bboxPulse{0%,100%{opacity:.7;box-shadow:0 0 0 0 rgba(239,68,68,.4)}50%{opacity:1;box-shadow:0 0 0 6px rgba(239,68,68,0)}}
+        .bbox{position:absolute;border:2px solid;border-radius:4px;animation:bboxPulse 2s infinite}
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-slate-700 rounded-md flex items-center justify-center text-white"><span class="material-symbols-outlined text-sm">search</span></div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">InspectoAI</span>
+                    <span class="hidden md:block text-slate-300 mx-2">|</span>
+                    <span class="hidden md:block text-slate-600 text-sm font-medium">Inspección Visual Inteligente</span>
+                </div>
+                <a href="#demo" class="px-4 py-2 bg-slate-700 text-white text-sm rounded-lg font-medium hover:bg-slate-800 transition">Probar</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-100 via-slate-50 to-orange-50 opacity-80"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 text-xs font-semibold uppercase tracking-wide mb-6 shadow-sm">
+                <span class="material-symbols-outlined text-orange-500 text-sm">visibility</span>
+                Computer Vision + Drone + Predictive Maintenance
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
+                Detecta fallas<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-500">antes de que cuesten millones</span>
+            </h1>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-600 leading-relaxed">
+                Sube imágenes de drones o cámaras fijas. La IA detecta corrosión, grietas, desgaste y anomalías, clasifica severidad y genera un plan de mantenimiento priorizado. <strong>-72% paradas no planificadas.</strong>
+            </p>
+            <div class="mt-10 flex justify-center">
+                <button onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})" class="px-8 py-4 bg-slate-700 text-white rounded-xl font-semibold shadow-lg shadow-slate-500/30 hover:bg-slate-800 transition transform hover:-translate-y-1 flex items-center gap-2">
+                    <span class="material-symbols-outlined">play_circle</span> Ver Inspección en Acción
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="demo" class="py-20 bg-white relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Simulación: Planta Industrial Zona Norte</h2>
+                <p class="text-slate-500 mt-2 max-w-2xl mx-auto">Inspección de correas transportadoras y tuberías con imágenes de drone. 847 imágenes analizadas en 6 minutos.</p>
+            </div>
+            <div class="flex justify-center">
+                <div class="browser-frame w-full max-w-4xl shadow-2xl">
+                    <div class="browser-header">
+                        <div class="flex gap-2"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <div class="flex-1 text-center"><div id="app-url" class="inline-block bg-white rounded-md px-4 py-1 text-xs text-slate-500 border border-slate-200 w-1/2"><span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>app.inspectoai.cl/dashboard</div></div>
+                    </div>
+                    <div id="app-screen" class="w-full h-full relative bg-slate-50 overflow-hidden flex flex-col"></div>
+                    <div class="absolute bottom-2 right-3 bg-slate-900/80 text-white text-[10px] px-2 py-1 rounded-md backdrop-blur-sm flex items-center gap-1 z-30">
+                        <span class="font-bold">etiia</span>
+                        <span class="text-slate-400">· IA Consulting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 text-center">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                <div class="text-4xl font-black text-orange-600 mb-2">-72%</div>
+                <div class="text-sm text-slate-500 font-medium">Paradas no planificadas</div>
+                <p class="text-xs text-slate-400 mt-2">Detección temprana de defectos</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                <div class="text-4xl font-black text-slate-700 mb-2">94%</div>
+                <div class="text-sm text-slate-500 font-medium">Precisión detección</div>
+                <p class="text-xs text-slate-400 mt-2">Corrosión, grietas, desgaste</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                <div class="text-4xl font-black text-green-600 mb-2">8.3x</div>
+                <div class="text-sm text-slate-500 font-medium">ROI primer año</div>
+                <p class="text-xs text-slate-400 mt-2">vs inspección manual tradicional</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">Preguntas Frecuentes</h2>
+            <div class="space-y-4">
+                <details class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
+                        ¿Necesito drones propios?
+                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                        No. El sistema funciona con cualquier fuente de imágenes: drones, cámaras fijas, 
+                        celulares o incluso fotos históricas. Si ya tienes un operador de drones, nos integramos.
+                    </p>
+                </details>
+                <details class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
+                        ¿Qué tipos de defectos detecta?
+                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                        Corrosión superficial y profunda, grietas, deformaciones, desgaste por abrasión, 
+                        pernos faltantes, fugas visibles y anomalías térmicas (con cámara infrarroja).
+                        El modelo se entrena con datos específicos de tu operación.
+                    </p>
+                </details>
+                <details class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
+                        ¿Funciona en ambiente de planta (polvo, vibración)?
+                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                        Sí. El modelo está entrenado con imágenes reales de ambientes industriales. 
+                        La precisión baja ~3-5% en condiciones extremas (polvo denso o poca luz), 
+                        y el sistema indica un score de confianza por detección.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <footer class="bg-slate-900 text-white py-16 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-orange-600/20 border border-orange-500/30 mb-6">
+                <span class="material-symbols-outlined text-orange-400 text-3xl">rocket_launch</span>
+            </div>
+            <h2 class="text-3xl font-bold mb-4">¿Cuánto te cuesta una parada no planificada?</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-8">
+                Agenda una sesión de diagnóstico gratuita. Analizamos tus procesos de inspección 
+                y te mostramos el potencial de automatización con visión por computador.
+            </p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="https://etiia.com/contacto" 
+                   class="px-8 py-4 bg-orange-600 text-white rounded-xl font-semibold shadow-lg shadow-orange-500/30 hover:bg-orange-700 transition transform hover:-translate-y-1 flex items-center gap-2">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    Agendar Diagnóstico Gratuito
+                </a>
+                <a href="https://etiia.com" 
+                   class="px-8 py-4 bg-white/10 text-white rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition flex items-center gap-2">
+                    <span class="material-symbols-outlined">language</span>
+                    Ver más soluciones ETIIA
+                </a>
+            </div>
+            <p class="text-slate-600 text-xs mt-12">
+                Demo técnica por <strong class="text-slate-400">ETIIA</strong> · Consultoría en Inteligencia Artificial · etiia.com
+            </p>
+        </div>
+    </footer>
+    <script src="demo.js"></script>
+</body>
+</html>
