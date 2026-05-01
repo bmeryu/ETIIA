@@ -145,15 +145,15 @@ export default function EquipoPage() {
                     <Reveal>
                         <p className="text-sm text-slate-400 font-semibold uppercase tracking-wider mb-8">Partners estratégicos</p>
                     </Reveal>
-                    <div className="flex justify-center items-center gap-12 md:gap-20 opacity-50">
+                    <div className="flex justify-center items-center gap-16 md:gap-28 opacity-80">
                         <Reveal delay={0.1}>
-                            <svg viewBox="0 0 100 30" className="h-8 w-auto">
-                                <text x="0" y="22" fontFamily="Inter, sans-serif" fontSize="18" fontWeight="700" fill="#FF9900">aws</text>
+                            <svg viewBox="0 0 100 30" className="h-14 md:h-20 w-auto hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-default">
+                                <text x="0" y="24" fontFamily="Inter, sans-serif" fontSize="26" fontWeight="800" fill="#FF9900">aws</text>
                             </svg>
                         </Reveal>
                         <Reveal delay={0.2}>
-                            <svg viewBox="0 0 140 30" className="h-8 w-auto">
-                                <text x="0" y="22" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="600" fill="#4285F4">Google Cloud</text>
+                            <svg viewBox="0 0 160 30" className="h-14 md:h-20 w-auto hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-default">
+                                <text x="0" y="24" fontFamily="Inter, sans-serif" fontSize="22" fontWeight="700" fill="#4285F4">Google Cloud</text>
                             </svg>
                         </Reveal>
                     </div>
