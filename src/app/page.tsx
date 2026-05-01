@@ -157,7 +157,60 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.2}>
+          <div className="grid md:grid-cols-3 gap-6 mb-10 text-left">
+            {[
+              {
+                nombre: "AtendeAI",
+                slug: "atendeai",
+                desc: "Agente de IA que resuelve consultas sin intervención humana. Cambia planes, agenda técnicos, genera boletas.",
+                metrica: "73%",
+                metricaLabel: "resolución sin humano",
+                color: "text-teal-600",
+              },
+              {
+                nombre: "VentaAI",
+                slug: "ventaai",
+                desc: "Motor de recomendación que personaliza ofertas por segmento y genera campañas automáticas.",
+                metrica: "+34%",
+                metricaLabel: "cross-sell",
+                color: "text-indigo-600",
+              },
+              {
+                nombre: "FacturAI",
+                slug: "facturai",
+                desc: "OCR inteligente que lee facturas, cruza con cartola y empuja al ERP. Sin tipeo humano.",
+                metrica: "82%",
+                metricaLabel: "conciliación automática",
+                color: "text-blue-600",
+              },
+            ].map((p, i) => (
+              <Reveal key={p.slug} delay={0.1 * (i + 1)}>
+                <Link href={`/demos/${p.slug}`}>
+                  <div className="bg-white rounded-2xl border border-slate-200 p-7 hover:border-blue-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all h-full group cursor-pointer relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-xl font-black text-[#0F172A]">{p.nombre}</h3>
+                      <div className="text-right">
+                        <div className={`text-2xl font-black ${p.color}`}>{p.metrica}</div>
+                        <div className="text-[10px] text-slate-400 font-semibold">{p.metricaLabel}</div>
+                      </div>
+                    </div>
+                    <p className="text-sm text-slate-500 leading-relaxed">{p.desc}</p>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.4}>
+            <div className="mb-12">
+              <Link href="/demos" className="inline-flex items-center text-base font-semibold text-blue-600 hover:text-blue-700 transition-colors">
+                Ver los 9 productos del portfolio <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.5}>
             <div className="inline-block bg-gradient-to-b from-blue-50/50 to-white border border-blue-100/50 shadow-sm p-6 sm:p-10 rounded-[2.5rem]">
               <p className="text-lg md:text-xl text-slate-700 leading-relaxed font-semibold max-w-2xl mx-auto">
                 El espacio entre entender el concepto y rentabilizarlo en una operación concreta es más corto de lo que parece.
