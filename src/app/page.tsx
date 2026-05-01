@@ -147,9 +147,14 @@ export default function Home() {
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 md:px-12 max-w-5xl text-center">
           <Reveal>
-            <h2 className="text-2xl md:text-4xl font-black text-navy leading-tight mb-12">
-              Trabajamos con empresas que ya leyeron suficiente sobre IA y quieren, por fin, <span className="text-blue-700">llevarla a producción.</span>
+            <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight mb-4">
+              Resultados reales, medibles
             </h2>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto mb-12">
+              Cada número tiene un producto detrás que lo respalda.
+            </p>
           </Reveal>
           
           <div className="grid md:grid-cols-3 gap-6 mb-12 text-left px-2 sm:px-0">
