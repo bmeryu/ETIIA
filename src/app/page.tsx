@@ -225,7 +225,7 @@ export default function Home() {
               </Reveal>
               <Reveal delay={0.3}>
                 <p className="text-slate-500 mb-6 leading-relaxed">
-                  ETIIA fue fundada por <strong>Bernardita Mery</strong> (Estrategia Comercial) y <strong>Pablo Olivares</strong> (Arquitectura Cloud & Delivery). Combinamos la más rigurosa metodología de negocios con ingeniería de software avanzada. Nos aseguramos de que cada desarrollo de Data, Machine Learning y automatización esté directamente conectado con los KPIs estratégicos de la Alta Dirección.
+                  Fundada por <strong>Bernardita Mery</strong> (Estrategia Comercial) y <strong>Pablo Olivares</strong> (Arquitectura Cloud & Delivery). Cada solución conecta IA directamente con los KPIs de tu negocio. No entregamos código — entregamos resultados.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-6 justify-center md:justify-start">
                   <Link href="/equipo" className="text-cian font-semibold hover:text-cian-dark transition-colors inline-flex items-center">
@@ -278,32 +278,7 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <Reveal delay={0.3}>
-              <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all h-full">
-                <h3 className="text-lg font-bold text-navy mb-3">1. Operaciones Inteligentes</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  No es un robot que solo hace clic (RPA clásico). Un modelo de IA puede leer cotizaciones en texto libre, entender qué está pidiendo el cliente, categorizarlo y empujar el dato validado a tu ERP sin intervención manual.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.4}>
-              <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all h-full">
-                <h3 className="text-lg font-bold text-navy mb-3">2. Análisis Predictivo</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  Conectamos tu historial con modelos que detectan quién dejará de comprarte el próximo mes o qué producto ofrecer para maximizar ticket. Es pasar de "mirar reportes pasados" a anticiparse al mercado corporativo.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.5}>
-              <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-all h-full">
-                <h3 className="text-lg font-bold text-navy mb-3">3. Adopción sin Temor</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  La IA fracasa si tu equipo siente que va a perder su empleo por ella. Nosotros no solo entregamos el software; entrenamos 1 a 1 a tu gerencia para que incorporen las herramientas con criterio de negocio.
-                </p>
-              </div>
-            </Reveal>
-          </div>
+
 
           <div className="mt-16 text-center">
              <Reveal delay={0.6}>
