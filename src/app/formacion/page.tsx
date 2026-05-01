@@ -45,7 +45,7 @@ export default function FormacionPage() {
       <section className="container mx-auto px-6 md:px-12 mb-16 text-center max-w-4xl">
         <FadeIn delay={0.1}>
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-100 text-xs text-slate-500 font-semibold uppercase tracking-wider mb-6">
-            UpSkilling Corporativo
+            Capacitación a Equipos
           </div>
         </FadeIn>
         <FadeIn delay={0.2}>
@@ -85,7 +85,7 @@ export default function FormacionPage() {
                     </div>
                     <Link href="/contacto" className="shrink-0 self-center">
                       <Button variant="outline" className="text-sm">
-                        Solicitar Diagnóstico <ArrowRight className="ml-1 w-3.5 h-3.5" />
+                        Cotizar Programa <ArrowRight className="ml-1 w-3.5 h-3.5" />
                       </Button>
                     </Link>
                   </div>
@@ -107,7 +107,7 @@ export default function FormacionPage() {
             </p>
             <Link href="/contacto">
               <Button className="h-12 px-8 text-base">
-                Solicitar Diagnóstico Gratuito
+                Solicitar diagnóstico IA
               </Button>
             </Link>
           </FadeIn>
