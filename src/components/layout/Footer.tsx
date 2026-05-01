@@ -58,7 +58,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Linkedin className="w-4 h-4 shrink-0" />
-                <a href="https://linkedin.com/company/etia" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://linkedin.com/company/etiia" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
               </li>
             </ul>
           </div>
