@@ -102,7 +102,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-0 w-full bg-white border-b border-slate-100 flex flex-col items-center py-6 gap-4 md:hidden shadow-md overflow-hidden"
+            className="absolute top-full left-0 w-full bg-white/98 backdrop-blur-xl border-b border-slate-100 flex flex-col items-center py-6 gap-4 md:hidden shadow-2xl overflow-hidden"
           >
             {navLinks.map((link) => (
               <Link

@@ -16,8 +16,8 @@ export default function Home() {
 
         <div className="container mx-auto px-6 md:px-12 max-w-4xl relative z-10">
           <FadeIn delay={0.1}>
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50/60 text-sm text-blue-700 font-semibold mb-8 tracking-wide">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block mr-2 animate-pulse" />
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-sm text-blue-800 font-bold mb-8 tracking-wide">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block mr-2 animate-pulse" />
               Transformando Data en Estrategia y Crecimiento
             </div>
           </FadeIn>
@@ -40,13 +40,13 @@ export default function Home() {
           <FadeIn delay={0.5}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contacto">
-                <Button className="h-12 px-8 text-base btn-pulse">
-                  Solicitar Diagnóstico Gratuito
+                <Button className="h-12 px-8 text-base btn-pulse hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300">
+                  Solicitar diagnóstico IA
                 </Button>
               </Link>
               <Link href="/demos">
-                <Button variant="outline" className="h-12 px-8 text-base">
-                  Probar un Producto <ArrowRight className="ml-2 w-4 h-4" />
+                <Button variant="outline" className="h-12 px-8 text-base hover:scale-105 hover:bg-slate-50 transition-all duration-300">
+                  Ver demos por industria <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
             </div>
@@ -54,9 +54,36 @@ export default function Home() {
 
           <FadeIn delay={0.65}>
             <p className="mt-6 text-xs text-slate-400 font-medium tracking-widest uppercase">
-              Diagnóstico gratuito · Sin compromiso · 100% confidencial
+              30 min · Sin compromiso · Confidencial · Con fundadores
             </p>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* ══════════ PARTNERS (TRUST F-PATTERN) ══════════ */}
+      <section className="py-12 bg-slate-50 border-y border-slate-100">
+        <div className="container mx-auto px-6 md:px-12 max-w-4xl text-center">
+          <FadeIn>
+            <p className="text-sm text-slate-400 font-bold uppercase tracking-widest mb-6">Partners y Certificaciones Tecnológicas</p>
+          </FadeIn>
+          <div className="flex justify-center items-center gap-12 md:gap-20">
+            <FadeIn delay={0.1}>
+              <div className="opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                <svg viewBox="0 0 60 24" className="h-8 w-auto">
+                  <text x="0" y="20" fontFamily="Inter, sans-serif" fontSize="20" fontWeight="800" fill="#252F3E">aws</text>
+                  <path d="M0 22h60" stroke="#FF9900" strokeWidth="2.5"/>
+                </svg>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                <svg viewBox="0 0 130 24" className="h-7 w-auto">
+                  <text x="0" y="18" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="600" fill="#5F6368">Google</text>
+                  <text x="60" y="18" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="600" fill="#4285F4"> Cloud</text>
+                </svg>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -110,6 +137,11 @@ export default function Home() {
                 metrica: "73%",
                 metricaLabel: "resolución sin humano",
                 color: "text-teal-600",
+                industria: "Servicios B2B",
+                tamano: "12.000 tickets/mes",
+                antesDespues: "De 2 días a 0 min",
+                tiempo: "3 semanas",
+                condicion: "Caso anonimizado",
               },
               {
                 nombre: "VentaAI",
@@ -118,6 +150,11 @@ export default function Home() {
                 metrica: "+34%",
                 metricaLabel: "cross-sell",
                 color: "text-indigo-600",
+                industria: "Retail / eCommerce",
+                tamano: "50k usuarios",
+                antesDespues: "Conv. de 1.2% a 1.6%",
+                tiempo: "4 semanas",
+                condicion: "Resultado de piloto",
               },
               {
                 nombre: "FacturAI",
@@ -126,11 +163,16 @@ export default function Home() {
                 metrica: "82%",
                 metricaLabel: "conciliación automática",
                 color: "text-blue-600",
+                industria: "Finanzas / Cont.",
+                tamano: "4.500 DTEs/mes",
+                antesDespues: "De 5 días a 2 hrs",
+                tiempo: "2 semanas",
+                condicion: "Demo simulada",
               },
             ].map((p, i) => (
               <Reveal key={p.slug} delay={0.1 * (i + 1)}>
                 <Link href={`/demos/${p.slug}`}>
-                  <div className="bg-white rounded-2xl border border-slate-200 p-7 hover:border-blue-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all h-full group cursor-pointer relative overflow-hidden">
+                  <div className="bg-white rounded-2xl border border-slate-200 p-7 hover:border-blue-300 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 h-full flex flex-col group cursor-pointer relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="text-xl font-black text-[#0F172A]">{p.nombre}</h3>
@@ -139,7 +181,18 @@ export default function Home() {
                         <div className="text-[10px] text-slate-400 font-semibold">{p.metricaLabel}</div>
                       </div>
                     </div>
-                    <p className="text-sm text-slate-500 leading-relaxed">{p.desc}</p>
+                    <p className="text-sm text-slate-600 md:text-left text-center leading-relaxed mb-4 flex-grow">{p.desc}</p>
+                    <div className="pt-4 border-t border-slate-100 flex flex-col gap-1.5 text-[11px] text-slate-500 text-left">
+                      <div className="flex justify-between"><span className="font-semibold text-slate-700">Industria:</span> <span>{p.industria}</span></div>
+                      <div className="flex justify-between"><span className="font-semibold text-slate-700">Volumen:</span> <span>{p.tamano}</span></div>
+                      <div className="flex justify-between"><span className="font-semibold text-slate-700">Impacto:</span> <span>{p.antesDespues}</span></div>
+                      <div className="flex justify-between"><span className="font-semibold text-slate-700">Implementación:</span> <span>{p.tiempo}</span></div>
+                      <div className="mt-2 text-center w-full">
+                        <span className="inline-block px-2 py-0.5 rounded-full bg-slate-100 text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                          {p.condicion}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </Link>
               </Reveal>
@@ -172,10 +225,10 @@ export default function Home() {
             <Reveal className="w-full md:w-1/3 flex flex-col justify-center items-center">
               <div className="flex flex-row justify-center items-center -space-x-6">
                 <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-md z-20 hover:z-30 hover:scale-105 transition-all outline-none">
-                  <Image src="/bernardita-nueva.jpg" alt="Bernardita Mery" fill className="object-cover" />
+                  <Image priority src="/bernardita-nueva.jpg" alt="Bernardita Mery" fill className="object-cover" />
                 </div>
                 <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-md z-10 hover:z-30 hover:scale-105 transition-all outline-none">
-                  <Image src="/pablo.jpg" alt="Pablo Olivares" fill className="object-cover object-top" />
+                  <Image priority src="/pablo.jpg" alt="Pablo Olivares" fill className="object-cover object-top" />
                 </div>
                 <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-white shadow-sm flex items-center justify-center bg-navy z-0 hover:z-30 hover:scale-105 transition-all text-white outline-none">
                   <div className="text-center">
@@ -197,7 +250,7 @@ export default function Home() {
                 </h2>
               </Reveal>
               <Reveal delay={0.3}>
-                <p className="text-slate-500 mb-6 leading-relaxed">
+                <p className="text-slate-600 mb-6 leading-relaxed text-left md:text-left">
                   Fundada por <strong>Bernardita Mery</strong> (Estrategia Comercial) y <strong>Pablo Olivares</strong> (Arquitectura Cloud & Delivery). Cada solución conecta IA directamente con los KPIs de tu negocio. No entregamos código — entregamos resultados.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-6 justify-center md:justify-start">
@@ -273,6 +326,106 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ══════════ FIT DE CLIENTE (PARA QUIÉN ES) ══════════ */}
+      <section className="py-20 bg-white border-t border-slate-100 relative overflow-hidden">
+        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+          <div className="text-center mb-16">
+            <Reveal>
+              <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight mb-4">
+                ¿Somos el partner adecuado?
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+                No le vendemos a todo el mundo. Nos enfocamos en empresas maduras donde la IA puede mover la aguja financiera.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+            {/* Para quién ES */}
+            <Reveal delay={0.2}>
+              <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 md:p-10 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-navy">ETIIA es para empresas que:</h3>
+                </div>
+                <ul className="space-y-4 text-slate-600">
+                  <li className="flex gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 mt-2"></span>
+                    <p>Tienen procesos manuales repetitivos con alto volumen de datos.</p>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 mt-2"></span>
+                    <p>Ya usan software consolidado (CRM, ERP, bases de datos).</p>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 mt-2"></span>
+                    <p>Necesitan reducir costos, mejorar atención o acelerar decisiones estratégicas.</p>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 mt-2"></span>
+                    <p>Buscan IA aplicada y resultados medibles, no "charlas inspiracionales".</p>
+                  </li>
+                </ul>
+              </div>
+            </Reveal>
+
+            {/* Para quién NO ES */}
+            <Reveal delay={0.3}>
+              <div className="bg-red-50/50 border border-red-100 rounded-3xl p-8 md:p-10 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-navy">No somos buena opción si:</h3>
+                </div>
+                <ul className="space-y-4 text-slate-600">
+                  <li className="flex gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-2"></span>
+                    <p>Solo buscas una capacitación genérica sobre cómo usar ChatGPT.</p>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-2"></span>
+                    <p>No tienes un "dueño" o líder interno asignado para el proyecto.</p>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-2"></span>
+                    <p>Quieres "probar Inteligencia Artificial" solo por moda, sin un objetivo de negocio asociado.</p>
+                  </li>
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ ANTI-ALUCINACIÓN (CRITERIO) ══════════ */}
+      <section className="py-16 md:py-20 bg-blue-50/50 border-t border-blue-100/50">
+        <div className="container mx-auto px-6 md:px-12 max-w-4xl text-center">
+          <Reveal>
+            <div className="w-16 h-16 mx-auto bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+              <svg className="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-navy mb-4">
+              Criterio Técnico: Cero Alucinaciones
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed md:text-center text-left">
+              No dejamos el output al azar. Implementamos arquitecturas <strong>RAG</strong> (Retrieval-Augmented Generation) con validación humana en el loop y guardrails estrictos. Si la IA no sabe, no inventa; escala a un agente humano. <strong>Esa es la diferencia entre un prototipo y un producto Enterprise.</strong>
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       {/* ══════════ PROCESO 3 PASOS ══════════ */}
       <section className="py-20 md:py-28 text-white bg-grid-dark relative overflow-hidden" style={{ background: '#0D1117' }}>
@@ -309,7 +462,7 @@ export default function Home() {
                     </div>
                     <div className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-3">{item.time}</div>
                     <h3 className="text-lg font-bold mb-2 text-white">{item.title}</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-400 text-sm leading-relaxed text-left md:text-center">{item.desc}</p>
                     <span className="inline-flex items-center text-sm font-semibold text-blue-400 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
                       {item.step === "1" ? "Ver demos" : item.step === "2" ? "Agendar" : "Explorar soluciones"} <ArrowRight className="ml-1 w-3.5 h-3.5" />
                     </span>
@@ -343,32 +496,7 @@ export default function Home() {
       </section>
 
 
-      {/* ══════════ PARTNERS ══════════ */}
-      <section className="py-16 bg-slate-50 border-y border-slate-100">
-        <div className="container mx-auto px-6 md:px-12 max-w-4xl text-center">
-          <Reveal>
-            <p className="text-base text-navy font-bold uppercase tracking-wider mb-8">Partners estratégicos</p>
-          </Reveal>
-          <div className="flex justify-center items-center gap-16 md:gap-24">
-            <Reveal delay={0.1}>
-              <div className="opacity-80 hover:opacity-100 transition-opacity">
-                <svg viewBox="0 0 60 24" className="h-10 w-auto">
-                  <text x="0" y="20" fontFamily="Inter, sans-serif" fontSize="20" fontWeight="800" fill="#252F3E">aws</text>
-                  <path d="M0 22h60" stroke="#FF9900" strokeWidth="2.5"/>
-                </svg>
-              </div>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <div className="opacity-80 hover:opacity-100 transition-opacity">
-                <svg viewBox="0 0 130 24" className="h-9 w-auto">
-                  <text x="0" y="18" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="600" fill="#5F6368">Google</text>
-                  <text x="60" y="18" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="600" fill="#4285F4"> Cloud</text>
-                </svg>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+
 
       {/* ══════════ CASOS DE ÉXITO ══════════ */}
       <section className="py-20 md:py-28 bg-white">
@@ -412,9 +540,9 @@ export default function Home() {
             ].map((c, i) => (
               <Reveal key={c.industry} delay={0.1 * (i + 1)}>
                 <Link href={c.href}>
-                  <div className="bg-slate-50 rounded-2xl p-7 border border-slate-100 h-full flex flex-col hover:border-blue-200 hover:shadow-md transition-all cursor-pointer group">
-                    <span className="text-xs font-semibold text-cian uppercase tracking-wider mb-3">{c.industry}</span>
-                    <p className="text-sm text-slate-500 mb-4">{c.challenge}</p>
+                  <div className="bg-slate-50 rounded-2xl p-7 border border-slate-100 h-full flex flex-col hover:border-blue-300 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer group">
+                    <span className="text-xs font-semibold text-cian uppercase tracking-wider mb-3 text-left md:text-center">{c.industry}</span>
+                    <p className="text-sm text-slate-600 mb-4 text-left md:text-center">{c.challenge}</p>
                     <p className="text-2xl font-black text-navy mb-2">{c.result}</p>
                     <p className="text-xs text-slate-400 leading-relaxed mt-auto">{c.detail}</p>
                     <span className="inline-flex items-center text-sm font-semibold text-blue-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -450,13 +578,13 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contacto">
-                <Button className="h-12 px-8 text-base">
-                  Solicitar Diagnóstico Gratuito
+                <Button className="h-12 px-8 text-base hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300">
+                  Solicitar diagnóstico IA
                 </Button>
               </Link>
             </div>
             <p className="mt-6 text-xs text-slate-400">
-              30 minutos · Diagnóstico gratuito · Tu información es 100% confidencial
+              30 minutos · Sin compromiso · Confidencial · Con fundadores
             </p>
           </FadeIn>
         </div>

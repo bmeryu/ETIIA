@@ -109,7 +109,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${jakartaSans.variable} font-sans antialiased bg-white text-navy flex flex-col min-h-screen`}>
+      <body suppressHydrationWarning className={`${jakartaSans.variable} font-sans antialiased bg-white text-navy flex flex-col min-h-screen`}>
         <Navbar />
         <main className="flex-1 flex flex-col">
           {children}

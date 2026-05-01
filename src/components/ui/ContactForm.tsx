@@ -10,8 +10,6 @@ import { FadeIn } from "./Reveal";
 
 const contactSchema = z.object({
     name: z.string().min(2, "El nombre es muy corto"),
-    company: z.string().min(2, "La empresa es requerida"),
-    role: z.string().min(2, "El cargo es requerido"),
     email: z.string().email("Correo inválido"),
     challenge: z.string().min(10, "Cuéntanos un poco más sobre tu desafío"),
 });
@@ -42,11 +40,9 @@ export function ContactForm() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     name: data.name,
-                    company: data.company,
-                    role: data.role,
                     email: data.email,
                     challenge: data.challenge,
-                    _subject: "Lead - ETIIA | " + (data.company || data.name),
+                    _subject: "Lead - ETIIA | " + data.name,
                 }),
             });
             if (res.ok) {
@@ -97,34 +93,6 @@ export function ContactForm() {
                     </div>
 
                     <div className="space-y-2">
-                        <label htmlFor="company" className="text-sm font-semibold text-navy">
-                            Empresa
-                        </label>
-                        <input
-                            {...register("company")}
-                            id="company"
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cian transition-all bg-slate-50"
-                            placeholder="Ej. Acme Corp"
-                        />
-                        {errors.company && <p className="text-red-500 text-xs">{errors.company.message}</p>}
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                        <label htmlFor="role" className="text-sm font-semibold text-navy">
-                            Cargo
-                        </label>
-                        <input
-                            {...register("role")}
-                            id="role"
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cian transition-all bg-slate-50"
-                            placeholder="Ej. Gerente General / CTO"
-                        />
-                        {errors.role && <p className="text-red-500 text-xs">{errors.role.message}</p>}
-                    </div>
-
-                    <div className="space-y-2">
                         <label htmlFor="email" className="text-sm font-semibold text-navy">
                             Correo Electrónico Corporativo
                         </label>
@@ -142,7 +110,6 @@ export function ContactForm() {
                 <div className="space-y-2">
                     <label htmlFor="challenge" className="text-sm font-semibold text-navy flex items-center justify-between">
                         <span>¿Cuál es tu principal desafío de negocio hoy?</span>
-                        <span className="text-xs text-slate-400 font-normal">Opcional pero recomendado</span>
                     </label>
                     <textarea
                         {...register("challenge")}
@@ -165,7 +132,7 @@ export function ContactForm() {
                             Procesando...
                         </>
                     ) : (
-                        "Solicitar Diagnóstico Gratuito"
+                        "Diagnosticar mi Estrategia de IA"
                     )}
                 </Button>
             </form>
