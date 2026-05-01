@@ -1,6 +1,16 @@
 const scr = document.getElementById('app-screen');
 let stage = 1;
 
+const urlMap = {
+  AGENDA: 'app.agendai.cl/agenda/29-abril',
+  ANALYZING: 'app.agendai.cl/prediccion/ejecutando',
+  RESULTS: 'app.agendai.cl/prediccion/resultados'
+};
+function updateUrl(s) {
+  const bar = document.getElementById('app-url');
+  if (bar) bar.innerHTML = '<span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>' + (urlMap[s] || 'app.agendai.cl');
+}
+
 const pacientes = [
   { nombre: 'Carmen Soto V.', hora: '09:00', doctor: 'Dra. Muñoz', esp: 'Cardiología', riesgo: 87, motivo: '3 inasistencias previas, lluvia pronosticada', estado: 'riesgo', icon: '❤️' },
   { nombre: 'Roberto Díaz M.', hora: '09:30', doctor: 'Dr. Fernández', esp: 'Traumatología', riesgo: 72, motivo: 'Historial de cancelaciones lunes AM', estado: 'riesgo', icon: '🦴' },
@@ -40,6 +50,7 @@ function sidebar(active) {
 
 function go(state) {
   scr.innerHTML = '';
+  updateUrl(state);
   switch(state) {
     case 'AGENDA':
       scr.innerHTML = `<div class="flex h-full animate-fade-in text-slate-800">
