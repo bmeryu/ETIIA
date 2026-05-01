@@ -28,13 +28,13 @@ export default function Footer() {
 
           {/* Servicios */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Servicios</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Soluciones</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/servicios#estrategia" className="hover:text-white transition-colors">Estrategia de Datos</Link></li>
-              <li><Link href="/servicios#ml" className="hover:text-white transition-colors">Machine Learning & IA</Link></li>
-              <li><Link href="/servicios#automatizacion" className="hover:text-white transition-colors">Automatización</Link></li>
-              <li><Link href="/servicios#cloud" className="hover:text-white transition-colors">Arquitectura Cloud</Link></li>
-              <li><Link href="/servicios#bi" className="hover:text-white transition-colors">Business Intelligence</Link></li>
+              <li><Link href="/servicios" className="hover:text-white transition-colors">Inteligencia Artificial</Link></li>
+              <li><Link href="/servicios" className="hover:text-white transition-colors">Automatización Inteligente</Link></li>
+              <li><Link href="/servicios" className="hover:text-white transition-colors">Estrategia & Datos</Link></li>
+              <li><Link href="/demos" className="hover:text-white transition-colors">Catálogo de Demos</Link></li>
+              <li><Link href="/formacion" className="hover:text-white transition-colors">UpSkilling Corporativo</Link></li>
             </ul>
           </div>
 
@@ -43,7 +43,6 @@ export default function Footer() {
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/equipo" className="hover:text-white transition-colors">Equipo</Link></li>
-              <li><Link href="/formacion" className="hover:text-white transition-colors">Formación</Link></li>
               <li><Link href="/contacto" className="hover:text-white transition-colors">Contacto</Link></li>
             </ul>
           </div>
