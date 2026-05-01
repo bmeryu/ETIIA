@@ -92,7 +92,7 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12 max-w-5xl text-center">
           <Reveal>
             <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight mb-4">
-              Resultados reales, medibles
+              Impacto validado en producción
             </h2>
           </Reveal>
           <Reveal delay={0.05}>
