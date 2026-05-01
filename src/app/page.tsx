@@ -488,30 +488,38 @@ export default function Home() {
             {[
               {
                 industry: "Retail · eCommerce",
-                challenge: "Pérdida de clientes por falta de personalización en ofertas y campañas.",
-                result: "+38% conversión",
-                detail: "Motor de recomendaciones con IA que personaliza ofertas por segmento de cliente en tiempo real.",
+                challenge: "Recomendaciones genéricas que no convertían. El 78% de los clientes veía los mismos productos.",
+                result: "+34% cross-sell",
+                detail: "Motor de recomendación inteligente que personaliza ofertas por segmento en tiempo real. +18% ticket promedio.",
+                href: "/demos/ventaai",
               },
               {
-                industry: "Financiero · Banca",
-                challenge: "Procesos manuales de evaluación crediticia que tomaban 5+ días.",
-                result: "De 5 días a 4 horas",
-                detail: "Pipeline de scoring crediticio automatizado con ML que redujo el time-to-decision un 95%.",
+                industry: "Finanzas · Contabilidad",
+                challenge: "Conciliación manual de facturas con cartolas bancarias: 3 personas, 5 días, errores constantes.",
+                result: "82% conciliación automática",
+                detail: "OCR inteligente + cruce automático con cartola + push directo al ERP. Sin intervención humana.",
+                href: "/demos/facturai",
               },
               {
-                industry: "Industrial · Manufactura",
-                challenge: "Paradas no planificadas que costaban USD $50K por incidente.",
+                industry: "Industrial · Minería",
+                challenge: "Paradas no planificadas que costaban USD $180K por incidente. Inspección visual 100% manual.",
                 result: "-72% paradas",
-                detail: "Sistema de mantenimiento predictivo con sensores IoT y Deep Learning para anticipar fallas.",
+                detail: "Inspección con computer vision sobre imágenes de drone. Detecta corrosión, grietas y desgaste con 94% de precisión.",
+                href: "/demos",
               },
             ].map((c, i) => (
               <Reveal key={c.industry} delay={0.1 * (i + 1)}>
-                <div className="bg-slate-50 rounded-2xl p-7 border border-slate-100 h-full flex flex-col">
-                  <span className="text-xs font-semibold text-cian uppercase tracking-wider mb-3">{c.industry}</span>
-                  <p className="text-sm text-slate-500 mb-4">{c.challenge}</p>
-                  <p className="text-2xl font-black text-navy mb-2">{c.result}</p>
-                  <p className="text-xs text-slate-400 leading-relaxed mt-auto">{c.detail}</p>
-                </div>
+                <Link href={c.href}>
+                  <div className="bg-slate-50 rounded-2xl p-7 border border-slate-100 h-full flex flex-col hover:border-blue-200 hover:shadow-md transition-all cursor-pointer group">
+                    <span className="text-xs font-semibold text-cian uppercase tracking-wider mb-3">{c.industry}</span>
+                    <p className="text-sm text-slate-500 mb-4">{c.challenge}</p>
+                    <p className="text-2xl font-black text-navy mb-2">{c.result}</p>
+                    <p className="text-xs text-slate-400 leading-relaxed mt-auto">{c.detail}</p>
+                    <span className="inline-flex items-center text-sm font-semibold text-blue-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                      Ver caso completo <ArrowRight className="ml-1 w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </Link>
               </Reveal>
             ))}
           </div>
