@@ -45,17 +45,17 @@ export default function FormacionPage() {
       <section className="container mx-auto px-6 md:px-12 mb-16 text-center max-w-4xl">
         <FadeIn delay={0.1}>
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-100 text-xs text-slate-500 font-semibold uppercase tracking-wider mb-6">
-            Servicio de Formación
+            UpSkilling Corporativo
           </div>
         </FadeIn>
         <FadeIn delay={0.2}>
           <h1 className="text-4xl md:text-[2.8rem] font-black text-navy mb-6 leading-tight">
-            Capacita a tu equipo en IA
+            UpSkilling & ReSkilling en IA
           </h1>
         </FadeIn>
         <FadeIn delay={0.35}>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            Capacitaciones in-company personalizadas, adaptadas a las necesidades específicas de tu organización. Potencia las competencias digitales de tu equipo.
+            Capacitamos a tu equipo para que adopte la Inteligencia Artificial con criterio de negocio. Programas in-company adaptados a la operación real de tu organización.
           </p>
         </FadeIn>
       </section>
