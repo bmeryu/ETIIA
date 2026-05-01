@@ -92,7 +92,7 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12 max-w-5xl text-center">
           <Reveal>
             <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight mb-4">
-              Impacto validado en producción
+              Impacto validado en el negocio
             </h2>
           </Reveal>
           <Reveal delay={0.05}>
@@ -239,11 +239,10 @@ export default function Home() {
                 {/* Respuesta (ETIIA) */}
                 <Reveal delay={0.2}>
                   <div className="flex justify-end">
-                    <div className="bg-white p-7 md:p-10 rounded-[2.5rem] rounded-br-sm max-w-3xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200 relative">
-                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1/2 bg-blue-600 rounded-l-full opacity-20"></div>
-                      <p className="text-lg md:text-xl font-medium leading-relaxed text-slate-600">
-                        <strong className="font-black text-navy text-xl md:text-2xl block mb-4 tracking-tight">¿Automatización? Sí, hoy eso cualquiera lo hace.</strong>
-                        Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg inline-block mt-3 md:mt-0 shadow-sm border border-blue-100 whitespace-nowrap">Inteligencia Artificial</span> capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a los resultados de tu negocio.
+                    <div className="bg-gradient-to-br from-slate-800 to-slate-950 p-7 md:p-10 rounded-[2.5rem] rounded-br-sm max-w-3xl shadow-xl shadow-slate-900/10 text-white border border-slate-700/50">
+                      <p className="text-lg md:text-xl font-medium leading-relaxed text-slate-100">
+                        <strong className="font-black text-white text-xl md:text-2xl block mb-4 tracking-tight">¿Automatización? Sí, hoy eso cualquiera lo hace.</strong>
+                        Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-slate-900 bg-blue-100 px-3 py-1.5 rounded-lg inline-block mt-3 md:mt-0 shadow-sm whitespace-nowrap">Inteligencia Artificial</span> capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a los resultados de tu negocio.
                       </p>
                     </div>
                   </div>
