@@ -1,6 +1,16 @@
 const scr = document.getElementById('app-screen');
 let stage = 1;
 
+const urlMap = {
+  DASHBOARD: 'app.cosechai.cl/dashboard',
+  ANALYZING: 'app.cosechai.cl/analisis/ejecutando',
+  RESULTS: 'app.cosechai.cl/prediccion/temporada-2026'
+};
+function updateUrl(s) {
+  const bar = document.getElementById('app-url');
+  if (bar) bar.innerHTML = '<span class="material-symbols-outlined text-[12px] align-middle mr-1">lock</span>' + (urlMap[s] || 'app.cosechai.cl');
+}
+
 const parcelas = [
   { id: 'P-01', variedad: 'Cabernet Sauvignon', ha: 12.4, estado: 'optimo', riego: 92, ndvi: 0.81, temp: 26, humedad: 45, prediccion: '8.2 ton/ha', vs_hist: '+18%', alerta: null },
   { id: 'P-02', variedad: 'Merlot', ha: 8.7, estado: 'alerta', riego: 68, ndvi: 0.62, temp: 29, humedad: 32, prediccion: '5.9 ton/ha', vs_hist: '-8%', alerta: 'Estrés hídrico detectado — riego insuficiente últimas 72hrs' },
@@ -35,6 +45,7 @@ function sidebar(active) {
 
 function go(state) {
   scr.innerHTML = '';
+  updateUrl(state);
   switch(state) {
     case 'DASHBOARD':
       scr.innerHTML = `<div class="flex h-full animate-fade-in text-slate-800">
