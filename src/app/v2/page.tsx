@@ -209,7 +209,7 @@ export default function HomeV2() {
           <div className="text-center mb-14">
             <Reveal>
               <h2 className="text-3xl md:text-[2.5rem] font-black text-[#0F172A] leading-tight">
-                Resultados reales, medibles
+                Impacto validado en producción
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
