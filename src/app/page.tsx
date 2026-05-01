@@ -340,7 +340,6 @@ export default function Home() {
 
       {/* ══════════ PROCESO 3 PASOS ══════════ */}
       <section className="py-20 md:py-28 text-white bg-grid-dark relative overflow-hidden" style={{ background: '#0D1117' }}>
-        {/* Glow azul — ADN ecosistema */}
         <div
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
@@ -350,94 +349,63 @@ export default function Home() {
           <div className="text-center mb-16">
             <Reveal>
               <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-800/60 bg-blue-900/30 text-xs text-blue-400 font-bold uppercase tracking-widest mb-6">
-                Cómo trabajamos
+                Cómo empezar
               </div>
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="text-3xl md:text-[2.5rem] font-black leading-tight text-white">
-                Cuéntanos sobre tu empresa
+                De la conversación al resultado
               </h2>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <p className="text-lg text-slate-400 max-w-2xl mx-auto mt-4">
-                Estamos listos para comprender tus metas y transformar tus datos en resultados tangibles.
-              </p>
             </Reveal>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
-              { step: "1", title: "Programa una llamada", desc: "Agenda un diagnóstico gratuito con uno de nuestros consultores." },
-              { step: "2", title: "Define tus objetivos", desc: "Desarrolla una estrategia clara alineada a tus KPIs de negocio." },
-              { step: "3", title: "Implementa con nosotros", desc: "Construimos la solución, te la transferimos y tú operas autónomo." },
+              { step: "1", title: "Prueba un producto", desc: "Explora nuestras demos interactivas. Ve cómo funciona la IA en tu industria antes de hablar con nadie.", time: "Ahora", href: "/demos" },
+              { step: "2", title: "Diagnóstico gratuito", desc: "30 minutos para entender tu operación y definir dónde IA genera el mayor retorno.", time: "Semana 0", href: "/contacto" },
+              { step: "3", title: "Tu solución funcionando", desc: "Implementamos con tus datos reales. Mides resultados. Decides si escalamos.", time: "Semana 2-4", href: "/demos" },
             ].map((item, i) => (
               <Reveal key={item.step} delay={0.15 * (i + 1)}>
-                <div className="text-center">
-                  <div className="w-14 h-14 rounded-full border-2 border-blue-500/60 text-blue-400 flex items-center justify-center text-xl font-bold mx-auto mb-5 bg-blue-900/20">
-                    {item.step}
+                <Link href={item.href}>
+                  <div className="text-center bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 h-full hover:bg-white/10 hover:border-blue-500/30 transition-all cursor-pointer group">
+                    <div className="w-14 h-14 rounded-full border-2 border-blue-500/60 text-blue-400 flex items-center justify-center text-xl font-bold mx-auto mb-5 bg-blue-900/20 group-hover:bg-blue-600/30 group-hover:border-blue-400 transition-colors">
+                      {item.step}
+                    </div>
+                    <div className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-3">{item.time}</div>
+                    <h3 className="text-lg font-bold mb-2 text-white">{item.title}</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                    <span className="inline-flex items-center text-sm font-semibold text-blue-400 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      {item.step === "1" ? "Ver demos" : item.step === "2" ? "Agendar" : "Explorar soluciones"} <ArrowRight className="ml-1 w-3.5 h-3.5" />
+                    </span>
                   </div>
-                  <h3 className="text-lg font-bold mb-2 text-white">{item.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
 
-          <div className="text-center">
-            <FadeIn delay={0.5}>
-              <Link href="/contacto">
-                <Button className="h-12 px-8 text-base">
-                  Solicitar Diagnóstico Gratuito
+          {/* UpSkilling como complemento dentro del dark section */}
+          <Reveal delay={0.5}>
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 max-w-3xl mx-auto mt-4">
+              <div className="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center shrink-0">
+                <GraduationCap className="w-7 h-7 text-blue-400" />
+              </div>
+              <div className="text-center md:text-left">
+                <div className="flex items-center gap-2 justify-center md:justify-start mb-1">
+                  <h3 className="text-base font-bold text-white">UpSkilling & ReSkilling en IA</h3>
+                  <span className="text-[10px] font-bold text-blue-400 bg-blue-900/50 px-2 py-0.5 rounded-full border border-blue-800/50">Complementario</span>
+                </div>
+                <p className="text-sm text-slate-400">Capacitamos a tu equipo para que adopte las herramientas con criterio de negocio. IA Generativa, automatización inteligente y análisis de datos — in-company.</p>
+              </div>
+              <Link href="/contacto" className="shrink-0">
+                <Button variant="outline" className="h-10 px-5 text-sm border-white/20 text-white hover:bg-white/10">
+                  Más info
                 </Button>
               </Link>
-            </FadeIn>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ══════════ FORMACIÓN (nuevo) ══════════ */}
-      <section className="py-20 md:py-24 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
-          <div className="text-center mb-14">
-            <Reveal>
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-100 text-xs text-slate-500 font-semibold uppercase tracking-wider mb-6">
-                Servicio de Formación
-              </div>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight">
-                Capacita a tu equipo en IA
-              </h2>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="text-lg text-slate-500 max-w-2xl mx-auto mt-4">
-                Capacitaciones in-company adaptadas a las necesidades de tu organización.
-              </p>
-            </Reveal>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { title: "IA Generativa para Negocios", desc: "Aprende a usar herramientas de IA Generativa (ChatGPT, Claude, Gemini) para automatizar tareas, generar contenido y tomar mejores decisiones comerciales.", tag: "Más popular" },
-              { title: "Automatización Inteligente con IA", desc: "Identifica procesos manuales y repetitivos en tu operación y aprende a automatizarlos con herramientas de IA. Reduce errores, ahorra tiempo y escala sin sumar personal.", tag: "Práctico" },
-            ].map((item, i) => (
-              <Reveal key={item.title} delay={0.1 * (i + 1)}>
-                <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-cian/40 hover:shadow-md transition-all h-full">
-                  <div className="flex items-center gap-3 mb-4">
-                    <GraduationCap className="w-6 h-6 text-cian" />
-                    <span className="text-xs font-bold text-cian bg-cian/10 px-3 py-1 rounded-full">{item.tag}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-navy mb-3">{item.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed mb-4">{item.desc}</p>
-                  <Link href="/contacto" className="text-sm font-semibold text-cian hover:text-cian-dark transition-colors inline-flex items-center">
-                    Más información <ArrowRight className="ml-1 w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════ PARTNERS ══════════ */}
       <section className="py-16 bg-slate-50 border-y border-slate-100">
