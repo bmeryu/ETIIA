@@ -306,9 +306,20 @@ export default function Home() {
               </div>
             </Reveal>
           </div>
-          <div className="mt-12 flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory px-4 -mx-4 md:px-0 md:mx-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="mt-16 mb-8 px-4 md:px-0 text-center md:text-left">
+             <Reveal delay={0.2}>
+               <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-50 text-xs text-blue-700 font-bold uppercase tracking-wider mb-3 border border-blue-100">
+                  Portfolio de Soluciones
+               </div>
+               <h3 className="text-2xl md:text-3xl font-black text-navy leading-tight">
+                  Nuestras capacidades por industria
+               </h3>
+             </Reveal>
+          </div>
+          
+          <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory px-4 md:px-4 carousel-scrollbar cursor-grab active:cursor-grabbing -mx-4 md:mx-0">
             {casosUso.map((s, i) => (
-              <Reveal key={s.title} delay={0.08 * (i + 1)} className="min-w-[280px] sm:min-w-[320px] flex-shrink-0 snap-start h-auto">
+              <Reveal key={s.title} delay={0.08 * (i + 1)} className="w-[85vw] sm:w-[320px] flex-shrink-0 snap-start h-auto">
                 <Link href={s.href} className="block h-full">
                   <div className="bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-300 hover:shadow-[0_8px_28px_-6px_rgba(29,78,216,0.14)] transition-all h-full group cursor-pointer flex flex-col relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />

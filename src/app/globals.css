@@ -190,4 +190,21 @@
   .nav-link-animated:hover::after {
     width: 100%;
   }
+
+  /* ═══ CUSTOM SCROLLBAR FOR CAROUSEL ═══ */
+  .carousel-scrollbar::-webkit-scrollbar {
+    height: 8px;
+  }
+  .carousel-scrollbar::-webkit-scrollbar-track {
+    background: rgba(226, 232, 240, 0.4);
+    border-radius: 10px;
+    margin: 0 16px;
+  }
+  .carousel-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+  }
+  .carousel-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
 }
