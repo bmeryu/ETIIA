@@ -14,9 +14,29 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.etiia.com"),
   title: {
     template: "%s | ETIIA",
-    default: "ETIIA | Consultoría en Inteligencia Artificial",
+    default: "ETIIA | Consultoría e Implementación de Inteligencia Artificial",
   },
-  description: "Consultoría en Inteligencia Artificial en Chile. Transformamos data en estrategia y crecimiento para empresas que buscan resultados medibles con IA.",
+  description: "Firma especializada en Inteligencia Artificial y Automatización Inteligente B2B. Conectamos tecnología con KPIs de negocio reales.",
+  keywords: ["Inteligencia Artificial", "Consultoría IA Chile", "Automatización de Procesos", "Machine Learning", "IA Generativa B2B", "UpSkilling Corporativo", "Agentes IA"],
+  authors: [{ name: "Bernardita Mery" }, { name: "Pablo E. Olivares" }],
+  creator: "ETIIA",
+  publisher: "ETIIA",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   alternates: {
     canonical: "/",
   },
@@ -26,8 +46,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "ETIIA | Consultoría en Inteligencia Artificial",
-    description: "Consultoría en Inteligencia Artificial. Transformamos data en estrategia y crecimiento.",
+    title: "ETIIA | Consultoría e Implementación de IA",
+    description: "Firma especializada en Inteligencia Artificial B2B. Conectamos tecnología con KPIs de negocio reales.",
     url: "https://www.etiia.com",
     siteName: "ETIIA",
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'ETIIA Consultoría en IA' }],
@@ -36,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ETIIA | Consultoría en Inteligencia Artificial",
-    description: "Transformamos data en estrategia y crecimiento para empresas que buscan resultados medibles con IA.",
+    title: "ETIIA | Consultoría e Implementación de IA",
+    description: "Firma especializada en IA B2B. Conectamos tecnología con KPIs de negocio reales.",
     images: ["/og-image.jpg"],
   },
 };
@@ -55,11 +75,36 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "ProfessionalService",
               "name": "ETIIA",
               "url": "https://www.etiia.com",
               "logo": "https://www.etiia.com/favicon.svg",
-              "description": "Consultoría en Inteligencia Artificial aplicada a negocios en Chile."
+              "image": "https://www.etiia.com/og-image.jpg",
+              "description": "Consultoría e implementación de Inteligencia Artificial aplicada a negocios B2B en Chile y Latam.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Santiago",
+                "addressCountry": "CL"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "hola@etiia.com",
+                "contactType": "customer support"
+              },
+              "sameAs": [
+                "https://linkedin.com/company/etiia",
+                "https://bernarditamery.cl"
+              ],
+              "founder": [
+                {
+                  "@type": "Person",
+                  "name": "Bernardita Mery"
+                },
+                {
+                  "@type": "Person",
+                  "name": "Pablo E. Olivares"
+                }
+              ]
             })
           }}
         />
