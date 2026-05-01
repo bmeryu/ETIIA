@@ -24,10 +24,10 @@ export default function Home() {
 
           <FadeIn delay={0.2}>
             <h1 className="text-4xl md:text-6xl lg:text-[3.75rem] font-black tracking-tight text-[#0F172A] mb-6 leading-[1.08]">
-              Inteligencia Artificial que{" "}
+              Consultoría en Inteligencia Artificial B2B{" "}
               <br className="hidden md:block" />
-              se traduce en{" "}
-              <span className="text-gradient-blue">resultados</span>
+              que se traduce en{" "}
+              <span className="text-gradient-blue">resultados reales</span>
             </h1>
           </FadeIn>
 
@@ -119,7 +119,7 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12 max-w-5xl text-center">
           <Reveal>
             <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight mb-4">
-              Impacto validado en el negocio
+              Impacto validado de nuestra Consultoría en Inteligencia Artificial
             </h2>
           </Reveal>
           <Reveal delay={0.05}>
@@ -246,12 +246,12 @@ export default function Home() {
               </Reveal>
               <Reveal delay={0.2}>
                 <h2 className="text-2xl md:text-3xl font-black text-navy mb-4">
-                  Ingeniería robusta con visión de negocio
+                  Ingeniería Cloud y Desarrollo de IA con visión de negocio
                 </h2>
               </Reveal>
               <Reveal delay={0.3}>
                 <p className="text-slate-600 mb-6 leading-relaxed text-left md:text-left">
-                  Fundada por <strong>Bernardita Mery</strong> (Estrategia Comercial) y <strong>Pablo Olivares</strong> (Arquitectura Cloud & Delivery). Cada solución conecta IA directamente con los KPIs de tu negocio. No entregamos código — entregamos resultados.
+                  Fundada por <strong><a href="https://www.linkedin.com/in/bernarditamery/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">Bernardita Mery</a></strong> (Estrategia Comercial) y <strong><a href="https://linkedin.com/company/etiia" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">Pablo Olivares</a></strong> (Arquitectura Cloud & Delivery). Cada solución conecta IA directamente con los KPIs de tu negocio. No entregamos código — entregamos resultados.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-6 justify-center md:justify-start">
                   <Link href="/equipo" className="text-cian font-semibold hover:text-cian-dark transition-colors inline-flex items-center">
@@ -295,7 +295,7 @@ export default function Home() {
                     <div className="bg-gradient-to-br from-slate-800 to-slate-950 p-7 md:p-10 rounded-[2.5rem] rounded-br-sm max-w-3xl shadow-xl shadow-slate-900/10 text-white border border-slate-700/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-900/20 hover:border-slate-600/50 transition-all duration-300 cursor-default group">
                       <p className="text-lg md:text-xl font-medium leading-relaxed text-slate-100">
                         <strong className="font-black text-white text-xl md:text-2xl block mb-4 tracking-tight group-hover:text-blue-50 transition-colors">¿Automatización? Sí, hoy eso cualquiera lo hace.</strong>
-                        Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-slate-900 bg-blue-100 px-3 py-1.5 rounded-lg inline-block mt-3 md:mt-0 shadow-sm whitespace-nowrap group-hover:bg-blue-200 group-hover:text-navy transition-all">Inteligencia Artificial</span> capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a los resultados de tu negocio.
+                        Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-slate-900 bg-blue-100 px-3 py-1.5 rounded-lg inline-block mt-3 md:mt-0 shadow-sm whitespace-nowrap group-hover:bg-blue-200 group-hover:text-navy transition-all">Inteligencia Artificial</span> (basados en Machine Learning y LLMs) capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a los resultados de tu negocio.
                       </p>
                     </div>
                   </div>
@@ -309,7 +309,7 @@ export default function Home() {
                   Catálogo de Productos
                </div>
                <h3 className="text-2xl md:text-3xl font-black text-navy leading-tight">
-                  Soluciones de IA listas para tu industria
+                  Soluciones de IA y Automatización listas para tu industria
                </h3>
              </Reveal>
           </div>
@@ -332,7 +332,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <Reveal>
               <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight mb-4">
-                ¿Somos el partner adecuado?
+                ¿Somos tu partner B2B para la Transformación con IA?
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
@@ -504,7 +504,7 @@ export default function Home() {
           <div className="text-center mb-14">
             <Reveal>
               <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight">
-                Resultados reales en empresas reales
+                Resultados reales en automatización de procesos con IA
               </h2>
             </Reveal>
             <Reveal delay={0.1}>

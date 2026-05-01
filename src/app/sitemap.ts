@@ -6,18 +6,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.etiia.com';
 
   // Definición de las rutas principales del sitio
-  const routes = [
+  const baseRoutes = [
     '',
     '/soluciones',
     '/demos',
     '/formacion',
     '/equipo',
     '/contacto',
-  ].map((route) => ({
+  ];
+
+  const demoRoutes = [
+    '/demos/atendeai',
+    '/demos/ventaai',
+    '/demos/facturai',
+  ];
+
+  const routes = [...baseRoutes, ...demoRoutes].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : 0.8, // Prioridad más alta para la home
+    priority: route === '' ? 1 : (route.includes('/demos/') ? 0.9 : 0.8),
   }));
 
   // Aquí en el futuro se podrían agregar dinámicamente las rutas de cada demo individual
