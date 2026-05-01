@@ -32,6 +32,22 @@ const demos: Record<string, {
       { titulo: "Ejecución de Acciones", desc: "No solo responde — cambia planes, genera boletas, agenda técnicos, aplica descuentos. Todo sin intervención humana." },
     ],
   },
+  ventaai: {
+    nombre: "VentaAI",
+    industria: "Retail · eCommerce",
+    tagline: "Cada cliente ve lo que quiere comprar",
+    descripcion: "Un motor de recomendación que analiza comportamiento de navegación, historial de compras y perfil del cliente para sugerir productos con alta probabilidad de conversión. Genera campañas automáticas por segmento.",
+    resultado: "+34% cross-sell",
+    resultadoLabel: "+18% ticket promedio en 60 días",
+    tags: ["Collaborative Filtering", "NLP Product", "Predicción", "API eCommerce"],
+    color: "indigo",
+    iframeSrc: "/demos/ventaai/index.html#demo",
+    pasos: [
+      { titulo: "Análisis de Comportamiento", desc: "El motor analiza 48,000+ transacciones históricas, navegación en sitio y perfil del cliente para construir una matriz de preferencias." },
+      { titulo: "Recomendación Personalizada", desc: "Collaborative filtering cruza cada cliente contra el catálogo completo para sugerir productos con alta probabilidad de compra." },
+      { titulo: "Campaña Automática", desc: "Genera emails, push y banners personalizados con los productos recomendados, en el horario óptimo para cada cliente." },
+    ],
+  },
   facturai: {
     nombre: "FacturAI",
     industria: "Finanzas · Contabilidad",
@@ -182,6 +198,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
     green: { bg: "bg-green-50", text: "text-green-600", border: "border-green-200" },
     cyan: { bg: "bg-cyan-50", text: "text-cyan-600", border: "border-cyan-200" },
     teal: { bg: "bg-teal-50", text: "text-teal-600", border: "border-teal-200" },
+    indigo: { bg: "bg-indigo-50", text: "text-indigo-600", border: "border-indigo-200" },
   };
   const c = colorMap[demo.color] || colorMap.blue;
 

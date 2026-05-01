@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import { ArrowRight, FileText, Scale, Users, Stethoscope, Leaf, Calculator, Mic, Headset } from "lucide-react";
+import { ArrowRight, FileText, Scale, Users, Stethoscope, Leaf, Calculator, Mic, Headset, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal, FadeIn } from "@/components/ui/Reveal";
 
@@ -19,6 +19,17 @@ const productos = [
     resultado: "73% resolución sin humano",
     tags: ["LLM Agents", "RAG", "CRM", "Multicanal"],
     color: "teal",
+    disponible: true,
+  },
+  {
+    nombre: "VentaAI",
+    slug: "ventaai",
+    industria: "Retail · eCommerce",
+    icon: <ShoppingBag className="w-6 h-6" />,
+    descripcion: "Motor de recomendación que analiza comportamiento, historial y perfil del cliente para sugerir productos con alta probabilidad de conversión. Genera campañas automáticas por segmento.",
+    resultado: "+34% cross-sell",
+    tags: ["Collaborative Filtering", "NLP", "Predicción"],
+    color: "indigo",
     disponible: true,
   },
   {
@@ -109,6 +120,7 @@ const colorMap: Record<string, { bg: string; text: string; border: string; tagBg
   green:   { bg: "bg-green-50",   text: "text-green-600",   border: "border-green-200",   tagBg: "bg-green-100",   tagText: "text-green-700" },
   cyan:    { bg: "bg-cyan-50",    text: "text-cyan-600",    border: "border-cyan-200",    tagBg: "bg-cyan-100",    tagText: "text-cyan-700" },
   teal:    { bg: "bg-teal-50",    text: "text-teal-600",    border: "border-teal-200",    tagBg: "bg-teal-100",    tagText: "text-teal-700" },
+  indigo:  { bg: "bg-indigo-50",  text: "text-indigo-600",  border: "border-indigo-200",  tagBg: "bg-indigo-100",  tagText: "text-indigo-700" },
 };
 
 export default function CasosPage() {
