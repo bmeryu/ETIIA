@@ -10,6 +10,7 @@ export interface InsightMetadata {
   date: string;
   author: string;
   slug: string;
+  category: string;
 }
 
 export function getInsightsList(): InsightMetadata[] {
@@ -32,6 +33,7 @@ export function getInsightsList(): InsightMetadata[] {
         description: matterResult.data.description,
         date: matterResult.data.date,
         author: matterResult.data.author,
+        category: matterResult.data.category || 'Estrategia AI',
       } as InsightMetadata;
     });
 
@@ -61,6 +63,7 @@ export function getInsightBySlug(slug: string) {
       description: matterResult.data.description,
       date: matterResult.data.date,
       author: matterResult.data.author,
+      category: matterResult.data.category || 'Estrategia AI',
     } as InsightMetadata,
     content: matterResult.content,
   };

@@ -1,8 +1,9 @@
 ---
 title: "Por qué automatizar un proceso roto es tirar dinero a la basura (Y la era de los Agentes Autónomos)"
 description: "La transición de los chatbots a la fuerza laboral de Agentes Autónomos exige destruir el proceso viejo antes de automatizarlo."
-date: "2026-05-02"
+date: "2026-04-27"
 author: "Bernardita Mery"
+category: "Operaciones"
 ---
 
 **¿Por qué las empresas están perdiendo dinero al invertir en herramientas de IA?**

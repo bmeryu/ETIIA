@@ -1,8 +1,9 @@
 ---
 title: "El mito del Ingeniero IA: El verdadero talento que frena la innovación en tu empresa"
 description: "Por qué tu empresa no necesita contratar costosos ingenieros de Machine Learning, sino entrenar a su propio Intérprete de IA."
-date: "2026-05-03"
+date: "2026-04-29"
 author: "Bernardita Mery"
+category: "Talento B2B"
 ---
 
 **¿Por qué fracasan las contrataciones tecnológicas en empresas tradicionales?**

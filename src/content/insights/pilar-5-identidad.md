@@ -1,8 +1,9 @@
 ---
 title: "El fraude del que nadie habla: Por qué tus protocolos de aprobación acaban de caducar"
 description: "Cómo los deepfakes amenazan la liquidez de tu empresa y por qué confiar ciegamente en tus ojos y oídos es el camino hacia la quiebra."
-date: "2026-05-05"
+date: "2026-05-02"
 author: "Bernardita Mery"
+category: "Ciberseguridad"
 ---
 
 **¿Estás seguro de que la persona que autorizó ese pago es realmente tu gerente?**

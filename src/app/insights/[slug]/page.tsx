@@ -75,7 +75,7 @@ export default function InsightArticle({ params }: { params: { slug: string } })
               })}
             </time>
             <span className="rounded-full bg-indigo-500/10 px-3 py-1 font-medium text-indigo-400">
-              Estrategia AI
+              {metadata.category}
             </span>
           </div>
           <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl mb-6 leading-tight">

@@ -1,8 +1,9 @@
 ---
 title: "La puerta trasera invisible: El mayor riesgo de seguridad corporativa no es tu código"
 description: "Cómo la ignorancia tecnológica de un gerente y el mal uso de plataformas públicas expone tu base de datos a internet."
-date: "2026-05-04"
+date: "2026-05-01"
 author: "Bernardita Mery"
+category: "Compliance"
 ---
 
 **¿Por qué conectar Inteligencia Artificial a tu empresa puede destruir tu confidencialidad?**

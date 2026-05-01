@@ -1,8 +1,9 @@
 ---
 title: "El error más caro al comprar Inteligencia Artificial: Digitalizar el desorden"
 description: "Por qué conectar agentes autónomos de última generación a un sistema de datos roto es un suicidio operativo para tu empresa."
-date: "2026-05-01"
+date: "2026-04-25"
 author: "Bernardita Mery"
+category: "Gobernanza"
 ---
 
 *(Optimizado para LinkedIn Articles o Blog ETIIA - Enfoque Transversal PYME/Corporativo)*

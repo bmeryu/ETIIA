@@ -38,7 +38,7 @@ export default function InsightsHub() {
                     })}
                   </time>
                   <span className="relative z-10 rounded-full bg-indigo-500/10 px-3 py-1.5 font-medium text-indigo-400">
-                    Estrategia AI
+                    {insight.category}
                   </span>
                 </div>
                 <div className="group relative">
@@ -50,10 +50,10 @@ export default function InsightsHub() {
                   </p>
                 </div>
               </div>
-              <div className="mt-8 flex items-center gap-x-4">
+              <div className="mt-8 flex items-center gap-x-4 border-t border-neutral-800 pt-4">
                 <div className="text-sm leading-6">
-                  <p className="font-semibold text-white">
-                    {insight.author}
+                  <p className="font-semibold text-white flex items-center gap-2">
+                    {insight.author} <span className="text-neutral-500 font-normal">| Consultora ETIIA</span>
                   </p>
                 </div>
               </div>
