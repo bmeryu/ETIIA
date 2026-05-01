@@ -223,32 +223,32 @@ export default function Home() {
                 El Desafío Real
               </div>
             </Reveal>
-            <Reveal delay={0.1}>
-              <div className="max-w-2xl mx-auto mt-6 mb-16 flex justify-center px-4 relative z-10">
-                <div className="relative w-full">
-                  {/* Globo principal */}
-                  <div className="bg-white rounded-[2.5rem] p-8 md:p-12 text-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200">
-                    <h2 className="text-2xl md:text-3xl font-semibold text-slate-700 leading-relaxed tracking-tight">
-                      Todo esto suena muy bien,<br/>
-                      ¿pero qué hacen exactamente?<br/>
-                      <span className="font-black text-navy">¿Automatizan?</span>
-                    </h2>
+            <div className="max-w-4xl mx-auto mb-20 px-2">
+              <div className="flex flex-col gap-6">
+                {/* Pregunta (Cliente) */}
+                <Reveal delay={0.1}>
+                  <div className="flex justify-start">
+                    <div className="bg-slate-200/50 backdrop-blur-sm p-6 md:p-8 rounded-[2rem] rounded-tl-sm max-w-2xl border border-slate-200/80 shadow-sm">
+                      <p className="text-xl md:text-2xl font-semibold text-slate-700 leading-relaxed tracking-tight">
+                        "Todo esto suena muy bien, ¿pero qué hacen exactamente? <span className="font-black text-navy">¿Automatizan?</span>"
+                      </p>
+                    </div>
                   </div>
-                  {/* Cola del globo (Tail) */}
-                  <div className="absolute -bottom-[22px] left-12 w-12 h-12 bg-white border-b border-l border-slate-200 transform -rotate-45 rounded-bl-sm -z-10 shadow-[-4px_4px_10px_rgb(0,0,0,0.02)]"></div>
-                </div>
+                </Reveal>
+
+                {/* Respuesta (ETIIA) */}
+                <Reveal delay={0.2}>
+                  <div className="flex justify-end">
+                    <div className="bg-gradient-to-br from-blue-700 to-blue-900 p-7 md:p-10 rounded-[2.5rem] rounded-br-sm max-w-3xl shadow-xl shadow-blue-900/10 text-white border border-blue-600/50">
+                      <p className="text-lg md:text-xl font-medium leading-relaxed text-blue-50">
+                        <strong className="font-black text-white text-xl md:text-2xl block mb-4 tracking-tight">¿Automatización? Sí, hoy eso cualquiera lo hace.</strong>
+                        Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-blue-900 bg-blue-100 px-3 py-1.5 rounded-lg inline-block mt-3 md:mt-0 shadow-sm whitespace-nowrap">Inteligencia Artificial</span> capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a los resultados de tu negocio.
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
               </div>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <div className="bg-white p-6 sm:p-10 rounded-[2.5rem] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 mt-8 mb-16 max-w-4xl mx-auto hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 text-left sm:text-center group">
-                <p className="text-lg md:text-xl font-medium text-slate-600 leading-relaxed">
-                   <strong className="text-navy font-black block sm:inline mb-3 sm:mb-0 text-xl md:text-2xl">¿Automatización? Sí, hoy eso cualquiera lo hace.</strong><br className="hidden sm:block mt-2"/>
-                   <span className="block mt-4">
-                     Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg inline-block mt-2 sm:mt-0 sm:ml-1 border border-blue-100/50 group-hover:bg-blue-100/50 transition-colors">Inteligencia Artificial</span> capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a tus resultados.
-                   </span>
-                </p>
-              </div>
-            </Reveal>
+            </div>
           </div>
           <div className="mt-16 mb-4 px-4 md:px-0 text-center md:text-left">
              <Reveal delay={0.2}>
