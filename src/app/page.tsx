@@ -306,8 +306,25 @@ export default function Home() {
               </div>
             </Reveal>
           </div>
-
-
+          <div className="mt-12 flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory px-4 -mx-4 md:px-0 md:mx-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            {casosUso.map((s, i) => (
+              <Reveal key={s.title} delay={0.08 * (i + 1)} className="min-w-[280px] sm:min-w-[320px] flex-shrink-0 snap-start h-auto">
+                <Link href={s.href} className="block h-full">
+                  <div className="bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-300 hover:shadow-[0_8px_28px_-6px_rgba(29,78,216,0.14)] transition-all h-full group cursor-pointer flex flex-col relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5 text-blue-600 group-hover:bg-blue-700 group-hover:text-white transition-colors duration-300">
+                      {s.icon}
+                    </div>
+                    <h3 className="text-base font-bold text-[#0F172A] mb-2 group-hover:text-blue-700 transition-colors">{s.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed flex-grow">{s.desc}</p>
+                    <span className="inline-flex items-center text-sm font-semibold text-blue-600 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      Ver demo <ArrowRight className="ml-1 w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
 
           <div className="mt-16 text-center">
              <Reveal delay={0.6}>
@@ -319,53 +336,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════ SERVICIOS GRID (estilo MAS) ══════════ */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-          <div className="text-center mb-16">
-            <Reveal>
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-100 text-xs text-slate-500 font-semibold uppercase tracking-wider mb-6">
-                Casos de Uso Reales
-              </div>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="text-3xl md:text-[2.5rem] font-black text-navy leading-tight">
-                No vendemos tecnología teórica.<br/>Resolvemos cuellos de botella específicos.
-              </h2>
-            </Reveal>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {casosUso.map((s, i) => (
-              <Reveal key={s.title} delay={0.08 * (i + 1)}>
-                <Link href={s.href}>
-                  <div className="bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-300 hover:shadow-[0_8px_28px_-6px_rgba(29,78,216,0.14)] transition-all h-full group cursor-pointer flex flex-col lift-card relative overflow-hidden">
-                    {/* Borde top coloreado al hover — mismo patrón que BernarditaMery */}
-                    <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5 text-blue-600 group-hover:bg-blue-700 group-hover:text-white transition-colors duration-300">
-                      {s.icon}
-                    </div>
-                    <h3 className="text-base font-bold text-[#0F172A] mb-2 group-hover:text-blue-700 transition-colors">{s.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed flex-grow">{s.desc}</p>
-                    <span className="inline-flex items-center text-sm font-semibold text-blue-600 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      Hablemos de tu caso <ArrowRight className="ml-1 w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="mt-14 text-center max-w-3xl mx-auto">
-            <Reveal delay={0.6}>
-              <div className="inline-block bg-cian/5 border border-cian/20 rounded-2xl p-6 text-base text-slate-700 font-medium shadow-sm">
-                <span className="block text-xl font-black text-navy mb-2">Y más...</span> 
-                <span className="font-bold">¿No ves tu industria aquí?</span> Estos casos son referenciales. Nuestra tecnología es transversal: si en tu empresa hay alta volumetría de datos, operativas repetitivas o cuellos de botella para procesar información, <strong className="text-cian font-black">podemos resolverlo</strong>.
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
 
       {/* ══════════ PROCESO 3 PASOS ══════════ */}
       <section className="py-20 md:py-28 text-white bg-grid-dark relative overflow-hidden" style={{ background: '#0D1117' }}>
