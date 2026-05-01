@@ -228,7 +228,7 @@ export default function Home() {
                 {/* Pregunta (Cliente) */}
                 <Reveal delay={0.1}>
                   <div className="flex justify-start">
-                    <div className="bg-slate-200/50 backdrop-blur-sm p-6 md:p-8 rounded-[2rem] rounded-tl-sm max-w-2xl border border-slate-200/80 shadow-sm">
+                    <div className="bg-slate-200/50 backdrop-blur-sm p-6 md:p-8 rounded-[2rem] rounded-tl-sm max-w-2xl border border-slate-200/80 shadow-sm hover:-translate-y-1 hover:shadow-md hover:bg-slate-200/80 transition-all duration-300 cursor-default">
                       <p className="text-xl md:text-2xl font-semibold text-slate-700 leading-relaxed tracking-tight">
                         "Todo esto suena muy bien, ¿pero qué hacen exactamente? <span className="font-black text-navy">¿Automatizan?</span>"
                       </p>
@@ -239,10 +239,10 @@ export default function Home() {
                 {/* Respuesta (ETIIA) */}
                 <Reveal delay={0.2}>
                   <div className="flex justify-end">
-                    <div className="bg-gradient-to-br from-slate-800 to-slate-950 p-7 md:p-10 rounded-[2.5rem] rounded-br-sm max-w-3xl shadow-xl shadow-slate-900/10 text-white border border-slate-700/50">
+                    <div className="bg-gradient-to-br from-slate-800 to-slate-950 p-7 md:p-10 rounded-[2.5rem] rounded-br-sm max-w-3xl shadow-xl shadow-slate-900/10 text-white border border-slate-700/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-900/20 hover:border-slate-600/50 transition-all duration-300 cursor-default group">
                       <p className="text-lg md:text-xl font-medium leading-relaxed text-slate-100">
-                        <strong className="font-black text-white text-xl md:text-2xl block mb-4 tracking-tight">¿Automatización? Sí, hoy eso cualquiera lo hace.</strong>
-                        Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-slate-900 bg-blue-100 px-3 py-1.5 rounded-lg inline-block mt-3 md:mt-0 shadow-sm whitespace-nowrap">Inteligencia Artificial</span> capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a los resultados de tu negocio.
+                        <strong className="font-black text-white text-xl md:text-2xl block mb-4 tracking-tight group-hover:text-blue-50 transition-colors">¿Automatización? Sí, hoy eso cualquiera lo hace.</strong>
+                        Pero no instalamos automatización tradicional que se rompe si cambia un formato. Implementamos sistemas híbridos de <span className="font-bold text-slate-900 bg-blue-100 px-3 py-1.5 rounded-lg inline-block mt-3 md:mt-0 shadow-sm whitespace-nowrap group-hover:bg-blue-200 group-hover:text-navy transition-all">Inteligencia Artificial</span> capaces de entender contexto, tomar micro-decisiones escalables y conectarse directo a los resultados de tu negocio.
                       </p>
                     </div>
                   </div>
