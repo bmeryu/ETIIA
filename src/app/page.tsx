@@ -253,10 +253,10 @@ export default function Home() {
           <div className="mt-16 mb-4 px-4 md:px-0 text-center md:text-left">
              <Reveal delay={0.2}>
                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-50 text-xs text-blue-700 font-bold uppercase tracking-wider mb-3 border border-blue-100">
-                  Portfolio de Soluciones
+                  Catálogo de Productos
                </div>
                <h3 className="text-2xl md:text-3xl font-black text-navy leading-tight">
-                  Nuestras capacidades por industria
+                  Soluciones de IA listas para tu industria
                </h3>
              </Reveal>
           </div>
