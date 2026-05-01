@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -21,6 +22,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,9 +72,17 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:block">
-          <Link href="/contacto">
-            <Button>Solicitar Diagnóstico</Button>
-          </Link>
+          {pathname === "/contacto" ? (
+            <Link href="/demos">
+              <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50">
+                Catálogo de Demos
+              </Button>
+            </Link>
+          ) : (
+            <Link href="/contacto">
+              <Button>Solicitar Diagnóstico</Button>
+            </Link>
+          )}
         </div>
 
         {/* ═══ Mobile Toggle ═══ */}
@@ -104,9 +114,17 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button>Solicitar Diagnóstico</Button>
-            </Link>
+            {pathname === "/contacto" ? (
+              <Link href="/demos" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50">
+                  Catálogo de Demos
+                </Button>
+              </Link>
+            ) : (
+              <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button>Solicitar Diagnóstico</Button>
+              </Link>
+            )}
           </motion.nav>
         )}
       </AnimatePresence>
