@@ -90,7 +90,7 @@ export function Carousel({ items }: { items: CarouselItem[] }) {
           <div
             key={i}
             data-card
-            className="bg-white border border-slate-200 rounded-2xl p-7 flex flex-col shrink-0 hover:border-blue-200 hover:shadow-md transition-all"
+            className="bg-white border border-slate-200 rounded-2xl p-7 flex flex-col shrink-0 hover:border-blue-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
             style={{ width: "280px" }}
           >
             {item.type === "product" ? (
