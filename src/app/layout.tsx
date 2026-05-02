@@ -115,7 +115,7 @@ export default function RootLayout({
                       "@id": "https://bernarditamery.cl/#person",
                       "name": "Bernardita Mery",
                       "jobTitle": "Co-founder & AI Strategy Director",
-                      "sameAs": ["https://www.linkedin.com/in/bernarditamery/"]
+                      "sameAs": ["https://www.linkedin.com/in/bmeryu/"]
                     },
                     {
                       "@type": "Person",
