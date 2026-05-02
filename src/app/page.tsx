@@ -109,8 +109,8 @@ export default function HomeV2() {
                   { value: "Gratis", label: "Diagnóstico" },
                 ].map((s) => (
                   <div key={s.label} className="text-center">
-                    <p className="text-2xl font-black text-blue-700 tabular-nums">{s.value}</p>
-                    <p className="text-[10px] uppercase tracking-wider text-slate-500 mt-1 leading-tight font-bold">{s.label}</p>
+                    <p className="text-[28px] font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-500 tabular-nums leading-none mb-1">{s.value}</p>
+                    <p className="text-[10px] uppercase tracking-wider text-slate-500 leading-tight font-bold">{s.label}</p>
                   </div>
                 ))}
               </div>
