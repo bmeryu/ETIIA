@@ -102,15 +102,15 @@ export default function HomeV2() {
             <FadeIn delay={0.35} className="flex flex-col gap-6">
               
               {/* 3 Trust Stats (Moved above the form) */}
-              <div className="flex justify-between items-center bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div className="flex bg-white border border-slate-200 rounded-2xl p-4 shadow-sm divide-x divide-slate-100">
                 {[
-                  { value: "+15", label: "Años experiencia" },
-                  { value: "+50", label: "Proyectos B2B" },
-                  { value: "Gratis", label: "Diagnóstico" },
+                  { value: "+15", label: "Años experiencia", gradient: "from-slate-800 to-slate-600" },
+                  { value: "+50", label: "Proyectos B2B", gradient: "from-blue-800 to-blue-600" },
+                  { value: "Gratis", label: "Diagnóstico", gradient: "from-indigo-500 to-blue-400" },
                 ].map((s) => (
-                  <div key={s.label} className="text-center">
-                    <p className="text-[28px] font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-500 tabular-nums leading-none mb-1">{s.value}</p>
-                    <p className="text-[10px] uppercase tracking-wider text-slate-500 leading-tight font-bold">{s.label}</p>
+                  <div key={s.label} className="flex-1 text-center px-2">
+                    <p className={`text-[26px] font-black bg-clip-text text-transparent bg-gradient-to-br ${s.gradient} tabular-nums leading-none mb-1.5`}>{s.value}</p>
+                    <p className="text-[9px] uppercase tracking-wider text-slate-500 leading-tight font-bold">{s.label}</p>
                   </div>
                 ))}
               </div>
