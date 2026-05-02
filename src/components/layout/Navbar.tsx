@@ -78,7 +78,7 @@ export default function Navbar() {
             </Link>
           ) : (
             <Link href="/contacto">
-              <Button>Solicitar Diagnóstico</Button>
+              <Button>Agendar Diagnóstico IA</Button>
             </Link>
           )}
         </div>
@@ -120,7 +120,7 @@ export default function Navbar() {
               </Link>
             ) : (
               <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button>Solicitar Diagnóstico</Button>
+                <Button>Agendar Diagnóstico IA</Button>
               </Link>
             )}
           </motion.nav>

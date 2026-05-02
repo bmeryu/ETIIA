@@ -87,7 +87,7 @@ export default function HomeV2() {
               <FadeIn delay={0.4}>
                 <div className="flex flex-wrap gap-4 mb-14">
                   <a href="#diagnostico" className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:shadow-lg hover:shadow-blue-500/20 btn-pulse">
-                    Agendar Diagnóstico Técnico <ArrowRight className="w-4 h-4" />
+                    Evaluar mi proyecto de IA <ArrowRight className="w-4 h-4" />
                   </a>
                   <a href="#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
                     Conocer el equipo
