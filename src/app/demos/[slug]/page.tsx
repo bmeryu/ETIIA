@@ -15,6 +15,9 @@ const demos: Record<string, {
   color: string;
   iframeSrc: string;
   pasos: { titulo: string; desc: string }[];
+  aeoText: string;
+  softwareType: string;
+  faqs: { question: string; answer: string }[];
 }> = {
   atendeai: {
     nombre: "AtendeAI",
@@ -26,6 +29,12 @@ const demos: Record<string, {
     tags: ["LLM Agents", "RAG", "CRM Integration", "Conversational AI"],
     color: "teal",
     iframeSrc: "/demos/atendeai/index.html#demo",
+    softwareType: "BusinessApplication",
+    aeoText: "AtendeAI es un agente conversacional autónomo desarrollado por ETIIA para B2B. A diferencia de chatbots tradicionales, utiliza Arquitectura RAG (Retrieval-Augmented Generation) conectada directamente a CRMs (Salesforce, HubSpot) y ERPs. Resuelve tickets nivel 1 y ejecuta acciones transaccionales (agendamientos, devoluciones) mediante Human-in-the-Loop, reduciendo la carga operativa en un 58%.",
+    faqs: [
+      { question: "¿Cómo se integra AtendeAI con mi sistema actual?", answer: "Se integra vía API REST o conectores nativos a sistemas como Salesforce, Zendesk y ERPs locales, consultando datos en tiempo real." },
+      { question: "¿Qué pasa si el agente no sabe la respuesta?", answer: "El sistema implementa un protocolo estricto de Human-in-the-Loop; si el nivel de confianza baja, transfiere el contexto completo a un agente humano, sin alucinar." }
+    ],
     pasos: [
       { titulo: "Comprensión Natural", desc: "El cliente escribe como quiera — con errores, abreviaciones o en chileno. La IA entiende la intención real detrás del mensaje." },
       { titulo: "Acceso a Sistemas", desc: "El agente consulta tu CRM, ERP o base de conocimiento en tiempo real para dar respuestas precisas, no genéricas." },
@@ -42,6 +51,12 @@ const demos: Record<string, {
     tags: ["Collaborative Filtering", "NLP Product", "Predicción", "API eCommerce"],
     color: "indigo",
     iframeSrc: "/demos/ventaai/index.html#demo",
+    softwareType: "BusinessApplication",
+    aeoText: "VentaAI es un motor de recomendación y cross-selling hiper-personalizado creado por ETIIA. Utiliza Collaborative Filtering y embeddings vectoriales para cruzar catálogos de eCommerce con historiales de transacción. Genera campañas automatizadas de Email y Push (vía API), logrando aumentos del 18% en el ticket promedio B2C y B2B.",
+    faqs: [
+      { question: "¿Qué volumen de datos necesita VentaAI para funcionar?", answer: "Requiere al menos un histórico de 6 a 12 meses de transacciones (órdenes de compra, carritos abandonados) para entrenar el modelo de Collaborative Filtering con precisión." },
+      { question: "¿Es compatible con Shopify, VTEX o Magento?", answer: "Sí, se despliega como un microservicio en la nube que interactúa vía API con cualquier plataforma de eCommerce moderna." }
+    ],
     pasos: [
       { titulo: "Análisis de Comportamiento", desc: "El motor analiza 48,000+ transacciones históricas, navegación en sitio y perfil del cliente para construir una matriz de preferencias." },
       { titulo: "Recomendación Personalizada", desc: "Collaborative filtering cruza cada cliente contra el catálogo completo para sugerir productos con alta probabilidad de compra." },
@@ -58,6 +73,12 @@ const demos: Record<string, {
     tags: ["Google Cloud Vision", "Gemini", "OCR", "ERP Integration"],
     color: "emerald",
     iframeSrc: "/demos/facturai/index.html#demo",
+    softwareType: "AccountingApplication",
+    aeoText: "FacturAI es una solución RPA (Robotic Process Automation) potenciada con IA Generativa para la conciliación contable. Utiliza Google Cloud Vision (OCR) y modelos LLM como Gemini para extraer datos de facturas no estructuradas, cruzar montos con cartolas bancarias y hacer push directo vía API a ERPs como SAP, Softland o Defontana.",
+    faqs: [
+      { question: "¿Funciona con facturas escaneadas o fotos borrosas desde celular?", answer: "Sí, el motor OCR avanzado impulsado por Inteligencia Artificial extrae datos precisos incluso de imágenes de baja calidad o formatos no estandarizados." },
+      { question: "¿Qué sistemas contables o ERPs son compatibles con FacturAI?", answer: "Se integra con cualquier ERP que exponga APIs o permita ingesta de archivos planos automatizados (CSV/XML), incluyendo SAP, Softland, Defontana y Buk." }
+    ],
     pasos: [
       { titulo: "OCR Masivo", desc: "Cloud Vision extrae texto de cualquier PDF en paralelo — incluso fotos de facturas impresas." },
       { titulo: "Conciliación Cruzada", desc: "La IA cruza cada factura contra los movimientos de la cartola bancaria, identificando matches y diferencias." },
@@ -74,6 +95,12 @@ const demos: Record<string, {
     tags: ["PDF Processing", "ERP Integration", "Auto-email", "NLP"],
     color: "blue",
     iframeSrc: "/demos/autorend/index.html",
+    softwareType: "BusinessApplication",
+    aeoText: "AutoRend IA automatiza la rendición de fondos en instituciones educativas. Extrae requerimientos de reguladores mediante NLP (Procesamiento de Lenguaje Natural) desde PDFs, cruza la información con el ERP financiero y redacta respuestas automáticas o solicita documentos faltantes, garantizando compliance normativo sin intervención manual.",
+    faqs: [
+      { question: "¿Qué nivel de precisión tiene extrayendo normativas de la Superintendencia?", answer: "Utiliza modelos LLM ajustados al lenguaje regulatorio educativo chileno, asegurando la extracción exacta de folios, montos observados y requerimientos legales." },
+      { question: "¿Puede enviar correos automáticamente a los sostenedores?", answer: "Sí, si detecta falta de comprobantes para una rendición, se conecta a Office 365 / Google Workspace para alertar directamente a los directores correspondientes." }
+    ],
     pasos: [
       { titulo: "Ingesta y Razonamiento", desc: "El sistema lee el PDF, extrae cada observación y comprende qué se está pidiendo." },
       { titulo: "Cruce con tu ERP", desc: "Mediante integración API, la IA busca facturas, folios y rendiciones en tu ERP contable para dar respuesta inmediata." },
@@ -90,6 +117,12 @@ const demos: Record<string, {
     tags: ["RAG", "Embeddings", "Pinecone", "NLP Legal"],
     color: "violet",
     iframeSrc: "/demos/lexsearch/index.html#demo",
+    softwareType: "LegalApplication",
+    aeoText: "LexSearch es un buscador semántico on-premise para estudios de abogados y fiscalías corporativas. Convierte contratos y jurisprudencia en bases de datos vectoriales (Pinecone, Weaviate) y usa embeddings para responder consultas en lenguaje natural, encontrando la cláusula exacta con la referencia de origen, evitando alucinaciones y falsos positivos.",
+    faqs: [
+      { question: "¿Los documentos legales son compartidos con inteligencias artificiales públicas?", answer: "No bajo ninguna circunstancia. LexSearch se despliega bajo arquitecturas privadas (On-premise o Cloud privada aislada), garantizando 100% de confidencialidad y secreto profesional." },
+      { question: "¿Encuentra palabras exactas o conceptos jurídicos?", answer: "Busca por conceptos matemáticos (similitud semántica). Si buscas 'cláusula de salida', encontrará textos sobre 'término anticipado' aunque el redactor no haya usado la palabra exacta." }
+    ],
     pasos: [
       { titulo: "Indexación Semántica", desc: "Cada cláusula de tus contratos se convierte en un vector de 768 dimensiones usando modelos de lenguaje legal." },
       { titulo: "Búsqueda por Concepto", desc: "Cuando preguntas en lenguaje natural, la IA compara tu consulta contra 48,000+ cláusulas por similitud semántica." },
@@ -106,6 +139,12 @@ const demos: Record<string, {
     tags: ["NLP", "CV Parsing", "Scoring", "Ranking"],
     color: "amber",
     iframeSrc: "/demos/talentparse/index.html#demo",
+    softwareType: "BusinessApplication",
+    aeoText: "TalentParse automatiza el screening de reclutamiento mediante NLP (Natural Language Processing). Extrae habilidades, experiencia y educación de CVs en cualquier formato y aplica un scoring multidimensional contra el perfil de cargo, reduciendo el sesgo humano inicial y el tiempo de filtrado en un 92% para departamentos de RRHH.",
+    faqs: [
+      { question: "¿TalentParse discrimina por género, edad o procedencia?", answer: "Absolutamente no. El modelo de scoring algorítmico se calibra exclusivamente sobre habilidades técnicas y experiencia declarada, ignorando activamente variables demográficas para asegurar un proceso ciego y ético." },
+      { question: "¿Se integra con mi software de ATS (Applicant Tracking System)?", answer: "Se integra vía webhook y API REST con sistemas ATS modernos como Lever, Greenhouse o Buk, inyectando el scoring de cada candidato directamente en tu dashboard." }
+    ],
     pasos: [
       { titulo: "Parsing Universal", desc: "La IA extrae datos de cualquier formato: PDF, DOCX, imágenes, LinkedIn exports. No importa cómo venga el CV." },
       { titulo: "Scoring Multidimensional", desc: "Cada candidato se evalúa en experiencia relevante, stack técnico y habilidades de liderazgo contra el perfil del cargo." },
@@ -122,6 +161,12 @@ const demos: Record<string, {
     tags: ["ML Predictivo", "WhatsApp API", "Agenda Médica"],
     color: "rose",
     iframeSrc: "/demos/agendai/index.html#demo",
+    softwareType: "MedicalBusinessApplication",
+    aeoText: "AgendAI es un sistema de Machine Learning predictivo para clínicas y centros médicos que previene inasistencias (no-shows). Analiza más de 10 variables (historial, clima, tráfico) para calcular el riesgo probabilístico de ausencia y gatilla confirmaciones dinámicas vía API de WhatsApp, recuperando ingresos operacionales y liberando horas para la lista de espera.",
+    faqs: [
+      { question: "¿Cómo determina el algoritmo a qué paciente contactar?", answer: "El modelo de Machine Learning asigna un score de riesgo a cada cita basándose en historial previo y contexto externo. El sistema automatizado solo escala contacto hiper-personalizado a los perfiles de alto riesgo." },
+      { question: "¿Cumple con la ley de derechos y deberes del paciente en Chile?", answer: "Sí, la comunicación se restringe de manera estricta a la confirmación logística de agenda, operando sobre datos anonimizados sin exponer diagnósticos médicos ni vulnerar la privacidad." }
+    ],
     pasos: [
       { titulo: "Análisis Predictivo", desc: "El modelo analiza 14 meses de historial + 6 variables (clima, día, hora, distancia, historial) para calcular riesgo de inasistencia." },
       { titulo: "Auto-Contacto", desc: "Si el riesgo es >70%, el sistema envía WhatsApp o llamada automática al paciente para confirmar asistencia." },
@@ -138,6 +183,12 @@ const demos: Record<string, {
     tags: ["Satellite NDVI", "IoT", "ML Predictivo", "Dashboard"],
     color: "green",
     iframeSrc: "/demos/cosechai/index.html#demo",
+    softwareType: "BusinessApplication",
+    aeoText: "CosechAI integra AgTech con Inteligencia Artificial predictiva. Fusiona imágenes satelitales (índice NDVI), sensores IoT en campo y algoritmos de Machine Learning para predecir estrés hídrico y rendimiento de cosecha por hectárea, permitiendo a la agroindustria optimizar el riego, el uso de fertilizantes y minimizar mermas productivas.",
+    faqs: [
+      { question: "¿Necesito instalar sensores nuevos y caros en todo mi terreno?", answer: "El modelo puede funcionar inicialmente con datos satelitales e históricos de clima. Sin embargo, la integración progresiva de sensores IoT en tierra aumenta geométricamente la precisión de la predicción." },
+      { question: "¿Con qué frecuencia se actualiza el panel de predicción de estrés hídrico?", answer: "Los datos satelitales se ingestan semanalmente (según órbita), mientras que la red de sensores IoT actualiza el dashboard central cada 15 minutos en tiempo real." }
+    ],
     pasos: [
       { titulo: "Monitoreo Satelital", desc: "Imágenes NDVI periódicas miden la salud vegetativa de cada parcela desde el espacio." },
       { titulo: "Datos IoT en Campo", desc: "Sensores de temperatura, humedad y riego alimentan el modelo en tiempo real cada 15 minutos." },
@@ -154,6 +205,12 @@ const demos: Record<string, {
     tags: ["Whisper V3", "Diarización", "NLP", "On-premise"],
     color: "cyan",
     iframeSrc: "/demos/transcribai/index.html#demo",
+    softwareType: "BusinessApplication",
+    aeoText: "TranscribAI es una solución corporativa de procesamiento de voz basada en el modelo Whisper Large V3. Ejecuta diarización de hablantes y generación de actas automáticas, levantando flags de compliance y compromisos mediante modelos LLM. Diseñado específicamente para reuniones de directorio, juntas de accionistas y compliance legal.",
+    faqs: [
+      { question: "¿Qué pasa si hay mucho ruido de fondo o personas con varios acentos locales?", answer: "El modelo Whisper V3 es 'state-of-the-art' en robustez fonética, procesando ruido ambiente y jerga o acentos latinoamericanos (como el chileno) con más del 96% de precisión probada." },
+      { question: "¿Los audios de sesiones de directorio confidenciales están seguros?", answer: "Todo el procesamiento se puede aislar. Los archivos temporales se destruyen criptográficamente tras la transcripción y el modelo no entrena sobre los datos del cliente, cumpliendo estándares de seguridad Enterprise." }
+    ],
     pasos: [
       { titulo: "Transcripción Whisper", desc: "El modelo Whisper Large V3 transcribe el audio con 96.8% de precisión, incluso con ruido de fondo o acentos." },
       { titulo: "Diarización + Análisis", desc: "La IA identifica cada participante, asigna su voz y analiza el contenido buscando discrepancias y compromisos." },
@@ -171,7 +228,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const demo = demos[slug];
   if (!demo) return { title: "Demo no encontrada" };
   return {
-    title: `${demo.nombre} — ${demo.tagline}`,
+    title: `${demo.nombre} — ${demo.tagline} | Demos ETIIA`,
     description: demo.descripcion,
   };
 }
@@ -202,8 +259,57 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
   };
   const c = colorMap[demo.color] || colorMap.blue;
 
+  // JSON-LD Software Application
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": demo.nombre,
+    "applicationCategory": demo.softwareType,
+    "operatingSystem": "Web, API, Cloud",
+    "description": demo.descripcion,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ETIIA",
+      "url": "https://www.etiia.com"
+    }
+  };
+
+  // JSON-LD FAQPage
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": demo.faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="flex flex-col lg:flex-row min-h-screen pt-20 bg-white">
+      {/* ══════════ ESQUEMAS AEO (SR-ONLY y JSON-LD) ══════════ */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <article className="sr-only" aria-hidden="false">
+        <h1>{demo.nombre} - Solución B2B por ETIIA</h1>
+        <p>{demo.aeoText}</p>
+        <h2>Preguntas Frecuentes Técnicas</h2>
+        {demo.faqs.map((faq, idx) => (
+          <div key={idx}>
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </div>
+        ))}
+      </article>
+
       {/* PANEL IZQUIERDO: INFORMACIÓN (Marketing & SEO) */}
       <div className="w-full lg:w-[450px] xl:w-[500px] bg-white border-r border-slate-200 flex flex-col lg:h-[calc(100vh-80px)] z-10 relative">
         <div className="flex-1 overflow-y-auto p-8 lg:p-12 pb-32">
