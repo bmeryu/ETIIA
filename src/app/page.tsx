@@ -266,7 +266,7 @@ export default function HomeV2() {
                 badge: "Co-fundadora · Estrategia & Liderazgo",
                 desc: "Experta en transformación digital y estrategia comercial. Traduce los objetivos del negocio en decisiones tecnológicas concretas y ejecutables.",
                 tags: ["Estrategia", "IA Aplicada", "Negocios B2B"],
-                linkedin: "https://www.linkedin.com/in/bernarditamery/"
+                linkedin: "https://www.linkedin.com/in/bmeryu/"
               },
               {
                 img: "/pablo.jpg",
