@@ -413,20 +413,22 @@ export default function HomeV2() {
       </section>
 
       {/* ══════════ CTA FINAL ══════════ */}
-      <section className="py-24 bg-blue-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.15) 0%, transparent 60%)" }} aria-hidden="true" />
-        <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 relative z-10">
+      <section className="py-24 bg-[#0B1121] text-white relative overflow-hidden">
+        {/* Subtle top glow instead of full bright background */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% -20%, rgba(29, 78, 216, 0.4) 0%, transparent 60%)" }} aria-hidden="true" />
+        
+        <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 relative z-10 border border-slate-800/50 bg-[#0F172A]/50 backdrop-blur-sm p-10 md:p-14 rounded-3xl shadow-2xl">
           <div>
-            <h2 className="text-4xl font-black tracking-tight text-white leading-tight mb-3">
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white leading-tight mb-3">
               ¿Tienes un proyecto<br />que podría involucrar IA?
             </h2>
-            <p className="text-blue-100 text-sm max-w-md">El diagnóstico inicial es el mejor punto de partida: claro, concreto, y sin compromisos previos.</p>
+            <p className="text-slate-400 text-sm max-w-md">El diagnóstico inicial es el mejor punto de partida: claro, concreto, y sin compromisos previos.</p>
           </div>
           <div className="flex flex-col gap-3 shrink-0">
-            <a href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-white text-blue-700 font-bold px-8 py-4 rounded-xl text-sm hover:bg-slate-50 transition-colors shadow-lg shadow-blue-900/20">
+            <a href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
               Evaluar mi proyecto de IA <ArrowRight className="w-4 h-4" />
             </a>
-            <a href="#equipo" className="inline-flex items-center justify-center border border-white/30 text-white px-8 py-4 rounded-xl text-sm hover:bg-white/10 transition-colors font-medium">
+            <a href="#equipo" className="inline-flex items-center justify-center border border-slate-700 text-slate-300 px-8 py-4 rounded-xl text-sm hover:bg-slate-800 hover:text-white transition-colors font-medium">
               Ver el equipo
             </a>
           </div>
