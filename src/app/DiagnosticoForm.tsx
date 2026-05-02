@@ -5,42 +5,51 @@ import { useSearchParams } from "next/navigation";
 import { ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
 
 /* ── Mapa de intenciones ─────────────────────────────── */
-const intentMap: Record<string, { proyecto: string; etapa: string }> = {
+const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: string }> = {
   diagnostico: {
     proyecto: "Quiero evaluar si mi proyecto tiene potencial para aplicar IA.",
     etapa: "exploracion",
+    ctaText: "Agendar Diagnóstico IA",
   },
   formacion: {
     proyecto: "Quiero información sobre formación en IA para mi equipo (UpSkilling / ReSkilling in-company).",
     etapa: "idea",
+    ctaText: "Solicitar Formación in-company",
   },
   atendeai: {
     proyecto: "Me interesa implementar AtendeAI para automatizar la atención al cliente.",
     etapa: "exploracion",
+    ctaText: "Implementar AtendeAI",
   },
   ventaai: {
     proyecto: "Me interesa VentaAI para personalizar ofertas y aumentar el cross-sell.",
     etapa: "exploracion",
+    ctaText: "Implementar VentaAI",
   },
   facturai: {
     proyecto: "Me interesa FacturAI para automatizar la lectura y conciliación de facturas.",
     etapa: "exploracion",
+    ctaText: "Implementar FacturAI",
   },
   agendai: {
     proyecto: "Me interesa implementar AgendAI para predecir inasistencias y optimizar la agenda.",
     etapa: "exploracion",
+    ctaText: "Implementar AgendAI",
   },
   cosechai: {
     proyecto: "Me interesa implementar CosechAI para optimizar el rendimiento y detectar mermas.",
     etapa: "exploracion",
+    ctaText: "Implementar CosechAI",
   },
   transcribai: {
     proyecto: "Me interesa implementar TranscribAI para transcribir y analizar reuniones o entrevistas.",
     etapa: "exploracion",
+    ctaText: "Implementar TranscribAI",
   },
   "a-medida": {
     proyecto: "Busco desarrollar un flujo de IA o agente personalizado a la medida de mis procesos.",
     etapa: "idea",
+    ctaText: "Cotizar Solución a Medida",
   },
 };
 
@@ -48,7 +57,7 @@ const intentMap: Record<string, { proyecto: string; etapa: string }> = {
 function FormInner() {
   const params = useSearchParams();
   const interes = params.get("interes") ?? "";
-  const preset = intentMap[interes] ?? { proyecto: "", etapa: "" };
+  const preset = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Agendar Diagnóstico IA" };
 
   const [proyecto, setProyecto] = useState(preset.proyecto);
   const [etapa, setEtapa]     = useState(preset.etapa);
@@ -57,7 +66,8 @@ function FormInner() {
 
   // Re-sync if the URL changes (e.g. user clicks another button)
   useEffect(() => {
-    const p = intentMap[interes] ?? { proyecto: "", etapa: "" };
+  useEffect(() => {
+    const p = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Agendar Diagnóstico IA" };
     setProyecto(p.proyecto);
     setEtapa(p.etapa);
   }, [interes]);
@@ -145,7 +155,7 @@ function FormInner() {
 
       <button type="submit" disabled={loading}
         className="w-full flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3.5 rounded-lg text-sm transition-colors mt-2 disabled:opacity-60">
-        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><span>Agendar Diagnóstico IA</span><ArrowRight className="w-4 h-4" /></>}
+        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><span>{preset.ctaText}</span><ArrowRight className="w-4 h-4" /></>}
       </button>
 
       <p className="text-xs text-slate-400 leading-relaxed">
