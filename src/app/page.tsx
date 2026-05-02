@@ -95,25 +95,26 @@ export default function HomeV2() {
                 </div>
               </FadeIn>
 
-              {/* 3 Trust Stats */}
-              <FadeIn delay={0.5}>
-                <div className="flex gap-10 pt-10 border-t border-slate-100">
-                  {[
-                    { value: "+15", label: "Años de experiencia corporativa" },
-                    { value: "+50", label: "Proyectos corporativos ejecutados" },
-                    { value: "Gratis", label: "El diagnóstico inicial" },
-                  ].map((s) => (
-                    <div key={s.label}>
-                      <p className="text-3xl font-black text-[#0F172A] tabular-nums">{s.value}</p>
-                      <p className="text-xs text-slate-400 mt-1 leading-tight max-w-[100px] font-medium">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </FadeIn>
+
             </div>
 
-            {/* Hero card */}
-            <FadeIn delay={0.35}>
+            {/* Hero card & Stats */}
+            <FadeIn delay={0.35} className="flex flex-col gap-6">
+              
+              {/* 3 Trust Stats (Moved above the form) */}
+              <div className="flex justify-between items-center bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                {[
+                  { value: "+15", label: "Años experiencia" },
+                  { value: "+50", label: "Proyectos B2B" },
+                  { value: "Gratis", label: "Diagnóstico" },
+                ].map((s) => (
+                  <div key={s.label} className="text-center">
+                    <p className="text-2xl font-black text-blue-700 tabular-nums">{s.value}</p>
+                    <p className="text-[10px] uppercase tracking-wider text-slate-500 mt-1 leading-tight font-bold">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-sm">
                 <div className="inline-flex items-center gap-2 text-xs text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full mb-6 font-bold uppercase tracking-wider">
                   ✦ Diagnóstico inicial
