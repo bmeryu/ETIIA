@@ -132,7 +132,7 @@ export function ContactForm() {
                             Procesando...
                         </>
                     ) : (
-                        "Diagnosticar mi Estrategia de IA"
+                        "Agendar Diagnóstico IA"
                     )}
                 </Button>
             </form>

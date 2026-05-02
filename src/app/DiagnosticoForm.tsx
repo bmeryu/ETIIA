@@ -145,7 +145,7 @@ function FormInner() {
 
       <button type="submit" disabled={loading}
         className="w-full flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3.5 rounded-lg text-sm transition-colors mt-2 disabled:opacity-60">
-        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><span>Solicitar diagnóstico inicial</span><ArrowRight className="w-4 h-4" /></>}
+        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><span>Agendar Diagnóstico IA</span><ArrowRight className="w-4 h-4" /></>}
       </button>
 
       <p className="text-xs text-slate-400 leading-relaxed">
