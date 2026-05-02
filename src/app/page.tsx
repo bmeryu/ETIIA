@@ -198,10 +198,10 @@ export default function HomeV2() {
           <div className="grid md:grid-cols-3 gap-6">
             {products.map((p, i) => (
               <Reveal key={p.slug} delay={0.1 * (i + 1)}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full flex flex-col hover:border-blue-200 hover:shadow-md transition-all">
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full flex flex-col hover:border-blue-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
                   <span className="text-xs text-blue-700 font-bold uppercase tracking-wider mb-4">{p.industria}</span>
                   <p className="text-base text-[#0F172A] font-semibold leading-snug mb-4">{p.problema}</p>
-                  <h3 className="text-lg font-black text-blue-700 tracking-tight mb-2">{p.nombre}</h3>
+                  <h3 className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-500 tracking-tight mb-2">{p.nombre}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed flex-grow mb-6">{p.desc}</p>
                   <div className="flex gap-3">
                     <Link href={`/demos/${p.slug}`} className="flex-1 text-center text-xs font-semibold text-blue-700 border border-blue-200 bg-blue-50 hover:bg-blue-100 px-3 py-2.5 rounded-lg transition-colors">
