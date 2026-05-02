@@ -41,29 +41,20 @@ const navLinks = [
   { 
     name: "Perspectivas", 
     href: "/insights",
-    megaMenu: [
-      {
-        title: "Artículos Destacados",
-        items: [
-          { name: "Digitalizar el desorden", desc: "El error más caro al comprar IA.", href: "/insights/pilar-1-gobernanza" },
-          { name: "Automatizar lo roto", desc: "Por qué es tirar dinero a la basura.", href: "/insights/pilar-2-transformacion" }
-        ]
-      },
-      {
-        title: "Estrategia & Talento",
-        items: [
-          { name: "El mito del Ingeniero IA", desc: "El verdadero talento que necesitas.", href: "/insights/pilar-3-talento" },
-          { name: "La puerta trasera invisible", desc: "El mayor riesgo de seguridad.", href: "/insights/pilar-4-seguridad" }
-        ]
-      },
-      {
-        title: "Recursos B2B",
-        items: [
-          { name: "UpSkilling y Formación", desc: "Entrena a tu equipo interno.", href: "?interes=formacion#diagnostico" },
-          { name: "Auditoría de Riesgo", desc: "Evalúa tu madurez operativa.", href: "/contacto" }
-        ]
+    featuredMenu: {
+      links: [
+        { name: "Digitalizar el desorden: El error más caro al comprar IA", href: "/insights/pilar-1-gobernanza" },
+        { name: "Por qué automatizar un proceso roto es tirar dinero a la basura", href: "/insights/pilar-2-transformacion" },
+        { name: "El mito del Ingeniero IA y el verdadero talento B2B", href: "/insights/pilar-3-talento" },
+        { name: "La puerta trasera invisible: Riesgos de seguridad", href: "/insights/pilar-4-seguridad" }
+      ],
+      featured: {
+        title: "Digitalizar el desorden",
+        desc: "Por qué conectar agentes autónomos de última generación a un sistema de datos roto es un suicidio operativo para tu empresa.",
+        href: "/insights/pilar-1-gobernanza",
+        label: "Lectura Obligatoria"
       }
-    ]
+    }
   },
 ];
 
@@ -144,6 +135,49 @@ export default function Navbar() {
                       <p className="text-xs text-slate-500">Explora nuestra librería completa de soluciones B2B.</p>
                       <Link href="/demos" className="text-xs font-bold text-blue-700 flex items-center hover:text-blue-800 transition-colors">
                         Ver catálogo completo <ArrowRight className="w-3 h-3 ml-1" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Magazine-style Featured Menu (For Perspectivas) */}
+              {link.featuredMenu && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 w-[600px]">
+                  <div className="bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100 p-6 flex gap-6 relative overflow-hidden">
+                    {/* Left Column: Links */}
+                    <div className="flex-1 flex flex-col gap-1">
+                      <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 px-3">Últimos Artículos</h4>
+                      {link.featuredMenu.links.map((item) => (
+                        <Link 
+                          key={item.name} 
+                          href={item.href}
+                          className="text-sm font-medium text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 px-3 py-2.5 rounded-xl transition-colors line-clamp-1"
+                          title={item.name}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                      <Link href="/insights" className="text-xs font-bold text-blue-700 flex items-center hover:text-blue-800 transition-colors mt-3 px-3">
+                        Ver todas las perspectivas <ArrowRight className="w-3 h-3 ml-1" />
+                      </Link>
+                    </div>
+                    
+                    {/* Right Column: Featured Card */}
+                    <div className="w-[260px] bg-slate-50/80 rounded-2xl p-5 border border-slate-100 flex flex-col justify-between group/card hover:border-blue-200 transition-colors">
+                      <div>
+                        <span className="inline-block px-2 py-1 bg-blue-100 text-blue-800 text-[10px] font-black uppercase tracking-wider rounded mb-4">
+                          {link.featuredMenu.featured.label}
+                        </span>
+                        <h5 className="text-sm font-black text-[#0F172A] mb-2 leading-tight group-hover/card:text-blue-700 transition-colors">
+                          {link.featuredMenu.featured.title}
+                        </h5>
+                        <p className="text-xs text-slate-500 leading-relaxed">
+                          {link.featuredMenu.featured.desc}
+                        </p>
+                      </div>
+                      <Link href={link.featuredMenu.featured.href} className="inline-flex items-center text-xs font-bold text-blue-700 mt-5">
+                        Leer artículo <ArrowRight className="w-3 h-3 ml-1" />
                       </Link>
                     </div>
                   </div>
