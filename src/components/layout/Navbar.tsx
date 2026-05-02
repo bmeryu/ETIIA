@@ -62,7 +62,12 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="nav-link-animated text-sm font-medium text-slate-500 hover:text-[#0F172A] transition-colors pb-0.5"
+              className={cn(
+                "nav-link-animated text-sm transition-colors pb-0.5",
+                link.name === "Contáctanos"
+                  ? "font-bold text-blue-700 hover:text-blue-800"
+                  : "font-medium text-slate-500 hover:text-[#0F172A]"
+              )}
             >
               {link.name}
             </Link>
@@ -107,7 +112,12 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg font-medium text-slate-700 hover:text-blue-700 transition-colors"
+                className={cn(
+                  "text-lg transition-colors",
+                  link.name === "Contáctanos"
+                    ? "font-bold text-blue-700 hover:text-blue-800"
+                    : "font-medium text-slate-700 hover:text-blue-700"
+                )}
               >
                 {link.name}
               </Link>
