@@ -413,7 +413,7 @@ export default function HomeV2() {
           </div>
           <div className="flex flex-col gap-3 shrink-0">
             <a href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-white text-blue-700 font-bold px-8 py-4 rounded-xl text-sm hover:bg-slate-50 transition-colors shadow-lg shadow-blue-900/20">
-              Evaluar mi proyecto <ArrowRight className="w-4 h-4" />
+              Evaluar mi proyecto de IA <ArrowRight className="w-4 h-4" />
             </a>
             <a href="#equipo" className="inline-flex items-center justify-center border border-white/30 text-white px-8 py-4 rounded-xl text-sm hover:bg-white/10 transition-colors font-medium">
               Ver el equipo
