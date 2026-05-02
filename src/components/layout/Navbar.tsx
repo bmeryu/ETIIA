@@ -74,17 +74,9 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:block">
-          {pathname === "/contacto" ? (
-            <Link href="/demos">
-              <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50">
-                Catálogo de Demos
-              </Button>
-            </Link>
-          ) : (
-            <Link href="/contacto">
-              <Button variant="dark">Contáctanos</Button>
-            </Link>
-          )}
+          <Link href="/contacto">
+            <Button variant="dark">Contáctanos</Button>
+          </Link>
         </div>
 
         {/* ═══ Mobile Toggle ═══ */}
@@ -121,17 +113,9 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            {pathname === "/contacto" ? (
-              <Link href="/demos" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50">
-                  Catálogo de Demos
-                </Button>
-              </Link>
-            ) : (
-              <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="dark">Contáctanos</Button>
-              </Link>
-            )}
+            <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button variant="dark">Contáctanos</Button>
+            </Link>
           </motion.nav>
         )}
       </AnimatePresence>
