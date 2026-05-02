@@ -63,10 +63,10 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               className={cn(
-                "nav-link-animated text-sm transition-colors pb-0.5",
+                "nav-link-animated text-sm transition-all flex items-center",
                 link.name === "Contáctanos"
-                  ? "font-bold text-blue-700 hover:text-blue-800"
-                  : "font-medium text-slate-500 hover:text-[#0F172A]"
+                  ? "bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-3.5 py-1.5 rounded-full"
+                  : "font-medium text-slate-500 hover:text-[#0F172A] pb-0.5"
               )}
             >
               {link.name}
@@ -113,9 +113,9 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={cn(
-                  "text-lg transition-colors",
+                  "text-lg transition-all",
                   link.name === "Contáctanos"
-                    ? "font-bold text-blue-700 hover:text-blue-800"
+                    ? "bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-5 py-2 rounded-full mt-2"
                     : "font-medium text-slate-700 hover:text-blue-700"
                 )}
               >
