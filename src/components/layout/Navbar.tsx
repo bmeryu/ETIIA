@@ -11,9 +11,9 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Inicio", href: "/" },
-  { name: "Portfolio", href: "/demos" },
-  { name: "Publicaciones", href: "/insights" },
-  { name: "Contacto", href: "/contacto" },
+  { name: "Soluciones de IA", href: "/demos" },
+  { name: "Perspectivas", href: "/insights" },
+  { name: "Contáctanos", href: "/contacto" },
 ];
 
 export default function Navbar() {

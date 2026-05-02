@@ -12,16 +12,11 @@ export default function InsightsHub() {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 py-24 pt-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-2xl text-left">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Insights Estratégicos
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-neutral-400">
-            Inteligencia Artificial para directivos y dueños de negocio. Menos software, más criterio operativo.
-          </p>
-        </div>
+        <h1 className="sr-only">
+          Perspectivas y Soluciones de IA para directivos
+        </h1>
         
-        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {insights.map((insight) => (
             <Link 
               key={insight.slug} 
