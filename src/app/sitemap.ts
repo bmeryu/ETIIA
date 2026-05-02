@@ -6,6 +6,7 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.etiia.com';
 
+  // Definición de las rutas principales del sitio
   const baseRoutes = [
     '',
     '/demos',
