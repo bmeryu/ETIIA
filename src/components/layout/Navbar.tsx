@@ -42,7 +42,7 @@ const navLinks = [
   { 
     name: "Perspectivas", 
     href: "/insights",
-    megaMenuTheme: "indigo",
+    megaMenuTheme: "emerald",
     megaMenu: [
       {
         title: "Artículos Destacados",
@@ -119,16 +119,24 @@ export default function Navbar() {
               {/* EY-style Horizontal Mega Menu */}
               {link.megaMenu && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 w-[680px]">
-                  <div className="bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100 p-8 flex flex-col gap-6 relative overflow-hidden">
+                  <div className={cn(
+                    "bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-slate-100 p-8 flex flex-col gap-6 relative overflow-hidden",
+                    link.megaMenuTheme === "emerald" ? "border-t-4 border-t-emerald-500" : "border-t-4 border-t-blue-600"
+                  )}>
                     <div className={cn(
                       "absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2 transition-colors duration-500",
-                      link.megaMenuTheme === "indigo" ? "bg-indigo-50/80" : "bg-blue-50/50"
+                      link.megaMenuTheme === "emerald" ? "bg-emerald-100/60" : "bg-blue-100/60"
                     )} />
                     
                     <div className="grid grid-cols-3 gap-8">
                       {link.megaMenu.map((column) => (
                         <div key={column.title}>
-                          <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">{column.title}</h4>
+                          <h4 className={cn(
+                            "text-[10px] font-bold uppercase tracking-widest mb-4 inline-block px-2.5 py-1 rounded-md",
+                            link.megaMenuTheme === "emerald" ? "text-emerald-800 bg-emerald-50" : "text-blue-800 bg-blue-50"
+                          )}>
+                            {column.title}
+                          </h4>
                           <div className="flex flex-col gap-4">
                             {column.items.map((item) => (
                               <Link 
@@ -138,7 +146,7 @@ export default function Navbar() {
                               >
                                 <span className={cn(
                                   "text-sm font-black text-slate-800 transition-colors",
-                                  link.megaMenuTheme === "indigo" ? "group-hover/item:text-indigo-600" : "group-hover/item:text-blue-700"
+                                  link.megaMenuTheme === "emerald" ? "group-hover/item:text-emerald-600" : "group-hover/item:text-blue-700"
                                 )}>{item.name}</span>
                                 <span className="text-xs text-slate-500 mt-0.5">{item.desc}</span>
                               </Link>
@@ -150,13 +158,13 @@ export default function Navbar() {
                     
                     <div className="pt-4 mt-2 border-t border-slate-100 flex justify-between items-center">
                       <p className="text-xs text-slate-500">
-                        {link.megaMenuTheme === "indigo" ? "Lee nuestros últimos análisis." : "Explora nuestra librería B2B."}
+                        {link.megaMenuTheme === "emerald" ? "Lee nuestros últimos análisis." : "Explora nuestra librería B2B."}
                       </p>
                       <Link href={link.href} className={cn(
                         "text-xs font-bold flex items-center transition-colors",
-                        link.megaMenuTheme === "indigo" ? "text-indigo-600 hover:text-indigo-800" : "text-blue-700 hover:text-blue-800"
+                        link.megaMenuTheme === "emerald" ? "text-emerald-600 hover:text-emerald-800" : "text-blue-700 hover:text-blue-800"
                       )}>
-                        {link.megaMenuTheme === "indigo" ? "Ver todos los artículos" : "Ver catálogo completo"} <ArrowRight className="w-3 h-3 ml-1" />
+                        {link.megaMenuTheme === "emerald" ? "Ver todos los artículos" : "Ver catálogo completo"} <ArrowRight className="w-3 h-3 ml-1" />
                       </Link>
                     </div>
                   </div>
