@@ -66,7 +66,6 @@ function FormInner() {
 
   // Re-sync if the URL changes (e.g. user clicks another button)
   useEffect(() => {
-  useEffect(() => {
     const p = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Agendar Diagnóstico IA" };
     setProyecto(p.proyecto);
     setEtapa(p.etapa);
