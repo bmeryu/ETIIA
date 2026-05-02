@@ -61,6 +61,7 @@ function FormInner() {
 
   const [proyecto, setProyecto] = useState(preset.proyecto);
   const [etapa, setEtapa]     = useState(preset.etapa);
+  const [btnText, setBtnText] = useState(preset.ctaText);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -69,6 +70,7 @@ function FormInner() {
     const p = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Agendar Diagnóstico IA" };
     setProyecto(p.proyecto);
     setEtapa(p.etapa);
+    setBtnText(p.ctaText);
   }, [interes]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -154,7 +156,7 @@ function FormInner() {
 
       <button type="submit" disabled={loading}
         className="w-full flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3.5 rounded-lg text-sm transition-colors mt-2 disabled:opacity-60">
-        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><span>{preset.ctaText}</span><ArrowRight className="w-4 h-4" /></>}
+        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><span>{btnText}</span><ArrowRight className="w-4 h-4" /></>}
       </button>
 
       <p className="text-xs text-slate-400 leading-relaxed">
