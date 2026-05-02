@@ -274,7 +274,7 @@ export default function HomeV2() {
                 badge: "Co-fundador · Arquitectura & Delivery",
                 desc: "Arquitecto cloud con experiencia en integrar soluciones de IA en empresas reales. Cierra la brecha entre el prototipo y el sistema que tu equipo usa cada día.",
                 tags: ["Cloud", "Implementación", "Integración técnica"],
-                linkedin: "https://www.linkedin.com/in/pablo-e-olivares-c/"
+                linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"
               },
             ].map((f, i) => (
               <Reveal key={f.name} delay={0.1 * (i + 1)}>
