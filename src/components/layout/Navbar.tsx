@@ -13,7 +13,6 @@ const navLinks = [
   { name: "Inicio", href: "/" },
   { name: "Soluciones de IA", href: "/demos" },
   { name: "Perspectivas", href: "/insights" },
-  { name: "Contáctanos", href: "/contacto" },
 ];
 
 export default function Navbar() {
@@ -83,7 +82,7 @@ export default function Navbar() {
             </Link>
           ) : (
             <Link href="/contacto">
-              <Button>Agendar Diagnóstico IA</Button>
+              <Button variant="dark">Contáctanos</Button>
             </Link>
           )}
         </div>
@@ -130,7 +129,7 @@ export default function Navbar() {
               </Link>
             ) : (
               <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button>Agendar Diagnóstico IA</Button>
+                <Button variant="dark">Contáctanos</Button>
               </Link>
             )}
           </motion.nav>
