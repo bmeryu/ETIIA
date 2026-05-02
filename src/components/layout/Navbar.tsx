@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,12 +14,28 @@ const navLinks = [
   { 
     name: "Soluciones de IA", 
     href: "/demos",
-    dropdown: [
-      { name: "AtendeAI (Cliente)", href: "/demos/atendeai" },
-      { name: "FacturAI (Finanzas)", href: "/demos/facturai" },
-      { name: "LexSearch (Legal)", href: "/demos/lexsearch" },
-      { name: "TalentParse (RRHH)", href: "/demos/talentparse" },
-      { name: "Catálogo completo →", href: "/demos", isSpecial: true }
+    megaMenu: [
+      {
+        title: "Atención & Ventas",
+        items: [
+          { name: "AtendeAI", desc: "Agente autónomo RAG", href: "/demos/atendeai" },
+          { name: "VentaAI", desc: "Recomendación retail", href: "/demos/ventaai" }
+        ]
+      },
+      {
+        title: "Backoffice",
+        items: [
+          { name: "FacturAI", desc: "OCR y conciliación", href: "/demos/facturai" },
+          { name: "AutoRend IA", desc: "Rendiciones en ERP", href: "/demos/autorend" }
+        ]
+      },
+      {
+        title: "Legal & RRHH",
+        items: [
+          { name: "LexSearch", desc: "Buscador de contratos", href: "/demos/lexsearch" },
+          { name: "TalentParse", desc: "Ranking de CVs", href: "/demos/talentparse" }
+        ]
+      }
     ]
   },
   { name: "Perspectivas", href: "/insights" },
@@ -72,24 +88,38 @@ export default function Navbar() {
                 {link.name}
               </Link>
               
-              {/* EY-style Dropdown */}
-              {link.dropdown && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 w-56">
-                  <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-100 p-2 flex flex-col">
-                    {link.dropdown.map((subItem) => (
-                      <Link 
-                        key={subItem.name} 
-                        href={subItem.href}
-                        className={cn(
-                          "px-3 py-2 rounded-xl text-sm transition-all",
-                          subItem.isSpecial 
-                            ? "text-blue-700 font-bold bg-blue-50 mt-1 hover:bg-blue-100 text-center" 
-                            : "text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 font-medium"
-                        )}
-                      >
-                        {subItem.name}
+              {/* EY-style Horizontal Mega Menu */}
+              {link.megaMenu && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 w-[680px]">
+                  <div className="bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100 p-8 flex flex-col gap-6 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50/50 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2" />
+                    
+                    <div className="grid grid-cols-3 gap-8">
+                      {link.megaMenu.map((column) => (
+                        <div key={column.title}>
+                          <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">{column.title}</h4>
+                          <div className="flex flex-col gap-4">
+                            {column.items.map((item) => (
+                              <Link 
+                                key={item.name} 
+                                href={item.href}
+                                className="group/item flex flex-col"
+                              >
+                                <span className="text-sm font-black text-slate-800 group-hover/item:text-blue-700 transition-colors">{item.name}</span>
+                                <span className="text-xs text-slate-500 mt-0.5">{item.desc}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <div className="pt-4 mt-2 border-t border-slate-100 flex justify-between items-center">
+                      <p className="text-xs text-slate-500">Explora nuestra librería completa de soluciones B2B.</p>
+                      <Link href="/demos" className="text-xs font-bold text-blue-700 flex items-center hover:text-blue-800 transition-colors">
+                        Ver catálogo completo <ArrowRight className="w-3 h-3 ml-1" />
                       </Link>
-                    ))}
+                    </div>
                   </div>
                 </div>
               )}
