@@ -69,7 +69,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth" suppressHydrationWarning>
-      <head>
+      <body suppressHydrationWarning className={`${jakartaSans.variable} font-sans antialiased bg-white text-navy flex flex-col min-h-screen`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -187,8 +187,6 @@ export default function RootLayout({
             })
           }}
         />
-      </head>
-      <body suppressHydrationWarning className={`${jakartaSans.variable} font-sans antialiased bg-white text-navy flex flex-col min-h-screen`}>
         <Navbar />
         <main className="flex-1 flex flex-col">
           {children}

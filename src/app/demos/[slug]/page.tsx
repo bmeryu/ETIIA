@@ -272,6 +272,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
       "price": "0",
       "priceCurrency": "USD"
     },
+    "image": "https://www.etiia.com/og-image.jpg",
     "publisher": {
       "@type": "Organization",
       "name": "ETIIA",
@@ -298,8 +299,8 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
       {/* ══════════ ESQUEMAS AEO (SR-ONLY y JSON-LD) ══════════ */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <article className="sr-only" aria-hidden="false">
-        <h1>{demo.nombre} - Solución B2B por ETIIA</h1>
+      <article className="sr-only" aria-hidden="true">
+        <h2>{demo.nombre} - Solución B2B por ETIIA</h2>
         <p>{demo.aeoText}</p>
         <h2>Preguntas Frecuentes Técnicas</h2>
         {demo.faqs.map((faq, idx) => (
@@ -373,13 +374,13 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
         {/* CTA FIJO ABAJO */}
         <div className="lg:absolute bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-6 lg:px-12 z-20 shadow-[0_-10px_20px_-10px_rgba(0,0,0,0.05)]">
           <FadeIn delay={0.5}>
-            <Link href={`/v2?interes=${slug}#diagnostico`} className="block w-full mb-3">
+            <Link href={`/?interes=${slug}#diagnostico`} className="block w-full mb-3">
               <Button className="w-full h-12 text-base shadow-lg shadow-blue-900/10">
                 Consultar para mi empresa <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
             <p className="text-center text-xs text-slate-500 font-medium">
-              ¿Tu operación requiere algo distinto? <Link href="/v2?interes=a-medida#diagnostico" className="text-blue-600 hover:text-blue-800 transition-colors underline underline-offset-2">Diseñemos una solución a medida</Link>.
+              ¿Tu operación requiere algo distinto? <Link href="/?interes=a-medida#diagnostico" className="text-blue-600 hover:text-blue-800 transition-colors underline underline-offset-2">Diseñemos una solución a medida</Link>.
             </p>
           </FadeIn>
         </div>
@@ -391,7 +392,6 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
           src={demo.iframeSrc}
           className="w-full h-full border-0 block"
           title={`Demo ${demo.nombre}`}
-          loading="lazy"
         />
       </div>
     </div>
