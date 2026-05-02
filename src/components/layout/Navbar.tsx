@@ -38,7 +38,33 @@ const navLinks = [
       }
     ]
   },
-  { name: "Perspectivas", href: "/insights" },
+  { 
+    name: "Perspectivas", 
+    href: "/insights",
+    megaMenu: [
+      {
+        title: "Artículos Destacados",
+        items: [
+          { name: "Digitalizar el desorden", desc: "El error más caro al comprar IA.", href: "/insights/pilar-1-gobernanza" },
+          { name: "Automatizar lo roto", desc: "Por qué es tirar dinero a la basura.", href: "/insights/pilar-2-transformacion" }
+        ]
+      },
+      {
+        title: "Estrategia & Talento",
+        items: [
+          { name: "El mito del Ingeniero IA", desc: "El verdadero talento que necesitas.", href: "/insights/pilar-3-talento" },
+          { name: "La puerta trasera invisible", desc: "El mayor riesgo de seguridad.", href: "/insights/pilar-4-seguridad" }
+        ]
+      },
+      {
+        title: "Recursos B2B",
+        items: [
+          { name: "UpSkilling y Formación", desc: "Entrena a tu equipo interno.", href: "?interes=formacion#diagnostico" },
+          { name: "Auditoría de Riesgo", desc: "Evalúa tu madurez operativa.", href: "/contacto" }
+        ]
+      }
+    ]
+  },
 ];
 
 export default function Navbar() {
