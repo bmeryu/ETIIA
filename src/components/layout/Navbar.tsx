@@ -121,7 +121,7 @@ export default function Navbar() {
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 w-[680px]">
                   <div className={cn(
                     "bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-slate-100 p-8 flex flex-col gap-6 relative overflow-hidden",
-                    link.megaMenuTheme === "navy" ? "border-t-4 border-t-slate-800" : "border-t-4 border-t-blue-600"
+                    link.megaMenuTheme === "navy" ? "border-t-4 border-t-blue-950" : "border-t-4 border-t-blue-600"
                   )}>
                     <div className={cn(
                       "absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2 transition-colors duration-500",
@@ -133,7 +133,7 @@ export default function Navbar() {
                         <div key={column.title}>
                           <h4 className={cn(
                             "text-[10px] font-bold uppercase tracking-widest mb-4 inline-block px-2.5 py-1 rounded-md",
-                            link.megaMenuTheme === "navy" ? "text-slate-800 bg-slate-100" : "text-blue-800 bg-blue-50"
+                            link.megaMenuTheme === "navy" ? "text-blue-950 bg-slate-100" : "text-blue-800 bg-blue-50"
                           )}>
                             {column.title}
                           </h4>
@@ -146,7 +146,7 @@ export default function Navbar() {
                               >
                                 <span className={cn(
                                   "text-sm font-black text-slate-800 transition-colors",
-                                  link.megaMenuTheme === "navy" ? "group-hover/item:text-slate-900" : "group-hover/item:text-blue-700"
+                                  link.megaMenuTheme === "navy" ? "group-hover/item:text-blue-900" : "group-hover/item:text-blue-700"
                                 )}>{item.name}</span>
                                 <span className="text-xs text-slate-500 mt-0.5">{item.desc}</span>
                               </Link>
@@ -162,7 +162,7 @@ export default function Navbar() {
                       </p>
                       <Link href={link.href} className={cn(
                         "text-xs font-bold flex items-center transition-colors",
-                        link.megaMenuTheme === "navy" ? "text-slate-800 hover:text-black" : "text-blue-700 hover:text-blue-800"
+                        link.megaMenuTheme === "navy" ? "text-blue-900 hover:text-black" : "text-blue-700 hover:text-blue-800"
                       )}>
                         {link.megaMenuTheme === "navy" ? "Ver todos los artículos" : "Ver catálogo completo"} <ArrowRight className="w-3 h-3 ml-1" />
                       </Link>
