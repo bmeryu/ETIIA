@@ -74,9 +74,11 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:block">
-          <Link href="/contacto">
-            <Button variant="dark">Contáctanos</Button>
-          </Link>
+          {pathname !== "/contacto" && (
+            <Link href="/contacto">
+              <Button variant="dark">Contáctanos</Button>
+            </Link>
+          )}
         </div>
 
         {/* ═══ Mobile Toggle ═══ */}
@@ -113,9 +115,11 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button variant="dark">Contáctanos</Button>
-            </Link>
+            {pathname !== "/contacto" && (
+              <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="dark">Contáctanos</Button>
+              </Link>
+            )}
           </motion.nav>
         )}
       </AnimatePresence>
