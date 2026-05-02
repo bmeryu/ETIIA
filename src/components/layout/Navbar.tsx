@@ -11,7 +11,17 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Inicio", href: "/" },
-  { name: "Soluciones de IA", href: "/demos" },
+  { 
+    name: "Soluciones de IA", 
+    href: "/demos",
+    dropdown: [
+      { name: "AtendeAI (Cliente)", href: "/demos/atendeai" },
+      { name: "FacturAI (Finanzas)", href: "/demos/facturai" },
+      { name: "LexSearch (Legal)", href: "/demos/lexsearch" },
+      { name: "TalentParse (RRHH)", href: "/demos/talentparse" },
+      { name: "Catálogo completo →", href: "/demos", isSpecial: true }
+    ]
+  },
   { name: "Perspectivas", href: "/insights" },
 ];
 
@@ -54,18 +64,36 @@ export default function Navbar() {
         {/* ═══ Desktop Nav ═══ */}
         <nav className="hidden md:flex flex-1 justify-center items-center gap-8">
           {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={cn(
-                "nav-link-animated text-sm transition-all flex items-center",
-                link.name === "Contáctanos"
-                  ? "bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-3.5 py-1.5 rounded-full"
-                  : "font-medium text-slate-500 hover:text-[#0F172A] pb-0.5"
+            <div key={link.name} className="relative group">
+              <Link
+                href={link.href}
+                className="nav-link-animated text-sm font-medium text-slate-500 hover:text-[#0F172A] flex items-center py-2 transition-colors"
+              >
+                {link.name}
+              </Link>
+              
+              {/* EY-style Dropdown */}
+              {link.dropdown && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 w-56">
+                  <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-100 p-2 flex flex-col">
+                    {link.dropdown.map((subItem) => (
+                      <Link 
+                        key={subItem.name} 
+                        href={subItem.href}
+                        className={cn(
+                          "px-3 py-2 rounded-xl text-sm transition-all",
+                          subItem.isSpecial 
+                            ? "text-blue-700 font-bold bg-blue-50 mt-1 hover:bg-blue-100 text-center" 
+                            : "text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 font-medium"
+                        )}
+                      >
+                        {subItem.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               )}
-            >
-              {link.name}
-            </Link>
+            </div>
           ))}
         </nav>
 
