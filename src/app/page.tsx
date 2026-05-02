@@ -204,10 +204,10 @@ export default function HomeV2() {
                   <h3 className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-500 tracking-tight mb-2">{p.nombre}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed flex-grow mb-6">{p.desc}</p>
                   <div className="flex gap-3">
-                    <Link href={`/demos/${p.slug}`} className="flex-1 text-center text-xs font-semibold text-blue-700 border border-blue-200 bg-blue-50 hover:bg-blue-100 hover:border-blue-300 px-3 py-2.5 rounded-lg transition-all">
+                    <Link href={`/demos/${p.slug}`} className="flex-1 flex items-center justify-center text-xs font-bold text-slate-700 border-2 border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 px-3 py-2 rounded-lg transition-all">
                       Ver demo
                     </Link>
-                    <a href={`?interes=${p.slug}#diagnostico`} className="flex-1 text-center text-xs font-semibold text-white bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all px-3 py-2.5 rounded-lg">
+                    <a href={`?interes=${p.slug}#diagnostico`} className="flex-1 flex items-center justify-center text-xs font-bold text-white bg-gradient-to-br from-blue-800 to-blue-600 border border-blue-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:from-blue-900 hover:to-blue-700 transition-all px-3 py-2 rounded-lg">
                       Consultar
                     </a>
                   </div>
