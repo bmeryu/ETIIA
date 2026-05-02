@@ -203,169 +203,91 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
   const c = colorMap[demo.color] || colorMap.blue;
 
   return (
-    <>
-      {/* ══════════ HERO ══════════ */}
-      <section className="pt-32 pb-12 md:pt-40 md:pb-16 bg-white bg-grid-light relative overflow-hidden">
-        <div className="hero-glow" aria-hidden="true" />
-        <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10">
-          <FadeIn delay={0.1}>
-            <Link href="/demos" className="inline-flex items-center text-sm text-slate-400 hover:text-slate-600 transition mb-6 font-medium">
-              <ArrowLeft className="w-4 h-4 mr-1" /> Volver al Portfolio
-            </Link>
-          </FadeIn>
+    <div className="flex flex-col lg:flex-row min-h-screen pt-20 bg-white">
+      {/* PANEL IZQUIERDO: INFORMACIÓN (Marketing & SEO) */}
+      <div className="w-full lg:w-[450px] xl:w-[500px] bg-white border-r border-slate-200 flex flex-col lg:h-[calc(100vh-80px)] z-10 relative">
+        <div className="flex-1 overflow-y-auto p-8 lg:p-12 pb-32">
+        <FadeIn delay={0.1}>
+          <Link href="/demos" className="inline-flex items-center text-sm text-slate-400 hover:text-blue-600 transition mb-8 font-medium">
+            <ArrowLeft className="w-4 h-4 mr-1" /> Volver al Portfolio
+          </Link>
+        </FadeIn>
 
-          <FadeIn delay={0.15}>
-            <div className="flex flex-wrap items-center gap-3 mb-4">
-              <span className={`inline-flex items-center px-3 py-1 rounded-full ${c.bg} ${c.text} text-xs font-bold uppercase tracking-wider ${c.border} border`}>
-                {demo.industria}
-              </span>
-              <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-green-50 text-green-700 text-[0.65rem] font-bold uppercase tracking-wider border border-green-200">
-                ● Demo interactiva
-              </span>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#0F172A] mb-4 leading-[1.08]">
-              {demo.nombre}
-            </h1>
-          </FadeIn>
-
-          <FadeIn delay={0.3}>
-            <p className="text-xl md:text-2xl text-slate-500 mb-6 max-w-3xl leading-relaxed font-medium">
-              {demo.tagline}
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.35}>
-            <p className="text-base text-slate-400 mb-8 max-w-2xl leading-relaxed">
-              {demo.descripcion}
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.4}>
-            <div className="flex flex-wrap gap-2 mb-8">
-              {demo.tags.map(tag => (
-                <span key={tag} className="bg-slate-100 text-slate-500 text-xs font-semibold px-3 py-1 rounded-lg border border-slate-200">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.45}>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#demo-frame">
-                <Button className="h-12 px-8 text-base">
-                  Probar la Demo <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </a>
-              <Link href="/contacto">
-                <Button variant="outline" className="h-12 px-8 text-base">
-                  Solicitar para mi empresa
-                </Button>
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ══════════ DEMO EMBEBIDA ══════════ */}
-      <section id="demo-frame" className="py-12 md:py-20 bg-slate-50 border-y border-slate-200">
-        <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-          <FadeIn>
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-black text-[#0F172A] mb-2">Demo Interactiva</h2>
-              <p className="text-slate-400 text-sm">Haz clic en los elementos resaltados para interactuar con el sistema</p>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <div className="relative mx-auto" style={{ maxWidth: '1000px' }}>
-              {/* Browser chrome */}
-              <div className="bg-[#f8fafc] rounded-t-xl border border-b-0 border-slate-200 h-10 flex items-center px-4 gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-                <div className="flex-1 text-center">
-                  <span className="inline-block bg-white rounded-md px-4 py-1 text-xs text-slate-400 border border-slate-200">
-                    🔒 app.{demo.nombre.toLowerCase()}.cl/dashboard
-                  </span>
-                </div>
-              </div>
-              {/* iframe */}
-              <div className="border border-slate-200 rounded-b-xl overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
-                <iframe
-                  src={demo.iframeSrc}
-                  className="w-full border-0"
-                  style={{ height: '580px' }}
-                  title={`Demo ${demo.nombre}`}
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ══════════ CÓMO FUNCIONA ══════════ */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
-          <FadeIn>
-            <div className="text-center mb-14">
-              <h2 className="text-3xl md:text-[2.5rem] font-black text-[#0F172A] leading-tight">Cómo funciona</h2>
-            </div>
-          </FadeIn>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {demo.pasos.map((paso, i) => (
-              <FadeIn key={paso.titulo} delay={0.1 * (i + 1)}>
-                <div className="text-center">
-                  <div className={`w-14 h-14 rounded-full ${c.bg} ${c.text} flex items-center justify-center text-xl font-bold mx-auto mb-5 ${c.border} border-2`}>
-                    {i + 1}
-                  </div>
-                  <h3 className="text-lg font-bold text-[#0F172A] mb-2">{paso.titulo}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{paso.desc}</p>
-                </div>
-              </FadeIn>
-            ))}
+        <FadeIn delay={0.15}>
+          <div className="flex flex-wrap items-center gap-3 mb-6">
+            <span className={`inline-flex items-center px-3 py-1 rounded-full ${c.bg} ${c.text} text-xs font-bold uppercase tracking-wider ${c.border} border`}>
+              {demo.industria}
+            </span>
           </div>
+        </FadeIn>
 
-          {/* Metric card */}
-          <FadeIn delay={0.4}>
-            <div className={`${c.bg} ${c.border} border rounded-2xl p-8 text-center max-w-md mx-auto`}>
-              <p className={`text-3xl md:text-4xl font-black ${c.text} mb-1`}>{demo.resultado}</p>
-              <p className="text-slate-500 text-sm font-medium">{demo.resultadoLabel}</p>
-            </div>
-          </FadeIn>
+        <FadeIn delay={0.2}>
+          <h1 className="text-4xl font-black tracking-tight text-[#0F172A] mb-4 leading-tight">
+            {demo.nombre}
+          </h1>
+        </FadeIn>
+
+        <FadeIn delay={0.25}>
+          <p className="text-xl text-slate-500 mb-6 font-medium leading-relaxed">
+            {demo.tagline}
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.3}>
+          <p className="text-base text-slate-600 mb-10 leading-relaxed">
+            {demo.descripcion}
+          </p>
+        </FadeIn>
+
+        {/* Features / Pasos */}
+        <div className="space-y-6 mb-10">
+          {demo.pasos.map((paso, idx) => (
+            <FadeIn key={idx} delay={0.3 + (idx * 0.05)}>
+              <div className="flex gap-4">
+                <div className={`w-8 h-8 rounded-full ${c.bg} ${c.text} font-bold flex items-center justify-center shrink-0`}>
+                  {idx + 1}
+                </div>
+                <div>
+                  <h4 className="text-sm font-black text-[#0F172A] mb-1">{paso.titulo}</h4>
+                  <p className="text-sm text-slate-500 leading-relaxed">{paso.desc}</p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
         </div>
-      </section>
 
-      {/* ══════════ CTA ══════════ */}
-      <section className="py-16 md:py-20 bg-slate-50 border-t border-slate-200 text-center">
-        <div className="container mx-auto px-6 md:px-12 max-w-3xl">
-          <FadeIn>
-            <h2 className="text-3xl md:text-[2.5rem] font-black text-[#0F172A] mb-4 leading-tight">
-              ¿Necesitas algo similar para tu empresa?
-            </h2>
-            <p className="text-lg text-slate-500 mb-10 max-w-xl mx-auto">
-              Cada solución se adapta a tu operación. Cuéntanos tu desafío y te mostramos cómo resolverlo.
+        <FadeIn delay={0.4} className="mt-8">
+          <div className={`p-6 rounded-2xl ${c.bg} border ${c.border} text-center`}>
+            <p className={`text-3xl font-black ${c.text} mb-1 tracking-tight`}>{demo.resultado}</p>
+            <p className={`text-sm ${c.text} opacity-80 font-semibold`}>{demo.resultadoLabel}</p>
+          </div>
+        </FadeIn>
+        </div>
+
+        {/* CTA FIJO ABAJO */}
+        <div className="lg:absolute bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-6 lg:px-12 z-20 shadow-[0_-10px_20px_-10px_rgba(0,0,0,0.05)]">
+          <FadeIn delay={0.5}>
+            <Link href={`/v2?interes=${slug}#diagnostico`} className="block w-full mb-3">
+              <Button className="w-full h-12 text-base shadow-lg shadow-blue-900/10">
+                Consultar para mi empresa <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+            <p className="text-center text-xs text-slate-500 font-medium">
+              ¿Tu operación requiere algo distinto? <Link href="/v2?interes=a-medida#diagnostico" className="text-blue-600 hover:text-blue-800 transition-colors underline underline-offset-2">Diseñemos una solución a medida</Link>.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contacto">
-                <Button className="h-12 px-8 text-base btn-pulse">
-                  Solicitar Diagnóstico Gratuito
-                </Button>
-              </Link>
-              <Link href="/demos">
-                <Button variant="outline" className="h-12 px-8 text-base">
-                  Ver más soluciones <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
-            </div>
           </FadeIn>
         </div>
-      </section>
-    </>
+      </div>
+
+      {/* PANEL DERECHO: DEMO INTERACTIVA (100% Height) */}
+      <div className="flex-1 bg-[#f8fafc] relative h-[800px] lg:h-[calc(100vh-80px)]">
+        <iframe
+          src={demo.iframeSrc}
+          className="w-full h-full border-0 block"
+          title={`Demo ${demo.nombre}`}
+          loading="lazy"
+        />
+      </div>
+    </div>
   );
 }

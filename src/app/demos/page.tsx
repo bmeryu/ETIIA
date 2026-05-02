@@ -1,19 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { Metadata } from "next";
-import { ArrowRight, FileText, Scale, Users, Stethoscope, Leaf, Calculator, Mic, Headset, ShoppingBag } from "lucide-react";
+import { ArrowRight, FileText, Scale, Users, Stethoscope, Leaf, Calculator, Mic, Headset, ShoppingBag, Filter } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal, FadeIn } from "@/components/ui/Reveal";
-
-export const metadata: Metadata = {
-  title: "Portfolio de Soluciones IA",
-  description: "Portfolio de soluciones de IA implementadas por ETIIA. Productos interactivos reales en contabilidad, legal, RRHH, salud y más.",
-};
 
 const productos = [
   {
     nombre: "AtendeAI",
     slug: "atendeai",
     industria: "Transversal · Atención al Cliente",
+    categoria: "Atención Cliente",
     icon: <Headset className="w-6 h-6" />,
     descripcion: "Agente de IA que entiende lenguaje natural, accede a tu CRM y ejecuta acciones reales: cambia planes, agenda técnicos, genera boletas. No es un chatbot — es un agente.",
     resultado: "73% resolución sin humano",
@@ -25,6 +23,7 @@ const productos = [
     nombre: "VentaAI",
     slug: "ventaai",
     industria: "Retail · eCommerce",
+    categoria: "Retail",
     icon: <ShoppingBag className="w-6 h-6" />,
     descripcion: "Motor de recomendación que analiza comportamiento, historial y perfil del cliente para sugerir productos con alta probabilidad de conversión. Genera campañas automáticas por segmento.",
     resultado: "+34% cross-sell",
@@ -36,6 +35,7 @@ const productos = [
     nombre: "AutoRend IA",
     slug: "autorend",
     industria: "Educación · Rendiciones",
+    categoria: "Operaciones",
     icon: <FileText className="w-6 h-6" />,
     descripcion: "Agente de IA que lee PDFs de observaciones, cruza datos con el ERP y responde automáticamente. Si falta información, redacta y envía el correo al colegio.",
     resultado: "78% resolución automática",
@@ -47,6 +47,7 @@ const productos = [
     nombre: "FacturAI",
     slug: "facturai",
     industria: "Finanzas · Contabilidad",
+    categoria: "Finanzas",
     icon: <Calculator className="w-6 h-6" />,
     descripcion: "Lectura masiva de facturas PDF con OCR inteligente, conciliación cruzada automática con cartolas bancarias y digitación directa al ERP sin intervención humana.",
     resultado: "82% conciliación automática",
@@ -58,6 +59,7 @@ const productos = [
     nombre: "LexSearch",
     slug: "lexsearch",
     industria: "Legal · Jurídico",
+    categoria: "Legal",
     icon: <Scale className="w-6 h-6" />,
     descripcion: "Buscador semántico privado sobre tu base de contratos y jurisprudencia. La IA entiende contexto legal y devuelve la cláusula exacta, no palabras aisladas.",
     resultado: "4hrs → 12min búsqueda",
@@ -69,6 +71,7 @@ const productos = [
     nombre: "TalentParse",
     slug: "talentparse",
     industria: "Recursos Humanos",
+    categoria: "RRHH",
     icon: <Users className="w-6 h-6" />,
     descripcion: "Parseo automático de CVs en cualquier formato. La IA extrae variables críticas y las mapea contra la descripción del cargo, generando un ranking instantáneo.",
     resultado: "300 CVs en 8 min",
@@ -80,6 +83,7 @@ const productos = [
     nombre: "AgendAI",
     slug: "agendai",
     industria: "Salud · Clínicas",
+    categoria: "Salud",
     icon: <Stethoscope className="w-6 h-6" />,
     descripcion: "Análisis predictivo de agenda médica: detecta inasistencias antes de que ocurran y contacta automáticamente a pacientes en lista de espera.",
     resultado: "-62% no-shows",
@@ -91,6 +95,7 @@ const productos = [
     nombre: "CosechAI",
     slug: "cosechai",
     industria: "Agricultura · Viñas",
+    categoria: "Agro",
     icon: <Leaf className="w-6 h-6" />,
     descripcion: "Cruzamos históricos de producción con modelos predictivos para optimizar rendimiento, reducir merma y maximizar la rentabilidad de exportaciones.",
     resultado: "+28% eficiencia",
@@ -101,7 +106,8 @@ const productos = [
   {
     nombre: "TranscribAI",
     slug: "transcribai",
-    industria: "Legal · Compliance · Corporativo",
+    industria: "Legal · Compliance",
+    categoria: "Legal",
     icon: <Mic className="w-6 h-6" />,
     descripcion: "Transcripción segura de audios con IA. Genera resúmenes ejecutivos, detecta discrepancias entre participantes y levanta alertas automáticas sobre compromisos incumplidos.",
     resultado: "2hrs audio → 5 min",
@@ -110,6 +116,8 @@ const productos = [
     disponible: true,
   },
 ];
+
+const categoriasDisponibles = ["Todos", "Atención Cliente", "Finanzas", "Legal", "RRHH", "Operaciones", "Agro", "Retail", "Salud"];
 
 const colorMap: Record<string, { bg: string; text: string; border: string; tagBg: string; tagText: string }> = {
   blue:    { bg: "bg-blue-50",    text: "text-blue-600",    border: "border-blue-200",   tagBg: "bg-blue-100",    tagText: "text-blue-700" },
@@ -124,40 +132,47 @@ const colorMap: Record<string, { bg: string; text: string; border: string; tagBg
 };
 
 export default function CasosPage() {
+  const [filtro, setFiltro] = useState("Todos");
+  const productosFiltrados = productos.filter(p => filtro === "Todos" || p.categoria === filtro);
+
   return (
     <>
-      {/* ══════════ HERO ══════════ */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-white text-center bg-grid-light relative overflow-hidden">
-        <div className="hero-glow" aria-hidden="true" />
-        <div className="container mx-auto px-6 md:px-12 max-w-4xl relative z-10">
-          <FadeIn delay={0.1}>
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50/60 text-sm text-blue-700 font-semibold mb-8 tracking-wide">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block mr-2 animate-pulse" />
-              Portfolio de Soluciones
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <h1 className="text-4xl md:text-6xl font-black tracking-tight text-[#0F172A] mb-6 leading-[1.08]">
-              Productos que{" "}
-              <span className="text-gradient-blue">construimos</span>
-            </h1>
-          </FadeIn>
-          <FadeIn delay={0.35}>
-            <p className="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Cada solución nace de un problema real de negocio. Explora nuestro portfolio interactivo — desde la lectura inteligente de documentos hasta análisis predictivo.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
       {/* ══════════ PRODUCT STACK ══════════ */}
-      <section className="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-slate-50 min-h-screen">
         <div className="container mx-auto px-6 md:px-12 max-w-6xl">
+          
+          <div className="mb-12">
+            <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mb-6 tracking-tight">Catálogo de Soluciones IA</h1>
+            <p className="text-lg text-slate-500 max-w-2xl mb-8">
+              Explora nuestra librería de agentes y modelos predictivos. Usa los filtros para encontrar herramientas diseñadas para tu departamento.
+            </p>
+            
+            {/* Filter Bar */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm font-semibold text-slate-400 mr-2 flex items-center gap-1">
+                <Filter className="w-4 h-4" /> Filtrar por:
+              </span>
+              {categoriasDisponibles.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setFiltro(cat)}
+                  className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${
+                    filtro === cat 
+                      ? "bg-blue-700 text-white shadow-md shadow-blue-900/10" 
+                      : "bg-white text-slate-500 hover:bg-slate-100 hover:text-slate-800 border border-slate-200"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {productos.map((p, i) => {
+            {productosFiltrados.map((p, i) => {
               const c = colorMap[p.color];
               return (
-                <Reveal key={p.nombre} delay={0.08 * (i + 1)}>
+                <Reveal key={p.nombre} delay={0.05 * (i + 1)}>
                   {p.disponible && p.slug ? (
                     <Link href={`/demos/${p.slug}`} className="block h-full">
                       <div className={`bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-300 hover:shadow-[0_8px_28px_-6px_rgba(29,78,216,0.14)] transition-all h-full group cursor-pointer flex flex-col lift-card relative overflow-hidden`}>
