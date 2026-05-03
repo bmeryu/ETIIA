@@ -298,12 +298,12 @@ export default function HomeV2() {
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
               El Nuevo Estándar
             </div>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6 leading-[1.1]">
-              No instalamos &quot;chatbots&quot; genéricos.
-            </h2>
-            <p className="text-xl md:text-2xl text-slate-400 font-serif italic max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-400 font-serif italic max-w-3xl mx-auto leading-relaxed mb-6">
               &ldquo;Desarrollamos Agentes Autónomos B2B: Software que razona, se conecta a los sistemas de tu empresa y ejecuta flujos de trabajo completos de principio a fin, sin intervención humana.&rdquo;
             </p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.1]">
+              No instalamos &quot;chatbots&quot; genéricos.
+            </h2>
           </Reveal>
         </div>
       </section>
@@ -324,11 +324,6 @@ export default function HomeV2() {
                 <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full flex flex-col hover:border-blue-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer group relative overflow-hidden">
                   <div className="flex items-center justify-between gap-2 mb-4">
                     <span className="text-xs text-blue-700 font-bold uppercase tracking-wider">{p.industria}</span>
-                    {p.isAgent && (
-                      <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full border border-amber-200">
-                        ⚡ Agente Autónomo
-                      </span>
-                    )}
                   </div>
                   <p className="text-base text-[#0F172A] font-semibold leading-snug mb-4">{p.problema}</p>
                   <h3 className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-500 tracking-tight mb-2">{p.nombre}</h3>

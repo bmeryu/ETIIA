@@ -325,11 +325,12 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
             <span className="w-5 h-5 flex items-center justify-center bg-blue-50 text-blue-700 rounded-full group-open:rotate-45 transition-transform">+</span>
           </summary>
           <article className="p-5 pt-4 border-t border-slate-100 max-h-[60vh] overflow-y-auto custom-scrollbar">
-            <div className="flex flex-col gap-1 mb-2">
+            <div className="flex flex-col gap-1.5 mb-3">
               <h2 className="text-sm font-black text-[#0F172A]">{demo.nombre} - Solución B2B</h2>
               {demo.isAgent && (
-                <span className="inline-flex self-start items-center gap-1.5 text-[10px] font-black uppercase tracking-widest bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full border border-amber-200">
-                  ⚡ Agente Autónomo
+                <span className="inline-flex self-start items-center gap-1.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                  Agente Autónomo
                 </span>
               )}
             </div>

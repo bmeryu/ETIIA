@@ -186,11 +186,6 @@ export default function DemosFilterClient() {
                         </div>
                         <div className="flex flex-col gap-2 mb-1">
                           <span className={`text-xs font-semibold ${c.text} uppercase tracking-wider`}>{p.industria}</span>
-                          {p.isAgent && (
-                            <span className="inline-flex self-start items-center gap-1.5 text-[10px] font-black uppercase tracking-widest bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full border border-amber-200 shadow-sm">
-                              ⚡ Agente Autónomo
-                            </span>
-                          )}
                         </div>
                         <h2 className="text-xl font-black text-[#0F172A] mb-2 group-hover:text-blue-700 transition-colors">{p.nombre}</h2>
                         <p className="text-slate-500 text-sm leading-relaxed flex-grow mb-4">{p.descripcion}</p>
