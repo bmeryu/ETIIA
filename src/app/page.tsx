@@ -200,24 +200,28 @@ export default function HomeV2() {
             <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-slate-400 shrink-0 flex items-center">
               Tecnologías que dominamos
             </p>
-            <div className="flex gap-6 md:gap-8 items-center text-slate-400 font-medium animate-[marquee_20s_linear_infinite] md:animate-none md:flex-wrap md:justify-center w-full">
+            <ul aria-label="Tecnologías principales" className="flex gap-6 md:gap-8 items-center text-slate-400 font-medium animate-[marquee_20s_linear_infinite] md:animate-none md:flex-wrap md:justify-center w-full">
               {[
-                { category: 'Modelos', items: ['OpenAI GPT', 'Anthropic Claude', 'Meta Llama'] },
+                { category: 'Modelos', items: [
+                  <span key="gpt"><span className="font-bold text-slate-600">OpenAI</span> GPT</span>,
+                  <span key="claude"><span className="font-bold text-slate-600">Anthropic</span> Claude</span>,
+                  <span key="llama"><span className="font-bold text-slate-600">Meta</span> Llama</span>
+                ] },
                 { category: 'Cloud', items: ['AWS', 'GCP', 'Azure'] },
                 { category: 'Arquitectura', items: ['RAG', 'LangChain'] },
               ].map((group, gIdx) => (
-                <span key={group.category} className="flex items-center gap-4 md:gap-6">
+                <li key={group.category} className="flex items-center gap-4 md:gap-6">
                   <span className="text-[10px] font-bold uppercase text-slate-400 tracking-widest border border-slate-200 px-2 py-0.5 rounded">{group.category}</span>
                   {group.items.map((tech, i) => (
-                    <span key={tech} className="flex items-center gap-4 md:gap-6">
-                      <span className="hover:text-slate-600 transition-colors cursor-default">{tech}</span>
-                      {i < group.items.length - 1 && <span className="w-1 h-1 rounded-full bg-slate-300" />}
+                    <span key={i} className="flex items-center gap-4 md:gap-6">
+                      <span className="transition-colors cursor-default">{tech}</span>
+                      {i < group.items.length - 1 && <span className="w-1 h-1 rounded-full bg-slate-300" aria-hidden="true" />}
                     </span>
                   ))}
-                  {gIdx < 2 && <span className="w-1.5 h-1.5 rounded-full bg-slate-200 ml-2 md:ml-2" />}
-                </span>
+                  {gIdx < 2 && <span className="w-1.5 h-1.5 rounded-full bg-slate-200 ml-2 md:ml-2" aria-hidden="true" />}
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </section>

@@ -98,7 +98,14 @@ export default function RootLayout({
                     "Business Process Automation",
                     "Cognitive Computing",
                     "ERP Integration",
-                    "OCR Intelligent Document Processing"
+                    "OCR Intelligent Document Processing",
+                    "OpenAI",
+                    "Anthropic",
+                    "Meta Llama",
+                    "Amazon Web Services (AWS)",
+                    "Google Cloud Platform (GCP)",
+                    "Microsoft Azure",
+                    "LangChain"
                   ],
                   "areaServed": ["CL", "US", "MX", "ES", "CO"],
                   "priceRange": "$$$",
