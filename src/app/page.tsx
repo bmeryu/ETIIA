@@ -326,7 +326,7 @@ export default function HomeV2() {
               href="/demos"
               className="inline-flex items-center gap-2 text-blue-700 border border-blue-200 bg-blue-50 hover:bg-blue-100 hover:border-blue-300 font-bold text-sm px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5"
             >
-              Ver las demos en vivo <ArrowRight className="w-4 h-4" />
+              Ver soluciones de IA en vivo <ArrowRight className="w-4 h-4" />
             </Link>
           </Reveal>
         </div>
