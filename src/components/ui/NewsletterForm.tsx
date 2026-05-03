@@ -14,18 +14,24 @@ export function NewsletterForm() {
     setLoading(true);
     setError(false);
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+
     try {
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("_subject", "Lead - Suscripción Newsletter Perspectivas ETIIA");
+
       const res = await fetch("https://formspree.io/f/xjgarjgw", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          _subject: "Lead - Suscripción Newsletter Perspectivas ETIIA",
-          email,
-        }),
+        body: formData,
+        signal: controller.signal,
       });
+
+      clearTimeout(timeoutId);
 
       if (res.ok) {
         setSuccess(true);
@@ -33,6 +39,7 @@ export function NewsletterForm() {
         setError(true);
       }
     } catch (err) {
+      clearTimeout(timeoutId);
       setError(true);
     } finally {
       setLoading(false);
