@@ -27,11 +27,11 @@ export default function ServiciosPage() {
               Servicios Corporativos
             </div>
             <h1 className="text-4xl md:text-5xl font-black tracking-tight text-[#0F172A] leading-tight mb-6 max-w-3xl mx-auto">
-              Implementación Técnica y<br />
-              <span className="text-gradient-blue">Alineación Estratégica</span>
+              Soluciones de Inteligencia Artificial<br />
+              <span className="text-gradient-blue">sin el pitch de siempre.</span>
             </h1>
             <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-2xl mx-auto">
-              No vendemos humo algorítmico. Resolvemos cuellos de botella operativos mediante arquitecturas robustas, integraciones precisas y entrenamiento humano.
+              Desde el diagnóstico de viabilidad hasta la construcción de arquitecturas RAG a medida y el entrenamiento de tu equipo. Automatizamos procesos operativos reales, descartando la tecnología que no necesitas.
             </p>
           </FadeIn>
         </div>
