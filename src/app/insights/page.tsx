@@ -1,5 +1,6 @@
 import { getInsightsList } from '@/lib/markdown';
 import Link from 'next/link';
+import { NewsletterForm } from '@/components/ui/NewsletterForm';
 
 export const metadata = {
   title: 'Insights & Estrategia B2B | ETIIA',
@@ -81,22 +82,7 @@ export default function InsightsHub() {
               Únete a otros directivos que reciben nuestro análisis mensual sobre cómo la Inteligencia Artificial está reescribiendo las reglas de las operaciones corporativas. Sin spam, solo criterio.
             </p>
             
-            <form action="https://formspree.io/f/xjgarjgw" method="POST" className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input type="hidden" name="_subject" value="Lead - Suscripción Newsletter Perspectivas ETIIA" />
-              <input 
-                type="email" 
-                name="email"
-                required
-                placeholder="Tu correo corporativo" 
-                className="flex-1 bg-neutral-950 border border-neutral-800 text-white px-5 py-3.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all placeholder:text-neutral-600"
-              />
-              <button 
-                type="submit"
-                className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-indigo-900/20 whitespace-nowrap"
-              >
-                Suscribirme
-              </button>
-            </form>
+            <NewsletterForm />
             <p className="text-xs text-neutral-600 mt-4">
               Tus datos están protegidos. Puedes darte de baja en cualquier momento.
             </p>
