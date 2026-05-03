@@ -17,6 +17,7 @@ const demos: Record<string, {
   pasos: { titulo: string; desc: string }[];
   aeoText: string;
   softwareType: string;
+  isAgent?: boolean;
   faqs: { question: string; answer: string }[];
 }> = {
   atendeai: {
@@ -275,49 +276,50 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
   // JSON-LD Software Application
   // applicationCategory debe usar valores válidos de schema.org
   const validCategory = "BusinessApplication";
-  // JSON-LD Combined Schema (@graph)
-  const combinedSchema = {
+  
+  const softwareSchema = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "SoftwareApplication",
-        "name": demo.nombre,
-        "applicationCategory": validCategory,
-        "operatingSystem": "Web, API, Cloud",
-        "url": `https://www.etiia.com/demos/${slug}`,
-        "description": demo.descripcion,
-        "featureList": demo.tags.join(", "),
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "image": "https://www.etiia.com/og-image.jpg",
-        "publisher": {
-          "@type": "Organization",
-          "name": "ETIIA",
-          "url": "https://www.etiia.com",
-          "@id": "https://www.etiia.com/#organization"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": demo.faqs.map((faq) => ({
-          "@type": "Question",
-          "name": faq.question,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": faq.answer
-          }
-        }))
+    "@type": "SoftwareApplication",
+    "@id": `https://www.etiia.com/demos/${slug}/#software`,
+    "name": demo.nombre,
+    "applicationCategory": validCategory,
+    "operatingSystem": "Web, API, Cloud",
+    "url": `https://www.etiia.com/demos/${slug}`,
+    "description": demo.descripcion,
+    "featureList": demo.tags.join(", "),
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "image": "https://www.etiia.com/og-image.jpg",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ETIIA",
+      "url": "https://www.etiia.com",
+      "@id": "https://www.etiia.com/#organization"
+    }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `https://www.etiia.com/demos/${slug}/#faq`,
+    "mainEntity": demo.faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
       }
-    ]
+    }))
   };
 
   return (
     <div className="w-full h-[calc(100vh-80px)] mt-20 relative bg-white">
       {/* ══════════ ESQUEMAS AEO (SR-ONLY y JSON-LD) ══════════ */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(combinedSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* ══════════ ESQUEMAS AEO VISIBLES (Google Compliance) ══════════ */}
       <div className="absolute top-4 right-4 sm:right-6 z-50">
         <details className="bg-white/95 backdrop-blur-md border border-slate-200 text-slate-700 rounded-xl shadow-2xl max-w-xs md:max-w-sm group transition-all">
