@@ -48,7 +48,7 @@ export default function HomeV2() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "@id": "https://www.etiia.com/#faq",
+            "@id": "https://etiia.com/#faq",
             "mainEntity": [
               {
                 "@type": "Question",

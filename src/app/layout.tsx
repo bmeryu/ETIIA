@@ -12,7 +12,7 @@ const jakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.etiia.com"),
+  metadataBase: new URL("https://etiia.com"),
   title: {
     template: "%s | ETIIA Consultoría IA B2B",
     default: "Consultoría en Inteligencia Artificial B2B & Agentes IA | ETIIA",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Consultoría en Inteligencia Artificial B2B & Agentes IA | ETIIA",
     description: "Conectamos tecnología de IA con KPIs de negocio reales. Implementación de sistemas RAG y automatización cognitiva B2B.",
-    url: "https://www.etiia.com",
+    url: "https://etiia.com",
     siteName: "ETIIA",
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'ETIIA Consultoría en Inteligencia Artificial' }],
     locale: "es_CL",
@@ -76,16 +76,16 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": ["Organization", "ProfessionalService"],
-                  "@id": "https://www.etiia.com/#organization",
+                  "@id": "https://etiia.com/#organization",
                   "name": "ETIIA - Consultoría en Inteligencia Artificial B2B",
-                  "url": "https://www.etiia.com",
+                  "url": "https://etiia.com",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://www.etiia.com/favicon.svg",
+                    "url": "https://etiia.com/favicon.svg",
                     "width": 512,
                     "height": 512
                   },
-                  "image": "https://www.etiia.com/og-image.jpg",
+                  "image": "https://etiia.com/og-image.jpg",
                   "description": "Consultoría e implementación de Inteligencia Artificial, Agentes Autónomos y sistemas RAG aplicados a negocios B2B en Chile y Latam.",
                   "openingHoursSpecification": [
                     {
@@ -180,15 +180,15 @@ export default function RootLayout({
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://www.etiia.com/#website",
-                  "url": "https://www.etiia.com",
+                  "@id": "https://etiia.com/#website",
+                  "url": "https://etiia.com",
                   "name": "ETIIA Consultoría IA",
                   "inLanguage": "es-CL",
                   "publisher": {
-                    "@id": "https://www.etiia.com/#organization"
+                    "@id": "https://etiia.com/#organization"
                   },
                   "mainEntity": {
-                    "@id": "https://www.etiia.com/#faq"
+                    "@id": "https://etiia.com/#faq"
                   }
                 }
               ]

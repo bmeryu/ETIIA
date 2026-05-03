@@ -8,7 +8,7 @@ export const metadata = {
   openGraph: {
     title: "Agenda tu Diagnóstico IA Gratuito | ETIIA",
     description: "Habla directamente con los fundadores de ETIIA. 20 minutos para saber si la IA resuelve tu problema real.",
-    url: "https://www.etiia.com/contacto",
+    url: "https://etiia.com/contacto",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Contacto ETIIA — Diagnóstico IA B2B" }],
   },
 };

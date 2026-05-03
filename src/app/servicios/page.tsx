@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Servicios B2B | ETIIA",
     description: "Evaluación, Desarrollo a Medida y UpSkilling Corporativo en Inteligencia Artificial.",
-    url: "https://www.etiia.com/servicios",
+    url: "https://etiia.com/servicios",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Servicios IA — ETIIA" }],
   },
 };

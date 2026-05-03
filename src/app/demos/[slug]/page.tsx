@@ -240,7 +240,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: `${demo.nombre} — ${demo.tagline} | ETIIA`,
       description: demo.descripcion,
-      url: `https://www.etiia.com/demos/${slug}`,
+      url: `https://etiia.com/demos/${slug}`,
       images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: `${demo.nombre} — Demo interactiva por ETIIA` }],
       type: "website",
     },
@@ -280,11 +280,11 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": `https://www.etiia.com/demos/${slug}/#software`,
+    "@id": `https://etiia.com/demos/${slug}/#software`,
     "name": demo.nombre,
     "applicationCategory": validCategory,
     "operatingSystem": "Web, API, Cloud",
-    "url": `https://www.etiia.com/demos/${slug}`,
+    "url": `https://etiia.com/demos/${slug}`,
     "description": demo.descripcion,
     "featureList": demo.tags.join(", "),
     "offers": {
@@ -292,19 +292,19 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
       "price": "0",
       "priceCurrency": "USD"
     },
-    "image": "https://www.etiia.com/og-image.jpg",
+    "image": "https://etiia.com/og-image.jpg",
     "publisher": {
       "@type": "Organization",
       "name": "ETIIA",
-      "url": "https://www.etiia.com",
-      "@id": "https://www.etiia.com/#organization"
+      "url": "https://etiia.com",
+      "@id": "https://etiia.com/#organization"
     }
   };
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": `https://www.etiia.com/demos/${slug}/#faq`,
+    "@id": `https://etiia.com/demos/${slug}/#faq`,
     "mainEntity": demo.faqs.map((faq) => ({
       "@type": "Question",
       "name": faq.question,

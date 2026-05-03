@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: `${insight.metadata.title} | ETIIA Insights`,
       description: insight.metadata.description,
-      url: `https://www.etiia.com/insights/${params.slug}`,
+      url: `https://etiia.com/insights/${params.slug}`,
       images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: insight.metadata.title }],
       type: 'article',
       publishedTime: insight.metadata.date,
@@ -50,17 +50,17 @@ export default function InsightArticle({ params }: { params: { slug: string } })
     author: [{
       '@type': 'Person',
       name: metadata.author,
-      url: 'https://www.etiia.com'
+      url: 'https://etiia.com'
     }],
     datePublished: metadata.date,
     dateModified: metadata.date,
     publisher: {
       '@type': 'Organization',
       name: 'ETIIA',
-      '@id': 'https://www.etiia.com/#organization',
+      '@id': 'https://etiia.com/#organization',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.etiia.com/favicon.svg',
+        url: 'https://etiia.com/favicon.svg',
         width: 512,
         height: 512
       }
