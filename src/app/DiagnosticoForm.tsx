@@ -9,12 +9,12 @@ const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: stri
   diagnostico: {
     proyecto: "Quiero evaluar si mi proyecto tiene potencial para aplicar IA.",
     etapa: "exploracion",
-    ctaText: "Solicitar Evaluación Gratuita",
+    ctaText: "Consultar Evaluación Gratuita",
   },
   formacion: {
     proyecto: "Quiero información sobre formación en IA para mi equipo (UpSkilling / ReSkilling in-company).",
     etapa: "idea",
-    ctaText: "Solicitar Formación in-company",
+    ctaText: "Consultar por Formación in-company",
   },
   atendeai: {
     proyecto: "Me interesa implementar AtendeAI para automatizar la atención al cliente.",
@@ -69,7 +69,7 @@ const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: stri
   "a-medida": {
     proyecto: "Busco desarrollar un flujo de IA o agente personalizado a la medida de mis procesos.",
     etapa: "idea",
-    ctaText: "Cotizar Solución a Medida",
+    ctaText: "Consultar Solución a Medida",
   },
 };
 
@@ -77,7 +77,7 @@ const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: stri
 function FormInner() {
   const params = useSearchParams();
   const interes = params.get("interes") ?? "";
-  const preset = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Solicitar Evaluación Gratuita" };
+  const preset = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Consultar Evaluación Gratuita" };
 
   const [proyecto, setProyecto] = useState(preset.proyecto);
   const [etapa, setEtapa]     = useState(preset.etapa);
@@ -88,7 +88,7 @@ function FormInner() {
 
   // Re-sync if the URL changes (e.g. user clicks another button)
   useEffect(() => {
-    const p = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Solicitar Evaluación Gratuita" };
+    const p = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Consultar Evaluación Gratuita" };
     setProyecto(p.proyecto);
     setEtapa(p.etapa);
     setBtnText(p.ctaText);
