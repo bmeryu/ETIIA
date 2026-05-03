@@ -314,17 +314,28 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
       {/* ══════════ ESQUEMAS AEO (SR-ONLY y JSON-LD) ══════════ */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <article className="sr-only" aria-hidden="true">
-        <h2>{demo.nombre} - Solución B2B por ETIIA</h2>
-        <p>{demo.aeoText}</p>
-        <h2>Preguntas Frecuentes Técnicas</h2>
-        {demo.faqs.map((faq, idx) => (
-          <div key={idx}>
-            <h3>{faq.question}</h3>
-            <p>{faq.answer}</p>
-          </div>
-        ))}
-      </article>
+      {/* ══════════ ESQUEMAS AEO VISIBLES (Google Compliance) ══════════ */}
+      <div className="absolute top-4 right-4 sm:right-6 z-50">
+        <details className="bg-white/95 backdrop-blur-md border border-slate-200 text-slate-700 rounded-xl shadow-2xl max-w-xs md:max-w-sm group transition-all">
+          <summary className="px-5 py-2.5 text-xs font-bold cursor-pointer list-none flex items-center justify-between gap-3 hover:text-blue-600">
+            <span>Ficha Técnica & FAQs</span>
+            <span className="w-5 h-5 flex items-center justify-center bg-blue-50 text-blue-700 rounded-full group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <article className="p-5 pt-4 border-t border-slate-100 max-h-[60vh] overflow-y-auto custom-scrollbar">
+            <h2 className="text-sm font-black text-[#0F172A] mb-2">{demo.nombre} - Solución B2B</h2>
+            <p className="text-xs text-slate-500 mb-5 leading-relaxed">{demo.aeoText}</p>
+            <h3 className="text-[10px] font-bold text-blue-700 mb-3 uppercase tracking-widest">Preguntas Frecuentes</h3>
+            <div className="flex flex-col gap-3">
+              {demo.faqs.map((faq, idx) => (
+                <div key={idx} className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                  <h4 className="text-xs font-bold text-[#0F172A] mb-1.5">{faq.question}</h4>
+                  <p className="text-[11px] text-slate-500 leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        </details>
+      </div>
 
       {/* FLOATING BACK BUTTON */}
       <div className="absolute top-4 left-4 sm:left-6 z-50">
