@@ -201,10 +201,20 @@ export default function HomeV2() {
               Tecnologías que dominamos
             </p>
             <div className="flex gap-6 md:gap-8 items-center text-slate-400 font-medium animate-[marquee_20s_linear_infinite] md:animate-none md:flex-wrap md:justify-center w-full">
-              {['OpenAI GPT-4o', 'Anthropic Claude 3.5', 'Llama 3', 'AWS', 'Google Cloud', 'Microsoft Azure', 'RAG Architectures', 'LangChain'].map((tech, i) => (
-                <span key={tech} className="flex items-center gap-8">
-                  <span className="hover:text-slate-600 transition-colors cursor-default">{tech}</span>
-                  {i < 7 && <span className="w-1 h-1 rounded-full bg-slate-300" />}
+              {[
+                { category: 'Modelos', items: ['GPT-4o', 'Claude 3.5', 'Llama 3'] },
+                { category: 'Cloud', items: ['AWS', 'GCP', 'Azure'] },
+                { category: 'Arquitectura', items: ['RAG', 'LangChain'] },
+              ].map((group, gIdx) => (
+                <span key={group.category} className="flex items-center gap-4 md:gap-6">
+                  <span className="text-[10px] font-bold uppercase text-slate-400 tracking-widest border border-slate-200 px-2 py-0.5 rounded">{group.category}</span>
+                  {group.items.map((tech, i) => (
+                    <span key={tech} className="flex items-center gap-4 md:gap-6">
+                      <span className="hover:text-slate-600 transition-colors cursor-default">{tech}</span>
+                      {i < group.items.length - 1 && <span className="w-1 h-1 rounded-full bg-slate-300" />}
+                    </span>
+                  ))}
+                  {gIdx < 2 && <span className="w-1.5 h-1.5 rounded-full bg-slate-200 ml-2 md:ml-2" />}
                 </span>
               ))}
             </div>
