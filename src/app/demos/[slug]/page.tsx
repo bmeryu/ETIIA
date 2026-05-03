@@ -230,6 +230,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${demo.nombre} — ${demo.tagline} | Demos ETIIA`,
     description: demo.descripcion,
+    alternates: {
+      canonical: `/demos/${slug}`,
+    },
+    openGraph: {
+      title: `${demo.nombre} — ${demo.tagline} | ETIIA`,
+      description: demo.descripcion,
+      url: `https://www.etiia.com/demos/${slug}`,
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: `${demo.nombre} — Demo interactiva por ETIIA` }],
+      type: "website",
+    },
   };
 }
 

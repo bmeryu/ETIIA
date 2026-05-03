@@ -117,14 +117,10 @@ export default function HomeV2() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <FadeIn delay={0.1}>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold tracking-widest uppercase mb-8">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold tracking-widest uppercase mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-                  Consultoría de IA para empresas
+                  Consultoría IA B2B &middot; Chile &amp; Latam
                 </div>
-              </FadeIn>
-
-              <FadeIn delay={0.2}>
-                <p className="text-xs font-bold text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full mb-4 inline-block uppercase tracking-widest">Consultoría IA B2B · Chile &amp; Latam</p>
               </FadeIn>
               <h1 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6">
                   Primero te decimos<br />

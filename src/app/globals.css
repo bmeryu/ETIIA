@@ -208,3 +208,9 @@
     background: #94a3b8;
   }
 }
+
+/* ── Tech ticker marquee animation (mobile) ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

@@ -174,6 +174,17 @@ export default function RootLayout({
                   "inLanguage": "es-CL",
                   "publisher": {
                     "@id": "https://www.etiia.com/#organization"
+                  },
+                  "mainEntity": {
+                    "@id": "https://www.etiia.com/#faq"
+                  },
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                      "@type": "EntryPoint",
+                      "urlTemplate": "https://www.etiia.com/demos?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
                   }
                 }
               ]
