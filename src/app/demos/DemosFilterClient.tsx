@@ -18,6 +18,7 @@ const productos = [
     tags: ["LLM Agents", "RAG", "CRM", "Multicanal"],
     color: "teal",
     disponible: true,
+    isAgent: true,
   },
   {
     nombre: "VentaAI",
@@ -42,6 +43,7 @@ const productos = [
     tags: ["PDF Processing", "ERP Integration", "Auto-email"],
     color: "blue",
     disponible: true,
+    isAgent: true,
   },
   {
     nombre: "FacturAI",
@@ -54,6 +56,7 @@ const productos = [
     tags: ["OCR", "Conciliación", "ERP Push"],
     color: "emerald",
     disponible: true,
+    isAgent: true,
   },
   {
     nombre: "LexSearch",
@@ -181,7 +184,14 @@ export default function DemosFilterClient() {
                           <div className={`w-12 h-12 ${c.bg} rounded-xl flex items-center justify-center ${c.text} group-hover:bg-blue-700 group-hover:text-white transition-colors duration-300`}>{p.icon}</div>
                           <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-green-50 text-green-700 text-[0.65rem] font-bold uppercase tracking-wider border border-green-200">● Demo live</span>
                         </div>
-                        <span className={`text-xs font-semibold ${c.text} uppercase tracking-wider mb-1`}>{p.industria}</span>
+                        <div className="flex flex-col gap-2 mb-1">
+                          <span className={`text-xs font-semibold ${c.text} uppercase tracking-wider`}>{p.industria}</span>
+                          {p.isAgent && (
+                            <span className="inline-flex self-start items-center gap-1.5 text-[10px] font-black uppercase tracking-widest bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full border border-amber-200 shadow-sm">
+                              ⚡ Agente Autónomo
+                            </span>
+                          )}
+                        </div>
                         <h2 className="text-xl font-black text-[#0F172A] mb-2 group-hover:text-blue-700 transition-colors">{p.nombre}</h2>
                         <p className="text-slate-500 text-sm leading-relaxed flex-grow mb-4">{p.descripcion}</p>
                         <div className={`${c.bg} ${c.border} border rounded-xl px-4 py-3 mb-4`}><p className={`text-lg font-black ${c.text}`}>{p.resultado}</p></div>

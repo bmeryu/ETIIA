@@ -12,12 +12,13 @@ const products = [
     problema: "Tu equipo pasa horas respondiendo las mismas preguntas de clientes una y otra vez.",
     desc: "Un agente que atiende, responde, agenda y genera documentos solo. Sin que nadie tenga que intervenir.",
     industria: "Servicios B2B",
+    isAgent: true,
   },
   {
     nombre: "VentaAI",
     slug: "ventaai",
-    problema: "Tus clientes compran una vez y no vuelven, aunque t\u00fa tienes m\u00e1s cosas que les podr\u00edan servir.",
-    desc: "Un motor que detecta qu\u00e9 le conviene ofrecer a cada cliente y lanza la campa\u00f1a autom\u00e1ticamente.",
+    problema: "Tus clientes compran una vez y no vuelven, aunque tú tienes más cosas que les podrían servir.",
+    desc: "Un motor que detecta qué le conviene ofrecer a cada cliente y lanza la campaña automáticamente.",
     industria: "Retail / eCommerce",
   },
   {
@@ -26,6 +27,7 @@ const products = [
     problema: "Alguien en tu empresa pasa horas ingresando facturas a mano en el sistema.",
     desc: "Lee las facturas, las cruza con el banco y las registra sola. Sin que nadie las toque.",
     industria: "Finanzas / Contabilidad",
+    isAgent: true,
   },
 ];
 
@@ -287,6 +289,24 @@ export default function HomeV2() {
           </div>
         </div>
       </section>
+      {/* ══════════ MANIFIESTO AGENTES AUTÓNOMOS ══════════ */}
+      <section className="py-24 bg-[#0F172A] border-t border-slate-800 text-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 150%, rgba(29, 78, 216, 0.15) 0%, transparent 60%)" }} aria-hidden="true" />
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+              El Nuevo Estándar
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6 leading-[1.1]">
+              No instalamos &quot;chatbots&quot; genéricos.
+            </h2>
+            <p className="text-xl md:text-2xl text-slate-400 font-serif italic max-w-3xl mx-auto leading-relaxed">
+              &ldquo;Desarrollamos Agentes Autónomos B2B: Software que razona, se conecta a los sistemas de tu empresa y ejecuta flujos de trabajo completos de principio a fin, sin intervención humana.&rdquo;
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       {/* ══════════ SOLUCIONES (carousel) ══════════ */}
       <section className="py-24 bg-slate-50 border-y border-slate-100" id="soluciones">
@@ -301,8 +321,15 @@ export default function HomeV2() {
           <div className="grid md:grid-cols-3 gap-6">
             {products.map((p, i) => (
               <Reveal key={p.slug} delay={0.1 * (i + 1)}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full flex flex-col hover:border-blue-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
-                  <span className="text-xs text-blue-700 font-bold uppercase tracking-wider mb-4">{p.industria}</span>
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full flex flex-col hover:border-blue-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer group relative overflow-hidden">
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="text-xs text-blue-700 font-bold uppercase tracking-wider">{p.industria}</span>
+                    {p.isAgent && (
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full border border-amber-200">
+                        ⚡ Agente Autónomo
+                      </span>
+                    )}
+                  </div>
                   <p className="text-base text-[#0F172A] font-semibold leading-snug mb-4">{p.problema}</p>
                   <h3 className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-500 tracking-tight mb-2">{p.nombre}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed flex-grow mb-6">{p.desc}</p>

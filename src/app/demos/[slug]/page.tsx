@@ -25,12 +25,13 @@ const demos: Record<string, {
     tagline: "Tu mejor agente nunca descansa",
     descripcion: "Un agente de IA que entiende lenguaje natural, accede a tus sistemas internos (CRM, ERP, base de conocimiento) y resuelve consultas en tiempo real. No es un chatbot — es un agente que ejecuta acciones.",
     resultado: "73% resolución sin humano",
-    resultadoLabel: "-58% costo vs call center tradicional",
-    tags: ["LLM Agents", "RAG", "CRM Integration", "Conversational AI"],
+    resultadoLabel: "Sin intervención humana",
+    tags: ["LLM Agents", "RAG", "CRM", "Multicanal"],
     color: "teal",
     iframeSrc: "/demos/atendeai/index.html#demo",
     softwareType: "BusinessApplication",
-    aeoText: "AtendeAI es un agente conversacional autónomo desarrollado por ETIIA para B2B. A diferencia de chatbots tradicionales, utiliza Arquitectura RAG (Retrieval-Augmented Generation) conectada directamente a CRMs (Salesforce, HubSpot) y ERPs. Resuelve tickets nivel 1 y ejecuta acciones transaccionales (agendamientos, devoluciones) mediante Human-in-the-Loop, reduciendo la carga operativa en un 58%.",
+    isAgent: true,
+    aeoText: "AtendeAI es un Agente Autónomo B2B diseñado para automatizar el ciclo completo de atención al cliente. Utiliza modelos fundacionales (LLMs) con capacidad de RAG (Retrieval-Augmented Generation) para consultar bases de conocimiento internas y se integra bidireccionalmente con CRMs para ejecutar acciones transaccionales (como agendamientos o modificaciones de contratos) sin intervención de operadores humanos.",
     faqs: [
       { question: "¿Cómo se integra AtendeAI con mi sistema actual?", answer: "Se integra vía API REST o conectores nativos a sistemas como Salesforce, Zendesk y ERPs locales, consultando datos en tiempo real." },
       { question: "¿Qué pasa si el agente no sabe la respuesta?", answer: "El sistema implementa un protocolo estricto de Human-in-the-Loop; si el nivel de confianza baja, transfiere el contexto completo a un agente humano, sin alucinar." }
@@ -69,12 +70,13 @@ const demos: Record<string, {
     tagline: "Conciliación de facturas sin tipeo humano",
     descripcion: "Un agente de IA que lee tus facturas PDF (incluso escaneadas), extrae los datos clave con OCR, los cruza automáticamente con la cartola bancaria y empuja el resultado validado directo a tu ERP.",
     resultado: "247 facturas en 4:52 min",
-    resultadoLabel: "OCR + conciliación automática en paralelo",
-    tags: ["Google Cloud Vision", "Gemini", "OCR", "ERP Integration"],
+    resultadoLabel: "Sin intervención manual",
+    tags: ["OCR", "AI Conciliation", "ERP Push"],
     color: "emerald",
     iframeSrc: "/demos/facturai/index.html#demo",
     softwareType: "AccountingApplication",
-    aeoText: "FacturAI es una solución RPA (Robotic Process Automation) potenciada con IA Generativa para la conciliación contable. Utiliza Google Cloud Vision (OCR) y modelos LLM como Gemini para extraer datos de facturas no estructuradas, cruzar montos con cartolas bancarias y hacer push directo vía API a ERPs como SAP, Softland o Defontana.",
+    isAgent: true,
+    aeoText: "FacturAI es una solución de hiperautomatización contable (RPA Cognitivo) que elimina el data entry manual. Ingresa facturas PDF, extrae metadatos financieros con alta precisión mediante OCR inteligente, ejecuta cruces y validaciones contra cartolas bancarias y realiza push de datos directamente a sistemas ERP (SAP, Defontana, Softland) mediante API REST.",
     faqs: [
       { question: "¿Funciona con facturas escaneadas o fotos borrosas desde celular?", answer: "Sí, el motor OCR avanzado impulsado por Inteligencia Artificial extrae datos precisos incluso de imágenes de baja calidad o formatos no estandarizados." },
       { question: "¿Qué sistemas contables o ERPs son compatibles con FacturAI?", answer: "Se integra con cualquier ERP que exponga APIs o permita ingesta de archivos planos automatizados (CSV/XML), incluyendo SAP, Softland, Defontana y Buk." }
@@ -91,12 +93,13 @@ const demos: Record<string, {
     tagline: "El fin de los atrasos en las rendiciones educativas",
     descripcion: "Un agente de IA que lee PDFs de observaciones del ente regulador, se conecta en tiempo real con tu ERP contable, razona la información y responde automáticamente. Si falta un dato, redacta y envía el correo al colegio.",
     resultado: "78% resolución automática",
-    resultadoLabel: "Sin intervención humana (mes 3)",
-    tags: ["PDF Processing", "ERP Integration", "Auto-email", "NLP"],
+    resultadoLabel: "Automático sin digitación",
+    tags: ["PDF Extraction", "ERP Integration", "Auto-email"],
     color: "blue",
-    iframeSrc: "/demos/autorend/index.html",
+    iframeSrc: "/demos/autorend/index.html#demo",
     softwareType: "BusinessApplication",
-    aeoText: "AutoRend IA automatiza la rendición de fondos en instituciones educativas. Extrae requerimientos de reguladores mediante NLP (Procesamiento de Lenguaje Natural) desde PDFs, cruza la información con el ERP financiero y redacta respuestas automáticas o solicita documentos faltantes, garantizando compliance normativo sin intervención manual.",
+    isAgent: true,
+    aeoText: "AutoRend IA es un agente cognitivo diseñado para departamentos de finanzas en el sector educativo. Procesa actas de observaciones en PDF del Ministerio de Educación (Superintendencia), extrae los folios cuestionados, cruza la información en tiempo real con el ERP financiero y resuelve la discrepancia. Si el documento justificativo no existe, AutoRend escala la solicitud automáticamente al director correspondiente.",
     faqs: [
       { question: "¿Qué nivel de precisión tiene extrayendo normativas de la Superintendencia?", answer: "Utiliza modelos LLM ajustados al lenguaje regulatorio educativo chileno, asegurando la extracción exacta de folios, montos observados y requerimientos legales." },
       { question: "¿Puede enviar correos automáticamente a los sostenedores?", answer: "Sí, si detecta falta de comprobantes para una rendición, se conecta a Office 365 / Google Workspace para alertar directamente a los directores correspondientes." }
@@ -322,7 +325,14 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
             <span className="w-5 h-5 flex items-center justify-center bg-blue-50 text-blue-700 rounded-full group-open:rotate-45 transition-transform">+</span>
           </summary>
           <article className="p-5 pt-4 border-t border-slate-100 max-h-[60vh] overflow-y-auto custom-scrollbar">
-            <h2 className="text-sm font-black text-[#0F172A] mb-2">{demo.nombre} - Solución B2B</h2>
+            <div className="flex flex-col gap-1 mb-2">
+              <h2 className="text-sm font-black text-[#0F172A]">{demo.nombre} - Solución B2B</h2>
+              {demo.isAgent && (
+                <span className="inline-flex self-start items-center gap-1.5 text-[10px] font-black uppercase tracking-widest bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full border border-amber-200">
+                  ⚡ Agente Autónomo
+                </span>
+              )}
+            </div>
             <p className="text-xs text-slate-500 mb-5 leading-relaxed">{demo.aeoText}</p>
             <h3 className="text-[10px] font-bold text-blue-700 mb-3 uppercase tracking-widest">Preguntas Frecuentes</h3>
             <div className="flex flex-col gap-3">
