@@ -207,19 +207,37 @@ export default function Navbar() {
             className="absolute top-full left-0 w-full bg-white/98 backdrop-blur-xl border-b border-slate-100 flex flex-col items-center py-6 gap-4 md:hidden shadow-2xl overflow-hidden"
           >
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={cn(
-                  "text-lg transition-all",
-                  link.name === "Contáctanos"
-                    ? "bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-5 py-2 rounded-full mt-2"
-                    : "font-medium text-slate-700 hover:text-blue-700"
+              <div key={link.name} className="w-full flex flex-col items-center">
+                {link.megaMenu ? (
+                  <details className="w-full group text-center">
+                    <summary className="text-lg transition-all font-medium text-slate-700 hover:text-blue-700 flex justify-center items-center gap-1.5 cursor-pointer list-none py-1">
+                      {link.name}
+                      <svg className="w-4 h-4 transition-transform group-open:rotate-180 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
+                    </summary>
+                    <div className="flex flex-col items-center gap-3 pt-4 pb-2 bg-slate-50 mt-3 rounded-2xl mx-4">
+                      <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold text-blue-700 mb-1">Ir a {link.name} →</Link>
+                      {link.megaMenu.flatMap(m => m.items).map(item => (
+                        <Link key={item.name} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="text-[13px] font-semibold text-slate-600 hover:text-[#0F172A]">
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </details>
+                ) : (
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={cn(
+                      "text-lg transition-all py-1",
+                      link.name === "Contáctanos"
+                        ? "bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-5 py-2 rounded-full mt-2"
+                        : "font-medium text-slate-700 hover:text-blue-700"
+                    )}
+                  >
+                    {link.name}
+                  </Link>
                 )}
-              >
-                {link.name}
-              </Link>
+              </div>
             ))}
             {pathname !== "/contacto" && (
               <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>

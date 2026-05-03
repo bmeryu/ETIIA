@@ -19,6 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/demos/atendeai',
     '/demos/ventaai',
     '/demos/facturai',
+    '/demos/lexsearch',
+    '/demos/talentparse',
+    '/demos/agendai',
+    '/demos/cosechai',
+    '/demos/transcribai',
+    '/demos/autorend',
   ];
 
   const insights = getInsightsList();
