@@ -132,7 +132,7 @@ export default function ServiciosPage() {
                 </li>
               </ul>
               <Link href="/?interes=a-medida#diagnostico" className="inline-flex items-center gap-2 text-blue-700 font-bold hover:text-blue-800 transition-colors">
-                Cotizar Proyecto a Medida <ArrowRight className="w-4 h-4" />
+                Consultar Proyecto a Medida <ArrowRight className="w-4 h-4" />
               </Link>
             </Reveal>
             <ScaleIn delay={0.2} className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
@@ -167,7 +167,7 @@ export default function ServiciosPage() {
                 </li>
               </ul>
               <Link href="/?interes=formacion#diagnostico" className="inline-flex items-center gap-2 text-blue-700 font-bold hover:text-blue-800 transition-colors">
-                Solicitar Formación <ArrowRight className="w-4 h-4" />
+                Consultar por Formación <ArrowRight className="w-4 h-4" />
               </Link>
             </Reveal>
             <ScaleIn delay={0.2} className="md:order-1 bg-[#0F172A] rounded-3xl p-8 border border-slate-800 text-white shadow-xl">
