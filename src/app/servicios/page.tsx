@@ -117,7 +117,7 @@ export default function ServiciosPage() {
               <div className="w-16 h-16 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center mb-6">
                 <Code2 className="w-8 h-8 text-cyan-600" />
               </div>
-              <h2 className="text-3xl font-black tracking-tight text-[#0F172A] mb-4">Diseñamos Tu Solución (Desarrollo a Medida)</h2>
+              <h2 className="text-3xl font-black tracking-tight text-[#0F172A] mb-4">Arquitectura y Automatización Corporativa</h2>
               <p className="text-slate-500 leading-relaxed mb-6">
                 Cuando el software empaquetado no se adapta a las reglas de tu negocio, construimos infraestructuras desde cero. Especialistas en arquitecturas RAG que se conectan directamente a tu ERP de forma segura.
               </p>
@@ -149,8 +149,8 @@ export default function ServiciosPage() {
           {/* 4. Formación y UpSkilling */}
           <div id="formacion" className="scroll-mt-32 grid md:grid-cols-2 gap-12 items-center md:flex-row-reverse">
             <Reveal className="md:order-2">
-              <div className="w-16 h-16 rounded-2xl bg-fuchsia-50 border border-fuchsia-100 flex items-center justify-center mb-6">
-                <Presentation className="w-8 h-8 text-fuchsia-600" />
+              <div className="w-16 h-16 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center mb-6">
+                <Presentation className="w-8 h-8 text-slate-700" />
               </div>
               <h2 className="text-3xl font-black tracking-tight text-[#0F172A] mb-4">UpSkilling y Formación de Equipos</h2>
               <p className="text-slate-500 leading-relaxed mb-6">
@@ -167,12 +167,12 @@ export default function ServiciosPage() {
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600" /> Avalado por AulaGenIA (OTEC)
                 </li>
               </ul>
-              <Link href="/?interes=formacion#diagnostico" className="inline-flex items-center gap-2 text-fuchsia-700 font-bold hover:text-fuchsia-800 transition-colors">
+              <Link href="/?interes=formacion#diagnostico" className="inline-flex items-center gap-2 text-slate-700 font-bold hover:text-slate-900 transition-colors">
                 Solicitar Formación In-Company <ArrowRight className="w-4 h-4" />
               </Link>
             </Reveal>
-            <ScaleIn delay={0.2} className="bg-fuchsia-900 rounded-3xl p-8 border border-fuchsia-800 text-white shadow-xl shadow-fuchsia-900/10 md:order-1">
-              <h3 className="text-sm font-bold text-fuchsia-300 uppercase tracking-widest mb-4">Adopción Real</h3>
+            <ScaleIn delay={0.2} className="bg-slate-800 rounded-3xl p-8 border border-slate-700 text-white shadow-xl shadow-slate-900/10 md:order-1">
+              <h3 className="text-sm font-bold text-slate-300 uppercase tracking-widest mb-4">Adopción Real</h3>
               <p className="text-white font-semibold text-lg italic leading-relaxed">
                 "La tecnología por sí sola no mejora la productividad. Es el cambio de mentalidad operativa del equipo lo que multiplica los resultados."
               </p>
