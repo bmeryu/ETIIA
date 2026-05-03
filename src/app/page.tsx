@@ -175,27 +175,28 @@ export default function HomeV2() {
           </div>
         </div>
 
-        {/* ══════════ TRUST BAND ══════════ */}
-        <div className="max-w-5xl mx-auto px-6 mt-16 md:mt-24 text-center relative z-20">
-          <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-6">Nuestros sistemas se integran de forma nativa con</p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-14 items-center opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            <span className="text-2xl font-black font-sans text-slate-700 tracking-tighter">SAP</span>
-            <span className="text-2xl font-bold font-sans text-slate-700 tracking-tighter">Salesforce</span>
-            <span className="text-2xl font-black font-sans text-slate-700 tracking-tighter">AWS</span>
-            <span className="text-2xl font-bold font-sans text-slate-700 tracking-tighter">Microsoft</span>
-            <span className="text-xl font-bold font-sans text-slate-700 tracking-tighter">HubSpot</span>
+        {/* ══════════ TRUST & TECH BANDS ══════════ */}
+        <div className="border-y border-slate-100 bg-white/50 py-12 mt-20 relative overflow-hidden flex flex-col gap-12">
+          
+          {/* Trust Band */}
+          <div className="max-w-5xl mx-auto px-6 text-center relative z-20 w-full">
+            <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-6">Nuestros sistemas se integran de forma nativa con</p>
+            <div className="flex flex-wrap justify-center gap-8 md:gap-14 items-center opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+              <span className="text-2xl font-black font-sans text-slate-700 tracking-tighter">SAP</span>
+              <span className="text-2xl font-bold font-sans text-slate-700 tracking-tighter">Salesforce</span>
+              <span className="text-2xl font-black font-sans text-slate-700 tracking-tighter">AWS</span>
+              <span className="text-2xl font-bold font-sans text-slate-700 tracking-tighter">Microsoft</span>
+              <span className="text-xl font-bold font-sans text-slate-700 tracking-tighter">HubSpot</span>
+            </div>
           </div>
-        </div>
-        
-        {/* ══════════ TECH TICKER ══════════ */}
-        <div className="border-y border-slate-100 bg-white/50 py-5 mt-20 relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-white to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-white to-transparent z-10" />
-          <div className="max-w-6xl mx-auto px-6 overflow-hidden flex flex-col md:flex-row items-center gap-3 md:gap-8 whitespace-nowrap">
-            <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-slate-400 shrink-0 flex items-center">
-              Tecnologías que dominamos
-            </p>
-            <ul aria-label="Tecnologías principales" className="flex gap-6 md:gap-8 items-center text-slate-400 font-medium animate-[marquee_20s_linear_infinite] md:animate-none md:flex-wrap md:justify-center w-full">
+
+          {/* Separator */}
+          <div className="w-24 h-px bg-slate-200 mx-auto"></div>
+
+          {/* Tech Ticker */}
+          <div className="max-w-5xl mx-auto px-6 text-center relative z-20 w-full">
+            <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-6">Tecnologías que dominamos</p>
+            <ul aria-label="Tecnologías principales" className="flex flex-wrap justify-center gap-x-6 gap-y-4 md:gap-x-8 items-center text-slate-400 font-medium w-full">
               {[
                 { category: 'Modelos', items: [
                   <span key="gpt"><span className="font-bold text-slate-600">OpenAI</span> GPT</span>,
@@ -205,15 +206,17 @@ export default function HomeV2() {
                 { category: 'Cloud', items: ['AWS', 'GCP', 'Azure'] },
                 { category: 'Arquitectura', items: ['RAG', 'LangChain'] },
               ].map((group, gIdx) => (
-                <li key={group.category} className="flex items-center gap-4 md:gap-6">
+                <li key={group.category} className="flex flex-wrap justify-center items-center gap-3 md:gap-6">
                   <span className="text-[10px] font-bold uppercase text-slate-400 tracking-widest border border-slate-200 px-2 py-0.5 rounded">{group.category}</span>
-                  {group.items.map((tech, i) => (
-                    <span key={i} className="flex items-center gap-4 md:gap-6">
-                      <span className="transition-colors cursor-default">{tech}</span>
-                      {i < group.items.length - 1 && <span className="w-1 h-1 rounded-full bg-slate-300" aria-hidden="true" />}
-                    </span>
-                  ))}
-                  {gIdx < 2 && <span className="w-1.5 h-1.5 rounded-full bg-slate-200 ml-2 md:ml-2" aria-hidden="true" />}
+                  <div className="flex items-center gap-3 md:gap-6">
+                    {group.items.map((tech, i) => (
+                      <span key={i} className="flex items-center gap-3 md:gap-6">
+                        <span className="transition-colors cursor-default">{tech}</span>
+                        {i < group.items.length - 1 && <span className="w-1 h-1 rounded-full bg-slate-300" aria-hidden="true" />}
+                      </span>
+                    ))}
+                  </div>
+                  {gIdx < 2 && <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-slate-200 ml-1 md:ml-2" aria-hidden="true" />}
                 </li>
               ))}
             </ul>
