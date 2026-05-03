@@ -23,7 +23,7 @@ export default function ContactoPage() {
                     <div className="space-y-8 sticky top-32">
                         <SectionHeading
                             title="30 minutos que pueden ahorrarte meses de decisiones equivocadas."
-                            subtitle="Hablamos directamente con los fundadores. Sin preventa. Evaluamos si la IA tiene sentido para tu caso y qué conviene hacer primero."
+                            subtitle="Hablas directamente con los fundadores. Sin preventa. Evaluamos si la IA tiene sentido para tu caso y qué conviene hacer primero."
                         />
 
                         {/* WhatsApp CTA */}
