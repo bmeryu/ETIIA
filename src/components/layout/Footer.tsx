@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="bg-navy pt-16 pb-8 text-slate-400">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 mb-12">
           {/* Logo + Desc */}
           <div className="md:col-span-3 lg:col-span-2">
             <Link href="/" className="inline-block mb-4">
@@ -30,21 +30,10 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Servicios</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/demos" className="hover:text-white transition-colors">Soluciones de IA</Link></li>
-              <li><Link href="/?interes=diagnostico#diagnostico" className="hover:text-white transition-colors">Evaluación Gratuita</Link></li>
-              <li><Link href="/?interes=a-medida#diagnostico" className="hover:text-white transition-colors">Soluciones a Medida</Link></li>
-              <li><Link href="/?interes=formacion#diagnostico" className="hover:text-white transition-colors">UpSkilling y Formación</Link></li>
-            </ul>
-          </div>
-
-          {/* Perspectivas */}
-          <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Perspectivas</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/insights" className="hover:text-white transition-colors">Todos los artículos</Link></li>
-              <li><Link href="/insights/pilar-1-gobernanza" className="hover:text-white transition-colors">Digitalizar el desorden</Link></li>
-              <li><Link href="/insights/pilar-2-transformacion" className="hover:text-white transition-colors">Automatizar lo roto</Link></li>
-              <li><Link href="/insights/pilar-3-talento" className="hover:text-white transition-colors">El mito del Ingeniero IA</Link></li>
+              <li><Link href="/demos" className="hover:text-white transition-colors">Ver todas las soluciones</Link></li>
+              <li><Link href="/demos/atendeai" className="hover:text-white transition-colors">Atención al Cliente (IA)</Link></li>
+              <li><Link href="/demos/facturai" className="hover:text-white transition-colors">Conciliación de Facturas</Link></li>
+              <li><Link href="/demos/lexsearch" className="hover:text-white transition-colors">Buscador Legal RAG</Link></li>
             </ul>
           </div>
 
