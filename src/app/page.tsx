@@ -528,7 +528,7 @@ export default function HomeV2() {
             </div>
             <div className="flex flex-col gap-3 shrink-0 relative z-10">
               <a href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
-                Solicitar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
+                Consultar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
               </a>
               <a href="#equipo" className="inline-flex items-center justify-center border border-slate-700 text-slate-300 px-8 py-4 rounded-xl text-sm hover:bg-slate-800 hover:text-white transition-colors font-medium">
                 Ver el equipo
