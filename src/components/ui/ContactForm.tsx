@@ -86,6 +86,7 @@ export function ContactForm() {
                         <input
                             {...register("name")}
                             id="name"
+                            required
                             className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cian transition-all bg-slate-50"
                             placeholder="Ej. Juan Pérez"
                         />
@@ -100,6 +101,7 @@ export function ContactForm() {
                             {...register("email")}
                             id="email"
                             type="email"
+                            required
                             className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cian transition-all bg-slate-50"
                             placeholder="juan@empresa.com"
                         />
@@ -115,6 +117,7 @@ export function ContactForm() {
                         {...register("challenge")}
                         id="challenge"
                         rows={4}
+                        required
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cian transition-all bg-slate-50 resize-none"
                         placeholder="Nuestros datos están silos y no logramos medir el ROI de las iniciativas anteriores..."
                     />

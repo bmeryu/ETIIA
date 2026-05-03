@@ -55,6 +55,54 @@ export default function InsightsHub() {
             </Link>
           ))}
         </div>
+
+        {/* ══════════ AUTHOR / FIRM AUTHORITY ══════════ */}
+        <div className="mt-24 pt-24 border-t border-neutral-800 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <div className="w-24 h-24 rounded-full bg-neutral-800 flex items-center justify-center shrink-0 border border-neutral-700">
+            <span className="text-3xl font-serif text-neutral-400 italic">E</span>
+          </div>
+          <div className="text-center md:text-left">
+            <h3 className="text-xl font-bold text-white mb-2">Criterio Editorial ETIIA</h3>
+            <p className="text-neutral-400 text-sm leading-relaxed max-w-3xl">
+              Nuestros artículos no son generados en masa para ganar clics. Cada pieza es un análisis profundo extraído de la experiencia de nuestros directores, incluyendo a <span className="text-neutral-200 font-semibold">Bernardita Mery</span> y especialistas técnicos. Documentamos lo que realmente funciona (y lo que falla) en las trincheras de la implementación de Inteligencia Artificial en América Latina.
+            </p>
+          </div>
+        </div>
+
+        {/* ══════════ NEWSLETTER SUBSCRIPTION ══════════ */}
+        <div className="mt-32 max-w-4xl mx-auto bg-neutral-900 border border-neutral-800 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.15) 0%, transparent 70%)" }} aria-hidden="true" />
+          
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-serif italic text-white mb-4">
+              Inteligencia para quienes deciden.
+            </h2>
+            <p className="text-neutral-400 mb-10 max-w-xl mx-auto leading-relaxed">
+              Únete a otros directivos que reciben nuestro análisis mensual sobre cómo la Inteligencia Artificial está reescribiendo las reglas de las operaciones corporativas. Sin spam, solo criterio.
+            </p>
+            
+            <form action="https://formspree.io/f/xjgarjgw" method="POST" className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input type="hidden" name="_subject" value="Lead - Suscripción Newsletter Perspectivas ETIIA" />
+              <input 
+                type="email" 
+                name="email"
+                required
+                placeholder="Tu correo corporativo" 
+                className="flex-1 bg-neutral-950 border border-neutral-800 text-white px-5 py-3.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all placeholder:text-neutral-600"
+              />
+              <button 
+                type="submit"
+                className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-indigo-900/20 whitespace-nowrap"
+              >
+                Suscribirme
+              </button>
+            </form>
+            <p className="text-xs text-neutral-600 mt-4">
+              Tus datos están protegidos. Puedes darte de baja en cualquier momento.
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
   );

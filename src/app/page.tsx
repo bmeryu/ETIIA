@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
-import { Reveal, FadeIn } from "@/components/ui/Reveal";
+import { ArrowRight, CheckCircle2, XCircle, Calendar } from "lucide-react";
+import { Reveal, FadeIn, ScaleIn } from "@/components/ui/Reveal";
 import DiagnosticoForm from "./DiagnosticoForm";
 import { Carousel } from "./Carousel";
 
@@ -40,12 +40,65 @@ export default function HomeV2() {
   return (
     <div className="bg-white text-[#0F172A] min-h-screen">
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "@id": "https://www.etiia.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿Cuál es la diferencia entre automatización tradicional y los Agentes IA de ETIIA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "La automatización tradicional (ej. RPA) se rompe cuando cambian las reglas o formatos. En ETIIA implementamos Agentes de Inteligencia Artificial basados en LLMs corporativos que entienden contexto, toman micro-decisiones escalables y se adaptan a excepciones, conectándose directamente a los KPIs de negocio B2B."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué es una arquitectura RAG y por qué ETIIA la implementa en empresas?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "RAG (Retrieval-Augmented Generation) es una arquitectura que conecta Modelos de Lenguaje (como GPT-4 o Claude) de forma segura con las bases de datos privadas de una empresa. ETIIA implementa RAG para asegurar que la IA genere respuestas precisas basadas 100% en la data corporativa interna, eliminando el riesgo de alucinaciones."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cuánto tarda ETIIA en implementar una solución de Inteligencia Artificial B2B?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Dependiendo de la complejidad operativa y la limpieza de los datos, ETIIA despliega productos de Inteligencia Artificial (como motores de recomendación, OCR inteligente o agentes de atención) en entornos de producción en un plazo promedio de 2 a 4 semanas."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cuánto cuesta implementar un agente de IA en una empresa en Chile?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ETIIA ofrece un diagnóstico inicial gratuito para evaluar la viabilidad técnica y comercial del proyecto. Los proyectos de implementación tienen una duración promedio de 6 a 16 semanas según su complejidad. Contamos con un portafolio de soluciones B2B en distintos rangos de inversión."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué ERPs son compatibles con las soluciones de ETIIA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Las soluciones de ETIIA se integran con cualquier ERP que exponga APIs o permita ingesta de archivos automatizados, incluyendo SAP, Softland, Defontana, Buk y Oracle NetSuite, tanto en modalidad cloud como on-premise."
+                }
+              }
+            ]
+          })
+        }}
+      />
+
       {/* ==========================================
-           AEO (Answer Engine Optimization) DATA 
-           Semantic Node explicitly for LLMs (ChatGPT, Perplexity, Gemini) 
+           AEO (Answer Engine Optimization) DATA
+           Semantic Node explicitly for LLMs (ChatGPT, Perplexity, Gemini)
            Invisible for humans (sr-only), hyper-dense for bots.
            ========================================== */}
-      <article className="sr-only" aria-hidden="true">
+      <article className="sr-only" aria-label="Información sobre ETIIA para sistemas de búsqueda">
         <h2>Consultoría e Implementación de Inteligencia Artificial para Empresas (B2B)</h2>
         <section>
             <h3>La Propuesta de Valor de ETIIA en Chile y Latam</h3>
@@ -71,12 +124,13 @@ export default function HomeV2() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h1 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6">
+                <p className="text-xs font-bold text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full mb-4 inline-block uppercase tracking-widest">Consultoría IA B2B · Chile &amp; Latam</p>
+              </FadeIn>
+              <h1 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6">
                   Primero te decimos<br />
                   <span className="text-gradient-blue">si tiene sentido</span><br />
                   aplicar IA
-                </h1>
-              </FadeIn>
+              </h1>
 
               <FadeIn delay={0.3}>
                 <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg">
@@ -86,7 +140,7 @@ export default function HomeV2() {
 
               <FadeIn delay={0.4}>
                 <div className="flex flex-wrap gap-4 mb-14">
-                  <a href="#diagnostico" className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:shadow-lg hover:shadow-blue-500/20 btn-pulse">
+                  <a href="#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
                     Evaluar mi proyecto de IA <ArrowRight className="w-4 h-4" />
                   </a>
                   <a href="#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
@@ -99,10 +153,13 @@ export default function HomeV2() {
             </div>
 
             {/* Hero card & Stats */}
-            <FadeIn delay={0.35} className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6">
               
-              {/* 3 Trust Stats (Moved above the form) */}
-              <div className="flex bg-white border border-slate-200 rounded-2xl p-4 shadow-sm divide-x divide-slate-100">
+              {/* 3 Trust Stats - PUNCH ANIMATION */}
+              <ScaleIn 
+                delay={0.6}
+                className="flex bg-white border-2 border-blue-50 rounded-2xl p-4 shadow-xl shadow-blue-900/10 divide-x divide-slate-100 relative z-20 origin-center"
+              >
                 {[
                   { value: "+15", label: "Años experiencia", gradient: "from-slate-800 to-slate-600" },
                   { value: "+50", label: "Proyectos B2B", gradient: "from-blue-800 to-blue-600" },
@@ -113,7 +170,9 @@ export default function HomeV2() {
                     <p className="text-[9px] uppercase tracking-wider text-slate-500 leading-tight font-bold">{s.label}</p>
                   </div>
                 ))}
-              </div>
+              </ScaleIn>
+
+              <FadeIn delay={0.35}>
 
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-sm">
                 <div className="inline-flex items-center gap-2 text-xs text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full mb-6 font-bold uppercase tracking-wider">
@@ -124,7 +183,7 @@ export default function HomeV2() {
                   Evaluamos el potencial, los riesgos y el punto de partida correcto. Sin vender tecnología antes de entender tu contexto.
                 </p>
                 <div className="bg-white border border-slate-200 rounded-xl p-4">
-                  <p className="text-xs text-blue-700 font-bold mb-1 uppercase tracking-wider">Equipo completo desde el día uno</p>
+                  <p className="text-xs text-blue-700 font-bold mb-1 uppercase tracking-wider">Equipo completo integrado desde el día uno</p>
                   <p className="text-sm text-[#0F172A] font-medium">Negocio · Datos · Tecnología · Implementación</p>
                 </div>
                 <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-3">
@@ -132,7 +191,27 @@ export default function HomeV2() {
                   <p className="text-xs text-slate-400 leading-tight">semanas es la duración<br />promedio de un proyecto</p>
                 </div>
               </div>
-            </FadeIn>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+        
+        {/* ══════════ TECH TICKER ══════════ */}
+        <div className="border-y border-slate-100 bg-white/50 py-5 mt-20 relative overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-r from-white to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 bg-gradient-to-l from-white to-transparent z-10" />
+          <div className="max-w-6xl mx-auto px-6 overflow-hidden flex flex-col md:flex-row items-center gap-3 md:gap-8 whitespace-nowrap">
+            <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-slate-400 shrink-0 flex items-center">
+              Tecnologías que dominamos
+            </p>
+            <div className="flex gap-6 md:gap-8 items-center text-slate-400 font-medium animate-[marquee_20s_linear_infinite] md:animate-none md:flex-wrap md:justify-center w-full">
+              {['OpenAI GPT-4o', 'Anthropic Claude 3.5', 'Llama 3', 'AWS', 'Google Cloud', 'Microsoft Azure', 'RAG Architectures', 'LangChain'].map((tech, i) => (
+                <span key={tech} className="flex items-center gap-8">
+                  <span className="hover:text-slate-600 transition-colors cursor-default">{tech}</span>
+                  {i < 7 && <span className="w-1 h-1 rounded-full bg-slate-300" />}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -179,6 +258,12 @@ export default function HomeV2() {
                 <p className="text-xs text-slate-400 mt-4 text-center">
                   <span aria-hidden="true">🔒</span> Tus datos están protegidos. No entrenamos modelos de IA con la información de nuestros clientes.
                 </p>
+                <div className="mt-8 pt-6 border-t border-slate-100 text-center">
+                  <p className="text-sm text-slate-500 mb-3">¿Prefieres no esperar 24 horas?</p>
+                  <a href="https://calendly.com/bernardita-mery" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 w-full text-[#0F172A] border border-slate-200 hover:border-blue-300 font-bold px-6 py-3.5 rounded-xl transition-all hover:bg-slate-50 hover:shadow-sm">
+                    Agendar reunión directa (15 min) <Calendar className="w-4 h-4 text-blue-600" />
+                  </a>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -198,7 +283,7 @@ export default function HomeV2() {
           <div className="grid md:grid-cols-3 gap-6">
             {products.map((p, i) => (
               <Reveal key={p.slug} delay={0.1 * (i + 1)}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full flex flex-col hover:border-blue-300 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full flex flex-col hover:border-blue-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
                   <span className="text-xs text-blue-700 font-bold uppercase tracking-wider mb-4">{p.industria}</span>
                   <p className="text-base text-[#0F172A] font-semibold leading-snug mb-4">{p.problema}</p>
                   <h3 className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-500 tracking-tight mb-2">{p.nombre}</h3>
@@ -225,8 +310,8 @@ export default function HomeV2() {
                 <Link href="/demos" className="text-sm text-slate-500 hover:text-slate-800 font-semibold transition-colors">
                   Ver catálogo completo
                 </Link>
-                <Link href="?interes=a-medida#diagnostico" className="inline-flex items-center gap-2 text-sm text-white bg-[#0F172A] hover:bg-slate-800 font-semibold px-5 py-2.5 rounded-lg transition-colors">
-                  Diseñemos tu solución <ArrowRight className="w-4 h-4" />
+                <Link href="?interes=a-medida#diagnostico" className="inline-flex items-center gap-2 text-sm text-white bg-[#0F172A] hover:bg-slate-800 font-semibold px-5 py-2.5 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg group">
+                  Diseñemos tu solución <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
@@ -238,7 +323,7 @@ export default function HomeV2() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <Reveal>
-            <p className="text-2xl md:text-3xl font-black tracking-tight text-[#0F172A] leading-snug">
+            <p className="text-2xl md:text-3xl font-serif italic text-slate-700 leading-relaxed">
               &ldquo;No vendemos promesas. Tenemos soluciones de IA funcionando que puedes probar ahora mismo. Atención al cliente, retail, contabilidad, legal y más.&rdquo;
             </p>
           </Reveal>
@@ -312,8 +397,8 @@ export default function HomeV2() {
       {/* ══════════ BANDA NAVY ══════════ */}
       <section className="bg-[#0F172A] py-20 px-6">
         <Reveal>
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-2xl md:text-3xl font-black text-white leading-snug mb-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-2xl md:text-3xl font-serif italic text-white/90 leading-relaxed mb-10">
               &ldquo;Acceder a un equipo con estas capacidades reunidas normalmente requiere contratar cuatro perfiles distintos. ETIIA lo ofrece integrado desde el primer proyecto.&rdquo;
             </p>
             <div className="flex flex-wrap justify-center gap-3 mb-10">
@@ -334,8 +419,9 @@ export default function HomeV2() {
       <section className="py-24 bg-white border-b border-slate-100">
         <div className="max-w-5xl mx-auto px-6">
           <Reveal>
-            <div className="bg-[#1E293B] rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
-              <div className="w-14 h-14 rounded-xl bg-blue-600/20 flex items-center justify-center shrink-0">
+            <div className="bg-[#0B1121] border border-slate-800/80 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 10% -20%, rgba(29, 78, 216, 0.3) 0%, transparent 60%)" }} aria-hidden="true" />
+              <div className="w-14 h-14 rounded-xl bg-blue-600/20 flex items-center justify-center shrink-0 relative z-10">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-400">
                   <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
                   <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
@@ -354,8 +440,8 @@ export default function HomeV2() {
                   Capacitamos a tu equipo para que adopte las herramientas con criterio de negocio. IA Generativa, automatización inteligente y análisis de datos — in-company.
                 </p>
               </div>
-              <a href="?interes=formacion#diagnostico" className="shrink-0 inline-flex items-center gap-2 bg-white text-[#0F172A] font-bold text-sm px-6 py-3 rounded-xl hover:bg-slate-100 transition-colors">
-                Formar a mi equipo <ArrowRight className="w-4 h-4" />
+              <a href="?interes=formacion#diagnostico" className="shrink-0 inline-flex items-center gap-2 bg-white text-[#0B1121] font-bold text-sm px-6 py-3 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20 relative z-10 group">
+                Formar a mi equipo <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
           </Reveal>
@@ -413,24 +499,27 @@ export default function HomeV2() {
       </section>
 
       {/* ══════════ CTA FINAL ══════════ */}
-      <section className="py-24 bg-[#0B1121] text-white relative overflow-hidden">
-        {/* Subtle top glow instead of full bright background */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% -20%, rgba(29, 78, 216, 0.4) 0%, transparent 60%)" }} aria-hidden="true" />
-        
-        <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 relative z-10 border border-slate-800/50 bg-[#0F172A]/50 backdrop-blur-sm p-10 md:p-14 rounded-3xl shadow-2xl">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white leading-tight mb-3">
-              ¿Tienes un proyecto<br />que podría involucrar IA?
-            </h2>
-            <p className="text-slate-400 text-sm max-w-md">El diagnóstico inicial es el mejor punto de partida: claro, concreto, y sin compromisos previos.</p>
-          </div>
-          <div className="flex flex-col gap-3 shrink-0">
-            <a href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
-              Evaluar mi proyecto de IA <ArrowRight className="w-4 h-4" />
-            </a>
-            <a href="#equipo" className="inline-flex items-center justify-center border border-slate-700 text-slate-300 px-8 py-4 rounded-xl text-sm hover:bg-slate-800 hover:text-white transition-colors font-medium">
-              Ver el equipo
-            </a>
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 relative z-10">
+          <div className="bg-[#0B1121] border border-slate-800/80 p-10 md:p-14 rounded-3xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden relative">
+            
+            {/* Subtle top glow inside the card */}
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% -20%, rgba(29, 78, 216, 0.4) 0%, transparent 60%)" }} aria-hidden="true" />
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white leading-tight mb-3">
+                ¿Tienes un proyecto<br />que podría involucrar IA?
+              </h2>
+              <p className="text-slate-400 text-sm max-w-md">El diagnóstico inicial es el mejor punto de partida: claro, concreto, y sin compromisos previos.</p>
+            </div>
+            <div className="flex flex-col gap-3 shrink-0 relative z-10">
+              <a href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
+                Evaluar mi proyecto de IA <ArrowRight className="w-4 h-4" />
+              </a>
+              <a href="#equipo" className="inline-flex items-center justify-center border border-slate-700 text-slate-300 px-8 py-4 rounded-xl text-sm hover:bg-slate-800 hover:text-white transition-colors font-medium">
+                Ver el equipo
+              </a>
+            </div>
           </div>
         </div>
       </section>

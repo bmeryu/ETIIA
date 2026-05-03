@@ -46,6 +46,26 @@ const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: stri
     etapa: "exploracion",
     ctaText: "Implementar TranscribAI",
   },
+  lexsearch: {
+    proyecto: "Me interesa implementar LexSearch para buscar y analizar documentos legales con precisión semántica.",
+    etapa: "exploracion",
+    ctaText: "Implementar LexSearch",
+  },
+  talentparse: {
+    proyecto: "Me interesa implementar TalentParse para automatizar el ranking y filtrado de currículums.",
+    etapa: "exploracion",
+    ctaText: "Implementar TalentParse",
+  },
+  inspectoai: {
+    proyecto: "Me interesa implementar InspectoAI para detectar defectos de manufactura usando visión computacional.",
+    etapa: "exploracion",
+    ctaText: "Implementar InspectoAI",
+  },
+  autorend: {
+    proyecto: "Me interesa implementar AutoRend para automatizar la lectura y validación de boletas y rendiciones.",
+    etapa: "exploracion",
+    ctaText: "Implementar AutoRend",
+  },
   "a-medida": {
     proyecto: "Busco desarrollar un flujo de IA o agente personalizado a la medida de mis procesos.",
     etapa: "idea",
@@ -64,6 +84,7 @@ function FormInner() {
   const [btnText, setBtnText] = useState(preset.ctaText);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   // Re-sync if the URL changes (e.g. user clicks another button)
   useEffect(() => {
@@ -76,6 +97,7 @@ function FormInner() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
+    setSendError(false);
     const form = e.currentTarget;
     const data = {
       nombre:   (form.elements.namedItem("nombre")  as HTMLInputElement).value,
@@ -87,14 +109,18 @@ function FormInner() {
       _subject: `ETIIA — ${interes ? interes.toUpperCase() : "Diagnóstico"} — ${(form.elements.namedItem("nombre") as HTMLInputElement).value}`,
     };
     try {
-      await fetch("https://formspree.io/f/xjgarjgw", {
+      const res = await fetch("https://formspree.io/f/xjgarjgw", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      setSuccess(true);
+      if (res.ok) {
+        setSuccess(true);
+      } else {
+        setSendError(true);
+      }
     } catch {
-      setSuccess(true);
+      setSendError(true);
     } finally {
       setLoading(false);
     }
@@ -154,6 +180,12 @@ function FormInner() {
         </select>
       </div>
 
+      {sendError && (
+        <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2.5">
+          Hubo un problema al enviar. Escríbenos directamente a{" "}
+          <a href="mailto:hola@etiia.com" className="font-bold underline">hola@etiia.com</a>
+        </p>
+      )}
       <button type="submit" disabled={loading}
         className="w-full flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3.5 rounded-lg text-sm transition-colors mt-2 disabled:opacity-60">
         {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><span>{btnText}</span><ArrowRight className="w-4 h-4" /></>}

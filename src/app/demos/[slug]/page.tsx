@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, Lock } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/ui/Reveal";
 
@@ -260,13 +260,17 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
   const c = colorMap[demo.color] || colorMap.blue;
 
   // JSON-LD Software Application
+  // applicationCategory debe usar valores válidos de schema.org
+  const validCategory = "BusinessApplication";
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": demo.nombre,
-    "applicationCategory": demo.softwareType,
+    "applicationCategory": validCategory,
     "operatingSystem": "Web, API, Cloud",
+    "url": `https://www.etiia.com/demos/${slug}`,
     "description": demo.descripcion,
+    "featureList": demo.tags.join(", "),
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -276,7 +280,8 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
     "publisher": {
       "@type": "Organization",
       "name": "ETIIA",
-      "url": "https://www.etiia.com"
+      "url": "https://www.etiia.com",
+      "@id": "https://www.etiia.com/#organization"
     }
   };
 
@@ -295,7 +300,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen pt-20 bg-white">
+    <div className="w-full h-[calc(100vh-80px)] mt-20 relative bg-white">
       {/* ══════════ ESQUEMAS AEO (SR-ONLY y JSON-LD) ══════════ */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
@@ -311,88 +316,37 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
         ))}
       </article>
 
-      {/* PANEL IZQUIERDO: INFORMACIÓN (Marketing & SEO) */}
-      <div className="w-full lg:w-[450px] xl:w-[500px] bg-white border-r border-slate-200 flex flex-col lg:h-[calc(100vh-80px)] z-10 relative">
-        <div className="flex-1 overflow-y-auto p-8 lg:p-12 pb-32">
-        <FadeIn delay={0.1}>
-          <Link href="/demos" className="inline-flex items-center text-sm text-slate-400 hover:text-blue-600 transition mb-8 font-medium">
-            <ArrowLeft className="w-4 h-4 mr-1" /> Volver al Portfolio
-          </Link>
-        </FadeIn>
-
-        <FadeIn delay={0.15}>
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span className={`inline-flex items-center px-3 py-1 rounded-full ${c.bg} ${c.text} text-xs font-bold uppercase tracking-wider ${c.border} border`}>
-              {demo.industria}
-            </span>
-          </div>
-        </FadeIn>
-
-        <FadeIn delay={0.2}>
-          <h1 className="text-4xl font-black tracking-tight text-[#0F172A] mb-4 leading-tight">
-            {demo.nombre}
-          </h1>
-        </FadeIn>
-
-        <FadeIn delay={0.25}>
-          <p className="text-xl text-slate-500 mb-6 font-medium leading-relaxed">
-            {demo.tagline}
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={0.3}>
-          <p className="text-base text-slate-600 mb-10 leading-relaxed">
-            {demo.descripcion}
-          </p>
-        </FadeIn>
-
-        {/* Features / Pasos */}
-        <div className="space-y-6 mb-10">
-          {demo.pasos.map((paso, idx) => (
-            <FadeIn key={idx} delay={0.3 + (idx * 0.05)}>
-              <div className="flex gap-4">
-                <div className={`w-8 h-8 rounded-full ${c.bg} ${c.text} font-bold flex items-center justify-center shrink-0`}>
-                  {idx + 1}
-                </div>
-                <div>
-                  <h4 className="text-sm font-black text-[#0F172A] mb-1">{paso.titulo}</h4>
-                  <p className="text-sm text-slate-500 leading-relaxed">{paso.desc}</p>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-
-        <FadeIn delay={0.4} className="mt-8">
-          <div className={`p-6 rounded-2xl ${c.bg} border ${c.border} text-center`}>
-            <p className={`text-3xl font-black ${c.text} mb-1 tracking-tight`}>{demo.resultado}</p>
-            <p className={`text-sm ${c.text} opacity-80 font-semibold`}>{demo.resultadoLabel}</p>
-          </div>
-        </FadeIn>
-        </div>
-
-        {/* CTA FIJO ABAJO */}
-        <div className="lg:absolute bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-6 lg:px-12 z-20 shadow-[0_-10px_20px_-10px_rgba(0,0,0,0.05)]">
-          <FadeIn delay={0.5}>
-            <Link href={`/?interes=${slug}#diagnostico`} className="block w-full mb-3">
-              <Button className="w-full h-12 text-base shadow-lg shadow-blue-900/10">
-                Consultar para mi empresa <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-            <p className="text-center text-xs text-slate-500 font-medium">
-              ¿Tu operación requiere algo distinto? <Link href="/?interes=a-medida#diagnostico" className="text-blue-600 hover:text-blue-800 transition-colors underline underline-offset-2">Diseñemos una solución a medida</Link>.
-            </p>
-          </FadeIn>
-        </div>
+      {/* FLOATING BACK BUTTON */}
+      <div className="absolute top-4 left-4 sm:left-6 z-50">
+        <Link href="/#soluciones" className="inline-flex items-center gap-2 bg-white/90 border border-slate-200 text-slate-700 hover:text-blue-600 hover:border-blue-300 px-5 py-2.5 rounded-full text-xs font-bold backdrop-blur-md transition-all shadow-lg hover:-translate-y-0.5">
+          <ArrowLeft className="w-4 h-4" /> Volver a Soluciones de IA
+        </Link>
       </div>
 
-      {/* PANEL DERECHO: DEMO INTERACTIVA (100% Height) */}
-      <div className="flex-1 bg-[#f8fafc] relative h-[800px] lg:h-[calc(100vh-80px)]">
-        <iframe
-          src={demo.iframeSrc}
-          className="w-full h-full border-0 block"
-          title={`Demo ${demo.nombre}`}
-        />
+      {/* 100% FULLSCREEN IFRAME */}
+      <iframe
+        src={demo.iframeSrc}
+        className="w-full h-full border-0 block absolute inset-0 z-10"
+        title={`Demo interactiva de ${demo.nombre} — ETIIA`}
+        loading="lazy"
+        sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-modals"
+      />
+
+      {/* FLOATING GATED CTA (BOTTOM CENTER) */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-2xl">
+        <div className="bg-[#0F172A]/95 backdrop-blur-md border border-slate-700/50 shadow-2xl rounded-2xl md:rounded-full p-4 md:p-3 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-center md:text-left flex-1">
+            <p className="text-sm font-bold text-white flex items-center justify-center md:justify-start gap-2">
+              <Lock className="w-4 h-4 text-blue-400" /> Modo de Demostración
+            </p>
+            <p className="text-xs text-slate-300 mt-1">
+              Versión con datos de muestra.
+            </p>
+          </div>
+          <Link href={`/?interes=${slug}#diagnostico`} className="shrink-0 bg-blue-600 text-white hover:bg-blue-500 w-full md:w-auto px-6 py-2.5 rounded-xl md:rounded-full text-xs font-bold transition-all shadow-lg shadow-blue-900/20 text-center hover:-translate-y-0.5">
+            Consultar para mi empresa
+          </Link>
+        </div>
       </div>
     </div>
   );

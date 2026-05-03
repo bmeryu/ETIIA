@@ -51,3 +51,26 @@ export function FadeIn({
 }
 
 export const Reveal = FadeIn;
+
+export function ScaleIn({
+    children,
+    delay = 0,
+    className,
+}: FadeInProps) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+                type: "spring", 
+                stiffness: 200, 
+                damping: 20, 
+                delay 
+            }}
+            className={className}
+        >
+            {children}
+        </motion.div>
+    );
+}

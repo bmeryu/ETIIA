@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { CookieBanner } from "@/components/ui/CookieBanner";
 
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -77,34 +78,44 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
-                  "@type": "ProfessionalService",
+                  "@type": ["Organization", "ProfessionalService"],
                   "@id": "https://www.etiia.com/#organization",
                   "name": "ETIIA - Consultoría en Inteligencia Artificial B2B",
                   "url": "https://www.etiia.com",
-                  "logo": "https://www.etiia.com/favicon.svg",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.etiia.com/favicon.svg",
+                    "width": 512,
+                    "height": 512
+                  },
                   "image": "https://www.etiia.com/og-image.jpg",
-                  "description": "Consultoría e implementación de Inteligencia Artificial, Agentes Autónomos y sistemas RAG aplicados a negocios B2B.",
+                  "description": "Consultoría e implementación de Inteligencia Artificial, Agentes Autónomos y sistemas RAG aplicados a negocios B2B en Chile y Latam.",
                   "knowsAbout": [
                     "Artificial Intelligence",
                     "Machine Learning",
                     "Retrieval-Augmented Generation (RAG)",
                     "Large Language Models",
                     "Business Process Automation",
-                    "Cognitive Computing"
+                    "Cognitive Computing",
+                    "ERP Integration",
+                    "OCR Intelligent Document Processing"
                   ],
                   "areaServed": ["CL", "US", "MX", "ES", "CO"],
                   "priceRange": "$$$",
                   "telephone": "+56976305985",
+                  "email": "hola@etiia.com",
                   "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Santiago",
+                    "addressRegion": "Región Metropolitana",
                     "addressCountry": "CL"
                   },
                   "contactPoint": {
                     "@type": "ContactPoint",
                     "telephone": "+56976305985",
                     "email": "hola@etiia.com",
-                    "contactType": "customer support"
+                    "contactType": "sales",
+                    "availableLanguage": ["Spanish", "English"]
                   },
                   "sameAs": [
                     "https://linkedin.com/company/etiia"
@@ -120,25 +131,36 @@ export default function RootLayout({
                     {
                       "@type": "Person",
                       "name": "Pablo E. Olivares",
-                      "jobTitle": "Co-founder & Cloud AI Architect"
+                      "jobTitle": "Co-founder & Cloud AI Architect",
+                      "sameAs": ["https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"]
                     }
                   ],
                   "hasOfferCatalog": {
                     "@type": "OfferCatalog",
-                    "name": "Servicios de Inteligencia Artificial",
+                    "name": "Servicios de Inteligencia Artificial B2B",
                     "itemListElement": [
                       {
                         "@type": "Offer",
                         "itemOffered": {
                           "@type": "Service",
-                          "name": "Implementación de Agentes IA Autónomos"
+                          "name": "Implementación de Agentes IA Autónomos",
+                          "description": "Agentes conversacionales y de proceso basados en LLMs con arquitectura RAG, integrados a CRMs y ERPs corporativos."
                         }
                       },
                       {
                         "@type": "Offer",
                         "itemOffered": {
                           "@type": "Service",
-                          "name": "Desarrollo de Arquitecturas RAG y LLMs corporativos"
+                          "name": "Desarrollo de Arquitecturas RAG y LLMs corporativos",
+                          "description": "Implementación de sistemas RAG (Retrieval-Augmented Generation) sobre bases de datos privadas para eliminar alucinaciones."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "OCR Inteligente e Integración ERP",
+                          "description": "Automatización de documentos con OCR potenciado por IA y push automático a SAP, Softland, Defontana y Buk."
                         }
                       }
                     ]
@@ -149,39 +171,10 @@ export default function RootLayout({
                   "@id": "https://www.etiia.com/#website",
                   "url": "https://www.etiia.com",
                   "name": "ETIIA Consultoría IA",
+                  "inLanguage": "es-CL",
                   "publisher": {
                     "@id": "https://www.etiia.com/#organization"
                   }
-                },
-                {
-                  "@type": "FAQPage",
-                  "@id": "https://www.etiia.com/#faq",
-                  "mainEntity": [
-                    {
-                      "@type": "Question",
-                      "name": "¿Cuál es la diferencia entre automatización tradicional y los Agentes IA de ETIIA?",
-                      "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "La automatización tradicional (ej. RPA) se rompe cuando cambian las reglas o formatos. En ETIIA implementamos Agentes de Inteligencia Artificial basados en LLMs corporativos que entienden contexto, toman micro-decisiones escalables y se adaptan a excepciones, conectándose directamente a los KPIs de negocio B2B."
-                      }
-                    },
-                    {
-                      "@type": "Question",
-                      "name": "¿Qué es una arquitectura RAG y por qué ETIIA la implementa en empresas?",
-                      "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "RAG (Retrieval-Augmented Generation) es una arquitectura que conecta Modelos de Lenguaje (como GPT-4 o Claude) de forma segura con las bases de datos privadas de una empresa. ETIIA implementa RAG para asegurar que la IA genere respuestas precisas basadas 100% en la data corporativa interna, eliminando el riesgo de alucinaciones."
-                      }
-                    },
-                    {
-                      "@type": "Question",
-                      "name": "¿Cuánto tarda ETIIA en implementar una solución de Inteligencia Artificial B2B?",
-                      "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Dependiendo de la complejidad operativa y la limpieza de los datos, ETIIA despliega productos de Inteligencia Artificial (como motores de recomendación, OCR inteligente o agentes de atención) en entornos de producción en un plazo promedio de 2 a 4 semanas."
-                      }
-                    }
-                  ]
                 }
               ]
             })
@@ -192,6 +185,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

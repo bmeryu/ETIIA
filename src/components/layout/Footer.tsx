@@ -30,20 +30,30 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Soluciones</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/soluciones" className="hover:text-white transition-colors">Inteligencia Artificial</Link></li>
-              <li><Link href="/soluciones" className="hover:text-white transition-colors">Automatización Inteligente</Link></li>
-              <li><Link href="/soluciones" className="hover:text-white transition-colors">Estrategia & Datos</Link></li>
               <li><Link href="/demos" className="hover:text-white transition-colors">Catálogo de Demos</Link></li>
-              <li><Link href="/formacion" className="hover:text-white transition-colors">Formación de Equipos</Link></li>
+              <li><Link href="/?interes=diagnostico#diagnostico" className="hover:text-white transition-colors">Diagnóstico Inicial</Link></li>
+              <li><Link href="/?interes=a-medida#diagnostico" className="hover:text-white transition-colors">Desarrollo a Medida</Link></li>
+              <li><Link href="/?interes=formacion#diagnostico" className="hover:text-white transition-colors">UpSkilling In-Company</Link></li>
+            </ul>
+          </div>
+
+          {/* Perspectivas */}
+          <div>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Perspectivas</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/insights" className="hover:text-white transition-colors">Todos los artículos</Link></li>
+              <li><Link href="/insights" className="hover:text-white transition-colors">Cultura de Datos</Link></li>
+              <li><Link href="/insights" className="hover:text-white transition-colors">Gobernanza de IA</Link></li>
+              <li><Link href="/insights" className="hover:text-white transition-colors">Transformación B2B</Link></li>
             </ul>
           </div>
 
           {/* Empresa */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Empresa</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Nosotros</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/equipo" className="hover:text-white transition-colors">Equipo</Link></li>
-              <li><Link href="/contacto" className="hover:text-white transition-colors">Contacto</Link></li>
+              <li><Link href="/#equipo" className="hover:text-white transition-colors">El Equipo</Link></li>
+              <li><Link href="/#diagnostico" className="hover:text-white transition-colors">Contacto</Link></li>
             </ul>
           </div>
 
