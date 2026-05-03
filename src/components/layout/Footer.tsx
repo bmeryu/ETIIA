@@ -26,14 +26,14 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Servicios */}
+          {/* Soluciones */}
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Soluciones</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/demos" className="hover:text-white transition-colors">Catálogo de Demos</Link></li>
-              <li><Link href="/?interes=diagnostico#diagnostico" className="hover:text-white transition-colors">Diagnóstico Inicial</Link></li>
-              <li><Link href="/?interes=a-medida#diagnostico" className="hover:text-white transition-colors">Desarrollo a Medida</Link></li>
-              <li><Link href="/?interes=formacion#diagnostico" className="hover:text-white transition-colors">UpSkilling In-Company</Link></li>
+              <li><Link href="/demos" className="hover:text-white transition-colors">Portafolio de Software</Link></li>
+              <li><Link href="/contacto" className="hover:text-white transition-colors">Evaluación de Viabilidad</Link></li>
+              <li><Link href="/contacto" className="hover:text-white transition-colors">Desarrollo a Medida</Link></li>
+              <li><a href="https://aulagenia.cl" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Capacitación (AulaGenIA)</a></li>
             </ul>
           </div>
 
