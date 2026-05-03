@@ -123,9 +123,9 @@ export default function HomeV2() {
                 </div>
               </FadeIn>
               <h1 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6">
-                  Consultoría IA B2B:<br />
-                  <span className="text-gradient-blue">te decimos</span><br />
-                  si tiene sentido aplicarla
+                  Primero te decimos<br />
+                  <span className="text-gradient-blue">si tiene sentido</span><br />
+                  aplicar IA
               </h1>
 
               <FadeIn delay={0.3}>
