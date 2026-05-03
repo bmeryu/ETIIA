@@ -47,7 +47,7 @@ export default function ServiciosPage() {
               <div className="w-16 h-16 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-6">
                 <CalendarCheck className="w-8 h-8 text-indigo-600" />
               </div>
-              <h2 className="text-3xl font-black tracking-tight text-[#0F172A] mb-4">Evaluación de Viabilidad Inicial</h2>
+              <h2 className="text-3xl font-black tracking-tight text-[#0F172A] mb-4">Evaluación Operativa Gratuita</h2>
               <p className="text-slate-500 leading-relaxed mb-6">
                 El error más caro es desarrollar antes de entender el problema. Nuestro diagnóstico inicial dura 20 minutos y sirve para evaluar si tu desafío operativo es realmente un caso de uso para Inteligencia Artificial.
               </p>
@@ -102,7 +102,7 @@ export default function ServiciosPage() {
               </Link>
             </Reveal>
             <ScaleIn delay={0.2} className="md:order-1 bg-gradient-to-br from-blue-900 to-indigo-900 rounded-3xl p-8 border border-indigo-800 text-white shadow-xl shadow-blue-900/10">
-              <h3 className="text-sm font-bold text-blue-300 uppercase tracking-widest mb-4">Sandboxes</h3>
+              <h3 className="text-sm font-bold text-blue-300 uppercase tracking-widest mb-4">Casos de Uso en Vivo</h3>
               <p className="text-white font-semibold text-lg italic leading-relaxed">
                 No tienes que imaginarlo. Hemos construido entornos interactivos para que pruebes nuestra tecnología en vivo antes de comprarla.
               </p>
