@@ -101,34 +101,30 @@ export default function HomeV2() {
         <div className="max-w-5xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <FadeIn delay={0.1}>
+              <div className="fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
                 <h1 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                   Consultoría en Inteligencia Artificial B2B y Agentes Autónomos
                 </h1>
-              </FadeIn>
-              <h2 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6">
+              </div>
+              <h2 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6 fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
                   Primero te decimos<br />
                   <span className="text-gradient-blue">si tiene sentido</span><br />
                   aplicar IA
               </h2>
 
-              <FadeIn delay={0.3}>
-                <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg">
-                  Antes de invertir en desarrollo, necesitas saber si tu problema es realmente un caso para IA, qué conviene hacer primero y qué no. Eso es exactamente lo que hacemos.
-                </p>
-              </FadeIn>
+              <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
+                Antes de invertir en desarrollo, necesitas saber si tu problema es realmente un caso para IA, qué conviene hacer primero y qué no. Eso es exactamente lo que hacemos.
+              </p>
 
-              <FadeIn delay={0.4}>
-                <div className="flex flex-wrap gap-4 mb-14">
-                  <a href="#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
-                    Consultar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
-                  </a>
-                  <a href="#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
-                    Conocer el equipo
-                  </a>
-                </div>
-              </FadeIn>
+              <div className="flex flex-wrap gap-4 mb-14 fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+                <a href="#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
+                  Consultar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
+                </a>
+                <a href="#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
+                  Conocer el equipo
+                </a>
+              </div>
 
 
             </div>
@@ -183,12 +179,12 @@ export default function HomeV2() {
           {/* Trust Band */}
           <div className="max-w-5xl mx-auto px-6 text-center relative z-20 w-full">
             <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-6">Nuestros sistemas se integran de forma nativa con</p>
-            <div className="flex flex-wrap justify-center gap-8 md:gap-14 items-center opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-              <span className="text-2xl font-black font-sans text-slate-700 tracking-tighter inline-block cursor-default hover:scale-110 hover:-translate-y-1 hover:text-blue-700 transition-all duration-300">SAP</span>
-              <span className="text-2xl font-bold font-sans text-slate-700 tracking-tighter inline-block cursor-default hover:scale-110 hover:-translate-y-1 hover:text-blue-700 transition-all duration-300">Salesforce</span>
-              <span className="text-2xl font-black font-sans text-slate-700 tracking-tighter inline-block cursor-default hover:scale-110 hover:-translate-y-1 hover:text-blue-700 transition-all duration-300">AWS</span>
-              <span className="text-2xl font-bold font-sans text-slate-700 tracking-tighter inline-block cursor-default hover:scale-110 hover:-translate-y-1 hover:text-blue-700 transition-all duration-300">Microsoft</span>
-              <span className="text-xl font-bold font-sans text-slate-700 tracking-tighter inline-block cursor-default hover:scale-110 hover:-translate-y-1 hover:text-blue-700 transition-all duration-300">HubSpot</span>
+            <div className="flex flex-wrap justify-center gap-10 md:gap-16 items-center opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+              <img src="https://cdn.simpleicons.org/sap/0F172A" alt="SAP" className="h-8 md:h-10 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" loading="lazy" />
+              <img src="https://cdn.simpleicons.org/salesforce/0F172A" alt="Salesforce" className="h-8 md:h-10 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" loading="lazy" />
+              <img src="https://cdn.simpleicons.org/amazonaws/0F172A" alt="AWS" className="h-8 md:h-9 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300 mt-2" loading="lazy" />
+              <img src="https://cdn.simpleicons.org/microsoft/0F172A" alt="Microsoft" className="h-7 md:h-8 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" loading="lazy" />
+              <img src="https://cdn.simpleicons.org/hubspot/0F172A" alt="HubSpot" className="h-7 md:h-9 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" loading="lazy" />
             </div>
           </div>
 
@@ -301,7 +297,7 @@ export default function HomeV2() {
             <p className="text-xl md:text-2xl text-slate-400 font-serif italic max-w-3xl mx-auto leading-relaxed mb-6">
               &ldquo;Desarrollamos Agentes Autónomos B2B: Software que razona, se conecta a los sistemas de tu empresa y ejecuta flujos de trabajo completos de principio a fin, sin intervención humana.&rdquo;
             </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white leading-[1.1]">
+            <h2 className="text-2xl md:text-4xl font-black tracking-tight text-white leading-[1.1]">
               No instalamos &quot;chatbots&quot; genéricos.
             </h2>
           </Reveal>
@@ -322,8 +318,14 @@ export default function HomeV2() {
             {products.map((p, i) => (
               <Reveal key={p.slug} delay={0.1 * (i + 1)}>
                 <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full flex flex-col hover:border-blue-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer group relative overflow-hidden">
-                  <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="text-xs text-blue-700 font-bold uppercase tracking-wider">{p.industria}</span>
+                  <div className="flex items-start justify-between gap-2 mb-4">
+                    <span className="text-xs text-blue-700 font-bold uppercase tracking-wider mt-0.5">{p.industria}</span>
+                    {p.isAgent && (
+                      <span className="inline-flex shrink-0 items-center gap-1.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 shadow-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                        Agente Autónomo
+                      </span>
+                    )}
                   </div>
                   <p className="text-base text-[#0F172A] font-semibold leading-snug mb-4">{p.problema}</p>
                   <h3 className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-500 tracking-tight mb-2">{p.nombre}</h3>
