@@ -19,6 +19,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${insight.metadata.title} | ETIIA Insights`,
     description: insight.metadata.description,
+    alternates: {
+      canonical: `/insights/${params.slug}`,
+    },
+    openGraph: {
+      title: `${insight.metadata.title} | ETIIA Insights`,
+      description: insight.metadata.description,
+      url: `https://www.etiia.com/insights/${params.slug}`,
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: insight.metadata.title }],
+      type: 'article',
+      publishedTime: insight.metadata.date,
+    },
   };
 }
 
@@ -46,9 +57,12 @@ export default function InsightArticle({ params }: { params: { slug: string } })
     publisher: {
       '@type': 'Organization',
       name: 'ETIIA',
+      '@id': 'https://www.etiia.com/#organization',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.etiia.com/etiia_square_magin_full.png'
+        url: 'https://www.etiia.com/favicon.svg',
+        width: 512,
+        height: 512
       }
     }
   };

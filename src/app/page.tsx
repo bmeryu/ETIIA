@@ -153,7 +153,7 @@ export default function HomeV2() {
               
               {/* 3 Trust Stats - PUNCH ANIMATION */}
               <ScaleIn 
-                delay={0.6}
+                delay={0.1}
                 className="flex bg-white border-2 border-blue-50 rounded-2xl p-4 shadow-xl shadow-blue-900/10 divide-x divide-slate-100 relative z-20 origin-center"
               >
                 {[

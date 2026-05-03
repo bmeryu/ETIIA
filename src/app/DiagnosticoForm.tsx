@@ -103,6 +103,7 @@ function FormInner() {
       nombre:   (form.elements.namedItem("nombre")  as HTMLInputElement).value,
       empresa:  (form.elements.namedItem("empresa") as HTMLInputElement).value,
       email:    (form.elements.namedItem("email")   as HTMLInputElement).value,
+      tamano_empresa: (form.elements.namedItem("tamano_empresa") as HTMLSelectElement).value,
       proyecto,
       etapa,
       interes,

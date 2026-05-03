@@ -2,8 +2,15 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/ui/ContactForm";
 
 export const metadata = {
-    title: "Contacto",
-    description: "Agenda una sesión de exploración con los fundadores de ETIIA para descubrir cómo la IA puede transformar tus KPIs.",
+  title: "Agenda tu Diagnóstico IA Gratuito",
+  description: "Habla directamente con los fundadores de ETIIA. Evaluamos la viabilidad de tu proyecto de IA en 30 minutos. Sin preventa ni compromisos.",
+  alternates: { canonical: "/contacto" },
+  openGraph: {
+    title: "Agenda tu Diagnóstico IA Gratuito | ETIIA",
+    description: "Habla directamente con los fundadores de ETIIA. 30 minutos para saber si la IA resuelve tu problema real.",
+    url: "https://www.etiia.com/contacto",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Contacto ETIIA — Diagnóstico IA B2B" }],
+  },
 };
 
 export default function ContactoPage() {
