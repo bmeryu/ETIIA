@@ -319,9 +319,15 @@ export default function HomeV2() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <Reveal>
-            <p className="text-2xl md:text-3xl font-serif italic text-slate-700 leading-relaxed">
+            <p className="text-2xl md:text-3xl font-serif italic text-slate-700 leading-relaxed mb-8">
               &ldquo;No vendemos promesas. Tenemos soluciones de IA funcionando que puedes probar ahora mismo. Atención al cliente, retail, contabilidad, legal y más.&rdquo;
             </p>
+            <Link
+              href="/demos"
+              className="inline-flex items-center gap-2 text-blue-700 border border-blue-200 bg-blue-50 hover:bg-blue-100 hover:border-blue-300 font-bold text-sm px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5"
+            >
+              Ver las demos en vivo <ArrowRight className="w-4 h-4" />
+            </Link>
           </Reveal>
         </div>
       </section>

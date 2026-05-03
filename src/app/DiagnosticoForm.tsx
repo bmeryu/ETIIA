@@ -158,6 +158,18 @@ function FormInner() {
       </div>
 
       <div className="flex flex-col gap-1.5">
+        <label htmlFor="tamano_empresa" className="text-xs text-slate-500 font-medium">Tamaño de tu empresa</label>
+        <select id="tamano_empresa" name="tamano_empresa"
+          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+          <option value="">Selecciona una opción</option>
+          <option value="1-10">Startup / Menos de 10 personas</option>
+          <option value="10-50">Pyme (10–50 personas)</option>
+          <option value="50-200">Empresa mediana (50–200 personas)</option>
+          <option value="200+">Corporación (más de 200 personas)</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col gap-1.5">
         <label htmlFor="proyecto" className="text-xs text-slate-500 font-medium">¿Qué necesitas?</label>
         <textarea id="proyecto" name="proyecto" required rows={3}
           value={proyecto}
@@ -165,6 +177,7 @@ function FormInner() {
           placeholder="Ej: Quiero predecir rotación de clientes con datos históricos"
           className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none" />
       </div>
+
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="etapa" className="text-xs text-slate-500 font-medium">¿En qué etapa estás?</label>
