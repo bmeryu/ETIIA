@@ -22,8 +22,8 @@ export default function ContactoPage() {
                     {/* Left Column - Copy */}
                     <div className="space-y-8 sticky top-32">
                         <SectionHeading
-                            title="La puerta de entrada a la excelencia."
-                            subtitle="Agenda una sesión de exploración confidencial de 30 minutos directamente con nuestros fundadores, sin intermediarios comerciales."
+                            title="30 minutos que pueden ahorrarte meses de decisiones equivocadas."
+                            subtitle="Hablamos directamente con los fundadores. Sin preventa. Evaluamos si la IA tiene sentido para tu caso y qué conviene hacer primero."
                         />
 
                         {/* WhatsApp CTA */}
