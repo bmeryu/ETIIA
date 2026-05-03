@@ -228,7 +228,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const demo = demos[slug];
   if (!demo) return { title: "Demo no encontrada" };
   return {
-    title: `${demo.nombre} — ${demo.tagline} | Demos ETIIA`,
+    title: `${demo.nombre} — ${demo.tagline} | Soluciones ETIIA`,
     description: demo.descripcion,
     alternates: {
       canonical: `/demos/${slug}`,

@@ -30,10 +30,10 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Servicios</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/demos" className="hover:text-white transition-colors">Ver todas las soluciones</Link></li>
-              <li><Link href="/demos/atendeai" className="hover:text-white transition-colors">Atención al Cliente (IA)</Link></li>
-              <li><Link href="/demos/facturai" className="hover:text-white transition-colors">Conciliación de Facturas</Link></li>
-              <li><Link href="/demos/lexsearch" className="hover:text-white transition-colors">Buscador Legal RAG</Link></li>
+              <li><Link href="/servicios#evaluacion" className="hover:text-white transition-colors">Evaluación Gratuita</Link></li>
+              <li><Link href="/demos" className="hover:text-white transition-colors">Soluciones de IA</Link></li>
+              <li><Link href="/servicios#formacion" className="hover:text-white transition-colors">UpSkilling y Formación</Link></li>
+              <li><Link href="/servicios#a-medida" className="hover:text-white transition-colors">Diseñamos Tu Solución</Link></li>
             </ul>
           </div>
 

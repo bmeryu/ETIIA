@@ -61,8 +61,8 @@ const navLinks = [
       {
         title: "Recursos B2B",
         items: [
-          { name: "UpSkilling y Formación", desc: "Entrena a tu equipo interno.", href: "?interes=formacion#diagnostico" },
-          { name: "Auditoría de Riesgo", desc: "Evalúa tu madurez operativa.", href: "/contacto" }
+          { name: "UpSkilling y Formación", desc: "Entrena a tu equipo interno.", href: "/servicios#formacion" },
+          { name: "Desarrollo a Medida", desc: "Soluciones y arquitecturas RAG.", href: "/servicios#a-medida" }
         ]
       }
     ]

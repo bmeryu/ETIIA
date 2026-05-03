@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/demos',
     '/insights',
     '/contacto',
+    '/servicios',
   ];
 
   const demoRoutes = [

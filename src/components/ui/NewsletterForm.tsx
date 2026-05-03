@@ -71,7 +71,7 @@ export function NewsletterForm() {
       <button 
         type="submit"
         disabled={loading}
-        className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-indigo-900/20 whitespace-nowrap disabled:opacity-50 flex items-center justify-center min-w-[140px]"
+        className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-indigo-900/20 whitespace-nowrap disabled:opacity-50 flex items-center justify-center min-w-[140px] w-full sm:w-auto"
       >
         {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Suscribirme"}
       </button>
