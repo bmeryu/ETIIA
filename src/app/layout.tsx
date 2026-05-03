@@ -180,15 +180,12 @@ export default function RootLayout({
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://etiia.com/#website",
-                  "url": "https://etiia.com",
+                  "@id": "https://www.etiia.com/#website",
+                  "url": "https://www.etiia.com",
                   "name": "ETIIA Consultoría IA",
                   "inLanguage": "es-CL",
                   "publisher": {
-                    "@id": "https://etiia.com/#organization"
-                  },
-                  "mainEntity": {
-                    "@id": "https://etiia.com/#faq"
+                    "@id": "https://www.etiia.com/#organization"
                   }
                 }
               ]

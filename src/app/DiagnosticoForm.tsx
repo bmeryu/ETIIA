@@ -74,9 +74,9 @@ const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: stri
 };
 
 /* ── Form interno ────────────────────────────────────── */
-function FormInner() {
+function FormInner({ presetInteres }: { presetInteres?: string }) {
   const params = useSearchParams();
-  const interes = params.get("interes") ?? "";
+  const interes = presetInteres || params.get("interes") || "";
   const preset = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Consultar Evaluación Gratuita" };
 
   const [proyecto, setProyecto] = useState(preset.proyecto);
@@ -213,10 +213,10 @@ function FormInner() {
 }
 
 /* ── Export con Suspense (requerido por useSearchParams) */
-export default function DiagnosticoForm() {
+export default function DiagnosticoForm({ presetInteres }: { presetInteres?: string }) {
   return (
     <Suspense fallback={null}>
-      <FormInner />
+      <FormInner presetInteres={presetInteres} />
     </Suspense>
   );
 }

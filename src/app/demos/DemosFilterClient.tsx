@@ -233,7 +233,7 @@ export default function DemosFilterClient() {
             </p>
             <Link href="/contacto">
               <Button className="h-12 px-8 text-base btn-pulse">
-                Solicitar Diagnóstico Gratuito
+                Consultar Evaluación Gratuita
               </Button>
             </Link>
           </FadeIn>

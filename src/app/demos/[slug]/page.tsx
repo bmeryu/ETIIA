@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { ArrowRight, ArrowLeft, Lock } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/ui/Reveal";
+import DemoCTA from "./DemoCTA";
 
 const demos: Record<string, {
   nombre: string;
@@ -318,6 +319,8 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
   return (
     <div className="w-full h-[calc(100vh-80px)] mt-20 relative bg-white">
       {/* ══════════ ESQUEMAS AEO (SR-ONLY y JSON-LD) ══════════ */}
+      <h1 className="sr-only">{demo.nombre}: {demo.tagline} - Solución B2B de IA por ETIIA</h1>
+      <div className="sr-only">{demo.aeoText}</div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* ══════════ ESQUEMAS AEO VISIBLES (Google Compliance) ══════════ */}
@@ -329,7 +332,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
           </summary>
           <article className="p-5 pt-4 border-t border-slate-100 max-h-[60vh] overflow-y-auto custom-scrollbar">
             <div className="flex flex-col gap-1.5 mb-3">
-              <h2 className="text-sm font-black text-[#0F172A]">{demo.nombre} - Solución B2B</h2>
+              <p className="text-sm font-black text-[#0F172A]">{demo.nombre} - Solución B2B</p>
               {demo.isAgent && (
                 <span className="inline-flex self-start items-center gap-1.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
@@ -363,26 +366,11 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
         src={demo.iframeSrc}
         className="w-full h-full border-0 block absolute inset-0 z-10"
         title={`Demo interactiva de ${demo.nombre} — ETIIA`}
-        loading="lazy"
         sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-modals"
       />
 
-      {/* FLOATING GATED CTA (BOTTOM CENTER) */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-2xl">
-        <div className="bg-[#0F172A]/95 backdrop-blur-md border border-slate-700/50 shadow-2xl rounded-2xl md:rounded-full p-4 md:p-3 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-center md:text-left flex-1">
-            <p className="text-sm font-bold text-white flex items-center justify-center md:justify-start gap-2">
-              <Lock className="w-4 h-4 text-blue-400" /> Modo de Demostración
-            </p>
-            <p className="text-xs text-slate-300 mt-1">
-              Versión con datos de muestra.
-            </p>
-          </div>
-          <Link href={`/?interes=${slug}#diagnostico`} className="shrink-0 bg-blue-600 text-white hover:bg-blue-500 w-full md:w-auto px-6 py-2.5 rounded-xl md:rounded-full text-xs font-bold transition-all shadow-lg shadow-blue-900/20 text-center hover:-translate-y-0.5">
-            Consultar para mi empresa
-          </Link>
-        </div>
-      </div>
+      {/* FLOATING GATED CTA + MODAL */}
+      <DemoCTA slug={slug} demoName={demo.nombre} />
     </div>
   );
 }

@@ -102,28 +102,28 @@ export default function HomeV2() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <div className="fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-                <h1 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-6">
+                <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                   Consultoría en Inteligencia Artificial B2B y Agentes Autónomos
-                </h1>
+                </p>
               </div>
-              <h2 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6 fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+              <h1 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6 fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
                   Primero te decimos<br />
                   <span className="text-gradient-blue">si tiene sentido</span><br />
                   aplicar IA
-              </h2>
+              </h1>
 
               <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
                 Antes de invertir en desarrollo, necesitas saber si tu problema es realmente un caso para IA, qué conviene hacer primero y qué no. Eso es exactamente lo que hacemos.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-14 fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
-                <a href="#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
+                <Link href="#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
                   Consultar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
-                </a>
-                <a href="#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
+                </Link>
+                <Link href="#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
                   Conocer el equipo
-                </a>
+                </Link>
               </div>
 
 
@@ -334,9 +334,9 @@ export default function HomeV2() {
                     <Link href={`/demos/${p.slug}`} className="flex-1 flex items-center justify-center text-xs font-bold text-slate-700 border-2 border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 px-3 py-2 rounded-lg transition-all">
                       Ver demo
                     </Link>
-                    <a href={`?interes=${p.slug}#diagnostico`} className="flex-1 flex items-center justify-center text-xs font-bold text-white bg-gradient-to-br from-blue-800 to-blue-600 border border-blue-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:from-blue-900 hover:to-blue-700 transition-all px-3 py-2 rounded-lg">
+                    <Link href={`?interes=${p.slug}#diagnostico`} className="flex-1 flex items-center justify-center text-xs font-bold text-white bg-gradient-to-br from-blue-800 to-blue-600 border border-blue-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:from-blue-900 hover:to-blue-700 transition-all px-3 py-2 rounded-lg">
                       Consultar
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </Reveal>
@@ -488,9 +488,9 @@ export default function HomeV2() {
                   Capacitamos a tu equipo para que adopte las herramientas con criterio de negocio. IA Generativa, automatización inteligente y análisis de datos — in-company.
                 </p>
               </div>
-              <a href="?interes=formacion#diagnostico" className="shrink-0 inline-flex items-center gap-2 bg-white text-[#0B1121] font-bold text-sm px-6 py-3 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20 relative z-10 group">
+              <Link href="?interes=formacion#diagnostico" className="shrink-0 inline-flex items-center gap-2 bg-white text-[#0B1121] font-bold text-sm px-6 py-3 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20 relative z-10 group">
                 Formar a mi equipo <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              </Link>
             </div>
           </Reveal>
         </div>
@@ -561,12 +561,12 @@ export default function HomeV2() {
               <p className="text-slate-400 text-sm max-w-md">El diagnóstico inicial es el mejor punto de partida: claro, concreto, y sin compromisos previos.</p>
             </div>
             <div className="flex flex-col gap-3 shrink-0 relative z-10">
-              <a href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
+              <Link href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
                 Consultar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
-              </a>
-              <a href="#equipo" className="inline-flex items-center justify-center border border-slate-700 text-slate-300 px-8 py-4 rounded-xl text-sm hover:bg-slate-800 hover:text-white transition-colors font-medium">
+              </Link>
+              <Link href="#equipo" className="inline-flex items-center justify-center border border-slate-700 text-slate-300 px-8 py-4 rounded-xl text-sm hover:bg-slate-800 hover:text-white transition-colors font-medium">
                 Ver el equipo
-              </a>
+              </Link>
             </div>
           </div>
         </div>
