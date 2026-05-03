@@ -202,7 +202,7 @@ export default function HomeV2() {
             </p>
             <div className="flex gap-6 md:gap-8 items-center text-slate-400 font-medium animate-[marquee_20s_linear_infinite] md:animate-none md:flex-wrap md:justify-center w-full">
               {[
-                { category: 'Modelos', items: ['GPT-4o', 'Claude 3.5', 'Llama 3'] },
+                { category: 'Modelos', items: ['OpenAI GPT', 'Anthropic Claude', 'Meta Llama'] },
                 { category: 'Cloud', items: ['AWS', 'GCP', 'Azure'] },
                 { category: 'Arquitectura', items: ['RAG', 'LangChain'] },
               ].map((group, gIdx) => (
