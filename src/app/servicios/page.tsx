@@ -97,7 +97,7 @@ export default function ServiciosPage() {
                 </li>
               </ul>
               <Link href="/demos" className="inline-flex items-center gap-2 text-blue-700 font-bold hover:text-blue-800 transition-colors">
-                Ver Casos de Uso <ArrowRight className="w-4 h-4" />
+                Ver Soluciones en Vivo <ArrowRight className="w-4 h-4" />
               </Link>
             </Reveal>
             <ScaleIn delay={0.2} className="md:order-1 bg-[#0F172A] rounded-3xl p-8 border border-slate-800 text-white shadow-xl">
