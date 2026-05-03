@@ -120,7 +120,7 @@ export default function HomeV2() {
               <FadeIn delay={0.4}>
                 <div className="flex flex-wrap gap-4 mb-14">
                   <a href="#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
-                    Solicitar Diagnóstico (Gratis) <ArrowRight className="w-4 h-4" />
+                    Solicitar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
                   </a>
                   <a href="#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
                     Conocer el equipo
@@ -182,11 +182,11 @@ export default function HomeV2() {
           <div className="max-w-5xl mx-auto px-6 text-center relative z-20 w-full">
             <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-6">Nuestros sistemas se integran de forma nativa con</p>
             <div className="flex flex-wrap justify-center gap-8 md:gap-14 items-center opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-              <span className="text-2xl font-black font-sans text-slate-700 tracking-tighter">SAP</span>
-              <span className="text-2xl font-bold font-sans text-slate-700 tracking-tighter">Salesforce</span>
-              <span className="text-2xl font-black font-sans text-slate-700 tracking-tighter">AWS</span>
-              <span className="text-2xl font-bold font-sans text-slate-700 tracking-tighter">Microsoft</span>
-              <span className="text-xl font-bold font-sans text-slate-700 tracking-tighter">HubSpot</span>
+              <span className="text-2xl font-black font-sans text-slate-700 tracking-tighter inline-block cursor-default hover:scale-110 hover:-translate-y-1 hover:text-blue-700 transition-all duration-300">SAP</span>
+              <span className="text-2xl font-bold font-sans text-slate-700 tracking-tighter inline-block cursor-default hover:scale-110 hover:-translate-y-1 hover:text-blue-700 transition-all duration-300">Salesforce</span>
+              <span className="text-2xl font-black font-sans text-slate-700 tracking-tighter inline-block cursor-default hover:scale-110 hover:-translate-y-1 hover:text-blue-700 transition-all duration-300">AWS</span>
+              <span className="text-2xl font-bold font-sans text-slate-700 tracking-tighter inline-block cursor-default hover:scale-110 hover:-translate-y-1 hover:text-blue-700 transition-all duration-300">Microsoft</span>
+              <span className="text-xl font-bold font-sans text-slate-700 tracking-tighter inline-block cursor-default hover:scale-110 hover:-translate-y-1 hover:text-blue-700 transition-all duration-300">HubSpot</span>
             </div>
           </div>
 
@@ -210,8 +210,8 @@ export default function HomeV2() {
                   <span className="text-[10px] font-bold uppercase text-slate-400 tracking-widest border border-slate-200 px-2 py-0.5 rounded">{group.category}</span>
                   <div className="flex items-center gap-3 md:gap-6">
                     {group.items.map((tech, i) => (
-                      <span key={i} className="flex items-center gap-3 md:gap-6">
-                        <span className="transition-colors cursor-default">{tech}</span>
+                      <span key={i} className="flex items-center gap-3 md:gap-6 group">
+                        <span className="inline-block cursor-default transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-0.5 group-hover:text-slate-800">{tech}</span>
                         {i < group.items.length - 1 && <span className="w-1 h-1 rounded-full bg-slate-300" aria-hidden="true" />}
                       </span>
                     ))}
