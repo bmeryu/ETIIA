@@ -90,6 +90,14 @@ export default function RootLayout({
                   },
                   "image": "https://www.etiia.com/og-image.jpg",
                   "description": "Consultoría e implementación de Inteligencia Artificial, Agentes Autónomos y sistemas RAG aplicados a negocios B2B en Chile y Latam.",
+                  "openingHoursSpecification": [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                      "opens": "09:00",
+                      "closes": "18:00"
+                    }
+                  ],
                   "knowsAbout": [
                     "Artificial Intelligence",
                     "Machine Learning",

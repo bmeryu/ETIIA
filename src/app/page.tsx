@@ -100,16 +100,16 @@ export default function HomeV2() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <FadeIn delay={0.1}>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold tracking-widest uppercase mb-6">
+                <h1 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-                  Consultoría IA B2B &middot; Chile &amp; Latam
-                </div>
+                  Consultoría en Inteligencia Artificial B2B y Agentes Autónomos
+                </h1>
               </FadeIn>
-              <h1 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6">
+              <h2 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6">
                   Primero te decimos<br />
                   <span className="text-gradient-blue">si tiene sentido</span><br />
                   aplicar IA
-              </h1>
+              </h2>
 
               <FadeIn delay={0.3}>
                 <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg">
@@ -260,13 +260,23 @@ export default function HomeV2() {
 
             <Reveal delay={0.2}>
               <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
-                <h3 className="text-2xl font-black tracking-tight text-[#0F172A] mb-2">Revisar mi caso</h3>
+                <h3 className="text-2xl font-black tracking-tight text-[#0F172A] mb-2">Agendar Diagnóstico</h3>
                 <p className="text-sm text-slate-500 mb-8">Cuéntanos brevemente tu proyecto. Te contactamos en 24 horas hábiles para agendar la sesión inicial.</p>
                 <DiagnosticoForm />
-                <p className="text-xs text-slate-400 mt-4 text-center">
-                  <span aria-hidden="true">🔒</span> Tus datos están protegidos. No entrenamos modelos de IA con la información de nuestros clientes.
-                </p>
-                <div className="mt-8 pt-6 border-t border-slate-100 text-center">
+                
+                <div className="mt-5 flex flex-col sm:flex-row items-center sm:items-start gap-3 bg-emerald-50/50 border border-emerald-100/80 rounded-xl p-3 w-full text-left">
+                  <div className="bg-emerald-100 p-1.5 rounded-lg text-emerald-700 shrink-0 mt-0.5">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider mb-0.5">Privacidad Corporativa</p>
+                    <p className="text-[11px] text-emerald-600/90 leading-relaxed">
+                      Datos encriptados. No entrenamos modelos públicos con la información confidencial de nuestros clientes.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-slate-100 text-center">
                   <p className="text-sm text-slate-500 mb-3">¿Prefieres no esperar 24 horas?</p>
                   <a href="https://calendly.com/bernardita-mery" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 w-full text-[#0F172A] border border-slate-200 hover:border-blue-300 font-bold px-6 py-3.5 rounded-xl transition-all hover:bg-slate-50 hover:shadow-sm">
                     Agendar reunión directa (20 min) <Calendar className="w-4 h-4 text-blue-600" />
