@@ -42,9 +42,9 @@ export default function Footer() {
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Perspectivas</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/insights" className="hover:text-white transition-colors">Todos los artículos</Link></li>
-              <li><Link href="/insights" className="hover:text-white transition-colors">Cultura de Datos</Link></li>
-              <li><Link href="/insights" className="hover:text-white transition-colors">Gobernanza de IA</Link></li>
-              <li><Link href="/insights" className="hover:text-white transition-colors">Transformación B2B</Link></li>
+              <li><Link href="/insights/pilar-1-gobernanza" className="hover:text-white transition-colors">Digitalizar el desorden</Link></li>
+              <li><Link href="/insights/pilar-2-transformacion" className="hover:text-white transition-colors">Automatizar lo roto</Link></li>
+              <li><Link href="/insights/pilar-3-talento" className="hover:text-white transition-colors">El mito del Ingeniero IA</Link></li>
             </ul>
           </div>
 
