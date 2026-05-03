@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Zap } from 'lucide-react';
 
 export async function generateStaticParams() {
   const insights = getInsightsList();
@@ -12,8 +12,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const insight = getInsightBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const insight = getInsightBySlug(slug);
   if (!insight) return { title: 'Not Found' };
 
   return {
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: `${insight.metadata.title} | ETIIA Insights`,
       description: insight.metadata.description,
-      url: `https://etiia.com/insights/${params.slug}`,
+      url: `https://etiia.com/insights/${slug}`,
       images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: insight.metadata.title }],
       type: 'article',
       publishedTime: insight.metadata.date,
@@ -33,8 +34,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function InsightArticle({ params }: { params: { slug: string } }) {
-  const insight = getInsightBySlug(params.slug);
+export default async function InsightArticle({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const insight = getInsightBySlug(slug);
 
   if (!insight) {
     notFound();
@@ -116,7 +118,18 @@ export default function InsightArticle({ params }: { params: { slug: string } })
               ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-6 text-neutral-300 space-y-2 text-lg" {...props} />,
               strong: ({node, ...props}) => <strong className="font-semibold text-white" {...props} />,
               a: ({node, ...props}) => <a className="text-indigo-400 hover:text-indigo-300 underline underline-offset-4" {...props} />,
-              blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-indigo-500 bg-neutral-900 px-6 py-4 rounded-r-lg italic text-neutral-200 mb-6" {...props} />
+              blockquote: ({node, ...props}) => (
+                <div className="relative my-10 overflow-hidden rounded-2xl border border-neutral-800/60 bg-neutral-900/40 p-6 sm:p-8 backdrop-blur-sm">
+                  <div className="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-indigo-500 via-purple-500 to-indigo-500 rounded-l-full"></div>
+                  <div className="mb-5 flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 rounded-md border border-indigo-500/20 bg-indigo-500/10 px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-widest text-indigo-300">
+                      <Zap size={14} className="fill-indigo-500/20" />
+                      Resumen Ejecutivo
+                    </span>
+                  </div>
+                  <blockquote className="text-xl font-medium leading-relaxed text-neutral-200 [&>p:not(:last-child)]:mb-4" {...props} />
+                </div>
+              )
             }}
           >
             {content}

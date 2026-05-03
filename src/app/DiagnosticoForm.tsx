@@ -2,82 +2,107 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Loader2, CheckCircle2, Zap, Lock } from "lucide-react";
 
 /* ── Mapa de intenciones ─────────────────────────────── */
-const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: string }> = {
+const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: string; nombre?: string; isSpecific?: boolean }> = {
   diagnostico: {
     proyecto: "Quiero evaluar si mi proyecto tiene potencial para aplicar IA.",
     etapa: "exploracion",
     ctaText: "Consultar Evaluación Gratuita",
+    isSpecific: false,
   },
   formacion: {
     proyecto: "Quiero información sobre formación en IA para mi equipo (UpSkilling / ReSkilling in-company).",
     etapa: "idea",
     ctaText: "Consultar por Formación in-company",
+    nombre: "Formación in-company",
+    isSpecific: true,
   },
   atendeai: {
     proyecto: "Me interesa implementar AtendeAI para automatizar la atención al cliente.",
     etapa: "exploracion",
     ctaText: "Implementar AtendeAI",
+    nombre: "AtendeAI",
+    isSpecific: true,
   },
   ventaai: {
     proyecto: "Me interesa VentaAI para personalizar ofertas y aumentar el cross-sell.",
     etapa: "exploracion",
     ctaText: "Implementar VentaAI",
+    nombre: "VentaAI",
+    isSpecific: true,
   },
   facturai: {
     proyecto: "Me interesa FacturAI para automatizar la lectura y conciliación de facturas.",
     etapa: "exploracion",
     ctaText: "Implementar FacturAI",
+    nombre: "FacturAI",
+    isSpecific: true,
   },
   agendai: {
     proyecto: "Me interesa implementar AgendAI para predecir inasistencias y optimizar la agenda.",
     etapa: "exploracion",
     ctaText: "Implementar AgendAI",
+    nombre: "AgendAI",
+    isSpecific: true,
   },
   cosechai: {
     proyecto: "Me interesa implementar CosechAI para optimizar el rendimiento y detectar mermas.",
     etapa: "exploracion",
     ctaText: "Implementar CosechAI",
+    nombre: "CosechAI",
+    isSpecific: true,
   },
   transcribai: {
     proyecto: "Me interesa implementar TranscribAI para transcribir y analizar reuniones o entrevistas.",
     etapa: "exploracion",
     ctaText: "Implementar TranscribAI",
+    nombre: "TranscribAI",
+    isSpecific: true,
   },
   lexsearch: {
     proyecto: "Me interesa implementar LexSearch para buscar y analizar documentos legales con precisión semántica.",
     etapa: "exploracion",
     ctaText: "Implementar LexSearch",
+    nombre: "LexSearch",
+    isSpecific: true,
   },
   talentparse: {
     proyecto: "Me interesa implementar TalentParse para automatizar el ranking y filtrado de currículums.",
     etapa: "exploracion",
     ctaText: "Implementar TalentParse",
+    nombre: "TalentParse",
+    isSpecific: true,
   },
   inspectoai: {
     proyecto: "Me interesa implementar InspectoAI para detectar defectos de manufactura usando visión computacional.",
     etapa: "exploracion",
     ctaText: "Implementar InspectoAI",
+    nombre: "InspectoAI",
+    isSpecific: true,
   },
   autorend: {
     proyecto: "Me interesa implementar AutoRend para automatizar la lectura y validación de boletas y rendiciones.",
     etapa: "exploracion",
     ctaText: "Implementar AutoRend",
+    nombre: "AutoRend",
+    isSpecific: true,
   },
   "a-medida": {
     proyecto: "Busco desarrollar un flujo de IA o agente personalizado a la medida de mis procesos.",
     etapa: "idea",
     ctaText: "Consultar Solución a Medida",
+    nombre: "Solución a Medida",
+    isSpecific: true,
   },
 };
 
 /* ── Form interno ────────────────────────────────────── */
 function FormInner({ presetInteres }: { presetInteres?: string }) {
   const params = useSearchParams();
-  const interes = presetInteres || params.get("interes") || "";
-  const preset = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Consultar Evaluación Gratuita" };
+  const interes = presetInteres || params.get("interes") || "diagnostico";
+  const preset = intentMap[interes] || intentMap["diagnostico"];
 
   const [proyecto, setProyecto] = useState(preset.proyecto);
   const [etapa, setEtapa]     = useState(preset.etapa);
@@ -88,7 +113,7 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
 
   // Re-sync if the URL changes (e.g. user clicks another button)
   useEffect(() => {
-    const p = intentMap[interes] ?? { proyecto: "", etapa: "", ctaText: "Consultar Evaluación Gratuita" };
+    const p = intentMap[interes] || intentMap["diagnostico"];
     setProyecto(p.proyecto);
     setEtapa(p.etapa);
     setBtnText(p.ctaText);
@@ -104,7 +129,7 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
       empresa:  (form.elements.namedItem("empresa") as HTMLInputElement).value,
       email:    (form.elements.namedItem("email")   as HTMLInputElement).value,
       tamano_empresa: (form.elements.namedItem("tamano_empresa") as HTMLSelectElement).value,
-      proyecto,
+      proyecto, // El servidor recibe la intención correcta siempre
       etapa,
       interes,
       _subject: `ETIIA — ${interes ? interes.toUpperCase() : "Diagnóstico"} — ${(form.elements.namedItem("nombre") as HTMLInputElement).value}`,
@@ -129,39 +154,58 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
 
   if (success) {
     return (
-      <div className="flex flex-col items-center gap-4 py-8 text-center">
+      <div className="flex flex-col items-center gap-4 py-8 text-center animate-in fade-in zoom-in duration-500">
         <CheckCircle2 className="w-12 h-12 text-blue-600" />
-        <p className="font-bold text-[#0F172A]">✓ Recibimos tu solicitud.</p>
-        <p className="text-sm text-slate-500">Te escribimos en las próximas 24 horas hábiles.</p>
+        <p className="font-bold text-[#0F172A] text-xl">✓ Solicitud Recibida</p>
+        <p className="text-sm text-slate-500">Un especialista de nuestro equipo se contactará en las próximas 24 horas hábiles.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate aria-label="Formulario de diagnóstico">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 relative" noValidate aria-label="Formulario de diagnóstico">
+      
+      {/* ── BANNER DE CONTEXTO (Solo visible si es específico) ── */}
+      {preset.isSpecific && (
+        <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-4 mb-2 animate-in fade-in slide-in-from-top-2 duration-300">
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm shadow-blue-600/20 mt-0.5">
+              <Zap className="w-4 h-4" />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider mb-0.5">Solución de Interés</p>
+              <h4 className="text-sm font-black text-[#0F172A]">{preset.nombre}</h4>
+              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                Hemos pre-configurado tu solicitud para evaluar la viabilidad de implementar esta herramienta en tu operación.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-2 gap-3">
         <div className="flex flex-col gap-1.5">
           <label htmlFor="nombre" className="text-xs text-slate-500 font-medium">Tu nombre</label>
           <input id="nombre" name="nombre" type="text" required placeholder="Ej: Ana Torres" autoComplete="name"
-            className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+            className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="empresa" className="text-xs text-slate-500 font-medium">Empresa u organización</label>
+          <label htmlFor="empresa" className="text-xs text-slate-500 font-medium">Empresa</label>
           <input id="empresa" name="empresa" type="text" required placeholder="Ej: Consultora XYZ" autoComplete="organization"
-            className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+            className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
         </div>
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="email" className="text-xs text-slate-500 font-medium">Correo de trabajo</label>
+        <label htmlFor="email" className="text-xs text-slate-500 font-medium">Correo corporativo</label>
         <input id="email" name="email" type="email" required placeholder="ana@empresa.cl" autoComplete="email"
-          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="tamano_empresa" className="text-xs text-slate-500 font-medium">Tamaño de tu empresa</label>
-        <select id="tamano_empresa" name="tamano_empresa"
-          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+        <label htmlFor="tamano_empresa" className="text-xs text-slate-500 font-medium">Tamaño de la empresa</label>
+        <select id="tamano_empresa" name="tamano_empresa" required
+          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm">
           <option value="">Selecciona una opción</option>
           <option value="1-10">Startup / Menos de 10 personas</option>
           <option value="10-50">Pyme (10–50 personas)</option>
@@ -170,44 +214,45 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
         </select>
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="proyecto" className="text-xs text-slate-500 font-medium">¿Qué necesitas?</label>
-        <textarea id="proyecto" name="proyecto" required rows={3}
-          value={proyecto}
-          onChange={e => setProyecto(e.target.value)}
-          placeholder="Ej: Quiero predecir rotación de clientes con datos históricos"
-          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none" />
-      </div>
+      {/* ── SECCIÓN DINÁMICA: Mostrar campos largos solo si NO hay contexto específico ── */}
+      {!preset.isSpecific && (
+        <div className="animate-in fade-in duration-500 space-y-4">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="proyecto" className="text-xs text-slate-500 font-medium">¿Qué necesitas resolver?</label>
+            <textarea id="proyecto" name="proyecto" required rows={3}
+              value={proyecto}
+              onChange={e => setProyecto(e.target.value)}
+              placeholder="Ej: Quiero automatizar respuestas a clientes o analizar datos históricos..."
+              className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none shadow-sm" />
+          </div>
 
-
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="etapa" className="text-xs text-slate-500 font-medium">¿En qué etapa estás?</label>
-        <select id="etapa" name="etapa"
-          value={etapa}
-          onChange={e => setEtapa(e.target.value)}
-          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
-          <option value="">Selecciona una opción</option>
-          <option value="idea">Solo tengo la idea</option>
-          <option value="exploracion">Estoy explorando opciones</option>
-          <option value="curso">Proyecto en curso, necesito orientación</option>
-          <option value="detenido">Proyecto detenido, necesito diagnóstico</option>
-        </select>
-      </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="etapa" className="text-xs text-slate-500 font-medium">¿En qué etapa estás?</label>
+            <select id="etapa" name="etapa" required
+              value={etapa}
+              onChange={e => setEtapa(e.target.value)}
+              className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm">
+              <option value="">Selecciona una opción</option>
+              <option value="idea">Solo tengo la idea</option>
+              <option value="exploracion">Estoy explorando opciones</option>
+              <option value="curso">Proyecto en curso, necesito orientación</option>
+              <option value="detenido">Proyecto detenido, necesito diagnóstico</option>
+            </select>
+          </div>
+        </div>
+      )}
 
       {sendError && (
-        <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2.5">
-          Hubo un problema al enviar. Escríbenos directamente a{" "}
+        <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2.5 animate-in fade-in">
+          Hubo un problema de conexión al enviar el formulario. Por favor, escríbenos directamente a{" "}
           <a href="mailto:hola@etiia.com" className="font-bold underline">hola@etiia.com</a>
         </p>
       )}
-      <button type="submit" disabled={loading}
-        className="w-full flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3.5 rounded-lg text-sm transition-colors mt-2 disabled:opacity-60">
-        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><span>{btnText}</span><ArrowRight className="w-4 h-4" /></>}
-      </button>
 
-      <p className="text-xs text-slate-400 leading-relaxed">
-        Sin spam. Tus datos se usan solo para coordinar la sesión de diagnóstico. No los compartimos con terceros.
-      </p>
+      <button type="submit" disabled={loading}
+        className="w-full flex items-center justify-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white font-bold py-3.5 rounded-xl text-sm transition-all shadow-md shadow-blue-900/20 hover:-translate-y-0.5 mt-2 disabled:opacity-60 disabled:hover:translate-y-0">
+        {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <><span>{btnText}</span><ArrowRight className="w-4 h-4" /></>}
+      </button>
     </form>
   );
 }

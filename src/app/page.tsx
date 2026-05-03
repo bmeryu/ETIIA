@@ -118,10 +118,10 @@ export default function HomeV2() {
               </p>
 
               <div className="flex flex-wrap gap-4 mb-14 fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
-                <Link href="#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
+                <Link href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
                   Consultar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
+                <Link href="/#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
                   Conocer el equipo
                 </Link>
               </div>
@@ -295,7 +295,7 @@ export default function HomeV2() {
               El Nuevo Estándar
             </div>
             <p className="text-xl md:text-2xl text-slate-400 font-serif italic max-w-3xl mx-auto leading-relaxed mb-6">
-              &ldquo;Desarrollamos Agentes Autónomos B2B: Software que razona, se conecta a los sistemas de tu empresa y ejecuta flujos de trabajo completos de principio a fin, sin intervención humana.&rdquo;
+              &ldquo;Desarrollamos Agentes Autónomos B2B: Software que razona, se conecta a los sistemas de tu empresa y ejecuta flujos de trabajo completos de principio a fin, con puntos de control humano donde el riesgo o la responsabilidad lo exigen.&rdquo;
             </p>
             <h2 className="text-2xl md:text-4xl font-black tracking-tight text-white leading-[1.1]">
               No instalamos &quot;chatbots&quot; genéricos.
