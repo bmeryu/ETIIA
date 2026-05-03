@@ -47,7 +47,7 @@ export default function ServiciosPage() {
               <div className="w-16 h-16 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-6">
                 <CalendarCheck className="w-8 h-8 text-indigo-600" />
               </div>
-              <h2 className="text-3xl font-black tracking-tight text-[#0F172A] mb-4">Evaluación Operativa Gratuita</h2>
+              <h2 className="text-3xl font-black tracking-tight text-[#0F172A] mb-4">Diagnóstico de Viabilidad IA</h2>
               <p className="text-slate-500 leading-relaxed mb-6">
                 El error más caro es desarrollar antes de entender el problema. Nuestro diagnóstico inicial dura 20 minutos y sirve para evaluar si tu desafío operativo es realmente un caso de uso para Inteligencia Artificial.
               </p>
