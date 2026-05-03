@@ -3,11 +3,11 @@ import { ContactForm } from "@/components/ui/ContactForm";
 
 export const metadata = {
   title: "Agenda tu Diagnóstico IA Gratuito",
-  description: "Habla directamente con los fundadores de ETIIA. Evaluamos la viabilidad de tu proyecto de IA en 30 minutos. Sin preventa ni compromisos.",
+  description: "Habla directamente con los fundadores de ETIIA. Evaluamos la viabilidad de tu proyecto de IA en 20 minutos. Sin preventa ni compromisos.",
   alternates: { canonical: "/contacto" },
   openGraph: {
     title: "Agenda tu Diagnóstico IA Gratuito | ETIIA",
-    description: "Habla directamente con los fundadores de ETIIA. 30 minutos para saber si la IA resuelve tu problema real.",
+    description: "Habla directamente con los fundadores de ETIIA. 20 minutos para saber si la IA resuelve tu problema real.",
     url: "https://www.etiia.com/contacto",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Contacto ETIIA — Diagnóstico IA B2B" }],
   },
@@ -22,7 +22,7 @@ export default function ContactoPage() {
                     {/* Left Column - Copy */}
                     <div className="space-y-8 sticky top-32">
                         <SectionHeading
-                            title="30 minutos que pueden ahorrarte meses de decisiones equivocadas."
+                            title="20 minutos que pueden ahorrarte meses de decisiones equivocadas."
                             subtitle="Hablas directamente con los fundadores. Sin preventa. Evaluamos si la IA tiene sentido para tu caso y qué conviene hacer primero."
                         />
 

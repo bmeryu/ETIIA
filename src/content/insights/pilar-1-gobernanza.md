@@ -37,4 +37,4 @@ La IA no arregla tu desorden; lo escala.
 
 **¿Quieres conectar Inteligencia Artificial a los datos de tu empresa sin destruir tu operación?** 
 
-👉 [**Agenda una sesión de diagnóstico estratégico de 15 minutos con ETIIA**] y evaluemos si tu negocio tiene el orden mínimo viable para implementar automatización segura.
+👉 [**Agenda una sesión de diagnóstico estratégico de 20 minutos con ETIIA**] y evaluemos si tu negocio tiene el orden mínimo viable para implementar automatización segura.

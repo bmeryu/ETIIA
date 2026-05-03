@@ -34,4 +34,4 @@ La automatización no salva negocios mal diseñados; los acelera hacia el barran
 
 **¿Quieres dejar de pagar por suscripciones de software que tu equipo no sabe aprovechar?**
 
-👉 [**Agenda una sesión de diagnóstico operativo de 15 minutos con ETIIA**] y diseñemos el mapa exacto para que la Inteligencia Artificial ejecute el trabajo pesado de tu empresa de forma segura.
+👉 [**Agenda una sesión de diagnóstico operativo de 20 minutos con ETIIA**] y diseñemos el mapa exacto para que la Inteligencia Artificial ejecute el trabajo pesado de tu empresa de forma segura.

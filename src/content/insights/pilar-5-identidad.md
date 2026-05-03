@@ -29,4 +29,4 @@ La tecnología criminal avanza rápido, pero un orden interno de hierro es el es
 
 **¿Están tus empleados preparados para dudar de una instrucción directa y urgente de su propio líder?**
 
-👉 [**Agenda una evaluación operativa de 15 minutos con ETIIA**] y actualicemos los protocolos de aprobación de tu negocio antes de ser la próxima víctima de un fraude indetectable.
+👉 [**Agenda una evaluación operativa de 20 minutos con ETIIA**] y actualicemos los protocolos de aprobación de tu negocio antes de ser la próxima víctima de un fraude indetectable.

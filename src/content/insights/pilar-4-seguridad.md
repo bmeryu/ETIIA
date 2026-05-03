@@ -31,4 +31,4 @@ Si no puedes explicar cómo opera y dónde guarda la información tu tecnología
 
 **¿Sabes exactamente cuántas herramientas de Inteligencia Artificial no autorizadas está usando tu equipo hoy con datos de clientes?**
 
-👉 [**Agenda una auditoría estratégica de 15 minutos con ETIIA**] y blinda la confidencialidad de tus operaciones comerciales antes de sufrir un daño reputacional irreparable.
+👉 [**Agenda una auditoría estratégica de 20 minutos con ETIIA**] y blinda la confidencialidad de tus operaciones comerciales antes de sufrir un daño reputacional irreparable.
