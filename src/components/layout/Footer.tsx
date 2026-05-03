@@ -8,9 +8,9 @@ export default function Footer() {
   return (
     <footer className="bg-navy pt-16 pb-8 text-slate-400">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-12">
           {/* Logo + Desc */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-3 lg:col-span-2">
             <Link href="/" className="inline-block mb-4">
               <Logo theme="light" className="text-[2.5rem] md:text-5xl" />
             </Link>
@@ -48,12 +48,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Empresa */}
+          {/* Empresa & Legal */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Nosotros</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/#equipo" className="hover:text-white transition-colors">El Equipo</Link></li>
-              <li><Link href="/#diagnostico" className="hover:text-white transition-colors">Contacto</Link></li>
+              <li><Link href="/politica-de-privacidad" className="hover:text-white transition-colors">Política de Privacidad</Link></li>
+              <li><Link href="/terminos-de-servicio" className="hover:text-white transition-colors">Términos de Servicio</Link></li>
             </ul>
           </div>
 
@@ -69,15 +70,6 @@ export default function Footer() {
                 <Linkedin className="w-4 h-4 shrink-0" />
                 <a href="https://linkedin.com/company/etiia" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
               </li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/politica-de-privacidad" className="hover:text-white transition-colors">Política de Privacidad</Link></li>
-              <li><Link href="/terminos-de-servicio" className="hover:text-white transition-colors">Términos de Servicio</Link></li>
             </ul>
           </div>
         </div>
