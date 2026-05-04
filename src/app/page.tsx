@@ -215,11 +215,11 @@ export default function HomeV2() {
           <div className="max-w-5xl mx-auto px-6 text-center relative z-20 w-full">
             <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-6">Nuestros sistemas se integran de forma nativa con</p>
             <div className="flex flex-wrap justify-center gap-10 md:gap-16 items-center opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-              <img src="https://cdn.simpleicons.org/sap/0F172A" alt="SAP" className="h-8 md:h-10 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
-              <img src="https://cdn.simpleicons.org/salesforce/0F172A" alt="Salesforce" className="h-8 md:h-10 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
-              <img src="https://cdn.simpleicons.org/amazonaws/0F172A" alt="AWS" className="h-8 md:h-9 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300 mt-2" />
-              <img src="https://cdn.simpleicons.org/microsoft/0F172A" alt="Microsoft" className="h-7 md:h-8 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
-              <img src="https://cdn.simpleicons.org/hubspot/0F172A" alt="HubSpot" className="h-7 md:h-9 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/sap.svg" alt="SAP" className="h-8 md:h-10 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/salesforce.svg" alt="Salesforce" className="h-8 md:h-10 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonaws.svg" alt="AWS" className="h-8 md:h-9 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300 mt-2" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoft.svg" alt="Microsoft" className="h-7 md:h-8 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/hubspot.svg" alt="HubSpot" className="h-7 md:h-9 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
 
