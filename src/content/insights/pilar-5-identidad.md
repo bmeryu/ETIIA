@@ -63,4 +63,4 @@ La tecnología criminal avanza rápido, pero un orden interno con verificación 
 
 **Fuentes:**
 - Deloitte Center for Financial Services. *Generative AI and the Fight Against Fraud.* 2024-2026.
-- Deloitte. *Deepfake Detection Technology Market Forecast.* 2026.
+- Deloitte. *TMT Predictions 2025.* Technology, Media & Telecommunications.

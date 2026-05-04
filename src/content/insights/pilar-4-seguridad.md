@@ -20,9 +20,9 @@ La superficie de ataque de tu negocio creció bajo tus narices, y la mayoría de
 
 El *Cybersecurity Readiness Index 2025* de Cisco pone números brutales a esta realidad: el **60% de los equipos de TI no sabe qué herramientas de IA generativa están usando sus empleados** ni tiene la capacidad de monitorearlo.
 
-Aunque el 51% de las empresas exige usar solo herramientas aprobadas, un **22% permite acceso irrestricto** a plataformas públicas de IA. Y como telón de fondo, el **84% de las organizaciones enfrenta riesgos de seguridad elevados** en entornos de trabajo híbrido, una situación que la "IA fantasma" (Shadow AI) agrava exponencialmente.
+Aunque el 48% de las empresas exige usar solo herramientas aprobadas, un **27% permite acceso irrestricto** a plataformas públicas de IA. Y como telón de fondo, el **84% de las organizaciones enfrenta riesgos de seguridad elevados** en entornos de trabajo híbrido, una situación que la "IA fantasma" (Shadow AI) agrava exponencialmente.
 
-Además, el mercado global acaba de cambiar las reglas. Con la activación de la fase de ejecución del AI Act 2.0 en abril de este año, se acabó la excusa técnica de la "Caja Negra". En áreas sensibles, la ley y tus grandes clientes ya no aceptan un "el algoritmo tomó esa decisión". Hoy se exige **explicabilidad**: la obligación estricta de trazar el razonamiento de la máquina con tus propios datos.
+Además, el mercado global acaba de cambiar las reglas. Con la entrada en vigor del EU AI Act este año, se acabó la excusa técnica de la "Caja Negra". En áreas sensibles, la ley ya exige que puedas explicar cómo y con qué datos tu sistema de IA tomó cada decisión.
 
 ## ¿Cómo saber si tu empresa ya tiene este riesgo activo?
 
@@ -63,4 +63,4 @@ La pregunta no es si tu empresa usa IA. La pregunta es si sabe cómo usarla sin 
 
 **Fuentes:**
 - Cisco. *Cybersecurity Readiness Index.* 2025.
-- Parlamento Europeo. *AI Act 2.0 — Fase de Ejecución.* Abril 2026.
+- Parlamento Europeo. *Reglamento (UE) 2024/1689 — EU AI Act.* 2024.

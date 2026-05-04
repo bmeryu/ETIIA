@@ -1,5 +1,5 @@
 ---
-title: "El 72% de las empresas tiene agentes de IA. El 68% no obtiene ningún resultado"
+title: "El 79% de las empresas tiene agentes de IA. El 67% no obtiene ningún resultado"
 description: "Por qué la mayoría de los proyectos de Agentes de IA fracasan antes de escalar, y cómo las empresas que sí lo logran estructuran sus implementaciones desde el día uno."
 date: "2026-05-03"
 author: "Bernardita Mery"
@@ -8,13 +8,13 @@ category: "Agentes de IA"
 
 > **La adopción de Agentes de IA es masiva. La madurez operativa no.**
 >
-> Según McKinsey, el 72% de las organizaciones ya usaba IA en alguna función en 2024. Sin embargo, solo el 6% reporta un impacto real en sus resultados financieros. La diferencia entre ambos grupos no es el presupuesto ni el modelo de lenguaje elegido: es la arquitectura de implementación.
+> Según PwC, el 79% de las organizaciones ya usa IA en alguna función en 2025. Sin embargo, solo el 11% reporta convertir esa IA en valor financiero tangible. La diferencia entre ambos grupos no es el presupuesto ni el modelo de lenguaje elegido: es la arquitectura de implementación.
 
 ## ¿Por qué fracasa la mayoría de los proyectos de Agentes de IA?
 
 Porque se despliegan como experimentos aislados, no como sistemas integrados. La mayoría de las empresas lanza un agente para automatizar una tarea puntual y lo abandona cuando no escala. El problema nunca fue el agente; fue la falta de un diseño de flujo de trabajo que lo soporte.
 
-El dato lo confirma: el informe *State of AI Adoption* de Salesforce (2025) revela que el **68% de los proyectos de IA generativa en empresas medianas son discontinuados o "congelados" antes de los 18 meses**. El motivo principal que citan los equipos no es técnico; es organizacional: falta de propietario del proceso, ausencia de métricas de éxito y desconexión entre el equipo técnico y el negocio.
+El dato lo confirma: el informe *State of AI 2025* de McKinsey revela que el **67% de los proyectos de IA en empresas medianas permanecen atascados en la fase piloto sin escalar**. El motivo principal que citan los equipos no es técnico; es organizacional: falta de propietario del proceso, ausencia de métricas de éxito y desconexión entre el equipo técnico y el negocio.
 
 Un agente sin KPIs no es una herramienta de negocio. Es un prototipo caro.
 
@@ -65,6 +65,7 @@ Lo que te convierte en una empresa de IA es saber en qué proceso específico la
 ---
 
 **Fuentes:**
-- McKinsey & Company. *The State of AI in 2024.* 2024. / *The State of AI in 2025.* 2025.
-- Salesforce Research. *State of AI Adoption: Enterprise Edition.* 2025.
+- PwC. *AI Agents Survey.* 2025.
+- Forrester Research / Computer Weekly. *AI Value Realization Report.* 2026.
+- McKinsey & Company. *The State of AI.* 2025.
 - Gartner. *AI Adoption Maturity Model for Enterprise Organizations.* 2025.

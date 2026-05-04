@@ -71,3 +71,4 @@ La automatización no salva negocios mal diseñados; los acelera hacia el barran
 **Fuentes:**
 - Gartner. *Hype Cycle for Agentic AI.* 2026.
 - Gartner. *CIO and Technology Executive Survey.* 2026.
+- ARC Prize Foundation / DeepLearning.AI. *OpenAI's GPT-5.5 Tops Leaderboards.* The Batch, abril 2026.
