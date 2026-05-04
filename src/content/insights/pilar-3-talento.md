@@ -10,6 +10,8 @@ category: "Talento B2B"
 > 
 > La adopción de Inteligencia Artificial no empieza buscando el perfil técnico correcto. Empieza desarrollando criterio interno para saber cuándo un problema de negocio requiere un especialista externo y cuándo puede resolverse con el talento que ya tienes adentro, bien entrenado. Lo que suele faltar no es tecnología, es un puente entre la lógica del negocio y la lógica de la herramienta.
 
+El contexto chileno lo hace aún más urgente: con un **desempleo del 8,9% sostenido por 38 meses consecutivos** (INE, primer trimestre 2026), el mercado laboral no está generando los perfiles que las empresas dicen necesitar. Esperar al candidato técnico ideal no es una estrategia; es una forma elegante de no empezar.
+
 ## ¿Qué es exactamente un Intérprete de IA?
 
 Un Intérprete de IA es un experto en tu propio negocio (tu gerente de ventas, tu jefe de contabilidad) entrenado para traducir los procesos operativos a instrucciones que la tecnología pueda ejecutar de forma segura.
@@ -60,6 +62,7 @@ O capacitas a tus líderes hoy, o tu competencia lo hará primero.
 ---
 
 **Fuentes:**
+- INE Chile. *Encuesta Nacional de Empleo, trimestre enero-marzo 2026.* 2026.
 - LinkedIn Economic Graph. *2026 Labor Market Report.* 2026.
 - LinkedIn Learning. *Skills on the Rise 2026.* 2026.
 - World Economic Forum / LinkedIn. *Global AI Workforce Trends.* 2026.
