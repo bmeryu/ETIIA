@@ -81,8 +81,14 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setHoveredNav(null);
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,7 +123,12 @@ export default function Navbar() {
         {/* ═══ Desktop Nav ═══ */}
         <nav className="hidden md:flex flex-1 justify-center items-center gap-8">
           {navLinks.map((link) => (
-            <div key={link.name} className="relative group">
+            <div 
+              key={link.name} 
+              className="relative"
+              onMouseEnter={() => setHoveredNav(link.name)}
+              onMouseLeave={() => setHoveredNav(null)}
+            >
               <Link
                 href={link.href}
                 className={cn(
@@ -133,8 +144,11 @@ export default function Navbar() {
               {/* EY-style Horizontal Mega Menu */}
               {link.megaMenu && (
                 <div className={cn(
-                  "absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50",
-                  link.megaMenu.length >= 4 ? "w-[880px]" : "w-[680px]"
+                  "absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 z-50",
+                  link.megaMenu.length >= 4 ? "w-[880px]" : "w-[680px]",
+                  hoveredNav === link.name 
+                    ? "opacity-100 translate-y-0 pointer-events-auto" 
+                    : "opacity-0 translate-y-2 pointer-events-none"
                 )}>
                   <div className={cn(
                     "bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-slate-100 p-8 flex flex-col gap-6 relative overflow-hidden",
