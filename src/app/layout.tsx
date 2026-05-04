@@ -68,6 +68,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://cdn.simpleicons.org" />
+        <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+      </head>
       <body suppressHydrationWarning className={`${jakartaSans.variable} font-sans antialiased bg-white text-navy flex flex-col min-h-screen`}>
         <script
           type="application/ld+json"
@@ -203,9 +207,7 @@ export default function RootLayout({
         >
           Saltar al contenido principal
         </a>
-        {/* Preconnect para CDN de logos externos */}
-        <link rel="preconnect" href="https://cdn.simpleicons.org" />
-        <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+        {/* Preconnect movido al <head> */}
         <main id="main-content" className="flex-1 flex flex-col">
           {children}
         </main>
