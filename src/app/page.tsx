@@ -138,7 +138,7 @@ export default function HomeV2() {
               </p>
 
               <div className="flex flex-wrap gap-4 mb-14 fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
-                <Link href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
+                <Link href="?interes=diagnostico#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
                   Consultar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link href="/#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
@@ -375,7 +375,7 @@ export default function HomeV2() {
                     <Link href={`/demos/${p.slug}`} className="flex-1 flex items-center justify-center text-xs font-bold text-slate-700 border-2 border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 px-3 py-2 rounded-lg transition-all">
                       Ver demo
                     </Link>
-                    <Link href={`?interes=${p.slug}#diagnostico`} className="flex-1 flex items-center justify-center text-xs font-bold text-white bg-gradient-to-br from-blue-800 to-blue-600 border border-blue-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:from-blue-900 hover:to-blue-700 transition-all px-3 py-2 rounded-lg">
+                    <Link href={`?interes=${p.slug}#diagnostico`} onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="flex-1 flex items-center justify-center text-xs font-bold text-white bg-gradient-to-br from-blue-800 to-blue-600 border border-blue-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:from-blue-900 hover:to-blue-700 transition-all px-3 py-2 rounded-lg">
                       Consultar
                     </Link>
                   </div>
@@ -393,7 +393,7 @@ export default function HomeV2() {
                 <Link href="/demos" className="text-sm text-slate-500 hover:text-slate-800 font-semibold transition-colors">
                   Ver catálogo completo
                 </Link>
-                <Link href="?interes=a-medida#diagnostico" className="inline-flex items-center gap-2 text-sm text-white bg-[#0F172A] hover:bg-slate-800 font-semibold px-5 py-2.5 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg group">
+                <Link href="?interes=a-medida#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center gap-2 text-sm text-white bg-[#0F172A] hover:bg-slate-800 font-semibold px-5 py-2.5 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg group">
                   Diseñemos tu solución <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
@@ -602,7 +602,7 @@ export default function HomeV2() {
               <p className="text-slate-400 text-sm max-w-md">El diagnóstico inicial es el mejor punto de partida: claro, concreto, y sin compromisos previos.</p>
             </div>
             <div className="flex flex-col gap-3 shrink-0 relative z-10">
-              <Link href="?interes=diagnostico#diagnostico" className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
+              <Link href="?interes=diagnostico#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
                 Consultar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="#equipo" className="inline-flex items-center justify-center border border-slate-700 text-slate-300 px-8 py-4 rounded-xl text-sm hover:bg-slate-800 hover:text-white transition-colors font-medium">
