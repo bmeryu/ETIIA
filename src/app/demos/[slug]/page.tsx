@@ -389,7 +389,7 @@ export default async function DemoDetailPage({ params }: { params: Promise<{ slu
         src={demo.iframeSrc}
         className="w-full h-full border-0 block absolute inset-0 z-10"
         title={`Demo interactiva de ${demo.nombre} — ETIIA`}
-        sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-modals"
+        sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-modals allow-top-navigation allow-top-navigation-by-user-activation"
       />
 
       {/* FLOATING GATED CTA + MODAL */}
