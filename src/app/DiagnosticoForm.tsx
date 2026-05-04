@@ -189,37 +189,39 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
         </div>
       )}
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
         <div className="flex flex-col gap-1.5">
           <label htmlFor="nombre" className="text-xs text-slate-500 font-medium">Tu nombre</label>
           <input id="nombre" name="nombre" type="text" required placeholder="Ej: Ana Torres" autoComplete="name"
-            className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
+            className="bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 rounded-lg px-3 py-2 md:py-2.5 text-sm text-[#0F172A] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
         </div>
         <div className="flex flex-col gap-1.5">
           <label htmlFor="empresa" className="text-xs text-slate-500 font-medium">Empresa</label>
           <input id="empresa" name="empresa" type="text" required placeholder="Ej: Consultora XYZ" autoComplete="organization"
-            className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
+            className="bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 rounded-lg px-3 py-2 md:py-2.5 text-sm text-[#0F172A] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
         </div>
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="email" className="text-xs text-slate-500 font-medium">Correo corporativo</label>
-        <input id="email" name="email" type="email" required placeholder="ana@empresa.cl" autoComplete="email"
-          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
-      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="email" className="text-xs text-slate-500 font-medium">Correo corporativo</label>
+          <input id="email" name="email" type="email" required placeholder="ana@empresa.cl" autoComplete="email"
+            className="bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 rounded-lg px-3 py-2 md:py-2.5 text-sm text-[#0F172A] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
+        </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="telefono" className="text-xs text-slate-500 font-medium">
-          Teléfono <span className="text-slate-300">(opcional)</span>
-        </label>
-        <input id="telefono" name="telefono" type="tel" placeholder="+56 9 XXXX XXXX" autoComplete="tel"
-          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="telefono" className="text-xs text-slate-500 font-medium">
+            Teléfono <span className="text-slate-400">(opcional)</span>
+          </label>
+          <input id="telefono" name="telefono" type="tel" placeholder="+56 9 XXXX XXXX" autoComplete="tel"
+            className="bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 rounded-lg px-3 py-2 md:py-2.5 text-sm text-[#0F172A] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
+        </div>
       </div>
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="tamano_empresa" className="text-xs text-slate-500 font-medium">Tamaño de la empresa</label>
         <select id="tamano_empresa" name="tamano_empresa" required aria-required="true"
-          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
+          className="bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 rounded-lg px-3 py-2 md:py-2.5 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
           defaultValue="">
           <option value="">Selecciona una opción</option>
           <option value="1-10">Startup / Menos de 10 personas</option>
