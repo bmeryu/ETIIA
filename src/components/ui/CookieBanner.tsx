@@ -10,8 +10,8 @@ export function CookieBanner() {
   useEffect(() => {
     const consent = localStorage.getItem("etiia-cookie-consent");
     if (!consent) {
-      // Small delay to not overwhelm the user immediately on page load
-      const timer = setTimeout(() => setIsVisible(true), 1500);
+      // Small delay to ensure hydration before showing
+      const timer = setTimeout(() => setIsVisible(true), 100);
       return () => clearTimeout(timer);
     }
   }, []);

@@ -169,7 +169,7 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 relative" noValidate aria-label="Formulario de diagnóstico">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2.5 md:gap-4 relative" noValidate aria-label="Formulario de diagnóstico">
       
       {/* ── BANNER DE CONTEXTO (Solo visible si es específico) ── */}
       {preset.isSpecific && (
@@ -237,7 +237,7 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
             <textarea id="proyecto" name="proyecto" required rows={3}
               value={proyecto}
               onChange={e => setProyecto(e.target.value)}
-              placeholder="Ej: Quiero automatizar respuestas a clientes o analizar datos históricos..."
+              placeholder="Ej: 'Queremos automatizar la respuesta a consultas de clientes' o 'Tenemos un proceso manual de 3 personas que podría automatizarse'..."
               className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none shadow-sm" />
           </div>
 
@@ -271,6 +271,10 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
         className="w-full flex items-center justify-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white font-bold py-3.5 rounded-xl text-sm transition-all shadow-md shadow-blue-900/20 hover:-translate-y-0.5 mt-2 disabled:opacity-60 disabled:hover:translate-y-0">
         {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <><span>{btnText}</span><ArrowRight className="w-4 h-4" /></>}
       </button>
+      
+      <p className="text-center text-[10px] text-slate-400 mt-1">
+        Sin compromiso. Sin spam. Te responderemos en menos de 24 horas.
+      </p>
     </form>
   );
 }
