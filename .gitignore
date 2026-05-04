@@ -45,3 +45,5 @@ next-env.d.ts
 
 # editorial handoff (internal only)
 HANDOFF_EDITORIAL.md
+HANDOFF_LINKEDIN.md
+/linkedin/
