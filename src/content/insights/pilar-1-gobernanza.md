@@ -66,3 +66,4 @@ La IA no arregla tu desorden; lo escala.
 **Fuentes:**
 - McKinsey & Company. *The state of AI: How organizations are rewiring to capture value.* 2025.
 - MIT NANDA Initiative. *The GenAI Divide.* 2025.
+- OpenAI. *Introducing GPT-5.5.* Abril 2026.
