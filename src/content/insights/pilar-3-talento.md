@@ -20,7 +20,7 @@ Mientras modelos de evaluación técnica como SWE-bench demostraron en abril que
 
 Los datos lo confirman: según el *2026 Labor Market Report* de LinkedIn Economic Graph, las ofertas de empleo que exigen habilidades de "IA aplicada al negocio" (como prompt engineering e integración de LLMs) crecieron **más de un 70% interanual** en Estados Unidos.
 
-Paralelamente, el tiempo dedicado a cursos de IA en LinkedIn Learning aumentó un **92% año a año**. Y los empleados de empresas que ofrecen capacitación en IA desarrollan estas habilidades **3,4 veces más rápido** que quienes no la reciben. El mercado ya entendió que el cuello de botella no es construir modelos, sino saber usarlos dentro de una operación real.
+Paralelamente, el tiempo dedicado a cursos de IA en LinkedIn Learning aumentó un **92% año a año**. Y los empleados de empresas que ofrecen formación en IA desarrollan estas habilidades **3,4 veces más rápido** que quienes no la reciben. El mercado ya entendió que el cuello de botella no es construir modelos, sino saber usarlos dentro de una operación real.
 
 ## ¿Cómo saber si tu empresa tiene esta brecha de criterio?
 
@@ -45,7 +45,7 @@ Cuando la empresa cambió de estrategia y capacitó al jefe de mantenimiento par
 
 ## ¿Cuál es la solución más rentable para tu empresa?
 
-La solución más rentable no siempre es contratar talento técnico externo desde el día uno. Muchas veces es capacitar primero al talento humano que ya tienes adentro para que desarrolle el criterio necesario. Cuando ese criterio existe, la empresa sabe exactamente qué tipo de especialista necesita, en qué momento y para qué problema concreto.
+La solución más rentable no siempre es contratar talento técnico externo desde el día uno. Muchas veces es formar primero al talento humano que ya tienes adentro para que desarrolle el criterio necesario. Cuando ese criterio existe, la empresa sabe exactamente qué tipo de especialista necesita, en qué momento y para qué problema concreto.
 
 Un programa de UpSkilling bien diseñado puede transformar a un líder de área en un Intérprete de IA funcional en 4 a 6 semanas. Contratar y onboardear a un ingeniero externo toma un mínimo de 3 a 6 meses antes de que entienda siquiera cómo funciona tu negocio. La clave no es elegir entre uno u otro: es saber en qué orden hacerlo.
 
@@ -53,7 +53,7 @@ Un programa de UpSkilling bien diseñado puede transformar a un líder de área 
 
 El código es un recurso abundante e infinito. El conocimiento profundo de tu negocio no lo es.
 Tus empleados no van a ser reemplazados por una IA; van a ser reemplazados por empleados de la competencia que saben auditar IA.
-O capacitas a tus líderes hoy, o tu competencia lo hará primero.
+O formas a tus líderes hoy, o tu competencia lo hará primero.
 
 **¿Quieres cerrar la brecha entre la tecnología y tus resultados de negocio sin inflar los sueldos de tu empresa?**
 
