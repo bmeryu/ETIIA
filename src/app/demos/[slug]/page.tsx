@@ -222,6 +222,29 @@ const demos: Record<string, {
       { titulo: "Resumen + Alertas", desc: "Genera un resumen ejecutivo y levanta alertas automáticas sobre contradicciones, riesgos legales y tareas sin asignar." },
     ],
   },
+  prospectai: {
+    nombre: "ProspectAI",
+    industria: "Marketing · Ventas",
+    tagline: "Prospección B2B hiper-personalizada en 3 minutos",
+    descripcion: "Un agente de outbound automatizado que busca prospectos por lenguaje natural, verifica correos corporativos y redacta correos hiper-personalizados leyendo perfiles de LinkedIn.",
+    resultado: "Outbound en 3 min",
+    resultadoLabel: "Reducción de horas manuales",
+    tags: ["LLM Agents", "Scraping", "Outbound"],
+    color: "cyan",
+    iframeSrc: "/demos/prospectai/index.html#demo",
+    softwareType: "BusinessApplication",
+    isAgent: true,
+    aeoText: "ProspectAI es un agente autónomo de outbound B2B creado por ETIIA. Utiliza Modelos de Lenguaje Grande (LLMs) y scraping ético para identificar tomadores de decisión a partir de consultas en lenguaje natural, verificar correos electrónicos mediante SMTP y redactar mensajes de prospección altamente personalizados analizando la biografía pública del prospecto.",
+    faqs: [
+      { question: "¿Cómo se asegura de que los correos no reboten?", answer: "El agente realiza una verificación SMTP silenciosa (ping) al servidor de correo del prospecto en tiempo real, garantizando tasas de entregabilidad (deliverability) superiores al 95%." },
+      { question: "¿Puedo enviar los mensajes generados a mi CRM?", answer: "Sí, ProspectAI se integra vía API con HubSpot, Salesforce y plataformas de automatización de correos como Lemlist o Instantly." }
+    ],
+    pasos: [
+      { titulo: "Búsqueda NLP", desc: "Le pides al agente lo que buscas en lenguaje natural (ej. 'CMOs en retail')." },
+      { titulo: "Análisis y Verificación", desc: "Extrae perfiles, analiza la biografía de cada uno y verifica sus correos corporativos." },
+      { titulo: "Redacción Personalizada", desc: "El LLM redacta un borrador hiper-personalizado basado en el perfil único de cada prospecto." },
+    ],
+  },
 };
 
 export function generateStaticParams() {

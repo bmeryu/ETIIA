@@ -118,6 +118,19 @@ const productos = [
     color: "cyan",
     disponible: true,
   },
+  {
+    nombre: "ProspectAI",
+    slug: "prospectai",
+    industria: "Marketing · Ventas",
+    categoria: "Operaciones",
+    icon: <Users className="w-6 h-6" />,
+    descripcion: "Agente de outbound automatizado. Busca prospectos por lenguaje natural, verifica correos corporativos y redacta correos hiper-personalizados leyendo perfiles de LinkedIn.",
+    resultado: "Outbound en 3 min",
+    tags: ["LLM Agents", "Scraping", "Outbound"],
+    color: "cyan",
+    disponible: true,
+    isAgent: true,
+  },
 ];
 
 const categoriasDisponibles = ["Todos", "Atención Cliente", "Finanzas", "Legal", "RRHH", "Operaciones", "Agro", "Retail", "Salud"];
