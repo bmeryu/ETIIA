@@ -90,46 +90,6 @@
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="py-16 bg-white border-t border-slate-200">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">Preguntas Frecuentes</h2>
-            <div class="space-y-4">
-                <details class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
-                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
-                        ¿El audio sale de mi infraestructura?
-                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
-                    </summary>
-                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
-                        No. TranscribAI corre Whisper localmente en tu VPC o servidor on-premise. 
-                        El audio nunca se envía a APIs externas (OpenAI, Google, etc.).
-                    </p>
-                </details>
-                <details class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
-                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
-                        ¿Qué pasa con audio de mala calidad?
-                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
-                    </summary>
-                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
-                        La precisión baja a ~85-90% con audio ruidoso o grabaciones telefónicas. 
-                        El sistema indica un score de confianza por segmento para que identifiques 
-                        qué partes requieren revisión manual.
-                    </p>
-                </details>
-                <details class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm group cursor-pointer">
-                    <summary class="font-bold text-slate-800 flex items-center justify-between list-none">
-                        ¿Detecta más de 3 participantes?
-                        <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition">expand_more</span>
-                    </summary>
-                    <p class="text-slate-600 text-sm mt-3 leading-relaxed">
-                        Sí. La diarización soporta hasta 10 speakers simultáneos. 
-                        La precisión de identificación baja ligeramente sobre 6 voces.
-                    </p>
-                </details>
-            </div>
-        </div>
-    </section>
-
     
     <script src="demo.js"></script>
 
