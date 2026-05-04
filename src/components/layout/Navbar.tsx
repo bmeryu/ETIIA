@@ -20,7 +20,8 @@ const navLinks = [
         title: "Atención & Ventas",
         items: [
           { name: "AtendeAI", desc: "Agente autónomo RAG", href: "/demos/atendeai" },
-          { name: "VentaAI", desc: "Recomendación retail", href: "/demos/ventaai" }
+          { name: "VentaAI", desc: "Recomendación retail", href: "/demos/ventaai" },
+          { name: "ProspectAI", desc: "Outbound B2B", href: "/demos/prospectai" }
         ]
       },
       {
