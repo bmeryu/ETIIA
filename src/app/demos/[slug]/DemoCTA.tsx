@@ -1,11 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Lock, X } from "lucide-react";
 import DiagnosticoForm from "@/app/DiagnosticoForm";
 
 export default function DemoCTA({ slug, demoName }: { slug: string, demoName: string }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data === "open-demo-modal") {
+        setIsOpen(true);
+      }
+    };
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
 
   return (
     <>
