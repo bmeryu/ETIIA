@@ -8,7 +8,7 @@ category: "RAG"
 
 > **El problema no es ChatGPT. El problema es lo que le das de comer.**
 >
-> Gartner proyecta que el 30% de los proyectos de IA generativa en empresas serán abandonados antes de 2025, citando como causa principal la decepción con los resultados. La mayoría de esas decepciones no provienen de un modelo defectuoso: provienen de una arquitectura de contexto que nunca fue diseñada para responder preguntas reales de negocio.
+> Gartner proyecta que el 30% de los proyectos de IA generativa en empresas serán abandonados antes de 2026, citando como causa principal la decepción con los resultados. La mayoría de esas decepciones no provienen de un modelo defectuoso: provienen de una arquitectura de contexto que nunca fue diseñada para responder preguntas reales de negocio.
 
 ## ¿Por qué los chatbots corporativos dan respuestas incorrectas?
 
@@ -64,4 +64,4 @@ El resultado no depende del abogado.
 
 **Fuentes:**
 - Gartner. *Predicts 2024: Generative AI Projects Face Reality Check.* 2024.
-- IBM Institute for Business Value. *The CEO's Guide to Generative AI: RAG and Enterprise Knowledge.* 2024.
+- IBM Institute for Business Value. *CEO's Guide to Generative AI: Retrieval-Augmented Generation.* IBM IBV, 2024.
