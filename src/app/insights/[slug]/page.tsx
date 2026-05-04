@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${insight.metadata.title} | ETIIA Insights`,
     description: insight.metadata.description,
     alternates: {
-      canonical: `/insights/${params.slug}`,
+      canonical: `/insights/${slug}`,
     },
     openGraph: {
       title: `${insight.metadata.title} | ETIIA Insights`,
@@ -47,15 +47,32 @@ export default async function InsightArticle({ params }: { params: Promise<{ slu
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
+    '@id': `https://etiia.com/insights/${slug}#article`,
     headline: metadata.title,
     description: metadata.description,
+    wordCount: Math.round(content.split(/\s+/).length),
+    articleSection: metadata.category,
+    inLanguage: 'es-CL',
+    image: {
+      '@type': 'ImageObject',
+      url: 'https://etiia.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+    },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', 'article p:first-of-type'],
+    },
     author: [{
       '@type': 'Person',
+      '@id': 'https://bernarditamery.cl/#person',
       name: metadata.author,
-      url: 'https://etiia.com'
+      url: 'https://www.linkedin.com/in/bmeryu/',
+      sameAs: ['https://bernarditamery.cl', 'https://www.linkedin.com/in/bmeryu/'],
     }],
     datePublished: metadata.date,
     dateModified: metadata.date,
+    isPartOf: { '@id': 'https://etiia.com/#website' },
     publisher: {
       '@type': 'Organization',
       name: 'ETIIA',
@@ -64,9 +81,17 @@ export default async function InsightArticle({ params }: { params: Promise<{ slu
         '@type': 'ImageObject',
         url: 'https://etiia.com/favicon.svg',
         width: 512,
-        height: 512
-      }
-    }
+        height: 512,
+      },
+    },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://etiia.com' },
+        { '@type': 'ListItem', position: 2, name: 'Perspectivas', item: 'https://etiia.com/insights' },
+        { '@type': 'ListItem', position: 3, name: metadata.title, item: `https://etiia.com/insights/${slug}` },
+      ],
+    },
   };
 
   return (
@@ -135,6 +160,26 @@ export default async function InsightArticle({ params }: { params: Promise<{ slu
             {content}
           </ReactMarkdown>
         </article>
+
+        {/* ═══ CTA POST-ARTÍCULO ═══ */}
+        <div className="mt-20 p-8 md:p-10 bg-[#0B1121] border border-blue-900/40 rounded-2xl text-center relative overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 0%, rgba(29,78,216,0.2) 0%, transparent 65%)' }} aria-hidden="true" />
+          <div className="relative z-10">
+            <p className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3">¿Te resonó este artículo?</p>
+            <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-tight mb-4">
+              20 minutos pueden ahorrarte<br />meses de decisiones equivocadas.
+            </h2>
+            <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-md mx-auto">
+              Evaluamos si tu problema es realmente un caso para IA, qué conviene hacer primero y qué no.
+            </p>
+            <Link
+              href="/?interes=diagnostico#diagnostico"
+              className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white font-bold px-8 py-4 rounded-xl text-sm transition-all shadow-lg shadow-blue-900/30 hover:-translate-y-0.5"
+            >
+              Agendar diagnóstico gratuito <ArrowLeft size={16} className="rotate-180" />
+            </Link>
+          </div>
+        </div>
 
       </div>
     </div>

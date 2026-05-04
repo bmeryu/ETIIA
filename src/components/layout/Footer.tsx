@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Linkedin, Mail, Phone } from "lucide-react";
+import { Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 
 export default function Footer() {
@@ -57,7 +57,18 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Linkedin className="w-4 h-4 shrink-0" />
-                <a href="https://linkedin.com/company/etiia" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://www.linkedin.com/company/etiia" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+              </li>
+              <li className="flex items-center gap-2">
+                <MessageCircle className="w-4 h-4 shrink-0 text-green-400" />
+                <a
+                  href="https://wa.me/56976305985?text=Hola%20ETIIA%2C%20quisiera%20agendar%20un%20diagn%C3%B3stico%20gratuito."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  WhatsApp B2B
+                </a>
               </li>
             </ul>
           </div>

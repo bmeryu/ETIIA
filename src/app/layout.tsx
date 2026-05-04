@@ -9,6 +9,7 @@ const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -130,7 +131,8 @@ export default function RootLayout({
                     "availableLanguage": ["Spanish", "English"]
                   },
                   "sameAs": [
-                    "https://linkedin.com/company/etiia"
+                    "https://www.linkedin.com/company/etiia",
+                    "https://etiia.com"
                   ],
                   "founder": [
                     {
@@ -142,6 +144,7 @@ export default function RootLayout({
                     },
                     {
                       "@type": "Person",
+                      "@id": "https://etiia.com/#pablo-olivares",
                       "name": "Pablo E. Olivares",
                       "jobTitle": "Co-founder & Cloud AI Architect",
                       "sameAs": ["https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"]
@@ -180,12 +183,12 @@ export default function RootLayout({
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://www.etiia.com/#website",
-                  "url": "https://www.etiia.com",
+                  "@id": "https://etiia.com/#website",
+                  "url": "https://etiia.com",
                   "name": "ETIIA Consultoría IA",
                   "inLanguage": "es-CL",
                   "publisher": {
-                    "@id": "https://www.etiia.com/#organization"
+                    "@id": "https://etiia.com/#organization"
                   }
                 }
               ]
@@ -193,7 +196,17 @@ export default function RootLayout({
           }}
         />
         <Navbar />
-        <main className="flex-1 flex flex-col">
+        {/* Skip to content — accesibilidad screen readers */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-blue-700 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:outline-none focus:shadow-lg"
+        >
+          Saltar al contenido principal
+        </a>
+        {/* Preconnect para CDN de logos externos */}
+        <link rel="preconnect" href="https://cdn.simpleicons.org" />
+        <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+        <main id="main-content" className="flex-1 flex flex-col">
           {children}
         </main>
         <Footer />

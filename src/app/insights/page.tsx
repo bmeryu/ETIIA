@@ -13,10 +13,21 @@ export default function InsightsHub() {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 py-24 pt-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <h1 className="sr-only">
-          Perspectivas y Soluciones de IA para directivos
-        </h1>
-        
+
+        {/* ══ HERO EDITORIAL ══ */}
+        <div className="mb-16 pb-16 border-b border-neutral-800/60">
+          <p className="text-xs text-indigo-400 font-bold uppercase tracking-widest mb-4">
+            Criterio Editorial ETIIA
+          </p>
+          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+            Perspectivas para quienes deciden.
+          </h1>
+          <p className="text-neutral-400 text-lg max-w-2xl leading-relaxed">
+            Análisis profundo sobre el impacto operativo y financiero de la IA en empresas reales.
+            Sin jerga, sin promesas. Sólo criterio.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {insights.map((insight) => (
             <Link 
@@ -38,9 +49,9 @@ export default function InsightsHub() {
                   </span>
                 </div>
                 <div className="group relative">
-                  <h3 className="mt-4 text-xl font-semibold leading-7 text-white group-hover:text-indigo-300 transition-colors">
+                  <h2 className="mt-4 text-xl font-semibold leading-7 text-white group-hover:text-indigo-300 transition-colors">
                     {insight.title}
-                  </h3>
+                  </h2>
                   <p className="mt-4 text-sm leading-6 text-neutral-400">
                     {insight.description}
                   </p>

@@ -231,7 +231,7 @@ export default function DemosFilterClient() {
             <p className="text-lg text-slate-500 mb-10 max-w-xl mx-auto">
               Cada producto se adapta a tu operación. Cuéntanos tu desafío y te mostramos cómo resolverlo.
             </p>
-            <Link href="/contacto">
+            <Link href="/?interes=diagnostico#diagnostico">
               <Button className="h-12 px-8 text-base btn-pulse">
                 Consultar Evaluación Gratuita
               </Button>

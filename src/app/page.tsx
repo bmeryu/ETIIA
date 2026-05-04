@@ -95,6 +95,26 @@ export default function HomeV2() {
         }}
       />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "@id": "https://etiia.com/#diagnostico-proceso",
+            "name": "Cómo funciona el Diagnóstico IA de ETIIA",
+            "description": "Proceso de diagnóstico inicial gratuito para evaluar la viabilidad de implementar IA en tu empresa B2B.",
+            "totalTime": "P14D",
+            "estimatedCost": { "@type": "MonetaryAmount", "currency": "CLP", "value": "0" },
+            "step": [
+              { "@type": "HowToStep", "position": 1, "name": "Revisión del problema y contexto", "text": "Analizamos el problema real detrás del síntoma: qué decisiones se toman, con qué datos, con qué frecuencia.", "url": "https://etiia.com/#diagnostico" },
+              { "@type": "HowToStep", "position": 2, "name": "Evaluación de viabilidad técnica", "text": "Determinamos qué enfoque de IA tiene sentido —o si no lo tiene— con honestidad y criterio técnico real.", "url": "https://etiia.com/#diagnostico" },
+              { "@type": "HowToStep", "position": 3, "name": "Mapa de acción con prioridades", "text": "Recibes un documento claro: qué conviene hacer primero, qué no hacer, y por qué. Con estimaciones de plazo y ROI esperado.", "url": "https://etiia.com/#diagnostico" }
+            ]
+          })
+        }}
+      />
+
       {/* ══════════ HERO ══════════ */}
       <section className="pt-36 pb-20 bg-white bg-grid-light relative overflow-hidden" aria-label="Propuesta principal">
         <div className="hero-glow" aria-hidden="true" />
@@ -126,6 +146,19 @@ export default function HomeV2() {
                 </Link>
               </div>
 
+              {/* Stats compactos — visible solo en mobile, arriba del fold */}
+              <div className="flex md:hidden justify-start gap-6 mb-10 fade-in-up" style={{ animationDelay: '0.35s', animationFillMode: 'both' }}>
+                {[
+                  { value: "+15", label: "Años exp.", gradient: "from-slate-800 to-slate-600" },
+                  { value: "+50", label: "Proyectos B2B", gradient: "from-blue-800 to-blue-600" },
+                  { value: "Gratis", label: "Diagnóstico", gradient: "from-indigo-500 to-blue-400" },
+                ].map((s) => (
+                  <div key={s.label} className="text-center">
+                    <p className={`text-2xl font-black bg-clip-text text-transparent bg-gradient-to-br ${s.gradient} tabular-nums leading-none mb-1`}>{s.value}</p>
+                    <p className="text-[9px] uppercase tracking-wider text-slate-500 leading-tight font-bold">{s.label}</p>
+                  </div>
+                ))}
+              </div>
 
             </div>
 
@@ -312,7 +345,15 @@ export default function HomeV2() {
             <h2 className="text-4xl font-black tracking-tight text-[#0F172A] leading-tight">
               Herramientas que ya ayudan<br />a empresas como la tuya
             </h2>
-            <p className="text-slate-500 text-lg">Puedes probar cada solución en acción o consultarnos directamente por la que te interesa.</p>
+            <div className="flex flex-col gap-2">
+              <p className="text-slate-500 text-lg">Puedes probar cada solución en acción o consultarnos directamente por la que te interesa.</p>
+              <p className="text-sm text-blue-600 font-semibold mt-1">
+                Mostrando 3 de{" "}
+                <Link href="/demos" className="underline underline-offset-2 hover:text-blue-800 transition-colors">
+                  9 soluciones disponibles
+                </Link>
+              </p>
+            </div>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {products.map((p, i) => (
@@ -372,7 +413,7 @@ export default function HomeV2() {
               href="/demos"
               className="inline-flex items-center gap-2 text-blue-700 border border-blue-200 bg-blue-50 hover:bg-blue-100 hover:border-blue-300 font-bold text-sm px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5"
             >
-              Ver soluciones de IA en vivo <ArrowRight className="w-4 h-4" />
+              Ver el catálogo de soluciones <ArrowRight className="w-4 h-4" />
             </Link>
           </Reveal>
         </div>
@@ -414,7 +455,7 @@ export default function HomeV2() {
               <Reveal key={f.name} delay={0.1 * (i + 1)}>
                 <div className="bg-white border border-slate-200 rounded-2xl p-7 flex gap-5 hover:border-blue-200 hover:shadow-md transition-all">
                   <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0">
-                    <Image src={f.img} alt={f.name} fill sizes="80px" className="object-cover" />
+                    <Image src={f.img} alt={f.name} fill sizes="80px" className="object-cover" priority={i === 0} />
                   </div>
                   <div>
                     <span className="inline-block text-xs text-blue-700 font-bold uppercase tracking-wider bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-full mb-2">{f.badge}</span>

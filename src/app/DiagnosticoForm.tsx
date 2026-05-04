@@ -142,6 +142,12 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
       });
       if (res.ok) {
         setSuccess(true);
+        // Tracking de conversión
+        if (typeof window !== 'undefined') {
+          const w = window as Window & { gtag?: Function; fbq?: Function };
+          if (w.gtag) w.gtag('event', 'generate_lead', { event_category: 'lead', event_label: interes, value: 1 });
+          if (w.fbq) w.fbq('track', 'Lead', { content_name: interes });
+        }
       } else {
         setSendError(true);
       }
@@ -203,9 +209,18 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
       </div>
 
       <div className="flex flex-col gap-1.5">
+        <label htmlFor="telefono" className="text-xs text-slate-500 font-medium">
+          Teléfono <span className="text-slate-300">(opcional)</span>
+        </label>
+        <input id="telefono" name="telefono" type="tel" placeholder="+56 9 XXXX XXXX" autoComplete="tel"
+          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" />
+      </div>
+
+      <div className="flex flex-col gap-1.5">
         <label htmlFor="tamano_empresa" className="text-xs text-slate-500 font-medium">Tamaño de la empresa</label>
-        <select id="tamano_empresa" name="tamano_empresa" required
-          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm">
+        <select id="tamano_empresa" name="tamano_empresa" required aria-required="true"
+          className="bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
+          defaultValue="">
           <option value="">Selecciona una opción</option>
           <option value="1-10">Startup / Menos de 10 personas</option>
           <option value="10-50">Pyme (10–50 personas)</option>
@@ -243,11 +258,14 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
       )}
 
       {sendError && (
-        <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2.5 animate-in fade-in">
+        <p role="alert" aria-live="assertive" className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2.5 animate-in fade-in">
           Hubo un problema de conexión al enviar el formulario. Por favor, escríbenos directamente a{" "}
           <a href="mailto:hola@etiia.com" className="font-bold underline">hola@etiia.com</a>
         </p>
       )}
+
+      {/* Honeypot anti-spam */}
+      <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
       <button type="submit" disabled={loading}
         className="w-full flex items-center justify-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white font-bold py-3.5 rounded-xl text-sm transition-all shadow-md shadow-blue-900/20 hover:-translate-y-0.5 mt-2 disabled:opacity-60 disabled:hover:translate-y-0">

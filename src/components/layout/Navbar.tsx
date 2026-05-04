@@ -36,6 +36,14 @@ const navLinks = [
           { name: "LexSearch", desc: "Buscador de contratos", href: "/demos/lexsearch" },
           { name: "TalentParse", desc: "Ranking de CVs", href: "/demos/talentparse" }
         ]
+      },
+      {
+        title: "Salud, Agro & Más",
+        items: [
+          { name: "AgendAI", desc: "Predicción de inasistencias", href: "/demos/agendai" },
+          { name: "CosechAI", desc: "ML agrícola predictivo", href: "/demos/cosechai" },
+          { name: "TranscribAI", desc: "Transcripción y análisis", href: "/demos/transcribai" }
+        ]
       }
     ]
   },
@@ -123,7 +131,10 @@ export default function Navbar() {
               
               {/* EY-style Horizontal Mega Menu */}
               {link.megaMenu && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50 w-[680px]">
+                <div className={cn(
+                  "absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50",
+                  link.megaMenu.length >= 4 ? "w-[880px]" : "w-[680px]"
+                )}>
                   <div className={cn(
                     "bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-slate-100 p-8 flex flex-col gap-6 relative overflow-hidden",
                     link.megaMenuTheme === "navy" ? "border-t-4 border-t-blue-950" : "border-t-4 border-t-blue-600"
@@ -133,7 +144,7 @@ export default function Navbar() {
                       link.megaMenuTheme === "navy" ? "bg-slate-200/60" : "bg-blue-100/60"
                     )} />
                     
-                    <div className="grid grid-cols-3 gap-8">
+                    <div className={cn("gap-6", link.megaMenu.length >= 4 ? "grid grid-cols-4" : "grid grid-cols-3")}>
                       {link.megaMenu.map((column) => (
                         <div key={column.title}>
                           <h4 className={cn(
