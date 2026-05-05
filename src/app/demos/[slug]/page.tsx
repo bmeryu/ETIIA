@@ -26,6 +26,7 @@ const demos: Record<string, {
     industria: "Transversal · Atención al Cliente",
     tagline: "Tu mejor agente nunca descansa",
     descripcion: "Un agente de IA que entiende lenguaje natural, accede a tus sistemas internos (CRM, ERP, base de conocimiento) y resuelve consultas en tiempo real. No es un chatbot — es un agente que ejecuta acciones.",
+    seoDescription: "Agente autónomo B2B con RAG. Entiende lenguaje natural, accede a tus sistemas (CRM/ERP) y resuelve consultas en tiempo real sin intervención humana.",
     resultado: "73% resolución sin humano",
     resultadoLabel: "Sin intervención humana",
     tags: ["LLM Agents", "RAG", "CRM", "Multicanal"],
@@ -49,6 +50,7 @@ const demos: Record<string, {
     industria: "Retail · eCommerce",
     tagline: "Cada cliente ve lo que quiere comprar",
     descripcion: "Un motor de recomendación que analiza comportamiento de navegación, historial de compras y perfil del cliente para sugerir productos con alta probabilidad de conversión. Genera campañas automáticas por segmento.",
+    seoDescription: "Motor predictivo eCommerce. Analiza navegación y compras para sugerir productos, gatillando campañas personalizadas con alto % de conversión.",
     resultado: "+34% cross-sell",
     resultadoLabel: "+18% ticket promedio en 60 días",
     tags: ["Collaborative Filtering", "NLP Product", "Predicción", "API eCommerce"],
@@ -71,6 +73,7 @@ const demos: Record<string, {
     industria: "Finanzas · Contabilidad",
     tagline: "Conciliación de facturas sin tipeo humano",
     descripcion: "Un agente de IA que lee tus facturas PDF (incluso escaneadas), extrae los datos clave con OCR, los cruza automáticamente con la cartola bancaria y empuja el resultado validado directo a tu ERP.",
+    seoDescription: "Elimina el tipeo. Agente IA con OCR que extrae datos de facturas PDF, concilia contra cartolas bancarias y hace push validado directo a tu ERP.",
     resultado: "247 facturas en 4:52 min",
     resultadoLabel: "Sin intervención manual",
     tags: ["OCR", "AI Conciliation", "ERP Push"],
@@ -94,6 +97,7 @@ const demos: Record<string, {
     industria: "Educación · Rendiciones",
     tagline: "El fin de los atrasos en las rendiciones educativas",
     descripcion: "Un agente de IA que lee PDFs de observaciones del ente regulador, se conecta en tiempo real con tu ERP contable, razona la información y responde automáticamente. Si falta un dato, redacta y envía el correo al colegio.",
+    seoDescription: "Automatización de rendiciones educativas. Agente IA que lee PDFs, razona requerimientos, cruza con tu ERP y resuelve casos sin digitación humana.",
     resultado: "78% resolución automática",
     resultadoLabel: "Automático sin digitación",
     tags: ["PDF Extraction", "ERP Integration", "Auto-email"],
@@ -117,6 +121,7 @@ const demos: Record<string, {
     industria: "Legal · Jurídico",
     tagline: "Encuentra la cláusula exacta, no palabras sueltas",
     descripcion: "Un buscador semántico privado sobre tu base de contratos y jurisprudencia. La IA entiende contexto legal y devuelve la cláusula específica que necesitas, no un listado interminable.",
+    seoDescription: "Buscador semántico jurídico para firmas corporativas. Encuentra cláusulas exactas y jurisprudencia con tecnología RAG, evitando falsos positivos.",
     resultado: "4hrs → 12min búsqueda",
     resultadoLabel: "Reducción del 95% en tiempo de búsqueda",
     tags: ["RAG", "Embeddings", "Pinecone", "NLP Legal"],
@@ -139,6 +144,7 @@ const demos: Record<string, {
     industria: "Recursos Humanos",
     tagline: "312 CVs evaluados en 8 minutos",
     descripcion: "La IA parsea CVs en cualquier formato, extrae variables críticas (experiencia, skills, educación) y las mapea contra la descripción del cargo, generando un ranking instantáneo con scoring multidimensional.",
+    seoDescription: "IA para screening y reclutamiento B2B. Parsea habilidades de currículums y genera un ranking multidimensional contra tu perfil de cargo en segundos.",
     resultado: "300 CVs en 8 min",
     resultadoLabel: "92% menos tiempo en screening",
     tags: ["NLP", "CV Parsing", "Scoring", "Ranking"],
@@ -161,6 +167,7 @@ const demos: Record<string, {
     industria: "Salud · Clínicas",
     tagline: "Predice inasistencias antes de que ocurran",
     descripcion: "Un modelo predictivo que analiza historial del paciente, clima, día y hora para identificar quién no va a llegar. Contacta automáticamente a la lista de espera para reasignar la hora.",
+    seoDescription: "Machine Learning que previene inasistencias médicas. Analiza riesgo y reasigna automáticamente citas de alto riesgo mediante WhatsApp integrado.",
     resultado: "-62% no-shows",
     resultadoLabel: "$4.2M CLP recuperados por mes",
     tags: ["ML Predictivo", "WhatsApp API", "Agenda Médica"],
@@ -183,6 +190,7 @@ const demos: Record<string, {
     industria: "Agricultura · Viñas",
     tagline: "Más rendimiento, menos merma",
     descripcion: "Cruzamos datos satelitales NDVI, sensores IoT en campo y modelos predictivos sobre 5 temporadas para optimizar cada hectárea, detectar estrés hídrico temprano y maximizar rentabilidad.",
+    seoDescription: "Inteligencia Artificial para la agroindustria. Cruza satélites NDVI e IoT para predecir estrés hídrico, optimizar riego y maximizar hectáreas.",
     resultado: "+28% eficiencia",
     resultadoLabel: "vs temporada anterior sin IA",
     tags: ["Satellite NDVI", "IoT", "ML Predictivo", "Dashboard"],
@@ -205,6 +213,7 @@ const demos: Record<string, {
     industria: "Legal · Compliance · Corporativo",
     tagline: "Transcribe, resume y detecta discrepancias",
     descripcion: "Sube el audio de cualquier reunión. Whisper transcribe con 96.8% de precisión, la IA identifica quién habla, genera un resumen ejecutivo y levanta alertas si hay contradicciones o compromisos sin asignar.",
+    seoDescription: "Transcripción Whisper V3 para firmas corporativas. Genera actas, identifica hablantes, resume y detecta brechas de compliance automáticamente.",
     resultado: "2hrs audio → 5 min",
     resultadoLabel: "Transcripción + análisis completo",
     tags: ["Whisper V3", "Diarización", "NLP", "On-premise"],
@@ -227,6 +236,7 @@ const demos: Record<string, {
     industria: "Marketing · Ventas",
     tagline: "Prospección B2B hiper-personalizada en 3 minutos",
     descripcion: "Un agente de outbound automatizado que busca prospectos por lenguaje natural, verifica correos corporativos y redacta correos hiper-personalizados leyendo perfiles de LinkedIn.",
+    seoDescription: "Agente autónomo Outbound B2B. Encuentra prospectos, verifica correos corporativos y redacta campañas personalizadas extrayendo insights de LinkedIn.",
     resultado: "Outbound en 3 min",
     resultadoLabel: "Reducción de horas manuales",
     tags: ["LLM Agents", "Scraping", "Outbound"],
@@ -256,20 +266,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const demo = demos[slug];
   if (!demo) return { title: "Demo no encontrada" };
 
-  // Truncar la descripción para SEO (Bing/Google recomiendan max 155-160 caracteres)
-  const seoDescription = demo.descripcion.length > 155 
-    ? `${demo.descripcion.substring(0, 152).trim()}...` 
-    : demo.descripcion;
-
   return {
     title: `${demo.nombre} — ${demo.tagline} | Soluciones ETIIA`,
-    description: seoDescription,
+    description: demo.seoDescription,
     alternates: {
       canonical: `/demos/${slug}`,
     },
     openGraph: {
       title: `${demo.nombre} — ${demo.tagline} | ETIIA`,
-      description: seoDescription,
+      description: demo.seoDescription,
       url: `https://etiia.com/demos/${slug}`,
       images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: `${demo.nombre} — Demo interactiva por ETIIA` }],
       type: "website",
