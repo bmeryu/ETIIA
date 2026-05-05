@@ -441,7 +441,7 @@ export default function HomeV2() {
                 img: "/bernardita-nueva.jpg",
                 name: "Bernardita Mery",
                 badge: "Co-fundadora · Estrategia",
-                desc: "Experta en transformación digital y estrategia comercial. Traduce los objetivos del negocio en decisiones tecnológicas concretas y ejecutables.",
+                desc: "Ingeniera Comercial UC y Máster Ejecutivo en Inteligencia Artificial. Traduce los objetivos del negocio en decisiones tecnológicas concretas y modelos de rentabilidad.",
                 tags: ["Estrategia", "IA Aplicada", "Negocios B2B"],
                 linkedin: "https://www.linkedin.com/in/bmeryu/"
               },
