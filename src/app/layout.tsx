@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | ETIIA Consultoría IA B2B",
     default: "Consultoría en Inteligencia Artificial B2B & Agentes IA | ETIIA",
   },
-  description: "Firma experta en Consultoría de Inteligencia Artificial B2B. Implementamos Agentes Autónomos, Arquitecturas RAG y LLMs corporativos para maximizar tu ROI. Agenda tu diagnóstico IA.",
+  description: "Consultoría B2B en Inteligencia Artificial. Implementamos Agentes Autónomos, Arquitecturas RAG y LLMs corporativos para maximizar el ROI. Agenda un diagnóstico.",
   keywords: ["Consultoría Inteligencia Artificial B2B", "Implementación IA empresas", "Agentes IA Autónomos", "Sistemas RAG para empresas", "LLMs Corporativos", "Machine Learning B2B", "IA Chile Latam"],
   authors: [{ name: "Bernardita Mery" }, { name: "Pablo E. Olivares" }],
   creator: "ETIIA",
