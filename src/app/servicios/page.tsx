@@ -4,7 +4,7 @@ import { ArrowRight, BrainCircuit, Code2, Presentation, CalendarCheck } from "lu
 import { Reveal, FadeIn, ScaleIn } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Servicios de Consultoría e Implementación de IA | ETIIA",
+  title: { absolute: "Servicios de Consultoría e Implementación IA | ETIIA" },
   description: "Desde diagnóstico y automatización RAG a medida, hasta UpSkilling corporativo. Descubre cómo implementamos Inteligencia Artificial en procesos de negocio reales.",
   alternates: { canonical: "/servicios" },
   openGraph: {

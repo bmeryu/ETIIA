@@ -2,7 +2,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/ui/ContactForm";
 
 export const metadata = {
-  title: "Agenda tu Diagnóstico IA Gratuito",
+  title: { absolute: "Agenda tu Diagnóstico IA Gratuito | ETIIA" },
   description: "Habla directamente con los fundadores de ETIIA. Evaluamos la viabilidad de tu proyecto de IA en 20 minutos. Sin preventa ni compromisos.",
   alternates: { canonical: "/contacto" },
   openGraph: {

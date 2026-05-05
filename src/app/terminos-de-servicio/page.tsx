@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Términos de Servicio | ETIIA",
+  title: { absolute: "Términos de Servicio | ETIIA" },
   description: "Términos y Condiciones de Servicio de ETIIA Consultoría IA.",
 };
 

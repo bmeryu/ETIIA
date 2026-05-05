@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidad | ETIIA",
+  title: { absolute: "Política de Privacidad | ETIIA" },
   description: "Política de Privacidad de ETIIA Consultoría IA.",
 };
 
