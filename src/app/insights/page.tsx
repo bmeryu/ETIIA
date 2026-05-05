@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { NewsletterForm } from '@/components/ui/NewsletterForm';
 
 export const metadata = {
-  title: 'Insights & Estrategia B2B | ETIIA',
+  title: { absolute: 'Insights & Estrategia B2B | ETIIA' },
   description: 'Análisis profundo sobre el impacto operativo y financiero de la Inteligencia Artificial en empresas tradicionales. Cero jerga, cien por ciento criterio.',
 };
 

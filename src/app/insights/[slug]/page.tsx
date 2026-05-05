@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!insight) return { title: 'Not Found' };
 
   return {
-    title: `${insight.metadata.title} | ETIIA Insights`,
+    title: { absolute: `${insight.metadata.title} | ETIIA Insights` },
     description: insight.metadata.description,
     alternates: {
       canonical: `/insights/${slug}`,
