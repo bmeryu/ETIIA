@@ -21,10 +21,14 @@ export default function ContactoPage() {
 
                     {/* Left Column - Copy */}
                     <div className="space-y-8 sticky top-32">
-                        <SectionHeading
-                            title="20 minutos que pueden ahorrarte meses de decisiones equivocadas."
-                            subtitle="Hablas directamente con los fundadores. Sin preventa. Evaluamos si la IA tiene sentido para tu caso y qué conviene hacer primero."
-                        />
+                        <div className="mb-10">
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-navy mb-4">
+                                20 minutos que pueden ahorrarte meses de decisiones equivocadas.
+                            </h1>
+                            <p className="text-lg text-slate-600 max-w-3xl">
+                                Hablas directamente con los fundadores. Sin preventa. Evaluamos si la IA tiene sentido para tu caso y qué conviene hacer primero.
+                            </p>
+                        </div>
 
                         {/* WhatsApp CTA */}
                         <div className="bg-white p-6 rounded-2xl border-2 border-slate-200 shadow-md hover:border-cian/30 transition-colors mt-8">
