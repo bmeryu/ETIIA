@@ -19,6 +19,7 @@ const demos: Record<string, {
   aeoText: string;
   softwareType: string;
   isAgent?: boolean;
+  seoDescription: string;
   faqs: { question: string; answer: string }[];
 }> = {
   atendeai: {
