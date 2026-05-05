@@ -442,7 +442,7 @@ export default function HomeV2() {
                 name: "Bernardita Mery",
                 badge: "Co-fundadora · Estrategia",
                 desc: "Ingeniera Comercial UC y Máster Ejecutivo en Inteligencia Artificial. Traduce los objetivos del negocio en decisiones tecnológicas concretas y modelos de rentabilidad.",
-                tags: ["Estrategia", "IA Aplicada", "Negocios B2B"],
+                tags: ["Inteligencia de Negocios", "Estrategia Comercial", "IA Aplicada"],
                 linkedin: "https://www.linkedin.com/in/bmeryu/"
               },
               {
@@ -450,7 +450,7 @@ export default function HomeV2() {
                 name: "Pablo Olivares",
                 badge: "Co-fundador · Arquitectura de Soluciones",
                 desc: "Candidato a Doctor en Informática Aplicada. A diferencia del investigador tradicional, posee una fuerte trayectoria en la industria. Es el estratega técnico que diseña arquitecturas robustas y creativas.",
-                tags: ["Arquitectura Cloud", "Seguridad", "Integración técnica"],
+                tags: ["Arquitectura Cloud", "Machine Learning", "Seguridad"],
                 linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"
               },
               {
