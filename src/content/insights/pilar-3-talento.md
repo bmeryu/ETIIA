@@ -10,7 +10,7 @@ category: "Talento B2B"
 > 
 > La adopción de Inteligencia Artificial no empieza buscando el perfil técnico correcto. Empieza desarrollando criterio interno para saber cuándo un problema de negocio requiere un especialista externo y cuándo puede resolverse con el talento que ya tienes adentro, bien entrenado. Lo que suele faltar no es tecnología, es un puente entre la lógica del negocio y la lógica de la herramienta.
 
-El contexto chileno lo hace aún más urgente: con un **desempleo del 8,9% sostenido por 38 meses consecutivos** (INE, primer trimestre 2026), el mercado laboral no está generando los perfiles que las empresas dicen necesitar. Esperar al candidato técnico ideal no es una estrategia; es una forma elegante de no empezar.
+El contexto chileno lo hace aún más urgente: con un **desempleo igual o superior al 8% por 38 meses consecutivos** (INE, trimestre móvil enero-marzo 2026), el mercado laboral no está generando los perfiles que las empresas dicen necesitar. Esperar al candidato técnico ideal no es una estrategia; es una forma elegante de no empezar.
 
 ## ¿Qué es exactamente un Intérprete de IA?
 
@@ -18,7 +18,7 @@ Un Intérprete de IA es un experto en tu propio negocio (tu gerente de ventas, t
 
 Mientras modelos de evaluación técnica como SWE-bench demostraron en abril que la Inteligencia Artificial ya puede resolver problemas complejos de ingeniería de software con un 85% de autonomía, la demanda de talento en el mundo corporativo dio un giro de 180 grados. Hoy, contratar a un ejército de programadores ya no te da una ventaja; modelos avanzados como Claude o GPT-5.5 ya hacen ese trabajo por el presupuesto de una PYME.
 
-Los datos lo confirman: según el *2026 Labor Market Report* de LinkedIn Economic Graph, las ofertas de empleo que exigen habilidades de "IA aplicada al negocio" (como prompt engineering e integración de LLMs) crecieron **más de un 70% interanual** en Estados Unidos.
+Los datos lo confirman: según el *2026 Labor Market Report* de LinkedIn Economic Graph, los empleos en Estados Unidos que exigen "alfabetización en IA" (AI literacy) crecieron **un 70% interanual**.
 
 Paralelamente, el tiempo dedicado a cursos de IA en LinkedIn Learning aumentó un **92% año a año**. Y los empleados de empresas que ofrecen formación en IA desarrollan estas habilidades **3,4 veces más rápido** que quienes no la reciben. El mercado ya entendió que el cuello de botella no es construir modelos, sino saber usarlos dentro de una operación real.
 

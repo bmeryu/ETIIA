@@ -118,17 +118,17 @@ export default function ServiciosPage() {
               </div>
               <h2 className="text-3xl font-black tracking-tight text-[#0F172A] mb-4">Diseñamos Tu Solución a Medida</h2>
               <p className="text-slate-600 leading-relaxed mb-6">
-                Entendemos que cada empresa es única. Si el software tradicional no cubre tus necesidades, creamos un asistente inteligente exclusivo que converse directamente con tus sistemas y entienda tus propias reglas de negocio.
+                Entendemos que cada empresa es única. Si el software tradicional no cubre tus necesidades, diseñamos y desarrollamos soluciones de IA a medida —agentes autónomos, motores predictivos o flujos de automatización— que se integran directamente con tus sistemas y operan bajo tus propias reglas de negocio.
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2 text-sm text-slate-700 font-medium">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600" /> Conexión perfecta con tus plataformas actuales
                 </li>
                 <li className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600" /> Respuestas precisas basadas solo en tu información
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600" /> Decisiones y respuestas basadas solo en tu información
                 </li>
                 <li className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600" /> Procesamiento seguro de tus datos
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600" /> Procesamiento seguro de tus datos corporativos
                 </li>
               </ul>
               <Link href="/?interes=a-medida#diagnostico" className="inline-flex items-center gap-2 text-blue-700 font-bold hover:text-blue-800 transition-colors">

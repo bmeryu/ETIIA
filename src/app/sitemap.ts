@@ -5,8 +5,8 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://etiia.com';
-  // Fecha de última actualización del sitio (actualizar en cada release)
-  const siteLastMod = '2026-05-03T00:00:00.000Z';
+  // Fecha de última actualización dinámica en base a compilación
+  const siteLastMod = new Date().toISOString();
 
   // Definición de las rutas principales del sitio
   const baseRoutes = [
@@ -29,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/demos/cosechai',
     '/demos/transcribai',
     '/demos/autorend',
+    '/demos/prospectai'
   ];
 
   const insights = getInsightsList();
