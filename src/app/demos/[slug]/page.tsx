@@ -255,15 +255,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const demo = demos[slug];
   if (!demo) return { title: "Demo no encontrada" };
+
+  // Truncar la descripción para SEO (Bing/Google recomiendan max 155-160 caracteres)
+  const seoDescription = demo.descripcion.length > 155 
+    ? `${demo.descripcion.substring(0, 152).trim()}...` 
+    : demo.descripcion;
+
   return {
     title: `${demo.nombre} — ${demo.tagline} | Soluciones ETIIA`,
-    description: demo.descripcion,
+    description: seoDescription,
     alternates: {
       canonical: `/demos/${slug}`,
     },
     openGraph: {
       title: `${demo.nombre} — ${demo.tagline} | ETIIA`,
-      description: demo.descripcion,
+      description: seoDescription,
       url: `https://etiia.com/demos/${slug}`,
       images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: `${demo.nombre} — Demo interactiva por ETIIA` }],
       type: "website",
