@@ -449,7 +449,7 @@ export default function HomeV2() {
                 img: "/pablo.jpg",
                 name: "Pablo Olivares",
                 badge: "Co-fundador · Arquitectura de Soluciones",
-                desc: "Candidato a Doctor en Informática Aplicada. Con más de 100 proyectos de experiencia, es el estratega técnico que diseña arquitecturas robustas y creativas para integrar la IA al mundo real.",
+                desc: "Candidato a Doctor en Informática Aplicada. A diferencia del investigador tradicional, posee una fuerte trayectoria en la industria. Es el estratega técnico que diseña arquitecturas robustas y creativas.",
                 tags: ["Arquitectura Cloud", "Seguridad", "Integración técnica"],
                 linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"
               },
