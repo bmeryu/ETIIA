@@ -448,9 +448,9 @@ export default function HomeV2() {
               {
                 img: "/pablo.jpg",
                 name: "Pablo Olivares",
-                badge: "Co-fundador · Arquitectura",
-                desc: "Arquitecto cloud con experiencia en integrar soluciones de IA en empresas reales. Cierra la brecha entre el prototipo y el sistema de producción.",
-                tags: ["Cloud", "Implementación", "Integración técnica"],
+                badge: "Co-fundador · Arquitectura Cloud",
+                desc: "Candidato a Doctor en Informática Aplicada. Experto en infraestructura cloud que asegura que los modelos de IA se integren de forma escalable y segura a los sistemas de producción.",
+                tags: ["Arquitectura Cloud", "Seguridad", "Integración técnica"],
                 linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"
               },
               {
