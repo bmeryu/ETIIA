@@ -448,16 +448,16 @@ export default function HomeV2() {
               {
                 img: "/pablo.jpg",
                 name: "Pablo Olivares",
-                badge: "Co-fundador · Arquitectura Cloud",
-                desc: "Candidato a Doctor en Informática Aplicada. Experto en infraestructura cloud que asegura que los modelos de IA se integren de forma escalable y segura a los sistemas de producción.",
+                badge: "Co-fundador · Arquitectura de Soluciones",
+                desc: "Candidato a Doctor en Informática Aplicada. Con más de 100 proyectos de experiencia, es el estratega técnico que diseña arquitecturas robustas y creativas para integrar la IA al mundo real.",
                 tags: ["Arquitectura Cloud", "Seguridad", "Integración técnica"],
                 linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"
               },
               {
                 img: "/diego.jpg",
                 name: "Diego Monsalves",
-                badge: "CTO · Investigación & Modelos",
-                desc: "Candidato a Doctor en Informática Aplicada. Traduce la vanguardia de la investigación académica en motores cognitivos estables y listos para producción empresarial.",
+                badge: "CTO · Ingeniería de Modelos",
+                desc: "Candidato a Doctor en Informática Aplicada. Es el motor algorítmico del equipo. Construye, entrena y optimiza los sistemas cognitivos y LLMs que le dan inteligencia a cada solución.",
                 tags: ["Machine Learning", "Investigación IA", "LLMs"],
                 linkedin: "https://www.linkedin.com/in/505748216/"
               },
