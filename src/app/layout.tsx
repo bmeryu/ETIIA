@@ -152,6 +152,13 @@ export default function RootLayout({
                       "name": "Pablo E. Olivares",
                       "jobTitle": "Co-founder & Cloud AI Architect",
                       "sameAs": ["https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"]
+                    },
+                    {
+                      "@type": "Person",
+                      "@id": "https://etiia.com/#diego-monsalves",
+                      "name": "Diego Monsalves",
+                      "jobTitle": "Chief Technology Officer & AI Researcher",
+                      "sameAs": ["https://www.linkedin.com/in/505748216/"]
                     }
                   ],
                   "hasOfferCatalog": {

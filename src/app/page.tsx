@@ -435,12 +435,12 @@ export default function HomeV2() {
           </Reveal>
 
           {/* Socios fundadores */}
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {[
               {
                 img: "/bernardita-nueva.jpg",
                 name: "Bernardita Mery",
-                badge: "Co-fundadora · Estrategia & Liderazgo",
+                badge: "Co-fundadora · Estrategia",
                 desc: "Experta en transformación digital y estrategia comercial. Traduce los objetivos del negocio en decisiones tecnológicas concretas y ejecutables.",
                 tags: ["Estrategia", "IA Aplicada", "Negocios B2B"],
                 linkedin: "https://www.linkedin.com/in/bmeryu/"
@@ -448,10 +448,18 @@ export default function HomeV2() {
               {
                 img: "/pablo.jpg",
                 name: "Pablo Olivares",
-                badge: "Co-fundador · Arquitectura & Delivery",
-                desc: "Arquitecto cloud con experiencia en integrar soluciones de IA en empresas reales. Cierra la brecha entre el prototipo y el sistema que tu equipo usa cada día.",
+                badge: "Co-fundador · Arquitectura",
+                desc: "Arquitecto cloud con experiencia en integrar soluciones de IA en empresas reales. Cierra la brecha entre el prototipo y el sistema de producción.",
                 tags: ["Cloud", "Implementación", "Integración técnica"],
                 linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"
+              },
+              {
+                img: "/diego.jpg",
+                name: "Diego Monsalves",
+                badge: "CTO · Investigación & Modelos",
+                desc: "Candidato a Doctor en Informática Aplicada. Traduce la vanguardia de la investigación académica en motores cognitivos estables y listos para producción empresarial.",
+                tags: ["Machine Learning", "Investigación IA", "LLMs"],
+                linkedin: "https://www.linkedin.com/in/505748216/"
               },
             ].map((f, i) => (
               <Reveal key={f.name} delay={0.1 * (i + 1)}>
