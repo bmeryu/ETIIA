@@ -448,9 +448,9 @@ export default function HomeV2() {
               {
                 img: "/pablo.jpg",
                 name: "Pablo Olivares",
-                badge: "Co-fundador · Arquitectura de Soluciones",
-                desc: "Candidato a Doctor en Informática Aplicada. A diferencia del investigador tradicional, posee una fuerte trayectoria en la industria. Es el estratega técnico que diseña arquitecturas robustas y creativas.",
-                tags: ["Arquitectura Cloud", "Machine Learning", "Seguridad"],
+                badge: "Co-fundador · Inteligencia Artificial Aplicada",
+                desc: "Candidato a Doctor en Informática Aplicada. Conecta la investigación avanzada en IA con casos de uso corporativos. Especialista en orquestar sistemas cognitivos, agentes autónomos y arquitecturas RAG para la industria.",
+                tags: ["Inteligencia Artificial", "Agentes Autónomos", "RAG"],
                 linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"
               },
               {

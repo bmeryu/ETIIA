@@ -150,7 +150,7 @@ export default function RootLayout({
                       "@type": "Person",
                       "@id": "https://etiia.com/#pablo-olivares",
                       "name": "Pablo E. Olivares",
-                      "jobTitle": "Co-founder & Cloud AI Architect",
+                      "jobTitle": "Co-founder & Applied AI Lead",
                       "sameAs": ["https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"]
                     },
                     {
