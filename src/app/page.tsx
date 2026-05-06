@@ -454,7 +454,7 @@ export default function HomeV2() {
                 linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"
               },
               {
-                img: "/Diego.jpg",
+                img: "/diego.jpg",
                 name: "Diego Monsalves",
                 badge: "CTO · Ingeniería de Modelos",
                 desc: "Candidato a Doctor en Informática Aplicada. Es el motor algorítmico del equipo. Construye, entrena y optimiza los sistemas cognitivos y LLMs que le dan inteligencia a cada solución.",
