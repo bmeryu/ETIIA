@@ -89,7 +89,7 @@ export default function HomeV2() {
                 "name": "¿Qué ERPs son compatibles con las soluciones de ETIIA?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Las soluciones de ETIIA se integran con cualquier ERP que exponga APIs o permita ingesta de archivos automatizados, incluyendo SAP, Softland, Defontana, Buk y Oracle NetSuite, tanto en modalidad cloud como on-premise."
+                  "text": "Las soluciones de ETIIA son agnósticas. Se integran con absolutamente CUALQUIER sistema o ERP que la empresa ya utilice, siempre que tenga APIs, webhooks o permita ingesta de archivos. Esto incluye, a modo de ejemplo, SAP, Softland, Defontana, Salesforce, HubSpot o sistemas desarrollados a medida por la empresa."
                 }
               }
             ]
@@ -454,7 +454,7 @@ export default function HomeV2() {
                 linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"
               },
               {
-                img: "/diego.jpg",
+                img: "/Diego.jpg",
                 name: "Diego Monsalves",
                 badge: "CTO · Ingeniería de Modelos",
                 desc: "Candidato a Doctor en Informática Aplicada. Es el motor algorítmico del equipo. Construye, entrena y optimiza los sistemas cognitivos y LLMs que le dan inteligencia a cada solución.",
