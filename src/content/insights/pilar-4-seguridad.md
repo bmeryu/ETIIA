@@ -1,5 +1,5 @@
 ---
-title: "La puerta trasera invisible: el riesgo que aparece cuando tu equipo usa IA sin criterios claros"
+title: "El riesgo invisible de usar Inteligencia Artificial sin reglas"
 description: "Cómo una brecha de criterio directivo en el uso de herramientas de IA puede exponer información sensible sin que nadie en la organización lo note."
 date: "2026-05-01"
 author: "Bernardita Mery"

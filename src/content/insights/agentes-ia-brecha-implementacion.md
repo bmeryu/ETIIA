@@ -1,5 +1,5 @@
 ---
-title: "El 79% de las empresas tiene agentes de IA. El 67% no obtiene ningún resultado"
+title: "Agentes de IA: El 67% de las empresas no obtiene resultados"
 description: "Por qué la mayoría de los proyectos de Agentes de IA fracasan antes de escalar, y cómo las empresas que sí lo logran estructuran sus implementaciones desde el día uno."
 date: "2026-05-03"
 author: "Bernardita Mery"

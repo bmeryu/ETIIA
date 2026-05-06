@@ -1,5 +1,5 @@
 ---
-title: "El error más caro al comprar Inteligencia Artificial: Digitalizar el desorden"
+title: "El error más caro al comprar IA: Digitalizar el desorden"
 description: "Por qué conectar IA a sistemas de datos desordenados es el riesgo operativo que ningún proveedor te va a advertir antes de venderte la solución."
 date: "2026-04-25"
 author: "Bernardita Mery"

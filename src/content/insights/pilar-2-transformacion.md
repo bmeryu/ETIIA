@@ -1,5 +1,5 @@
 ---
-title: "La trampa del software nuevo sobre procesos viejos (Y la era de los Agentes Autónomos)"
+title: "La trampa del software nuevo en la era de los Agentes Autónomos"
 description: "Cómo la transición a Agentes Autónomos expone una brecha crítica: conectar IA a flujos de trabajo que no están diseñados para ella."
 date: "2026-04-27"
 author: "Bernardita Mery"

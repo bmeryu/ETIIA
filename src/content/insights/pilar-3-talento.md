@@ -1,5 +1,5 @@
 ---
-title: "El mito que frena la adopción de IA: No necesitas un equipo técnico desde el día uno"
+title: "El mito de la IA: No necesitas un equipo técnico el día uno"
 description: "Por qué la adopción de IA no empieza contratando expertos técnicos, sino desarrollando criterio interno para decidir cuándo y cómo usarlos."
 date: "2026-04-29"
 author: "Bernardita Mery"

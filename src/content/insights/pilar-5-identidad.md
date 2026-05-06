@@ -1,5 +1,5 @@
 ---
-title: "El fraude del que nadie habla: Por qué tus protocolos de aprobación acaban de caducar"
+title: "El fraude invisible: Tus protocolos de aprobación han caducado"
 description: "Cómo los deepfakes están convirtiendo los flujos de aprobación basados en confianza personal en una vulnerabilidad financiera crítica."
 date: "2026-05-02"
 author: "Bernardita Mery"
