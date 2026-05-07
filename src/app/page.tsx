@@ -124,16 +124,16 @@ export default function HomeV2() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <div className="fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-                <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-6">
+                <h1 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                   Consultoría en Inteligencia Artificial B2B y Agentes Autónomos
-                </p>
+                </h1>
               </div>
-              <h1 className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6 fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+              <p className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6 fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
                   Primero te decimos<br />
                   <span className="text-gradient-blue">si tiene sentido</span><br />
                   aplicar IA
-              </h1>
+              </p>
 
               <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
                 Antes de invertir en desarrollo, necesitas saber si tu problema es realmente un caso para IA, qué conviene hacer primero y qué no. Eso es exactamente lo que hacemos.
@@ -215,11 +215,11 @@ export default function HomeV2() {
           <div className="max-w-5xl mx-auto px-6 text-center relative z-20 w-full">
             <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-6">Nuestros sistemas se integran de forma nativa con</p>
             <div className="flex flex-wrap justify-center gap-10 md:gap-16 items-center opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/sap.svg" alt="SAP" className="h-8 md:h-10 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/salesforce.svg" alt="Salesforce" className="h-8 md:h-10 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonaws.svg" alt="AWS" className="h-8 md:h-9 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300 mt-2" />
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoft.svg" alt="Microsoft" className="h-7 md:h-8 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/hubspot.svg" alt="HubSpot" className="h-7 md:h-9 cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/sap.svg" alt="SAP" width="40" height="40" className="h-8 md:h-10 w-auto cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/salesforce.svg" alt="Salesforce" width="40" height="40" className="h-8 md:h-10 w-auto cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonaws.svg" alt="AWS" width="40" height="40" className="h-8 md:h-9 w-auto cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300 mt-2" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoft.svg" alt="Microsoft" width="40" height="40" className="h-7 md:h-8 w-auto cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/hubspot.svg" alt="HubSpot" width="40" height="40" className="h-7 md:h-9 w-auto cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
             </div>
           </div>
 
@@ -465,7 +465,7 @@ export default function HomeV2() {
               <Reveal key={f.name} delay={0.1 * (i + 1)}>
                 <div className="bg-white border border-slate-200 rounded-2xl p-7 flex gap-5 hover:border-blue-200 hover:shadow-md transition-all">
                   <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0">
-                    <Image src={f.img} alt={f.name} fill sizes="80px" className="object-cover" priority={i === 0} />
+                    <Image src={f.img} alt={f.name} fill sizes="80px" className="object-cover" />
                   </div>
                   <div>
                     <span className="inline-block text-xs text-blue-700 font-bold uppercase tracking-wider bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-full mb-2">{f.badge}</span>
