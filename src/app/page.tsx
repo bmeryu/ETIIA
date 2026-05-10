@@ -311,7 +311,7 @@ export default function HomeV2() {
 
                 <div className="mt-6 pt-6 border-t border-slate-100 text-center">
                   <p className="text-sm text-slate-500 mb-3">¿Prefieres no esperar 24 horas?</p>
-                  <a href="https://calendly.com/bernardita-mery" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 w-full text-[#0F172A] border border-slate-200 hover:border-blue-300 font-bold px-6 py-3.5 rounded-xl transition-all hover:bg-slate-50 hover:shadow-sm">
+                  <a href="https://calendly.com/etiia" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 w-full text-[#0F172A] border border-slate-200 hover:border-blue-300 font-bold px-6 py-3.5 rounded-xl transition-all hover:bg-slate-50 hover:shadow-sm">
                     Agendar reunión directa (20 min) <Calendar className="w-4 h-4 text-blue-600" />
                   </a>
                 </div>
