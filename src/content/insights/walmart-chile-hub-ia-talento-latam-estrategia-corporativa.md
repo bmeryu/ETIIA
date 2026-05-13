@@ -6,7 +6,7 @@ author: "Bernardita Mery"
 category: "Estrategia IA"
 ---
 
-Walmart acaba de hacer visible una apuesta que muchas corporaciones latinoamericanas aún no comprenden: está construyendo capacidad de Inteligencia Artificial desde Chile, con un equipo conformado por ex ejecutivos de Palantir, Instacart y McKinsey. No es una oficina de soporte. Es un hub de desarrollo estratégico.
+Según Diario Financiero, Walmart está construyendo capacidad de Inteligencia Artificial desde Chile con un equipo conformado por ex ejecutivos de Palantir, Instacart y McKinsey. No es una oficina de soporte. Es un hub de desarrollo estratégico. Ese hecho de base importa menos como noticia de talento y más como señal de cómo una corporación global está instalando capacidad de ejecución regional.
 
 La pregunta incómoda para el resto del mercado corporativo no es "¿por qué Chile?" sino "¿por qué tu empresa sigue pensando que la IA es algo que se compra, no algo que se construye?"
 
@@ -43,3 +43,8 @@ La pregunta para tu organización no es si la IA es relevante. Es si estás disp
 Porque en cinco años, la diferencia entre una empresa que construyó músculo de IA y una que solo compró herramientas será la misma que hoy existe entre Amazon y cualquier retailer tradicional que sigue "digitalizándose".
 
 La señal está clara. La decisión, también.
+
+---
+
+**Fuentes:**
+- Diario Financiero. *Ex Palantir, Instacart y McKinsey: así está armado el equipo de IA que Walmart potencia desde Chile.* https://www.df.cl/df-mas/coffee-break/ex-palantir-instacart-y-mckinsey-asi-esta-armado-el-equipo-de-ia-que
