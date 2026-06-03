@@ -162,6 +162,10 @@ export default function RootLayout({
                       "sameAs": ["https://www.linkedin.com/in/505748216/"]
                     }
                   ],
+                  "numberOfEmployees": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 10
+                  },
                   "hasOfferCatalog": {
                     "@type": "OfferCatalog",
                     "name": "Servicios de Inteligencia Artificial B2B",

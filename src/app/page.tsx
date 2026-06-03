@@ -34,10 +34,11 @@ const products = [
 ];
 
 const teamMembers = [
-  { name: "Dirección de proyecto", role: "Estrategia & Liderazgo", desc: "Experiencia comprobada en liderar proyectos de transformación tecnológica. Traduce objetivos de negocio en decisiones técnicas accionables.", tags: ["Estrategia", "Gestión de proyectos", "Inteligencia de negocios"] },
-  { name: "IA & Machine Learning", role: "Investigación · Candidato a Doctor", desc: "Candidato a Doctor en Informática Aplicada con publicaciones en IA y optimización. Diseña arquitecturas de modelos con criterio académico y aplicabilidad real.", tags: ["Machine Learning", "Deep Learning", "Publicaciones IA"] },
-  { name: "Optimización & Datos", role: "Investigación · Candidato a Doctor", desc: "Candidato a Doctor en Informática Aplicada. Especialidad en exploración de datos y optimización de modelos con aplicaciones en procesos empresariales complejos.", tags: ["Optimización", "Exploración de datos", "Modelos aplicados"] },
-  { name: "Ingeniería & Despliegue", role: "Implementación & Procesos", desc: "Cierra la brecha entre el modelo y el sistema real. Experiencia en integrar soluciones de IA en flujos de trabajo empresariales con foco en procesos.", tags: ["Implementación", "Procesos", "Integración técnica"] },
+  { name: "Estrategia & Dirección", role: "Liderazgo de proyectos", desc: "Más de 15 proyectos de transformación tecnológica liderados. Traduce objetivos de negocio en roadmaps técnicos accionables con hitos medibles y ROI concreto.", tags: ["Estrategia", "PMO", "ROI"] },
+  { name: "Ingeniería IA", role: "Desarrollo & Arquitectura", desc: "El equipo de ingeniería diseña, entrena y despliega los modelos y agentes que operan en producción. Cobertura full-stack: desde data pipelines hasta APIs en la nube.", tags: ["Python", "LLMs", "RAG", "APIs"] },
+  { name: "Ciencia de Datos", role: "Investigación aplicada · 2 PhD(c)", desc: "Dos candidatos a Doctor en Informática Aplicada lideran la investigación. Publicaciones académicas con aplicabilidad directa en procesos empresariales.", tags: ["Machine Learning", "Optimización", "Papers"] },
+  { name: "Implementación & Ops", role: "Integración técnica", desc: "Cierra la brecha entre el modelo y el sistema real. Integración certificada con ERPs, CRMs y flujos documentales del cliente.", tags: ["DevOps", "ERP", "Integración"] },
+  { name: "Diseño & Producto", role: "UX & Interfaces", desc: "Cada solución se diseña pensando en el usuario final, no solo en el algoritmo. Interfaces que los equipos realmente adoptan.", tags: ["UX", "Producto", "Adopción"] },
 ];
 
 export default function HomeV2() {
@@ -195,8 +196,8 @@ export default function HomeV2() {
                   Evaluamos el potencial, los riesgos y el punto de partida correcto. Sin vender tecnología antes de entender tu contexto.
                 </p>
                 <div className="bg-white border border-slate-200 rounded-xl p-4">
-                  <p className="text-xs text-blue-700 font-bold mb-1 uppercase tracking-wider">Equipo completo integrado desde el día uno</p>
-                  <p className="text-sm text-[#0F172A] font-medium">Negocio · Datos · Tecnología · Implementación</p>
+                  <p className="text-xs text-blue-700 font-bold mb-1 uppercase tracking-wider">+10 profesionales integrados desde el día uno</p>
+                  <p className="text-sm text-[#0F172A] font-medium">Estrategia · Datos · Ingeniería IA · Implementación · Diseño</p>
                 </div>
                 <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-3">
                   <span className="text-2xl font-black text-[#0F172A]">6–16</span>
@@ -428,9 +429,9 @@ export default function HomeV2() {
             <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">El equipo</p>
             <div className="grid md:grid-cols-2 gap-8 items-end mb-14">
               <h2 className="text-4xl font-black tracking-tight text-[#0F172A] leading-tight">
-                Autoridad que viene de haber resuelto problemas reales
+                Autoridad que viene de haber entregado soluciones reales
               </h2>
-              <p className="text-slate-500 leading-relaxed">No consultores teóricos. El equipo ETIIA combina experiencia en liderazgo de proyectos, investigación publicada y ejecución técnica real.</p>
+              <p className="text-slate-500 leading-relaxed">El equipo ETIIA reúne <strong className="text-[#0F172A] font-semibold">más de 10 profesionales</strong> con experiencia en liderazgo de proyectos, investigación publicada y ejecución técnica real en empresas B2B.</p>
             </div>
           </Reveal>
 
@@ -463,31 +464,46 @@ export default function HomeV2() {
               },
             ].map((f, i) => (
               <Reveal key={f.name} delay={0.1 * (i + 1)}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-7 flex gap-5 hover:border-blue-200 hover:shadow-md transition-all">
-                  <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0">
-                    <Image src={f.img} alt={f.name} fill sizes="80px" className="object-cover" />
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 flex flex-col items-center text-center hover:border-blue-200 hover:shadow-md transition-all h-full">
+                  <div className="relative w-24 h-24 rounded-2xl overflow-hidden shrink-0 mb-4 ring-2 ring-slate-100">
+                    <Image src={f.img} alt={f.name} fill sizes="96px" className="object-cover" />
                   </div>
-                  <div>
-                    <span className="inline-block text-xs text-blue-700 font-bold uppercase tracking-wider bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-full mb-2">{f.badge}</span>
-                    <h3 className="text-xl font-black text-[#0F172A] tracking-tight mb-2 flex items-center gap-2">
-                      {f.name}
-                      <a href={f.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors" aria-label={`LinkedIn de ${f.name}`}>
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                      </a>
-                    </h3>
-                    <p className="text-sm text-slate-500 leading-relaxed mb-3">{f.desc}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {f.tags.map(t => (
-                        <span key={t} className="text-xs bg-slate-100 rounded-full px-3 py-1 text-slate-500 font-medium">{t}</span>
-                      ))}
-                    </div>
+                  <span className="inline-block text-xs text-blue-700 font-bold uppercase tracking-wider bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-full mb-2">{f.badge}</span>
+                  <h3 className="text-xl font-black text-[#0F172A] tracking-tight mb-1 flex items-center gap-2">
+                    {f.name}
+                    <a href={f.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors" aria-label={`LinkedIn de ${f.name}`}>
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                  </h3>
+                  <p className="text-sm text-slate-500 leading-relaxed mb-4">{f.desc}</p>
+                  <div className="flex flex-wrap justify-center gap-2 mt-auto">
+                    {f.tags.map(t => (
+                      <span key={t} className="text-xs bg-slate-100 rounded-full px-3 py-1 text-slate-500 font-medium">{t}</span>
+                    ))}
                   </div>
                 </div>
               </Reveal>
             ))}
           </div>
 
-          <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest mb-6">Equipo de investigación e implementación</p>
+          {/* Stats bar del equipo */}
+          <Reveal delay={0.15}>
+            <div className="flex bg-white border-2 border-blue-50 rounded-2xl p-5 shadow-lg shadow-blue-900/10 divide-x divide-slate-100 mb-12">
+              {[
+                { value: "+10", label: "Profesionales activos", gradient: "from-slate-800 to-slate-600" },
+                { value: "5", label: "Áreas técnicas", gradient: "from-blue-800 to-blue-600" },
+                { value: "2", label: "PhD(c) en IA", gradient: "from-indigo-600 to-blue-500" },
+                { value: "+50", label: "Proyectos B2B", gradient: "from-blue-600 to-indigo-400" },
+              ].map((s) => (
+                <div key={s.label} className="flex-1 text-center px-3">
+                  <p className={`text-2xl md:text-[28px] font-black bg-clip-text text-transparent bg-gradient-to-br ${s.gradient} tabular-nums leading-none mb-1.5`}>{s.value}</p>
+                  <p className="text-[9px] md:text-[10px] uppercase tracking-wider text-slate-500 leading-tight font-bold">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest mb-6">Más de 10 especialistas organizados en 5 áreas de ejecución</p>
           <Carousel items={teamMembers.map(m => ({ ...m, type: "team" as const }))} />
 
         </div>
@@ -498,17 +514,17 @@ export default function HomeV2() {
         <Reveal>
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-2xl md:text-3xl font-serif italic text-white/90 leading-relaxed mb-10">
-              &ldquo;Acceder a un equipo con estas capacidades reunidas normalmente requiere contratar cuatro perfiles distintos. ETIIA lo ofrece integrado desde el primer proyecto.&rdquo;
+              &ldquo;Lo que normalmente requiere armar un equipo de cero &mdash; estrategia, datos, modelos e integración &mdash; en ETIIA ya está operando. Más de 10 profesionales organizados para ejecutar desde el día uno.&rdquo;
             </p>
             <div className="flex flex-wrap justify-center gap-3 mb-10">
-              {["Negocio + estrategia", "Datos + ciencia", "Modelos + IA", "Ingeniería + integración"].map((pill) => (
+              {["Área de Estrategia", "Área de Ciencia de Datos", "Área de Ingeniería IA", "Área de Implementación", "Área de Diseño"].map((pill) => (
                 <span key={pill} className="inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-2 text-sm text-white/80 font-medium">
                   <span className="w-2 h-2 rounded-full bg-blue-400 shrink-0" />{pill}
                 </span>
               ))}
             </div>
             <p className="text-base text-white/50 font-medium">
-              La mayoría de los proyectos de IA fracasan cuando falta uno de estos cuatro.
+              La mayoría de los proyectos de IA fracasan cuando falta una de estas áreas.
             </p>
           </div>
         </Reveal>
@@ -581,7 +597,7 @@ export default function HomeV2() {
                 <div className="flex flex-col gap-5">
                   {[
                     "Empezamos por entender el problema antes de proponer tecnología.",
-                    "Un equipo donde negocio, datos y técnica hablan en sesión conjunta.",
+                    "Un equipo de más de 10 especialistas donde negocio, datos y técnica trabajan en sesión conjunta.",
                     "Diseñamos pensando en integración real desde el inicio.",
                     "Si la IA no es la mejor respuesta, lo decimos directamente.",
                   ].map((p) => (
@@ -609,7 +625,7 @@ export default function HomeV2() {
               <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white leading-tight mb-3">
                 ¿Tienes un proyecto<br />que podría involucrar IA?
               </h2>
-              <p className="text-slate-400 text-sm max-w-md">El diagnóstico inicial es el mejor punto de partida: claro, concreto, y sin compromisos previos.</p>
+              <p className="text-slate-400 text-sm max-w-md">Un equipo completo evalúa tu caso. Claro, concreto, y sin compromisos previos.</p>
             </div>
             <div className="flex flex-col gap-3 shrink-0 relative z-10">
               <Link href="?interes=diagnostico#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
