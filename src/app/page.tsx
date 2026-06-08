@@ -127,7 +127,7 @@ export default function HomeV2() {
               <div className="fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
                 <h1 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-                  Consultoría en Inteligencia Artificial B2B y Agentes Autónomos
+                  Partner Tecnológico B2B: Transformamos tu empresa con Inteligencia Artificial y Software a la medida.
                 </h1>
               </div>
               <p className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6 fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
