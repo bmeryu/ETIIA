@@ -15,10 +15,10 @@ const jakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://etiia.com"),
   title: {
-    template: "%s | ETIIA Consultoría IA B2B",
-    default: "Consultoría en Inteligencia Artificial B2B & Agentes IA | ETIIA",
+    template: "%s | ETIIA",
+    default: "Consultoría en Inteligencia Artificial B2B y Agentes Autónomos | ETIIA",
   },
-  description: "Consultoría B2B en Inteligencia Artificial. Implementamos Agentes Autónomos, Arquitecturas RAG y LLMs corporativos para maximizar el ROI. Agenda un diagnóstico.",
+  description: "Partner Tecnológico B2B: Transformamos tu empresa con Inteligencia Artificial y Software a la medida.",
   keywords: ["Consultoría Inteligencia Artificial B2B", "Implementación IA empresas", "Agentes IA Autónomos", "Sistemas RAG para empresas", "LLMs Corporativos", "Machine Learning B2B", "IA Chile Latam"],
   authors: [{ name: "Bernardita Mery" }, { name: "Pablo E. Olivares" }],
   creator: "ETIIA",
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Consultoría en Inteligencia Artificial B2B & Agentes IA | ETIIA",
-    description: "Conectamos tecnología de IA con KPIs de negocio reales. Implementación de sistemas RAG y automatización cognitiva B2B.",
+    title: "Consultoría en Inteligencia Artificial B2B y Agentes Autónomos | ETIIA",
+    description: "Partner Tecnológico B2B: Transformamos tu empresa con Inteligencia Artificial y Software a la medida.",
     url: "https://etiia.com",
     siteName: "ETIIA",
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'ETIIA Consultoría en Inteligencia Artificial' }],
@@ -55,8 +55,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Consultoría en Inteligencia Artificial B2B | ETIIA",
-    description: "Firma especializada en IA B2B. Conectamos tecnología con KPIs de negocio reales.",
+    title: "Consultoría en Inteligencia Artificial B2B y Agentes Autónomos | ETIIA",
+    description: "Partner Tecnológico B2B: Transformamos tu empresa con Inteligencia Artificial y Software a la medida.",
     images: ["/og-image.jpg"],
   },
 };
