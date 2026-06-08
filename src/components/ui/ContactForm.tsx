@@ -135,7 +135,7 @@ export function ContactForm() {
                             Procesando...
                         </>
                     ) : (
-                        "Contáctanos"
+                        "Conversemos"
                     )}
                 </Button>
             </form>
