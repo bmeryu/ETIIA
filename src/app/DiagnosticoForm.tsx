@@ -9,7 +9,7 @@ const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: stri
   diagnostico: {
     proyecto: "Quiero evaluar si mi proyecto tiene potencial para aplicar IA.",
     etapa: "exploracion",
-    ctaText: "Consultar Evaluación Gratuita",
+    ctaText: "Conversemos",
     isSpecific: false,
   },
   formacion: {
