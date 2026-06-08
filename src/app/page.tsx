@@ -119,7 +119,7 @@ export default function HomeV2() {
       />
 
       {/* ══════════ HERO ══════════ */}
-      <section className="pt-36 pb-20 bg-white bg-grid-light relative overflow-hidden" aria-label="Propuesta principal">
+      <section className="pt-36 pb-20 bg-white relative overflow-hidden" aria-label="Propuesta principal">
         <div className="hero-glow" aria-hidden="true" />
         <div className="max-w-5xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
