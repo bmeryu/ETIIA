@@ -34,11 +34,11 @@ const products = [
 ];
 
 const teamMembers = [
-  { name: "Estrategia & Dirección", role: "Liderazgo de proyectos", desc: "Más de 15 proyectos de transformación tecnológica liderados. Traduce objetivos de negocio en roadmaps técnicos accionables con hitos medibles y ROI concreto.", tags: ["Estrategia", "PMO", "ROI"] },
-  { name: "Ingeniería IA", role: "Desarrollo & Arquitectura", desc: "El equipo de ingeniería diseña, entrena y despliega los modelos y agentes que operan en producción. Cobertura full-stack: desde data pipelines hasta APIs en la nube.", tags: ["Python", "LLMs", "RAG", "APIs"] },
-  { name: "Ciencia de Datos", role: "Investigación aplicada · 2 PhD(c)", desc: "Dos candidatos a Doctor en Informática Aplicada lideran la investigación. Publicaciones académicas con aplicabilidad directa en procesos empresariales.", tags: ["Machine Learning", "Optimización", "Papers"] },
-  { name: "Implementación & Ops", role: "Integración técnica", desc: "Cierra la brecha entre el modelo y el sistema real. Integración certificada con ERPs, CRMs y flujos documentales del cliente.", tags: ["DevOps", "ERP", "Integración"] },
-  { name: "Diseño & Producto", role: "UX & Interfaces", desc: "Cada solución se diseña pensando en el usuario final, no solo en el algoritmo. Interfaces que los equipos realmente adoptan.", tags: ["UX", "Producto", "Adopción"] },
+  { name: "Estrategia & Dirección", role: "Liderazgo de proyectos", desc: "Más de 15 proyectos de transformación tecnológica liderados. Define qué se hace, en qué orden, y cuánto debería rentar cada etapa.", tags: ["Estrategia", "PMO", "ROI"] },
+  { name: "Ingeniería IA", role: "Desarrollo & Arquitectura", desc: "El equipo de ingeniería diseña, entrena y despliega los modelos y agentes que operan en producción. Desde la preparación de datos hasta la API que consume tu equipo.", tags: ["Python", "LLMs", "RAG", "APIs"] },
+  { name: "Ciencia de Datos", role: "Investigación aplicada · 2 PhD(c)", desc: "Dos candidatos a Doctor en Informática Aplicada lideran la investigación. Publican papers, pero que se usan en proyectos reales, con resultados sólidos.", tags: ["Machine Learning", "Optimización", "Papers"] },
+  { name: "Implementación & Ops", role: "Integración técnica", desc: "Conecta el modelo con el ERP, el CRM y los documentos que ya usa tu empresa. Sin que nada se rompa.", tags: ["DevOps", "ERP", "Integración"] },
+  { name: "Diseño & Producto", role: "UX & Interfaces", desc: "Si el equipo no lo usa, no sirve. Diseñamos interfaces que la gente adopta sin necesitar capacitación de 3 días.", tags: ["UX", "Producto", "Adopción"] },
 ];
 
 export default function HomeV2() {
@@ -58,7 +58,7 @@ export default function HomeV2() {
                 "name": "¿Cuál es la diferencia entre automatización tradicional y los Agentes IA de ETIIA?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "La automatización tradicional (ej. RPA) se rompe cuando cambian las reglas o formatos. En ETIIA implementamos Agentes de Inteligencia Artificial basados en LLMs corporativos que entienden contexto, toman micro-decisiones escalables y se adaptan a excepciones, conectándose directamente a los KPIs de negocio B2B."
+                  "text": "La automatización tradicional (ej. RPA) se rompe cuando cambian las reglas o formatos. En ETIIA implementamos Agentes de Inteligencia Artificial basados en LLMs corporativos que entienden contexto, deciden qué hacer sin que alguien los programe caso por caso. Si aparece algo raro, lo escalan. Si es rutina, lo resuelven solos."
                 }
               },
               {
@@ -66,7 +66,7 @@ export default function HomeV2() {
                 "name": "¿Qué es una arquitectura RAG y por qué ETIIA la implementa en empresas?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "RAG (Retrieval-Augmented Generation) es una arquitectura que conecta Modelos de Lenguaje (como GPT-4 o Claude) de forma segura con las bases de datos privadas de una empresa. ETIIA implementa RAG para asegurar que la IA genere respuestas precisas basadas 100% en la data corporativa interna, eliminando el riesgo de alucinaciones."
+                  "text": "RAG conecta un modelo de lenguaje con la información interna de tu empresa. En vez de inventar respuestas, el modelo consulta tus datos reales antes de responder. ETIIA lo implementa para que la IA trabaje solo con lo que tú tienes, no con lo que el modelo cree saber."
                 }
               },
               {
@@ -82,7 +82,7 @@ export default function HomeV2() {
                 "name": "¿Cuánto cuesta implementar un agente de IA en una empresa en Chile?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "ETIIA ofrece un diagnóstico inicial gratuito para evaluar la viabilidad técnica y comercial del proyecto. Los proyectos de implementación tienen una duración promedio de 6 a 16 semanas según su complejidad. Contamos con un portafolio de soluciones B2B en distintos rangos de inversión."
+                  "text": "El diagnóstico inicial es gratis. Te decimos si tu proyecto tiene sentido técnico y cuánto cuesta antes de que inviertas. Los proyectos van de 6 a 16 semanas."
                 }
               },
               {
@@ -137,7 +137,7 @@ export default function HomeV2() {
               </p>
 
               <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-                Antes de invertir en desarrollo, necesitas saber si tu problema es realmente un caso para IA, qué conviene hacer primero y qué no. Eso es exactamente lo que hacemos.
+                Antes de invertir en desarrollo, necesitas saber si tu problema es un caso para IA, qué hacer primero y qué no. Para eso es el diagnóstico.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-14 fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
@@ -193,7 +193,7 @@ export default function HomeV2() {
                 </div>
                 <h2 className="text-2xl font-black text-[#0F172A] tracking-tight mb-3">¿Tu problema es un caso real para IA?</h2>
                 <p className="text-sm text-slate-500 leading-relaxed mb-6">
-                  Evaluamos el potencial, los riesgos y el punto de partida correcto. Sin vender tecnología antes de entender tu contexto.
+                  Evaluamos si tiene sentido, qué puede salir mal y por dónde empezar. Sin vender tecnología antes de entender tu contexto.
                 </p>
                 <div className="bg-white border border-slate-200 rounded-xl p-4">
                   <p className="text-xs text-blue-700 font-bold mb-1 uppercase tracking-wider">+10 profesionales integrados desde el día uno</p>
@@ -269,13 +269,13 @@ export default function HomeV2() {
                   Diagnóstico inicial:<br />saber qué hacer<br />antes de hacer
                 </h2>
                 <p className="text-slate-500 leading-relaxed mb-10 text-lg">
-                  Muchas empresas pierden tiempo y dinero implementando IA donde no agrega valor real. Nuestro diagnóstico te da claridad concreta en menos de dos semanas.
+                  Implementar IA sin saber dónde conviene es caro. El diagnóstico te da claridad en menos de dos semanas.
                 </p>
               </Reveal>
               <div className="flex flex-col gap-6">
                 {[
                   { n: "1", title: "Revisión del problema y contexto", desc: "Analizamos el problema real detrás del síntoma: qué decisiones se toman, con qué datos, con qué frecuencia." },
-                  { n: "2", title: "Evaluación de viabilidad técnica", desc: "Determinamos qué enfoque de IA tiene sentido —o si no lo tiene— con honestidad y criterio técnico real." },
+                  { n: "2", title: "Evaluación de viabilidad técnica", desc: "Determinamos qué enfoque de IA tiene sentido. Si no lo tiene, te lo decimos." },
                   { n: "3", title: "Mapa de acción con prioridades", desc: "Recibes un documento claro: qué conviene hacer primero, qué no hacer, y por qué. Sin jerga innecesaria." },
                 ].map((step) => (
                   <Reveal key={step.n}>
@@ -331,7 +331,7 @@ export default function HomeV2() {
               El Nuevo Estándar
             </div>
             <p className="text-xl md:text-2xl text-slate-400 font-serif italic max-w-3xl mx-auto leading-relaxed mb-6">
-              &ldquo;Desarrollamos Agentes Autónomos B2B: Software que razona, se conecta a los sistemas de tu empresa y ejecuta flujos de trabajo completos de principio a fin, con puntos de control humano donde el riesgo o la responsabilidad lo exigen.&rdquo;
+              &ldquo;Desarrollamos agentes de IA que se conectan a tus sistemas y hacen el trabajo solos. Cuando hay riesgo o la decisión es importante, paran y preguntan.&rdquo;
             </p>
             <h2 className="text-2xl md:text-4xl font-black tracking-tight text-white leading-[1.1]">
               No instalamos &quot;chatbots&quot; genéricos.
@@ -442,7 +442,7 @@ export default function HomeV2() {
                 img: "/bernardita-nueva.jpg",
                 name: "Bernardita Mery",
                 badge: "Co-fundadora · CEO",
-                desc: "Chief Executive Officer de ETIIA. Ingeniera Comercial UC y Máster Ejecutivo en Inteligencia Artificial. Traduce los objetivos del negocio en decisiones tecnológicas concretas y modelos de rentabilidad.",
+                desc: "Chief Executive Officer de ETIIA. Ingeniera Comercial UC y Máster Ejecutivo en Inteligencia Artificial. Antes de definir qué tecnología usar, entiende qué necesita el negocio y cuánto debería rentar.",
                 tags: ["Inteligencia de Negocios", "Estrategia Comercial", "IA Aplicada"],
                 linkedin: "https://www.linkedin.com/in/bmeryu/"
               },
@@ -458,7 +458,7 @@ export default function HomeV2() {
                 img: "/diego.jpg",
                 name: "Diego Monsalves",
                 badge: "CTO · Ingeniería de Modelos",
-                desc: "Candidato a Doctor en Informática Aplicada. Es el motor algorítmico del equipo. Construye, entrena y optimiza los sistemas cognitivos y LLMs que le dan inteligencia a cada solución.",
+                desc: "Candidato a Doctor en Informática Aplicada. Construye y entrena los modelos. Si un LLM necesita entender tus documentos, responder a tus clientes o procesar tus datos, Diego lo arma.",
                 tags: ["Machine Learning", "Investigación IA", "LLMs"],
                 linkedin: "https://www.linkedin.com/in/505748216/"
               },
@@ -514,7 +514,7 @@ export default function HomeV2() {
         <Reveal>
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-2xl md:text-3xl font-serif italic text-white/90 leading-relaxed mb-10">
-              &ldquo;Lo que normalmente requiere armar un equipo de cero &mdash; estrategia, datos, modelos e integración &mdash; en ETIIA ya está operando. Más de 10 profesionales organizados para ejecutar desde el día uno.&rdquo;
+              &ldquo;Armar un equipo con estrategia, datos, modelos e integración desde cero toma meses. En ETIIA ya está operando. Más de 10 profesionales organizados para ejecutar desde el día uno.&rdquo;
             </p>
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               {["Área de Estrategia", "Área de Ciencia de Datos", "Área de Ingeniería IA", "Área de Implementación", "Área de Diseño"].map((pill) => (
@@ -552,7 +552,7 @@ export default function HomeV2() {
               <div className="flex-1">
                   <h3 className="text-xl font-black text-white tracking-tight mb-2">UpSkilling & ReSkilling en IA</h3>
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  Capacitamos a tu equipo para que adopte las herramientas con criterio de negocio. IA Generativa, automatización inteligente y análisis de datos — in-company.
+                  Capacitamos equipos para que usen IA con criterio, alineado a tu negocio. En tu oficina, con tus datos y tus procesos.
                 </p>
               </div>
               <Link href="?interes=formacion#diagnostico" className="shrink-0 inline-flex items-center gap-2 bg-white text-[#0B1121] font-bold text-sm px-6 py-3 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20 relative z-10 group">
