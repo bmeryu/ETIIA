@@ -142,10 +142,7 @@ export default function HomeV2() {
 
               <div className="flex flex-wrap gap-4 mb-14 fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
                 <Link href="?interes=diagnostico#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
-                  Consultar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href="/#equipo" className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 text-[#0F172A] px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-slate-50">
-                  Conocer el equipo
+                  Conversemos <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
 
@@ -628,11 +625,8 @@ export default function HomeV2() {
               <p className="text-slate-400 text-sm max-w-md">Un equipo completo evalúa tu caso. Claro, concreto, y sin compromisos previos.</p>
             </div>
             <div className="flex flex-col gap-3 shrink-0 relative z-10">
-              <Link href="?interes=diagnostico#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
-                Consultar Evaluación Gratuita <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link href="#equipo" className="inline-flex items-center justify-center border border-slate-700 text-slate-300 px-8 py-4 rounded-xl text-sm hover:bg-slate-800 hover:text-white transition-colors font-medium">
-                Ver el equipo
+              <Link href="?interes=diagnostico#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
+                Conversemos <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
