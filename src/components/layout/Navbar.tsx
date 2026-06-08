@@ -208,7 +208,7 @@ export default function Navbar() {
         <div className="hidden md:block">
           {pathname !== "/contacto" && (
             <Link href="/contacto">
-              <Button variant={pathname.startsWith("/insights") && !isScrolled && !isMobileMenuOpen ? "light" : "dark"}>Contáctanos</Button>
+              <Button variant={pathname.startsWith("/insights") && !isScrolled && !isMobileMenuOpen ? "light" : "dark"}>Conversemos</Button>
             </Link>
           )}
         </div>
@@ -255,7 +255,7 @@ export default function Navbar() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
                       "text-lg transition-all py-1",
-                      link.name === "Contáctanos"
+                      link.name === "Conversemos"
                         ? "bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-5 py-2 rounded-full mt-2"
                         : "font-medium text-slate-700 hover:text-blue-700"
                     )}
@@ -267,7 +267,7 @@ export default function Navbar() {
             ))}
             {pathname !== "/contacto" && (
               <Link href="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="dark">Contáctanos</Button>
+                <Button variant="dark">Conversemos</Button>
               </Link>
             )}
           </motion.nav>
