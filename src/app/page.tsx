@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, XCircle, Calendar } from "lucide-react";
+import { ArrowRight, CheckCircle2, XCircle, Calendar, Presentation, Database, TrendingUp, Code2 } from "lucide-react";
 import { Reveal, FadeIn, ScaleIn } from "@/components/ui/Reveal";
 import DiagnosticoForm from "./DiagnosticoForm";
 import { Carousel } from "./Carousel";
@@ -131,13 +131,13 @@ export default function HomeV2() {
                 </h1>
               </div>
               <p className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6 fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-                  Primero te decimos<br />
-                  <span className="text-gradient-blue">si tiene sentido</span><br />
-                  aplicar IA
+                  Transformamos tu empresa<br />
+                  con <span className="text-gradient-blue">Inteligencia Artificial</span><br />
+                  y Software a la medida
               </p>
 
               <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-                Transformamos tu empresa con Inteligencia Artificial y software a la medida. Antes de invertir en desarrollo, necesitas saber si tu problema es un caso para IA, qué hacer primero y qué no. Para eso es el diagnóstico.
+                Primero te decimos si tiene sentido aplicar IA. Antes de invertir en desarrollo, necesitas saber si tu problema es un caso para IA, qué hacer primero y qué no.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-14 fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
@@ -188,7 +188,7 @@ export default function HomeV2() {
                 <div className="inline-flex items-center gap-2 text-xs text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full mb-6 font-bold uppercase tracking-wider">
                   ✦ Diagnóstico inicial
                 </div>
-                <h2 className="text-2xl font-black text-[#0F172A] tracking-tight mb-3">¿Tu problema es un caso real para IA?</h2>
+                <h2 className="text-2xl font-black text-[#0F172A] tracking-tight mb-3">¿Tu problema necesita IA, software o rediseñar procesos?</h2>
                 <p className="text-sm text-slate-500 leading-relaxed mb-6">
                   Evaluamos si tiene sentido, qué puede salir mal y por dónde empezar. Sin vender tecnología antes de entender tu contexto.
                 </p>
@@ -207,50 +207,86 @@ export default function HomeV2() {
         </div>
 
         {/* ══════════ TRUST & TECH BANDS ══════════ */}
-        <div className="border-y border-slate-100 bg-white/50 py-12 mt-20 relative overflow-hidden flex flex-col gap-12">
-          
-          {/* Trust Band */}
-          <div className="max-w-5xl mx-auto px-6 text-center relative z-20 w-full">
-            <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-6">Nuestros sistemas se integran de forma nativa con</p>
-            <div className="flex flex-wrap justify-center gap-10 md:gap-16 items-center opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/sap.svg" alt="SAP" width="40" height="40" className="h-8 md:h-10 w-auto cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/salesforce.svg" alt="Salesforce" width="40" height="40" className="h-8 md:h-10 w-auto cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonaws.svg" alt="AWS" width="40" height="40" className="h-8 md:h-9 w-auto cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300 mt-2" />
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoft.svg" alt="Microsoft" width="40" height="40" className="h-7 md:h-8 w-auto cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/hubspot.svg" alt="HubSpot" width="40" height="40" className="h-7 md:h-9 w-auto cursor-default hover:scale-110 hover:-translate-y-1 transition-all duration-300" />
+        <div className="border-y border-slate-100 bg-slate-50/30 py-5 mt-16 relative overflow-hidden">
+          <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 relative z-20 w-full">
+            
+            {/* Integrations */}
+            <div className="flex flex-wrap items-center justify-center gap-4 text-slate-400">
+              <span className="text-[10px] uppercase tracking-wider font-extrabold text-slate-400">Integración nativa</span>
+              <div className="flex items-center gap-6 opacity-40 grayscale">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/sap.svg" alt="SAP" width="24" height="24" className="h-5 w-auto" />
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/salesforce.svg" alt="Salesforce" width="24" height="24" className="h-5 w-auto" />
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonaws.svg" alt="AWS" width="24" height="24" className="h-4 w-auto" />
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoft.svg" alt="Microsoft" width="24" height="24" className="h-4 w-auto" />
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/hubspot.svg" alt="HubSpot" width="24" height="24" className="h-4 w-auto" />
+              </div>
             </div>
+
+            <div className="hidden md:block w-px h-6 bg-slate-200"></div>
+
+            {/* Tech stack */}
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-slate-400 font-medium">
+              <span className="text-[10px] uppercase tracking-wider font-extrabold text-slate-400">Tecnología</span>
+              <span className="text-slate-500 font-semibold">OpenAI GPT</span>
+              <span className="text-slate-300">•</span>
+              <span className="text-slate-500 font-semibold">Anthropic Claude</span>
+              <span className="text-slate-300">•</span>
+              <span className="text-slate-500 font-semibold">Meta Llama</span>
+              <span className="text-slate-300">•</span>
+              <span className="text-slate-500 font-semibold">RAG & Agentes</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ CAPACIDADES / SERVICIOS ══════════ */}
+      <section className="py-24 bg-white" id="servicios">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center md:text-left mb-16">
+            <Reveal>
+              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Nuestras Capacidades</p>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#0F172A] leading-tight">
+                Líneas de Servicio B2B
+              </h2>
+            </Reveal>
           </div>
 
-          {/* Separator */}
-          <div className="w-24 h-px bg-slate-200 mx-auto"></div>
-
-          {/* Tech Ticker */}
-          <div className="max-w-5xl mx-auto px-6 text-center relative z-20 w-full">
-            <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-6">Tecnologías que dominamos</p>
-            <ul aria-label="Tecnologías principales" className="flex flex-wrap justify-center gap-x-6 gap-y-4 md:gap-x-8 items-center text-slate-400 font-medium w-full">
-              {[
-                { category: 'Modelos', items: [
-                  <span key="gpt"><span className="font-bold text-slate-600">OpenAI</span> GPT</span>,
-                  <span key="claude"><span className="font-bold text-slate-600">Anthropic</span> Claude</span>,
-                  <span key="llama"><span className="font-bold text-slate-600">Meta</span> Llama</span>
-                ] },
-                { category: 'Cloud', items: ['AWS', 'GCP', 'Azure'] },
-                { category: 'Arquitectura', items: ['RAG', 'LangChain'] },
-              ].map((group, gIdx) => (
-                <li key={group.category} className="flex flex-wrap justify-center items-center gap-3 md:gap-6">
-                  <span className="text-[10px] font-bold uppercase text-slate-400 tracking-widest border border-slate-200 px-2 py-0.5 rounded">{group.category}</span>
-                  <div className="flex items-center gap-3 md:gap-6">
-                    {group.items.map((tech, i) => (
-                      <span key={i} className="flex items-center gap-3 md:gap-6 group">
-                        <span className="inline-block cursor-default transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-0.5 group-hover:text-slate-800">{tech}</span>
-                        {i < group.items.length - 1 && <span className="w-1 h-1 rounded-full bg-slate-300" aria-hidden="true" />}
-                      </span>
-                    ))}
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+            {[
+              {
+                icon: <Presentation className="w-6 h-6 text-blue-600" />,
+                title: "Estrategia y Gobernanza",
+                desc: "Alineamos la Inteligencia Artificial con los objetivos estratégicos de tu negocio. Diseñamos la hoja de ruta de adopción y establecemos políticas de gobernanza que garantizan la seguridad de tus datos, la privacidad de la información y el cumplimiento regulatorio."
+              },
+              {
+                icon: <Database className="w-6 h-6 text-blue-600" />,
+                title: "Ingeniería de Datos y Cloud",
+                desc: "Conectamos, centralizamos y organizamos las fuentes de información de tu empresa (VPC, ERP, CRM). Diseñamos arquitecturas seguras en la nube para asegurar que tus datos estén limpios, accesibles y listos para ser utilizados."
+              },
+              {
+                icon: <TrendingUp className="w-6 h-6 text-blue-600" />,
+                title: "Analítica Avanzada y Modelos Predictivos",
+                desc: "Convertimos tus datos históricos en predicciones estratégicas y decisiones automáticas. Desarrollamos modelos a la medida para anticipar comportamientos de negocio y diseñamos paneles interactivos para la toma de decisiones."
+              },
+              {
+                icon: <Code2 className="w-6 h-6 text-blue-600" />,
+                title: "Desarrollo de Software e IA a Medida",
+                desc: "Diseñamos y desarrollamos soluciones personalizadas que se integran directamente con tus sistemas actuales (SAP, Salesforce, etc.). Creamos flujos de automatización inteligentes adaptados exactamente a las reglas y lógica de tu operación."
+              }
+            ].map((s, idx) => (
+              <Reveal key={s.title} delay={0.08 * (idx + 1)}>
+                <div className="bg-slate-50/50 border border-slate-100 rounded-2xl p-7 lg:p-8 hover:bg-white hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 h-full flex flex-col gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                    {s.icon}
                   </div>
-                  {gIdx < 2 && <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-slate-200 ml-1 md:ml-2" aria-hidden="true" />}
-                </li>
-              ))}
-            </ul>
+                  <div>
+                    <h3 className="text-lg font-black text-[#0F172A] tracking-tight mb-2">{s.title}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{s.desc}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -258,63 +294,57 @@ export default function HomeV2() {
       {/* ══════════ DIAGNÓSTICO + FORMULARIO ══════════ */}
       <section className="py-24 bg-slate-50 border-y border-slate-100" id="diagnostico">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            <div>
-              <Reveal>
-                <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Oferta de entrada</p>
-                <h2 className="text-4xl font-black tracking-tight text-[#0F172A] leading-tight mb-6">
-                  Diagnóstico inicial:<br />saber qué hacer<br />antes de hacer
-                </h2>
-                <p className="text-slate-500 leading-relaxed mb-10 text-lg">
-                  Implementar IA sin saber dónde conviene es caro. El diagnóstico te da claridad en menos de dos semanas.
-                </p>
-              </Reveal>
-              <div className="flex flex-col gap-6">
-                {[
-                  { n: "1", title: "Revisión del problema y contexto", desc: "Analizamos el problema real detrás del síntoma: qué decisiones se toman, con qué datos, con qué frecuencia." },
-                  { n: "2", title: "Evaluación de viabilidad técnica", desc: "Determinamos qué enfoque de IA tiene sentido. Si no lo tiene, te lo decimos." },
-                  { n: "3", title: "Mapa de acción con prioridades", desc: "Recibes un documento claro: qué conviene hacer primero, qué no hacer, y por qué. Sin jerga innecesaria." },
-                ].map((step) => (
-                  <Reveal key={step.n}>
-                    <div className="flex gap-5">
-                      <div className="w-8 h-8 shrink-0 flex items-center justify-center rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold">{step.n}</div>
-                      <div>
-                        <h4 className="text-sm font-bold text-[#0F172A] mb-1">{step.title}</h4>
-                        <p className="text-sm text-slate-500 leading-relaxed">{step.desc}</p>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
 
+            {/* ── Columna izquierda: contexto y confianza ── */}
+            <div className="flex flex-col gap-8">
+              <Reveal>
+                <div>
+                  <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Conversemos</p>
+                  <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#0F172A] leading-tight mb-6">
+                    Cuéntanos tu proyecto.<br />Te decimos por dónde empezar.
+                  </h2>
+                  <p className="text-slate-500 leading-relaxed text-base mb-4">
+                    Agenda una sesión de exploración inicial. Evaluamos el impacto estratégico y la viabilidad técnica antes de sugerir cualquier inversión en desarrollo.
+                  </p>
+                  <p className="text-slate-500 leading-relaxed text-base">
+                    Analizamos tus necesidades de Inteligencia Artificial, arquitectura de software y rediseño de procesos para entregarte un plan de acción con estimaciones claras de plazos, costos y retorno esperado.
+                  </p>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.2}>
+                <div className="border-t border-slate-200 pt-6">
+                  <p className="text-sm text-slate-500 mb-3">¿Prefieres agendar una reunión directamente?</p>
+                  <a href="https://calendly.com/etiia" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 text-[#0F172A] border border-slate-200 hover:border-blue-300 font-bold px-6 py-3 rounded-xl transition-all hover:bg-white hover:shadow-sm text-sm">
+                    Agendar reunión de 20 min <Calendar className="w-4 h-4 text-blue-600" />
+                  </a>
+                </div>
+              </Reveal>
             </div>
 
-            <Reveal delay={0.2}>
-              <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
-                <h3 className="text-2xl font-black tracking-tight text-[#0F172A] mb-2">Agendar Diagnóstico</h3>
-                <p className="text-sm text-slate-500 mb-8">Cuéntanos brevemente tu proyecto. Te contactamos en 24 horas hábiles para agendar la sesión inicial.</p>
+            {/* ── Columna derecha: formulario ── */}
+            <Reveal delay={0.15}>
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm sticky top-28">
                 <DiagnosticoForm />
-                
-                <div className="mt-5 flex flex-col sm:flex-row items-center sm:items-start gap-3 bg-emerald-50/50 border border-emerald-100/80 rounded-xl p-3 w-full text-left">
+
+                {/* Privacidad Corporativa (Compacto) */}
+                <div className="mt-5 flex items-start gap-3 bg-emerald-50/50 border border-emerald-100 rounded-xl p-3 text-left">
                   <div className="bg-emerald-100 p-1.5 rounded-lg text-emerald-700 shrink-0 mt-0.5">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider mb-0.5">Privacidad Corporativa</p>
-                    <p className="text-[11px] text-emerald-600/90 leading-relaxed">
-                      Datos encriptados. No entrenamos modelos públicos con la información confidencial de nuestros clientes.
+                    <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mb-0.5">Privacidad Corporativa</p>
+                    <p className="text-[11px] text-emerald-600/90 leading-relaxed font-medium">
+                      No entrenamos modelos públicos con la información confidencial de tu empresa.
                     </p>
                   </div>
                 </div>
-
-                <div className="mt-6 pt-6 border-t border-slate-100 text-center">
-                  <p className="text-sm text-slate-500 mb-3">¿Prefieres no esperar 24 horas?</p>
-                  <a href="https://calendly.com/etiia" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 w-full text-[#0F172A] border border-slate-200 hover:border-blue-300 font-bold px-6 py-3.5 rounded-xl transition-all hover:bg-slate-50 hover:shadow-sm">
-                    Agendar reunión directa (20 min) <Calendar className="w-4 h-4 text-blue-600" />
-                  </a>
-                </div>
               </div>
             </Reveal>
+
           </div>
         </div>
       </section>

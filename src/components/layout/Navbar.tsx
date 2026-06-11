@@ -12,6 +12,32 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { name: "Inicio", href: "/" },
   { 
+    name: "Servicios", 
+    href: "/servicios",
+    megaMenuTheme: "blue",
+    megaMenu: [
+      {
+        title: "Consultoría & Estrategia",
+        items: [
+          { name: "Estrategia y Gobernanza", desc: "Hojas de ruta, privacidad y seguridad", href: "/servicios#estrategia" }
+        ]
+      },
+      {
+        title: "Ingeniería & Analítica",
+        items: [
+          { name: "Ingeniería de Datos y Cloud", desc: "Centralización y pipelines seguros", href: "/servicios#datos" },
+          { name: "Analítica Avanzada", desc: "Modelos predictivos y dashboards BI", href: "/servicios#analitica" }
+        ]
+      },
+      {
+        title: "Desarrollo e IA",
+        items: [
+          { name: "Desarrollo e IA a Medida", desc: "Integraciones de software a la medida", href: "/servicios#a-medida" }
+        ]
+      }
+    ]
+  },
+  { 
     name: "Soluciones de IA", 
     href: "/demos",
     megaMenuTheme: "blue",
@@ -70,7 +96,7 @@ const navLinks = [
       {
         title: "Recursos B2B",
         items: [
-          { name: "UpSkilling y Formación", desc: "Entrena a tu equipo interno.", href: "/servicios#formacion" },
+          { name: "UpSkilling y Formación", desc: "Entrena a tu equipo interno.", href: "/servicios#estrategia" },
           { name: "Desarrollo a Medida", desc: "Soluciones y arquitecturas RAG.", href: "/servicios#a-medida" }
         ]
       }
