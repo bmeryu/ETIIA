@@ -25,7 +25,7 @@ const navLinks = [
       {
         title: "Ingeniería & Analítica",
         items: [
-          { name: "Ingeniería de Datos y Cloud", desc: "Centralización y pipelines seguros", href: "/servicios#datos" },
+          { name: "Arquitectura de Datos e Infraestructura Cloud", desc: "Centralización y pipelines seguros", href: "/servicios#datos" },
           { name: "Analítica Avanzada", desc: "Modelos predictivos y dashboards BI", href: "/servicios#analitica" }
         ]
       },

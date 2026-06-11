@@ -261,7 +261,7 @@ export default function HomeV2() {
               },
               {
                 icon: <Database className="w-6 h-6 text-blue-600" />,
-                title: "Ingeniería de Datos y Cloud",
+                title: "Arquitectura de Datos e Infraestructura Cloud",
                 desc: "Conectamos, centralizamos y organizamos las fuentes de información de tu empresa (VPC, ERP, CRM). Diseñamos arquitecturas seguras en la nube para asegurar que tus datos estén limpios, accesibles y listos para ser utilizados."
               },
               {

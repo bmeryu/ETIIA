@@ -44,8 +44,8 @@ const servicesList = [
   {
     id: "datos",
     num: "02",
-    title: "Arquitectura de Datos e Infraestructura Cloud",
-    tagline: "Ingeniería de Datos y Cloud",
+    title: "Ingeniería de Datos y Cloud",
+    tagline: "Arquitectura de Datos e Infraestructura Cloud",
     desc: "Sin datos limpios y accesibles, cualquier modelo falla. Conectamos tus fuentes de información (ERP, CRM, bases heredadas), diseñamos la arquitectura de almacenamiento seguro y automatizamos los flujos de carga para que la información esté lista cuando se necesite.",
     icon: Database,
     queAbarca: [
