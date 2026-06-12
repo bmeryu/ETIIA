@@ -127,31 +127,34 @@ export default function HomeV2() {
               <div className="fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
                 <h1 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-                  Partner Tecnológico B2B
+                  Consultoría en Inteligencia Artificial B2B
                 </h1>
               </div>
               <p className="text-5xl md:text-[3.25rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6 fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-                  Transformamos tu empresa<br />
-                  con <span className="text-gradient-blue">Inteligencia Artificial</span><br />
-                  y Software a la medida
+                  Lideramos proyectos de IA
+                  desde la <span className="text-gradient-blue">lógica de negocio</span>,<br />
+                  no desde la tecnología.
               </p>
 
               <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-                Primero te decimos si tiene sentido aplicar IA. Antes de invertir en desarrollo, necesitas saber si tu problema es un caso para IA, qué hacer primero y qué no.
+                Nuestra CEO dirigió áreas de Inteligencia de Negocios y Marketing en educación de postgrado, donde incrementó ventas anuales en un 10% con decisiones basadas en datos. Esa experiencia define cómo evaluamos cada proyecto.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-14 fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
                 <Link href="?interes=diagnostico#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
-                  Conversemos <ArrowRight className="w-4 h-4" />
+                  Evaluar mi proyecto <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="/demos" className="inline-flex items-center gap-2 text-slate-600 hover:text-[#0F172A] border border-slate-200 hover:border-slate-300 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5">
+                  Ver soluciones en acción
                 </Link>
               </div>
 
               {/* Stats compactos — visible solo en mobile, arriba del fold */}
               <div className="flex md:hidden justify-start gap-6 mb-10 fade-in-up" style={{ animationDelay: '0.35s', animationFillMode: 'both' }}>
                 {[
-                  { value: "+15", label: "Años exp.", gradient: "from-slate-800 to-slate-600" },
-                  { value: "+50", label: "Proyectos B2B", gradient: "from-blue-800 to-blue-600" },
-                  { value: "Gratis", label: "Diagnóstico", gradient: "from-indigo-500 to-blue-400" },
+                  { value: "+10%", label: "Ventas anuales", gradient: "from-blue-800 to-blue-600" },
+                  { value: "+50", label: "Proyectos B2B", gradient: "from-slate-800 to-slate-600" },
+                  { value: "6–16", label: "Sem. promedio", gradient: "from-indigo-500 to-blue-400" },
                 ].map((s) => (
                   <div key={s.label} className="text-center">
                     <p className={`text-2xl font-black bg-clip-text text-transparent bg-gradient-to-br ${s.gradient} tabular-nums leading-none mb-1`}>{s.value}</p>
@@ -171,9 +174,9 @@ export default function HomeV2() {
                 className="flex bg-white border-2 border-blue-50 rounded-2xl p-4 shadow-xl shadow-blue-900/10 divide-x divide-slate-100 relative z-20 origin-center"
               >
                 {[
-                  { value: "+15", label: "Años experiencia", gradient: "from-slate-800 to-slate-600" },
-                  { value: "+50", label: "Proyectos B2B", gradient: "from-blue-800 to-blue-600" },
-                  { value: "Gratis", label: "Diagnóstico", gradient: "from-indigo-500 to-blue-400" },
+                  { value: "+10%", label: "Ventas anuales", gradient: "from-blue-800 to-blue-600" },
+                  { value: "+50", label: "Proyectos B2B", gradient: "from-slate-800 to-slate-600" },
+                  { value: "6–16", label: "Semanas promedio", gradient: "from-indigo-500 to-blue-400" },
                 ].map((s) => (
                   <div key={s.label} className="flex-1 text-center px-2">
                     <p className={`text-[26px] font-black bg-clip-text text-transparent bg-gradient-to-br ${s.gradient} tabular-nums leading-none mb-1.5`}>{s.value}</p>
@@ -185,21 +188,20 @@ export default function HomeV2() {
               <FadeIn delay={0.35}>
 
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-sm">
-                <div className="inline-flex items-center gap-2 text-xs text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full mb-6 font-bold uppercase tracking-wider">
-                  ✦ Diagnóstico inicial
+                <div className="flex items-center gap-2 mb-5">
+                  <div className="w-2 h-2 rounded-full bg-blue-600" />
+                  <p className="text-xs text-blue-700 font-bold uppercase tracking-wider">Trayectoria que respalda</p>
                 </div>
-                <h2 className="text-2xl font-black text-[#0F172A] tracking-tight mb-3">¿Tu problema necesita IA, software o rediseñar procesos?</h2>
-                <p className="text-sm text-slate-500 leading-relaxed mb-6">
-                  Evaluamos si tiene sentido, qué puede salir mal y por dónde empezar. Sin vender tecnología antes de entender tu contexto.
+                <p className="text-[15px] text-[#0F172A] font-medium leading-relaxed mb-6">
+                  Antes de fundar ETIIA, nuestra CEO lideró áreas de <strong>Inteligencia de Negocios</strong> y <strong>Marketing</strong> en el sector de educación de postgrado — donde cada decisión de inversión se justificaba con datos, no con intuición.
                 </p>
-                <div className="bg-white border border-slate-200 rounded-xl p-4">
-                  <p className="text-xs text-blue-700 font-bold mb-1 uppercase tracking-wider">+10 profesionales integrados desde el día uno</p>
-                  <p className="text-sm text-[#0F172A] font-medium">Estrategia · Datos · Ingeniería IA · Implementación · Diseño</p>
+                <div className="bg-white border border-slate-200 rounded-xl p-4 mb-5">
+                  <p className="text-xs text-slate-500 font-bold mb-2 uppercase tracking-wider">Resultado directo de esa gestión</p>
+                  <p className="text-sm text-[#0F172A] font-semibold">Incremento del 10% en ventas anuales con decisiones basadas en datos e inteligencia comercial aplicada.</p>
                 </div>
-                <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-3">
-                  <span className="text-2xl font-black text-[#0F172A]">6–16</span>
-                  <p className="text-xs text-slate-400 leading-tight">semanas es la duración<br />promedio de un proyecto</p>
-                </div>
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  Esa mentalidad — <em>primero el problema de negocio, después la tecnología</em> — es la que aplicamos en cada proyecto de IA que evaluamos.
+                </p>
               </div>
               </FadeIn>
             </div>
@@ -432,22 +434,7 @@ export default function HomeV2() {
         </div>
       </section>
 
-      {/* ══════════ B2B QUOTE ══════════ */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <Reveal>
-            <p className="text-2xl md:text-3xl font-serif italic text-slate-700 leading-relaxed mb-8">
-              &ldquo;No vendemos promesas. Tenemos soluciones de IA funcionando que puedes probar ahora mismo. Atención al cliente, retail, contabilidad, legal y más.&rdquo;
-            </p>
-            <Link
-              href="/demos"
-              className="inline-flex items-center gap-2 text-blue-700 border border-blue-200 bg-blue-50 hover:bg-blue-100 hover:border-blue-300 font-bold text-sm px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5"
-            >
-              Ver el catálogo de soluciones <ArrowRight className="w-4 h-4" />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+
 
             {/* ══════════ EQUIPO ══════════ */}
       <section className="py-24 bg-slate-50 border-y border-slate-100" id="equipo">
