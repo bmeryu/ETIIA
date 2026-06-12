@@ -136,7 +136,7 @@ export default function HomeV2() {
           </p>
 
           <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-2xl mx-auto fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-            Primero te decimos si tiene sentido aplicar IA. Antes de invertir en desarrollo, necesitas saber si tu problema es un caso para IA, qué hacer primero y qué no.
+            Evaluamos tu caso antes de proponer cualquier solución. Recibes un plan de acción con prioridades, costos estimados y retorno esperado — para decidir con claridad, no con presión.
           </p>
 
           <div className="flex justify-center gap-4 mb-14 fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
