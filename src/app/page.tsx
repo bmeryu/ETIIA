@@ -1,44 +1,204 @@
 "use client";
 
 import Image from "next/image";
+import { useState, type MouseEvent } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, XCircle, Calendar, Presentation, Database, TrendingUp, Code2 } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeDollarSign,
+  BellRing,
+  Calendar,
+  CheckCircle2,
+  ClipboardCheck,
+  Database,
+  FileText,
+  Hammer,
+  MessageCircle,
+  ShieldCheck,
+  TrendingUp,
+  Workflow,
+} from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import DiagnosticoForm from "./DiagnosticoForm";
 import { Carousel } from "./Carousel";
 
+const WORD_CLOUD_IMAGE = "/nube-dolores-etiia.png?v=22";
+const MAGNIFIER_SIZE = 168;
+const MAGNIFIER_ZOOM = 1.75;
+
+function WordCloudMagnifier() {
+  const [lens, setLens] = useState({
+    active: false,
+    x: 0,
+    y: 0,
+    bgX: 0,
+    bgY: 0,
+    bgWidth: 0,
+    bgHeight: 0,
+  });
+
+  const handleMove = (event: MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = Math.max(0, Math.min(event.clientX - rect.left, rect.width));
+    const y = Math.max(0, Math.min(event.clientY - rect.top, rect.height));
+
+    setLens({
+      active: true,
+      x,
+      y,
+      bgX: -(x * MAGNIFIER_ZOOM - MAGNIFIER_SIZE / 2),
+      bgY: -(y * MAGNIFIER_ZOOM - MAGNIFIER_SIZE / 2),
+      bgWidth: rect.width * MAGNIFIER_ZOOM,
+      bgHeight: rect.height * MAGNIFIER_ZOOM,
+    });
+  };
+
+  return (
+    <div
+      className="relative cursor-zoom-in"
+      onMouseEnter={handleMove}
+      onMouseMove={handleMove}
+      onMouseLeave={() => setLens((current) => ({ ...current, active: false }))}
+    >
+      <Image
+        src={WORD_CLOUD_IMAGE}
+        alt="Nube de señales antes del Blueprint ETIIA"
+        width={1416}
+        height={738}
+        sizes="(max-width: 640px) 760px, (max-width: 1024px) 100vw, 1152px"
+        className="block h-auto w-full select-none"
+        draggable={false}
+      />
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute hidden rounded-full border border-blue-200 bg-white ring-4 ring-white/85 shadow-[0_18px_50px_-22px_rgba(15,23,42,0.75)] transition-opacity duration-150 lg:block ${lens.active ? "opacity-100" : "opacity-0"}`}
+        style={{
+          width: MAGNIFIER_SIZE,
+          height: MAGNIFIER_SIZE,
+          left: lens.x,
+          top: lens.y,
+          transform: "translate(-50%, -50%)",
+          backgroundImage: `url(${WORD_CLOUD_IMAGE})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: `${lens.bgWidth}px ${lens.bgHeight}px`,
+          backgroundPosition: `${lens.bgX}px ${lens.bgY}px`,
+        }}
+      />
+    </div>
+  );
+}
 const products = [
-  {
-    nombre: "AtendeAI",
-    slug: "atendeai",
-    problema: "Tu equipo pasa horas respondiendo las mismas preguntas de clientes una y otra vez.",
-    desc: "Un agente que atiende, responde, agenda y genera documentos solo. Sin que nadie tenga que intervenir.",
-    industria: "Servicios B2B",
-    isAgent: true,
-  },
   {
     nombre: "VentaAI",
     slug: "ventaai",
-    problema: "Tus clientes compran una vez y no vuelven, aunque tú tienes más cosas que les podrían servir.",
-    desc: "Un motor que detecta qué le conviene ofrecer a cada cliente y lanza la campaña automáticamente.",
-    industria: "Retail / eCommerce",
+    problema: "Hay clientes con potencial de recompra, pero hoy nadie prioriza a quién llamar ni qué ofrecer.",
+    desc: "Demo de motor comercial que detecta oportunidades de cross-sell y retención con impacto medible en ingresos.",
+    industria: "Comercial / Retención",
+  },
+  {
+    nombre: "AtendeAI",
+    slug: "atendeai",
+    problema: "El equipo destina horas a responder consultas repetidas y las oportunidades se enfrían en la espera.",
+    desc: "Demo de agente que atiende, responde y deriva cuando la decisión requiere criterio humano.",
+    industria: "Atención / Operación",
+    isAgent: true,
   },
   {
     nombre: "FacturAI",
     slug: "facturai",
-    problema: "Alguien en tu empresa pasa horas ingresando facturas a mano en el sistema.",
-    desc: "Lee las facturas, las cruza con el banco y las registra sola. Sin que nadie las toque.",
-    industria: "Finanzas / Contabilidad",
+    problema: "La operación pierde tiempo y control cuando documentos críticos se ingresan a mano.",
+    desc: "Demo de lectura, validación y conciliación para estimar ahorro en horas, errores y costo por transacción.",
+    industria: "Backoffice / Finanzas",
     isAgent: true,
   },
 ];
 
+const funnelSteps = [
+  {
+    icon: <ClipboardCheck className="w-6 h-6 text-blue-600" />,
+    fase: "1",
+    title: "Diagnóstico gratis",
+    price: "$0",
+    desc: "Si la conversación muestra una oportunidad real, hacemos un diagnóstico inicial para ordenar valor, factibilidad y siguiente paso.",
+    deliverable: "Veredicto ejecutivo: sí/no, valor en juego, tipo de solución y recomendación.",
+  },
+  {
+    icon: <FileText className="w-6 h-6 text-blue-600" />,
+    fase: "2",
+    title: "Blueprint ETIIA",
+    price: "Fee fijo",
+    desc: "El producto central: un documento ejecutable del proyecto, con alcance, costos, plazos, riesgos y ROI. Se cobra por alcance cerrado, no por hora.",
+    deliverable: "Documento + presentación para que el dueño pueda decidir inversión.",
+  },
+  {
+    icon: <Hammer className="w-6 h-6 text-blue-600" />,
+    fase: "3",
+    title: "Implementación opcional",
+    price: "Si conviene",
+    desc: "Con el Blueprint en la mano, lo puede ejecutar ETIIA, tu equipo interno o una empresa de tu confianza.",
+    deliverable: "El Blueprint es tuyo: lo puedes ejecutar con ETIIA, con tu equipo o con otro proveedor.",
+  },
+];
+
+const blueprintIncludes = [
+  "Línea base: cuánto cuesta hoy la decisión manual.",
+  "Oportunidad en pesos: ahorro, ingreso retenido o margen recuperable.",
+  "Alcance por fases: qué entra, qué queda fuera y en qué orden.",
+  "Arquitectura necesaria: datos, integraciones, sistemas y supuestos.",
+  "Costos y cronograma: inversión única, recurrentes y dependencias.",
+  "ROI y medición: cómo se prueba si valió la pena seguir.",
+];
+
+const blueprintOutline = [
+  "Proceso actual",
+  "Oportunidad IA",
+  "Arquitectura propuesta",
+  "Alcance por fases",
+  "Cronograma",
+  "Costos",
+  "ROI estimado",
+  "Riesgos",
+];
+
+const coverage = [
+  {
+    icon: <Database className="w-6 h-6 text-blue-600" />,
+    title: "ERP, CRM y Excel desconectados",
+    desc: "Identificamos dónde ventas, contabilidad y operación duplican datos, trabajan con versiones distintas o dependen de planillas fuera del sistema.",
+  },
+  {
+    icon: <FileText className="w-6 h-6 text-blue-600" />,
+    title: "Documentos y conocimiento disperso",
+    desc: "Ordenamos contratos, facturas, órdenes, PDFs, políticas y procedimientos que hoy se buscan en correos, carpetas o chats.",
+  },
+  {
+    icon: <ShieldCheck className="w-6 h-6 text-blue-600" />,
+    title: "Datos personales y uso seguro de IA",
+    desc: "Revisamos qué datos se usan, quién accede, qué debe quedar trazado y qué controles mínimos exige un flujo con información sensible.",
+  },
+  {
+    icon: <TrendingUp className="w-6 h-6 text-blue-600" />,
+    title: "Embudo de ventas con trazabilidad",
+    desc: "Mapeamos leads, cotizaciones, oportunidades y clientes en riesgo para detectar dónde se enfría el seguimiento y qué automatizar primero.",
+  },
+  {
+    icon: <BellRing className="w-6 h-6 text-blue-600" />,
+    title: "Alertas e indicadores accionables",
+    desc: "Definimos qué eventos deben avisar a qué área y qué KPIs deben actualizarse sin esperar reportes manuales de fin de mes.",
+  },
+  {
+    icon: <Workflow className="w-6 h-6 text-blue-600" />,
+    title: "Procesos manuales entre áreas",
+    desc: "Detectamos tareas repetitivas entre ventas, operaciones, finanzas y atención que hoy se resuelven copiando datos o persiguiendo información.",
+  },
+];
+
 const teamMembers = [
-  { name: "Estrategia & Dirección", role: "Liderazgo de proyectos", desc: "Más de 15 proyectos de transformación tecnológica liderados. Define qué se hace, en qué orden, y cuánto debería rentar cada etapa.", tags: ["Estrategia", "PMO", "ROI"] },
-  { name: "Ingeniería IA", role: "Desarrollo & Arquitectura", desc: "El equipo de ingeniería diseña, entrena y despliega los modelos y agentes que operan en producción. Desde la preparación de datos hasta la API que consume tu equipo.", tags: ["Python", "LLMs", "RAG", "APIs"] },
-  { name: "Ciencia de Datos", role: "Investigación aplicada · 2 PhD(c)", desc: "Dos candidatos a Doctor en Informática Aplicada lideran la investigación. Publican papers, pero que se usan en proyectos reales, con resultados sólidos.", tags: ["Machine Learning", "Optimización", "Papers"] },
-  { name: "Implementación & Ops", role: "Integración técnica", desc: "Conecta el modelo con el ERP, el CRM y los documentos que ya usa tu empresa. Sin que nada se rompa.", tags: ["DevOps", "ERP", "Integración"] },
-  { name: "Diseño & Producto", role: "UX & Interfaces", desc: "Si el equipo no lo usa, no sirve. Diseñamos interfaces que la gente adopta sin necesitar capacitación de 3 días.", tags: ["UX", "Producto", "Adopción"] },
+  { name: "Estrategia & Dirección", role: "Criterio de negocio", desc: "Más de 15 proyectos de transformación tecnológica liderados. Define qué conviene medir, cuánto podría rentar y qué corresponde descartar.", tags: ["Estrategia", "PMO", "ROI"] },
+  { name: "Ingeniería IA", role: "Arquitectura ejecutable", desc: "El equipo técnico aterriza el Blueprint en requisitos reales: datos, APIs, integraciones, seguridad y restricciones de operación.", tags: ["Python", "LLMs", "RAG", "APIs"] },
+  { name: "Ciencia de Datos", role: "Investigación aplicada · 2 PhD(c)", desc: "Dos candidatos a Doctor en Informática Aplicada evalúan factibilidad, modelos y métricas con rigor antes de recomendar inversión.", tags: ["Machine Learning", "Optimización", "Papers"] },
+  { name: "Implementación & Ops", role: "Ejecución opcional", desc: "Si el cliente decide construir con ETIIA, conecta el Blueprint con ERP, CRM, documentos y flujos existentes sin volver a estimar desde cero.", tags: ["DevOps", "ERP", "Integración"] },
+  { name: "Diseño & Producto", role: "Adopción real", desc: "El Blueprint considera quién usará la solución y cómo se incorpora a la operación sin depender de fe ni de capacitaciones eternas.", tags: ["UX", "Producto", "Adopción"] },
 ];
 
 export default function HomeV2() {
@@ -55,42 +215,34 @@ export default function HomeV2() {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "¿Cuál es la diferencia entre automatización tradicional y los Agentes IA de ETIIA?",
+                "name": "¿Qué compra una empresa cuando contrata a ETIIA?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "La automatización tradicional (ej. RPA) se rompe cuando cambian las reglas o formatos. En ETIIA implementamos Agentes de Inteligencia Artificial basados en LLMs corporativos que entienden contexto, deciden qué hacer sin que alguien los programe caso por caso. Si aparece algo raro, lo escalan. Si es rutina, lo resuelven solos."
+                  "text": "El producto central de ETIIA es el Blueprint: un plano ejecutable con alcance, costos, plazos, riesgos y ROI para decidir si conviene invertir en IA o automatización."
                 }
               },
               {
                 "@type": "Question",
-                "name": "¿Qué es una arquitectura RAG y por qué ETIIA la implementa en empresas?",
+                "name": "¿La conversación inicial tiene costo?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "RAG conecta un modelo de lenguaje con la información interna de tu empresa. En vez de inventar respuestas, el modelo consulta tus datos reales antes de responder. ETIIA lo implementa para que la IA trabaje solo con lo que tú tienes, no con lo que el modelo cree saber."
+                  "text": "No. La conversación inicial es gratuita y sirve para decidir si existen antecedentes suficientes para abrir un diagnóstico. Si el caso no amerita IA, ETIIA lo comunica con claridad."
                 }
               },
               {
                 "@type": "Question",
-                "name": "¿Cuánto tarda ETIIA en implementar una solución de Inteligencia Artificial B2B?",
+                "name": "¿ETIIA obliga a contratar la implementación?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Dependiendo de la complejidad operativa y la limpieza de los datos, ETIIA despliega productos de Inteligencia Artificial (como motores de recomendación, OCR inteligente o agentes de atención) en entornos de producción en un plazo promedio de 2 a 4 semanas."
+                  "text": "No. El Blueprint es propiedad del cliente y puede ejecutarlo con ETIIA, con su equipo interno o con otro proveedor."
                 }
               },
               {
                 "@type": "Question",
-                "name": "¿Cuánto cuesta implementar un agente de IA en una empresa en Chile?",
+                "name": "¿Qué tipo de casos prioriza ETIIA?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "El diagnóstico inicial es gratis. Te decimos si tu proyecto tiene sentido técnico y cuánto cuesta antes de que inviertas. Los proyectos van de 6 a 16 semanas."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "¿Qué ERPs son compatibles con las soluciones de ETIIA?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Las soluciones de ETIIA son agnósticas. Se integran con absolutamente CUALQUIER sistema o ERP que la empresa ya utilice, siempre que tenga APIs, webhooks o permita ingesta de archivos. Esto incluye, a modo de ejemplo, SAP, Softland, Defontana, Salesforce, HubSpot o sistemas desarrollados a medida por la empresa."
+                  "text": "Casos donde una decisión operacional cara se hace a mano y puede medirse en pesos: foco comercial, retención, asignación de presupuesto, backoffice o atención repetitiva."
                 }
               }
             ]
@@ -105,135 +257,322 @@ export default function HomeV2() {
             "@context": "https://schema.org",
             "@type": "HowTo",
             "@id": "https://etiia.com/#diagnostico-proceso",
-            "name": "Cómo funciona el Diagnóstico IA de ETIIA",
-            "description": "Proceso de diagnóstico inicial gratuito para evaluar la viabilidad de implementar IA en tu empresa B2B.",
-            "totalTime": "P14D",
+            "name": "Cómo funciona el embudo ETIIA",
+            "description": "Antes de entrar al proceso, una conversación inicial gratuita de 20 minutos permite decidir si existen antecedentes suficientes para avanzar. Si corresponde, el embudo tiene tres fases: diagnóstico gratuito, Blueprint pagado e implementación opcional.",
             "estimatedCost": { "@type": "MonetaryAmount", "currency": "CLP", "value": "0" },
             "step": [
-              { "@type": "HowToStep", "position": 1, "name": "Revisión del problema y contexto", "text": "Analizamos el problema real detrás del síntoma: qué decisiones se toman, con qué datos, con qué frecuencia.", "url": "https://etiia.com/#diagnostico" },
-              { "@type": "HowToStep", "position": 2, "name": "Evaluación de viabilidad técnica", "text": "Determinamos qué enfoque de IA tiene sentido —o si no lo tiene— con honestidad y criterio técnico real.", "url": "https://etiia.com/#diagnostico" },
-              { "@type": "HowToStep", "position": 3, "name": "Mapa de acción con prioridades", "text": "Recibes un documento claro: qué conviene hacer primero, qué no hacer, y por qué. Con estimaciones de plazo y ROI esperado.", "url": "https://etiia.com/#diagnostico" }
+              { "@type": "HowToStep", "position": 1, "name": "Diagnóstico gratuito", "text": "Se evalúa si el caso tiene una decisión o tarea cara, repetitiva y medible en pesos.", "url": "https://etiia.com/#diagnostico" },
+              { "@type": "HowToStep", "position": 2, "name": "Blueprint ETIIA", "text": "Se diseña el plano ejecutable con alcance, costos, plazos, riesgos y ROI.", "url": "https://etiia.com/#blueprint" },
+              { "@type": "HowToStep", "position": 3, "name": "Implementación opcional", "text": "El cliente decide si ejecuta el plano con ETIIA, con su equipo o con otro proveedor.", "url": "https://etiia.com/#fases" }
             ]
           })
         }}
       />
 
-      {/* ══════════ HERO ══════════ */}
-      <section className="pt-36 pb-20 bg-white relative overflow-hidden" aria-label="Propuesta principal">
-        <div className="hero-glow" aria-hidden="true" />
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+      {/* HERO */}
+      <section
+        className="pb-16 md:pb-20 bg-white relative overflow-hidden"
+        style={{ paddingTop: "clamp(8.25rem, 9vw, 10rem)" }}
+        aria-label="Propuesta principal"
+      >
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" aria-hidden="true" />
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="space-y-12">
+            <div className="mx-auto max-w-5xl text-center">
+              <div className="fade-in-up" style={{ animationDelay: "0.1s", animationFillMode: "both" }}>
+                <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-7">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                  Foco comercial · retención · asignación
+                </p>
+              </div>
 
-          <div className="fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-            <h1 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-              Partner Tecnológico B2B
-            </h1>
-          </div>
+              <h1 className="mx-auto max-w-5xl text-3xl sm:text-5xl xl:text-[4.35rem] font-black tracking-normal text-[#0F172A] leading-[1.08] sm:leading-[1.02] mb-6 fade-in-up" style={{ animationDelay: "0.2s", animationFillMode: "both" }}>
+                Te entregamos el plano de ingeniería antes de que gastes un peso en construir.
+              </h1>
 
-          <p className="text-4xl sm:text-5xl md:text-[3.5rem] font-black tracking-tight text-[#0F172A] leading-[1.08] mb-6 fade-in-up max-w-3xl mx-auto" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            Potenciamos el crecimiento de tu empresa con{" "}
-            <span className="text-gradient-blue">estrategia, IA</span> y soluciones a medida
-          </p>
+              <div className="mx-auto max-w-3xl mb-8 fade-in-up" style={{ animationDelay: "0.3s", animationFillMode: "both" }}>
+                <p className="text-base sm:text-lg text-slate-500 leading-relaxed mb-5">
+                  <span className="font-bold text-blue-700">El Blueprint ETIIA mapea proceso, alcance, costos y ROI.</span>{" "} Te entregamos un documento ejecutable para decidir si lo implementas con tu equipo o con el nuestro.
+                </p>
+                <p className="border-l-4 border-blue-600 bg-blue-50/70 px-4 py-3 text-sm text-[#0F172A] font-semibold leading-relaxed shadow-sm shadow-blue-900/5">
+                  <span className="font-black text-blue-700">Primero conversamos.</span>{" "} Revisamos si existen antecedentes suficientes; si no hay valor medible, no recomendamos avanzar con tecnología.
+                </p>
+              </div>
 
-          <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-2xl mx-auto fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-            Evaluamos tu caso antes de proponer cualquier solución. Recibes un plan de acción con prioridades, costos estimados y retorno esperado — para decidir con claridad, no con presión.
-          </p>
-
-          <div className="flex justify-center gap-4 mb-14 fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
-            <Link href="?interes=diagnostico#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
-              Conversemos <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          {/* Trust Stats — horizontal band */}
-          <div className="fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
-            <div className="inline-flex items-center divide-x divide-slate-200 border border-slate-100 rounded-2xl bg-slate-50/60 px-2 py-3 shadow-sm">
-              {[
-                { value: "+15", label: "Años experiencia", gradient: "from-slate-800 to-slate-600" },
-                { value: "+50", label: "Proyectos B2B", gradient: "from-blue-800 to-blue-600" },
-                { value: "Gratis", label: "Diagnóstico inicial", gradient: "from-indigo-500 to-blue-400" },
-              ].map((s) => (
-                <div key={s.label} className="px-5 md:px-8 text-center">
-                  <p className={`text-xl md:text-2xl font-black bg-clip-text text-transparent bg-gradient-to-br ${s.gradient} tabular-nums leading-none mb-1`}>{s.value}</p>
-                  <p className="text-[9px] uppercase tracking-wider text-slate-400 leading-tight font-bold">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-
-        {/* ══════════ TRUST & TECH BANDS ══════════ */}
-        <div className="border-y border-slate-100 bg-slate-50/30 py-5 mt-16 relative overflow-hidden">
-          <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 relative z-20 w-full">
-            
-            {/* Integrations */}
-            <div className="flex flex-wrap items-center justify-center gap-4 text-slate-400">
-              <span className="text-[10px] uppercase tracking-wider font-extrabold text-slate-400">Integración nativa</span>
-              <div className="flex items-center gap-6 opacity-40 grayscale">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/sap.svg" alt="SAP" width="24" height="24" className="h-5 w-auto" />
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/salesforce.svg" alt="Salesforce" width="24" height="24" className="h-5 w-auto" />
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonaws.svg" alt="AWS" width="24" height="24" className="h-4 w-auto" />
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoft.svg" alt="Microsoft" width="24" height="24" className="h-4 w-auto" />
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/hubspot.svg" alt="HubSpot" width="24" height="24" className="h-4 w-auto" />
+              <div className="flex flex-col sm:flex-row justify-center gap-3 fade-in-up" style={{ animationDelay: "0.4s", animationFillMode: "both" }}>
+                <Link href="/contacto" className="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
+                  Conversemos <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="#blueprint" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 px-8 py-4 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5">
+                  Ver qué trae el Blueprint
+                </Link>
               </div>
             </div>
 
-            <div className="hidden md:block w-px h-6 bg-slate-200"></div>
+            <div className="mx-auto hidden max-w-5xl lg:block fade-in-up" style={{ animationDelay: "0.5s", animationFillMode: "both" }}>
+              <div className="rounded-[1.75rem] border border-slate-200 bg-white/90 p-4 md:p-5 shadow-[0_24px_80px_-42px_rgba(15,23,42,0.55)]">
+                <div className="rounded-[1.35rem] bg-slate-50/80 border border-slate-200 p-3 md:p-4">
+                  {/* Conversación — bloque previo diferenciado */}
+                  <div className="flex items-center gap-3 rounded-xl border border-dashed border-blue-200 bg-blue-50/60 px-4 py-3 mb-4">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-blue-100 flex items-center justify-center shrink-0">
+                      <MessageCircle className="w-4 h-4 text-blue-600" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[10px] uppercase tracking-widest font-extrabold text-blue-600 leading-tight">Antes de empezar</p>
+                      <p className="text-xs text-slate-600 font-semibold leading-snug">Conversamos 20 min · sin costo · sin compromiso</p>
+                    </div>
+                  </div>
 
-            {/* Tech stack */}
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-slate-400 font-medium">
-              <span className="text-[10px] uppercase tracking-wider font-extrabold text-slate-400">Tecnología</span>
-              <span className="text-slate-500 font-semibold">OpenAI GPT</span>
-              <span className="text-slate-300">•</span>
-              <span className="text-slate-500 font-semibold">Anthropic Claude</span>
-              <span className="text-slate-300">•</span>
-              <span className="text-slate-500 font-semibold">Meta Llama</span>
-              <span className="text-slate-300">•</span>
-              <span className="text-slate-500 font-semibold">RAG & Agentes</span>
+                  <div className="grid grid-cols-3 gap-2 md:gap-3 mb-4">
+                    {[
+                      { value: "Gratis", label: "Diagnóstico" },
+                      { value: "Pagado", label: "Blueprint central" },
+                      { value: "Opcional", label: "Implementación" },
+                    ].map((s, idx) => (
+                      <div key={s.label} className={`rounded-2xl px-3 md:px-4 py-4 min-h-[104px] md:min-h-[116px] flex flex-col justify-between border ${idx === 1 ? "bg-[#0F172A] text-white border-[#0F172A] shadow-xl shadow-slate-900/15" : "bg-white text-[#0F172A] border-slate-200"}`}>
+                        <div className="flex items-start justify-between gap-2">
+                          <p className={`text-[9px] md:text-[10px] uppercase tracking-wider md:tracking-widest leading-tight font-extrabold ${idx === 1 ? "text-blue-200" : "text-blue-700"}`}>{s.label}</p>
+                          <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-black border ${idx === 1 ? "bg-white/10 border-white/15 text-white" : "bg-blue-50 border-blue-100 text-blue-700"}`}>
+                            {idx + 1}
+                          </span>
+                        </div>
+                        <p className="text-lg md:text-2xl font-black tabular-nums leading-none">{s.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4 md:p-5">
+                    <div className="flex items-center justify-between gap-4 mb-4">
+                      <span className="text-[10px] uppercase tracking-wider font-extrabold text-blue-700 shrink-0">Dónde buscamos retorno medible</span>
+                      <span className="hidden md:block h-px flex-1 bg-slate-200" />
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {[
+                        "Retención y fuga de clientes",
+                        "Presupuesto mal asignado",
+                        "Horas caras en trabajo manual",
+                        "Errores operacionales repetidos",
+                      ].map((item) => (
+                        <span key={item} className="rounded-xl border border-slate-200 bg-slate-50/80 px-3 py-2 text-sm text-slate-600 font-semibold">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* ══════════ CAPACIDADES / SERVICIOS ══════════ */}
-      <section className="py-24 bg-white" id="servicios">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center md:text-left mb-16">
-            <Reveal>
-              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Nuestras Capacidades</p>
-              <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#0F172A] leading-tight">
-                Líneas de Servicio B2B
+      {/* SIGNALS */}
+      <section className="py-16 md:py-20 bg-white border-b border-slate-100" aria-labelledby="senales-title">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="mx-auto mb-8 max-w-4xl text-center md:mb-10">
+              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Antes del Blueprint</p>
+              <h2 id="senales-title" className="text-3xl md:text-5xl font-black tracking-normal text-[#0F172A] leading-tight mb-5">
+                Antes del Blueprint: las señales.
               </h2>
+              <p className="mx-auto max-w-3xl text-slate-500 leading-relaxed text-base md:text-lg">
+                <span className="font-bold text-blue-700">No conviene partir implementando tecnología.</span>{" "}
+                Cuando estas señales se repiten, primero hay que diagnosticar si existe una oportunidad real y, si la hay, diseñar tu Blueprint para concentrar la inversión donde pueda generar mayor retorno.
+              </p>
+              <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+                <Link href="/contacto" className="inline-flex items-center justify-center gap-2 bg-[#0F172A] hover:bg-slate-800 text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5">
+                  Consultar diagnóstico gratis <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="#blueprint" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 px-6 py-3.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5">
+                  Ver qué trae el Blueprint
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="mx-auto max-w-6xl">
+              <div className="w-full overflow-x-auto pb-2 md:overflow-visible md:pb-0">
+                <div className="min-w-[760px] overflow-hidden rounded-[1.35rem] border border-slate-200 bg-white shadow-[0_30px_90px_-52px_rgba(15,23,42,0.55)] md:min-w-0 lg:rounded-[1.75rem]">
+                  <WordCloudMagnifier />
+                </div>
+              </div>
+              <p className="mx-auto mt-3 max-w-5xl px-4 text-center text-[11px] leading-relaxed text-slate-400 sm:px-0">
+                <span className="font-bold text-slate-500">Referencias:</span>{" "}
+                McKinsey, <em>The State of AI</em>; BCG, <em>Flipping the Odds of Digital Transformation Success</em>; MIT Sloan Management Review &amp; BCG, <em>Artificial Intelligence in Business Gets Real</em>; IBM, <em>AI Adoption Challenges</em>.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* BLUEPRINT */}
+      <section className="py-20 md:py-24 bg-slate-50 border-y border-slate-100" id="blueprint">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+          <div className="space-y-8 lg:space-y-10">
+            <Reveal>
+              <div className="mx-auto max-w-4xl text-center">
+                <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">El entregable</p>
+                <h2 className="text-3xl md:text-4xl font-black tracking-normal text-[#0F172A] leading-tight mb-5">
+                  Blueprint ETIIA: el documento que queda en tus manos.
+                </h2>
+                <p className="text-slate-500 leading-relaxed mb-5">
+                  Recibes un documento de proyecto con lo necesario para decidir: qué construir, cuánto cuesta, cuánto podría retornar, qué riesgos trae y cómo medir si funcionó.
+                </p>
+                <div className="mx-auto mb-6 max-w-2xl bg-blue-50/70 border border-blue-100 rounded-xl p-4 text-left">
+                  <p className="text-sm font-black text-[#0F172A] mb-2">Nuestra promesa</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    El Blueprint es tuyo: lo puedes ejecutar con ETIIA, con tu equipo o con otro proveedor, sin rehacer el diagnóstico.
+                  </p>
+                </div>
+                <Link href="/contacto" className="inline-flex items-center justify-center gap-2 bg-[#0F172A] hover:bg-slate-800 text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5">
+                  Consultar por el Blueprint <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className="mx-auto max-w-5xl bg-white border border-slate-200 rounded-[1.35rem] p-4 md:p-5 shadow-2xl shadow-slate-900/10">
+                <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+                  <div className="border-b border-slate-200 px-5 py-4 flex items-center justify-between gap-4 bg-slate-50/80">
+                    <div>
+                      <p className="text-[10px] font-bold text-blue-700 uppercase tracking-widest mb-1">Documento ejecutable</p>
+                      <h3 className="text-xl font-black text-[#0F172A]">Blueprint ETIIA</h3>
+                    </div>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border border-slate-200 rounded-full px-3 py-1">ROI</span>
+                  </div>
+                  <div className="grid md:grid-cols-2">
+                    <div className="p-5 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50/80">
+                      <p className="text-xs font-black text-[#0F172A] mb-3">Índice del entregable</p>
+                      <div className="space-y-2">
+                        {blueprintOutline.map((item, idx) => (
+                          <div key={item} className="flex items-center gap-2 text-xs text-slate-600">
+                            <span className="w-5 h-5 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[10px] font-bold text-blue-700">{idx + 1}</span>
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="p-5">
+                      <div className="rounded-xl border border-blue-100 bg-blue-50/70 p-4 mb-4">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-blue-700 mb-1">Resumen ejecutivo</p>
+                        <p className="text-sm font-bold text-[#0F172A]">Problema, inversión, retorno esperado y recomendación para decidir.</p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3 mb-4">
+                        {[
+                          ["Base actual", "$"],
+                          ["Meta", "ROI"],
+                          ["Payback", "Meses"],
+                          ["Riesgo", "Plan"],
+                        ].map(([label, value]) => (
+                          <div key={label} className="rounded-lg border border-slate-200 p-3">
+                            <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">{label}</p>
+                            <p className="text-lg font-black text-[#0F172A]">{value}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="space-y-3">
+                        {blueprintIncludes.slice(0, 4).map((item) => (
+                          <div key={item} className="flex gap-3 items-start text-sm text-slate-600">
+                            <BadgeDollarSign className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </Reveal>
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-            {[
-              {
-                icon: <Presentation className="w-6 h-6 text-blue-600" />,
-                title: "Estrategia y Gobernanza",
-                desc: "Alineamos la Inteligencia Artificial con los objetivos estratégicos de tu negocio. Diseñamos la hoja de ruta de adopción y establecemos políticas de gobernanza que garantizan la seguridad de tus datos, la privacidad de la información y el cumplimiento regulatorio."
-              },
-              {
-                icon: <Database className="w-6 h-6 text-blue-600" />,
-                title: "Arquitectura de Datos e Infraestructura Cloud",
-                desc: "Conectamos, centralizamos y organizamos las fuentes de información de tu empresa (VPC, ERP, CRM). Diseñamos arquitecturas seguras en la nube para asegurar que tus datos estén limpios, accesibles y listos para ser utilizados."
-              },
-              {
-                icon: <TrendingUp className="w-6 h-6 text-blue-600" />,
-                title: "Analítica Avanzada y Modelos Predictivos",
-                desc: "Convertimos tus datos históricos en predicciones estratégicas y decisiones automáticas. Desarrollamos modelos a la medida para anticipar comportamientos de negocio y diseñamos paneles interactivos para la toma de decisiones."
-              },
-              {
-                icon: <Code2 className="w-6 h-6 text-blue-600" />,
-                title: "Desarrollo de Software e IA a Medida",
-                desc: "Diseñamos y desarrollamos soluciones personalizadas que se integran directamente con tus sistemas actuales (SAP, Salesforce, etc.). Creamos flujos de automatización inteligentes adaptados exactamente a las reglas y lógica de tu operación."
-              }
-            ].map((s, idx) => (
+      {/* FUNNEL */}
+      <section className="py-20 md:py-24 bg-white" id="fases">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Proceso</p>
+            <div className="mx-auto mb-14 max-w-4xl text-center">
+              <h2 className="text-3xl md:text-5xl font-black tracking-normal text-[#0F172A] leading-tight">
+                Avanzas solo cuando hay suficiente claridad para seguir.
+              </h2>
+              <p className="mx-auto mt-5 max-w-3xl text-slate-500 leading-relaxed">
+                <span className="font-bold text-blue-700">Primero conversamos.</span>{" "} Si existen antecedentes suficientes, hacemos un diagnóstico gratis; después diseñamos el Blueprint. <span className="font-bold text-blue-700">Con ese documento en mano,</span>{" "} decides si construir, cuándo y con quién.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Conversación — bloque previo al embudo */}
+          <Reveal>
+            <div className="flex items-start gap-4 rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50/50 p-5 md:p-6 mb-8">
+              <div className="w-12 h-12 rounded-xl bg-white border border-blue-100 flex items-center justify-center shrink-0 shadow-sm">
+                <MessageCircle className="w-6 h-6 text-blue-600" />
+              </div>
+              <div>
+                <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <h3 className="text-lg font-black text-[#0F172A] tracking-tight">Antes de cualquier fase</h3>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 bg-white border border-blue-100 px-2.5 py-1 rounded-full">20 min · sin costo</span>
+                </div>
+                <p className="text-sm text-slate-500 leading-relaxed">Una conversación breve para entender la prioridad de negocio y ver si existen antecedentes suficientes. Si no se justifica avanzar, lo comunicamos con claridad. No es un servicio ni una fase: es el filtro para decidir si tiene sentido seguir.</p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-4 md:gap-5 items-stretch relative">
+            <div className="hidden md:block absolute top-1/2 left-8 right-8 h-px bg-slate-200" aria-hidden="true" />
+            {funnelSteps.map((step, idx) => {
+              const isCore = idx === 1;
+              return (
+                <Reveal key={step.title} delay={0.08 * (idx + 1)}>
+                  <div className={`rounded-2xl p-6 md:p-7 h-full flex flex-col gap-5 transition-all relative z-10 ${isCore ? "bg-[#0F172A] text-white border border-[#0F172A] shadow-2xl shadow-blue-900/20 md:-mt-5 md:mb-5" : "bg-white border border-slate-200 text-[#0F172A] shadow-sm"}`}>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className={`w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 ${isCore ? "bg-white/10 border-white/15 [&_svg]:text-white" : "bg-blue-50 border-blue-100"}`}>
+                        {step.icon}
+                      </div>
+                      <span className={`text-[11px] font-black uppercase tracking-widest ${isCore ? "text-blue-200" : "text-slate-400"}`}>Fase {step.fase}</span>
+                    </div>
+                    <div>
+                      <div className="flex items-baseline justify-between gap-3 mb-2">
+                        <h3 className="text-xl font-black tracking-tight">{step.title}</h3>
+                        <span className={`text-xs font-bold border px-2.5 py-1 rounded-full ${isCore ? "text-white bg-blue-600 border-blue-500" : "text-blue-700 bg-blue-50 border-blue-100"}`}>{step.price}</span>
+                      </div>
+                      <p className={`text-sm leading-relaxed mb-4 ${isCore ? "text-slate-300" : "text-slate-500"}`}>{step.desc}</p>
+                      <p className={`text-sm font-semibold leading-relaxed ${isCore ? "text-white" : "text-[#0F172A]"}`}>{step.deliverable}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* APPLICATION AREAS */}
+      <section className="py-24 bg-slate-50 border-y border-slate-100" id="ambitos-blueprint">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="mx-auto mb-14 max-w-5xl text-center">
+              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Qué puede cubrir el Blueprint</p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-[#0F172A] leading-tight">
+                El Blueprint convierte señales frecuentes en flujos, datos y decisiones concretas.
+              </h2>
+              <div className="mx-auto mt-5 max-w-4xl space-y-3 text-slate-500 leading-relaxed">
+                <p>
+                  <span className="font-bold text-blue-700">Estos son algunos de los frentes más frecuentes:</span>{" "}
+                  ERP/CRM/contabilidad, documentación, datos personales, alertas, indicadores, embudo comercial y automatización entre áreas.
+                </p>
+                <p>
+                  <span className="font-bold text-blue-700">No son los únicos.</span>{" "}
+                  El Blueprint revisa otros procesos según el caso y prioriza por impacto y factibilidad, no por una herramienta de moda.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+            {coverage.map((s, idx) => (
               <Reveal key={s.title} delay={0.08 * (idx + 1)}>
-                <div className="bg-slate-50/50 border border-slate-100 rounded-2xl p-7 lg:p-8 hover:bg-white hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 h-full flex flex-col gap-4">
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 lg:p-8 h-full flex flex-col gap-4">
                   <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
                     {s.icon}
                   </div>
@@ -245,113 +584,72 @@ export default function HomeV2() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ══════════ DIAGNÓSTICO + FORMULARIO ══════════ */}
-      <section className="py-24 bg-slate-50 border-y border-slate-100" id="diagnostico">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
-
-            {/* ── Columna izquierda: contexto y confianza ── */}
-            <div className="flex flex-col gap-8">
-              <Reveal>
-                <div>
-                  <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Conversemos</p>
-                  <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#0F172A] leading-tight mb-6">
-                    Cuéntanos tu proyecto.<br />Te decimos por dónde empezar.
-                  </h2>
-                  <p className="text-slate-500 leading-relaxed text-base mb-4">
-                    Agenda una sesión de exploración inicial. Evaluamos el impacto estratégico y la viabilidad técnica antes de sugerir cualquier inversión en desarrollo.
-                  </p>
-                  <p className="text-slate-500 leading-relaxed text-base">
-                    Analizamos tus necesidades de Inteligencia Artificial, arquitectura de software y rediseño de procesos para entregarte un plan de acción con estimaciones claras de plazos, costos y retorno esperado.
-                  </p>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.2}>
-                <div className="border-t border-slate-200 pt-6">
-                  <p className="text-sm font-semibold text-slate-700 mb-3">¿Prefieres agendar una reunión directamente?</p>
-                  <a href="https://calendly.com/etiia" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.35)] transition-all hover:-translate-y-0.5 text-sm">
-                    Agenda una reunión <Calendar className="w-4 h-4 text-white" />
-                  </a>
-                </div>
-              </Reveal>
-            </div>
-
-            {/* ── Columna derecha: formulario ── */}
-            <Reveal delay={0.15}>
-              <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm sticky top-28">
-                <DiagnosticoForm />
-
-                {/* Privacidad Corporativa (Compacto) */}
-                <div className="mt-5 flex items-start gap-3 bg-emerald-50/50 border border-emerald-100 rounded-xl p-3 text-left">
-                  <div className="bg-emerald-100 p-1.5 rounded-lg text-emerald-700 shrink-0 mt-0.5">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mb-0.5">Privacidad Corporativa</p>
-                    <p className="text-[11px] text-emerald-600/90 leading-relaxed font-medium">
-                      No entrenamos modelos públicos con la información confidencial de tu empresa.
-                    </p>
-                  </div>
-                </div>
+          <Reveal delay={0.35}>
+            <div className="mx-auto mt-10 max-w-5xl bg-white border border-slate-200 rounded-2xl p-6 md:px-8 flex flex-col items-center justify-center gap-6 text-center shadow-sm">
+              <div className="flex flex-col items-center gap-5 text-center">
+                <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-400">
+                  <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+                  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
+                  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
+                  <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" />
+                  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+                  <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+                  <path d="M19.938 10.5a4 4 0 0 1 .585.396" />
+                  <path d="M6 18a4 4 0 0 1-1.967-.516" />
+                  <path d="M19.967 17.484A4 4 0 0 1 18 18" />
+                </svg>
               </div>
-            </Reveal>
-
-          </div>
-        </div>
-      </section>
-      {/* ══════════ MANIFIESTO AGENTES AUTÓNOMOS ══════════ */}
-      <section className="py-24 bg-[#0F172A] border-t border-slate-800 text-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 150%, rgba(29, 78, 216, 0.15) 0%, transparent 60%)" }} aria-hidden="true" />
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-              El Nuevo Estándar
+                <div>
+                <p className="text-[10px] font-bold text-blue-700 uppercase tracking-widest mb-2">Cuando el equipo interno ejecuta</p>
+                <h3 className="text-xl font-black text-[#0F172A] tracking-tight mb-2">UpSkilling & ReSkilling en IA</h3>
+                <p className="mx-auto max-w-2xl text-sm text-slate-500 leading-relaxed">
+                  Capacitamos equipos para que usen IA con criterio, alineado a tu negocio. En tu oficina, con tus datos y tus procesos.
+                </p>
+              </div>
+              </div>
+              <Link href="/contacto" className="shrink-0 inline-flex items-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-[#0F172A] font-bold text-sm px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5 group">
+                Conversemos <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
             </div>
-            <p className="text-xl md:text-2xl text-slate-400 font-serif italic max-w-3xl mx-auto leading-relaxed mb-6">
-              &ldquo;Desarrollamos agentes de IA que se conectan a tus sistemas y hacen el trabajo solos. Cuando hay riesgo o la decisión es importante, paran y preguntan.&rdquo;
-            </p>
-            <h2 className="text-2xl md:text-4xl font-black tracking-tight text-white leading-[1.1]">
-              No instalamos &quot;chatbots&quot; genéricos.
-            </h2>
           </Reveal>
         </div>
       </section>
 
-      {/* ══════════ SOLUCIONES (carousel) ══════════ */}
-      <section className="py-24 bg-slate-50 border-y border-slate-100" id="soluciones">
-        <div className="max-w-5xl mx-auto px-6">
-          <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Soluciones disponibles</p>
-          <div className="grid md:grid-cols-2 gap-8 items-end mb-10">
-            <h2 className="text-4xl font-black tracking-tight text-[#0F172A] leading-tight">
-              Herramientas que ya ayudan<br />a empresas como la tuya
-            </h2>
-            <div className="flex flex-col gap-2">
-              <p className="text-slate-500 text-lg">Puedes probar cada solución en acción o consultarnos directamente por la que te interesa.</p>
-              <p className="text-sm text-blue-600 font-semibold mt-1">
-                Mostrando 3 de{" "}
-                <Link href="/demos" className="underline underline-offset-2 hover:text-blue-800 transition-colors">
-                  9 soluciones disponibles
-                </Link>
-              </p>
+      {/* DEMOS */}
+      <section className="py-24 bg-white" id="soluciones">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Evidencia técnica</p>
+            <div className="mx-auto mb-10 max-w-4xl text-center">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight text-[#0F172A] leading-tight">
+                Demos para ver cómo podría verse una ejecución real.
+              </h2>
+              <div className="mx-auto mt-5 flex max-w-3xl flex-col gap-2">
+                <p className="text-slate-500 text-lg">
+                  Úsalas como referencia concreta: agentes, automatización, modelos y flujos integrados a sistemas de negocio.
+                </p>
+                <p className="text-sm text-blue-600 font-semibold mt-1">
+                  Mostrando 3 de{" "}
+                  <Link href="/demos" className="underline underline-offset-2 hover:text-blue-800 transition-colors">
+                    9 demos disponibles
+                  </Link>
+                </p>
+              </div>
             </div>
-          </div>
+          </Reveal>
+
           <div className="grid md:grid-cols-3 gap-6">
             {products.map((p, i) => (
               <Reveal key={p.slug} delay={0.1 * (i + 1)}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full flex flex-col hover:border-blue-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-300 cursor-pointer group relative overflow-hidden">
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full flex flex-col hover:border-blue-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden">
                   <div className="flex items-start justify-between gap-2 mb-4">
                     <span className="text-xs text-blue-700 font-bold uppercase tracking-wider mt-0.5">{p.industria}</span>
                     {p.isAgent && (
                       <span className="inline-flex shrink-0 items-center gap-1.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 shadow-sm">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
-                        Agente Autónomo
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                        Agente
                       </span>
                     )}
                   </div>
@@ -362,89 +660,146 @@ export default function HomeV2() {
                     <Link href={`/demos/${p.slug}`} className="flex-1 flex items-center justify-center text-xs font-bold text-slate-700 border-2 border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 px-3 py-2 rounded-lg transition-all">
                       Ver demo
                     </Link>
-                    <Link href={`?interes=${p.slug}#diagnostico`} onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="flex-1 flex items-center justify-center text-xs font-bold text-white bg-gradient-to-br from-blue-800 to-blue-600 border border-blue-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:from-blue-900 hover:to-blue-700 transition-all px-3 py-2 rounded-lg">
-                      Consultar
+                    <Link href="/contacto" className="flex-1 flex items-center justify-center text-xs font-bold text-white bg-gradient-to-br from-blue-800 to-blue-600 border border-blue-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:from-blue-900 hover:to-blue-700 transition-all px-3 py-2 rounded-lg">
+                      Conversemos
                     </Link>
                   </div>
                 </div>
               </Reveal>
             ))}
           </div>
+
           <Reveal delay={0.4}>
-            <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 bg-white p-6 md:px-8 rounded-2xl border border-slate-200 shadow-sm hover:border-blue-200 transition-colors">
-              <div>
-                <h4 className="text-base font-black text-[#0F172A] mb-1">¿Tu operación requiere algo distinto?</h4>
-                <p className="text-sm text-slate-500">No te adaptes al software. Desarrollamos agentes de IA y flujos automatizados a la medida de tus procesos.</p>
+            <div className="mx-auto mt-12 max-w-5xl bg-[#0B1121] border border-slate-800/80 rounded-2xl p-8 flex flex-col items-center justify-center gap-8 text-center relative overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 10% -20%, rgba(29, 78, 216, 0.3) 0%, transparent 60%)" }} aria-hidden="true" />
+              <div className="relative z-10 text-center">
+                <h4 className="text-xl font-black text-white tracking-tight mb-2">¿No ves tu caso exacto?</h4>
+                <p className="text-sm text-slate-400 leading-relaxed">La conversación parte por el costo de la operación, no por el nombre de la herramienta.</p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 items-center shrink-0">
-                <Link href="/demos" className="text-sm text-slate-500 hover:text-slate-800 font-semibold transition-colors">
-                  Ver catálogo completo
+              <div className="flex flex-col sm:flex-row gap-4 items-center shrink-0 relative z-10">
+                <Link href="/demos" className="text-sm text-slate-300 hover:text-white font-semibold transition-colors">
+                  Ver todas las demos
                 </Link>
-                <Link href="?interes=a-medida#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center gap-2 text-sm text-white bg-[#0F172A] hover:bg-slate-800 font-semibold px-5 py-2.5 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg group">
-                  Diseñemos tu solución <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+                <a href="https://wa.me/56976305985?text=Hola%20ETIIA%2C%20quiero%20conversar%20sobre%20un%20caso%20para%20evaluar%20si%20tiene%20sentido%20aplicar%20IA." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-[#0B1121] font-bold text-sm px-7 py-3.5 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20 group">
+                  Conversemos <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ══════════ B2B QUOTE ══════════ */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <Reveal>
-            <p className="text-2xl md:text-3xl font-serif italic text-slate-700 leading-relaxed mb-8">
-              &ldquo;No vendemos promesas. Tenemos soluciones de IA funcionando que puedes probar ahora mismo. Atención al cliente, retail, contabilidad, legal y más.&rdquo;
-            </p>
-            <Link
-              href="/demos"
-              className="inline-flex items-center gap-2 text-blue-700 border border-blue-200 bg-blue-50 hover:bg-blue-100 hover:border-blue-300 font-bold text-sm px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5"
-            >
-              Ver el catálogo de soluciones <ArrowRight className="w-4 h-4" />
-            </Link>
-          </Reveal>
+      {/* DIAGNOSTIC */}
+      <section className="py-24 bg-slate-50 border-y border-slate-100" id="diagnostico">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+          <div className="space-y-10">
+            <div className="mx-auto max-w-4xl text-center">
+              <Reveal>
+                <div>
+                  <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Después de conversar</p>
+                  <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#0F172A] leading-tight mb-6">
+                    Si existen antecedentes suficientes, pasamos al diagnóstico gratis.
+                  </h2>
+                  <p className="text-slate-500 leading-relaxed text-base mb-4">
+                    <span className="font-bold text-blue-700">La primera conversación no es el diagnóstico completo.</span>{" "} En 20 minutos vemos si existe una prioridad de negocio con valor medible y condiciones mínimas para evaluarla bien.
+                  </p>
+                  <p className="text-slate-500 leading-relaxed text-base">
+                    <span className="font-bold text-blue-700">Si corresponde avanzar,</span>{" "} abrimos el diagnóstico gratis y te entregamos un veredicto claro. Si la respuesta es sí, el siguiente paso es un Blueprint con precio y alcance definidos.
+                  </p>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.15}>
+                <div className="grid gap-3 text-left sm:grid-cols-2">
+                  {[
+                    "Antecedentes suficientes para abrir diagnóstico.",
+                    "Luz verde o roja para IA.",
+                    "Orden de magnitud del valor en juego.",
+                    "Tipo de solución probable: BI, automatización o modelo.",
+                    "Siguiente paso: Blueprint, con alcance y precio.",
+                  ].map((item) => (
+                    <div key={item} className="flex gap-3 items-start text-sm text-[#0F172A] font-medium">
+                      <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-blue-600" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.2}>
+                <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-center gap-3">
+                  <a href="https://calendly.com/etiia" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.35)] transition-all hover:-translate-y-0.5 text-sm">
+                    Calendly <Calendar className="w-4 h-4 text-white" />
+                  </a>
+                  <a href="https://wa.me/56976305985?text=Hola%20ETIIA%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratis." target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-[#0F172A] font-bold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-sm">
+                    WhatsApp
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal delay={0.15}>
+              <div className="mx-auto max-w-3xl bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+                <DiagnosticoForm />
+                <div className="mt-5 flex items-start gap-3 bg-emerald-50/50 border border-emerald-100 rounded-xl p-3 text-left">
+                  <div className="bg-emerald-100 p-1.5 rounded-lg text-emerald-700 shrink-0 mt-0.5">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mb-0.5">Privacidad corporativa</p>
+                    <p className="text-[11px] text-emerald-600/90 leading-relaxed font-medium">
+                      No entrenamos modelos públicos con la información confidencial de tu empresa.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-            {/* ══════════ EQUIPO ══════════ */}
-      <section className="py-24 bg-slate-50 border-y border-slate-100" id="equipo">
-        <div className="max-w-5xl mx-auto px-6">
+      {/* TEAM */}
+      <section className="py-24 bg-white" id="equipo">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">El equipo</p>
-            <div className="grid md:grid-cols-2 gap-8 items-end mb-14">
-              <h2 className="text-4xl font-black tracking-tight text-[#0F172A] leading-tight">
-                Autoridad que viene de haber entregado soluciones reales
+            <div className="mx-auto mb-14 max-w-5xl text-center">
+              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">El equipo</p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight text-[#0F172A] leading-tight">
+                Un buen Blueprint necesita negocio, datos e ingeniería en la misma mesa.
               </h2>
-              <p className="text-slate-500 leading-relaxed">El equipo ETIIA reúne <strong className="text-[#0F172A] font-semibold">más de 10 profesionales</strong> con experiencia en liderazgo de proyectos, investigación publicada y ejecución técnica real en empresas B2B.</p>
+              <p className="mx-auto mt-5 max-w-3xl text-slate-500 leading-relaxed">
+                <span className="font-bold text-blue-700">Negocio, datos e ingeniería alineados desde el inicio.</span>{" "} El Blueprint lo diseña un equipo con <strong className="text-[#0F172A] font-semibold">2 PhD(c) en IA</strong> mirando el mismo número: cuánto puede retornar.
+              </p>
             </div>
           </Reveal>
 
-          {/* Socios fundadores */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {[
               {
                 img: "/bernardita-nueva.jpg",
                 name: "Bernardita Mery",
                 badge: "Co-fundadora · CEO",
-                desc: "Chief Executive Officer de ETIIA. Ingeniera Comercial UC y Máster Ejecutivo en Inteligencia Artificial. Antes de definir qué tecnología usar, entiende qué necesita el negocio y cuánto debería rentar.",
+                desc: "Ingeniera Comercial UC y Máster Ejecutivo en Inteligencia Artificial. Entra al caso desde negocio: qué prioridad está en juego, cuánto cuesta y qué número justificaría avanzar.",
                 tags: ["Inteligencia de Negocios", "Estrategia Comercial", "IA Aplicada"],
-                linkedin: "https://www.linkedin.com/in/bmeryu/"
+                linkedin: "https://www.linkedin.com/in/bmeryu/",
               },
               {
                 img: "/pablo.jpg",
                 name: "Pablo Olivares",
                 badge: "Co-fundador · CAIO",
-                desc: "Chief AI Officer de ETIIA y Candidato a Doctor en Informática Aplicada. A diferencia del investigador tradicional, posee una fuerte trayectoria en la industria. Es el estratega que diseña e implementa sistemas de IA y agentes autónomos robustos.",
+                desc: "Candidato a Doctor en Informática Aplicada, con trayectoria en industria. Diseña sistemas de IA y agentes robustos cuando el caso realmente los necesita.",
                 tags: ["Inteligencia Artificial", "Machine Learning", "Sistemas Cognitivos"],
-                linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/"
+                linkedin: "https://www.linkedin.com/in/pablo-e-olivares-z%C3%BA%C3%B1iga-01337933/",
               },
               {
                 img: "/diego.jpg",
                 name: "Diego Monsalves",
                 badge: "CTO · Ingeniería de Modelos",
-                desc: "Candidato a Doctor en Informática Aplicada. Construye y entrena los modelos. Si un LLM necesita entender tus documentos, responder a tus clientes o procesar tus datos, Diego lo arma.",
+                desc: "Candidato a Doctor en Informática Aplicada. Evalúa la factibilidad técnica y traduce el Blueprint a requisitos que un equipo de ingeniería puede ejecutar.",
                 tags: ["Machine Learning", "Investigación IA", "LLMs"],
-                linkedin: "https://www.linkedin.com/in/505748216/"
+                linkedin: "https://www.linkedin.com/in/505748216/",
               },
             ].map((f, i) => (
               <Reveal key={f.name} delay={0.1 * (i + 1)}>
@@ -461,7 +816,7 @@ export default function HomeV2() {
                   </h3>
                   <p className="text-sm text-slate-500 leading-relaxed mb-4">{f.desc}</p>
                   <div className="flex flex-wrap justify-center gap-2 mt-auto">
-                    {f.tags.map(t => (
+                    {f.tags.map((t) => (
                       <span key={t} className="text-xs bg-slate-100 rounded-full px-3 py-1 text-slate-500 font-medium">{t}</span>
                     ))}
                   </div>
@@ -470,151 +825,108 @@ export default function HomeV2() {
             ))}
           </div>
 
-          {/* Stats bar del equipo */}
           <Reveal delay={0.15}>
-            <div className="flex bg-white border-2 border-blue-50 rounded-2xl p-5 shadow-lg shadow-blue-900/10 divide-x divide-slate-100 mb-12">
+            <div className="grid grid-cols-2 sm:flex bg-slate-50 border-2 border-blue-50 rounded-2xl p-5 shadow-lg shadow-blue-900/10 sm:divide-x divide-slate-100 gap-y-5 sm:gap-y-0 mb-12">
               {[
-                { value: "+10", label: "Profesionales activos", gradient: "from-slate-800 to-slate-600" },
-                { value: "5", label: "Áreas técnicas", gradient: "from-blue-800 to-blue-600" },
-                { value: "2", label: "PhD(c) en IA", gradient: "from-indigo-600 to-blue-500" },
-                { value: "+50", label: "Proyectos B2B", gradient: "from-blue-600 to-indigo-400" },
+                { value: "+10", label: "Profesionales activos" },
+                { value: "5", label: "Áreas técnicas" },
+                { value: "2", label: "PhD(c) en IA" },
+                { value: "1", label: "Blueprint común" },
               ].map((s) => (
                 <div key={s.label} className="flex-1 text-center px-3">
-                  <p className={`text-2xl md:text-[28px] font-black bg-clip-text text-transparent bg-gradient-to-br ${s.gradient} tabular-nums leading-none mb-1.5`}>{s.value}</p>
+                  <p className="text-2xl md:text-[28px] font-black text-[#0F172A] tabular-nums leading-none mb-1.5">{s.value}</p>
                   <p className="text-[9px] md:text-[10px] uppercase tracking-wider text-slate-500 leading-tight font-bold">{s.label}</p>
                 </div>
               ))}
             </div>
           </Reveal>
 
-          <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest mb-6">Más de 10 especialistas organizados en 5 áreas de ejecución</p>
-          <Carousel items={teamMembers.map(m => ({ ...m, type: "team" as const }))} />
-
+          <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest mb-6">Especialistas organizados por lo que el Blueprint necesita resolver</p>
+          <Carousel items={teamMembers.map((m) => ({ ...m, type: "team" as const }))} />
         </div>
       </section>
 
-      {/* ══════════ BANDA NAVY ══════════ */}
+      {/* TEAM PROOF */}
       <section className="bg-[#0F172A] py-20 px-6">
         <Reveal>
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-2xl md:text-3xl font-serif italic text-white/90 leading-relaxed mb-10">
-              &ldquo;Armar un equipo con estrategia, datos, modelos e integración desde cero toma meses. En ETIIA ya está operando. Más de 10 profesionales organizados para ejecutar desde el día uno.&rdquo;
+              &ldquo;Armar un equipo con estrategia, datos, modelos e integración desde cero toma meses. En ETIIA ese equipo ya está en la mesa para diseñar un Blueprint que se pueda ejecutar de verdad.&rdquo;
             </p>
             <div className="flex flex-wrap justify-center gap-3 mb-10">
-              {["Área de Estrategia", "Área de Ciencia de Datos", "Área de Ingeniería IA", "Área de Implementación", "Área de Diseño"].map((pill) => (
+              {["Estrategia", "Ciencia de Datos", "Ingeniería IA", "Integración", "Diseño"].map((pill) => (
                 <span key={pill} className="inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-2 text-sm text-white/80 font-medium">
                   <span className="w-2 h-2 rounded-full bg-blue-400 shrink-0" />{pill}
                 </span>
               ))}
             </div>
             <p className="text-base text-white/50 font-medium">
-              La mayoría de los proyectos de IA fracasan cuando falta una de estas áreas.
+              La mayoría de los proyectos de IA fallan cuando una de estas áreas llega tarde.
             </p>
           </div>
         </Reveal>
       </section>
 
-      {/* ══════════ B2B UPSKILLING (MOVED) ══════════ */}
-      <section className="py-24 bg-white border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6">
+      {/* DECISION */}
+      <section className="py-24 bg-slate-50 border-y border-slate-100" id="enfoque">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <div className="bg-[#0B1121] border border-slate-800/80 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 10% -20%, rgba(29, 78, 216, 0.3) 0%, transparent 60%)" }} aria-hidden="true" />
-              <div className="w-14 h-14 rounded-xl bg-blue-600/20 flex items-center justify-center shrink-0 relative z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-400">
-                  <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
-                  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
-                  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
-                  <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/>
-                  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/>
-                  <path d="M3.477 10.896a4 4 0 0 1 .585-.396"/>
-                  <path d="M19.938 10.5a4 4 0 0 1 .585.396"/>
-                  <path d="M6 18a4 4 0 0 1-1.967-.516"/>
-                  <path d="M19.967 17.484A4 4 0 0 1 18 18"/>
-                </svg>
-              </div>
-              <div className="flex-1">
-                  <h3 className="text-xl font-black text-white tracking-tight mb-2">UpSkilling & ReSkilling en IA</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  Capacitamos equipos para que usen IA con criterio, alineado a tu negocio. En tu oficina, con tus datos y tus procesos.
-                </p>
-              </div>
-              <Link href="?interes=formacion#diagnostico" className="shrink-0 inline-flex items-center gap-2 bg-white text-[#0B1121] font-bold text-sm px-6 py-3 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20 relative z-10 group">
-                Formar a mi equipo <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+            <div className="mx-auto mb-14 max-w-5xl text-center">
+              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Para decidir con números</p>
+              <h2 className="text-4xl font-black tracking-tight text-[#0F172A] mb-6 leading-tight">
+                Con el Blueprint puedes decidir con información suficiente.
+              </h2>
+              <p className="mx-auto max-w-3xl text-slate-500 leading-relaxed">
+                <span className="font-bold text-blue-700">Ordena la inversión antes de comprometer presupuesto.</span>{" "} El Blueprint muestra qué justifica avanzar, qué conviene dejar fuera y qué tendría que pasar para que el proyecto se pague.
+              </p>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* ══════════ DIFERENCIACIÓN ══════════ */}
-      <section className="py-24" id="enfoque">
-        <div className="max-w-5xl mx-auto px-6">
-          <Reveal>
-            <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Nuestro enfoque</p>
-            <h2 className="text-4xl font-black tracking-tight text-[#0F172A] mb-14 leading-tight">
-              Lo que distingue<br />un diagnóstico honesto
-            </h2>
-          </Reveal>
-          <div className="grid md:grid-cols-2 gap-12">
-            <Reveal delay={0.1}>
-              <div>
-                <h3 className="text-lg font-bold text-slate-400 mb-8">Lo que suele pasar</h3>
-                <div className="flex flex-col gap-5">
-                  {[
-                    "Te proponen IA antes de entender tu problema real.",
-                    "El consultor de negocio y el técnico hablan idiomas distintos.",
-                    "El prototipo funciona en demo pero falla en el uso real.",
-                    "Nadie te dice cuándo la IA no es la respuesta correcta.",
-                  ].map((c) => (
-                    <div key={c} className="flex gap-3 items-start text-sm text-slate-400">
-                      <XCircle className="w-4 h-4 shrink-0 mt-0.5 text-slate-300" />
-                      <span>{c}</span>
-                    </div>
-                  ))}
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Si se justifica construir",
+                desc: "El caso queda medido contra una línea base, una meta y un retorno esperado en pesos.",
+              },
+              {
+                title: "Qué construir primero",
+                desc: "El alcance se separa por fases para evitar proyectos grandes que no llegan a producción.",
+              },
+              {
+                title: "Con qué equipo ejecutarlo",
+                desc: "Puedes avanzar con ETIIA, con tu equipo interno o pedir cotizaciones con un punto de partida claro.",
+              },
+            ].map((item, idx) => (
+              <Reveal key={item.title} delay={0.08 * (idx + 1)}>
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full">
+                  <CheckCircle2 className="w-5 h-5 text-blue-600 mb-5" />
+                  <h3 className="text-lg font-black text-[#0F172A] tracking-tight mb-3">{item.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
                 </div>
-              </div>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <div>
-                <h3 className="text-lg font-bold text-[#0F172A] mb-8">Cómo trabajamos en ETIIA</h3>
-                <div className="flex flex-col gap-5">
-                  {[
-                    "Empezamos por entender el problema antes de proponer tecnología.",
-                    "Un equipo de más de 10 especialistas donde negocio, datos y técnica trabajan en sesión conjunta.",
-                    "Diseñamos pensando en integración real desde el inicio.",
-                    "Si la IA no es la mejor respuesta, lo decimos directamente.",
-                  ].map((p) => (
-                    <div key={p} className="flex gap-3 items-start text-sm text-[#0F172A] font-medium">
-                      <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-blue-600" />
-                      <span>{p}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════ CTA FINAL ══════════ */}
-      <section className="py-24 bg-slate-50 relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <div className="bg-[#0B1121] border border-slate-800/80 p-10 md:p-14 rounded-3xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden relative">
-            
-            {/* Subtle top glow inside the card */}
-            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% -20%, rgba(29, 78, 216, 0.4) 0%, transparent 60%)" }} aria-hidden="true" />
-            
+      {/* FINAL CTA */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-[#0B1121] border border-slate-800/80 p-10 md:p-14 rounded-3xl shadow-2xl flex flex-col items-center justify-center text-center gap-8 overflow-hidden relative">
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white leading-tight mb-3">
-                ¿Tienes un proyecto<br />que podría involucrar IA?
+                ¿Hay una decisión cara que tu equipo sigue resolviendo a mano?
               </h2>
-              <p className="text-slate-400 text-sm max-w-md">Un equipo completo evalúa tu caso. Claro, concreto, y sin compromisos previos.</p>
+              <p className="mx-auto max-w-2xl text-slate-400 text-sm">
+                Partamos con una conversación inicial. Si existen antecedentes suficientes, pasamos al diagnóstico gratis; si hay valor medible, avanzamos al Blueprint.
+              </p>
             </div>
-            <div className="flex flex-col gap-3 shrink-0 relative z-10">
-              <Link href="?interes=diagnostico#diagnostico" onClick={(e) => { document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' }); }} className="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0 relative z-10">
+              <Link href="/contacto" className="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
                 Conversemos <ArrowRight className="w-4 h-4" />
               </Link>
+              <a href="https://wa.me/56976305985?text=Hola%20ETIIA%2C%20quiero%20conversar%20sobre%20una%20prioridad%20de%20negocio%20y%20evaluar%20si%20se%20justifica%20aplicar%20IA." target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-white/15 bg-white/10 text-white font-bold px-8 py-4 rounded-xl text-sm hover:bg-white/15 transition-all">
+                Escribir por WhatsApp
+              </a>
             </div>
           </div>
         </div>

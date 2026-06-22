@@ -74,7 +74,7 @@ export function Carousel({ items }: { items: CarouselItem[] }) {
       {/* Nav buttons */}
       <button
         onClick={() => scroll("left")}
-        className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-sm hover:bg-slate-50 transition-colors"
+        className="absolute left-2 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-sm hover:bg-slate-50 transition-colors"
         aria-label="Anterior"
       >
         <ChevronLeft className="w-4 h-4 text-[#0F172A]" />
@@ -134,7 +134,7 @@ export function Carousel({ items }: { items: CarouselItem[] }) {
 
       <button
         onClick={() => scroll("right")}
-        className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-sm hover:bg-slate-50 transition-colors"
+        className="absolute right-2 sm:-right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-sm hover:bg-slate-50 transition-colors"
         aria-label="Siguiente"
       >
         <ChevronRight className="w-4 h-4 text-[#0F172A]" />

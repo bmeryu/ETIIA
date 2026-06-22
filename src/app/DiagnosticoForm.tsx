@@ -2,14 +2,14 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, Loader2, CheckCircle2, Zap, Lock } from "lucide-react";
+import { ArrowRight, Loader2, CheckCircle2, Zap } from "lucide-react";
 
 /* ── Mapa de intenciones ─────────────────────────────── */
 const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: string; nombre?: string; isSpecific?: boolean }> = {
   diagnostico: {
     proyecto: "Quiero evaluar si mi proyecto tiene potencial para aplicar IA.",
     etapa: "exploracion",
-    ctaText: "Conversemos",
+    ctaText: "Consulta por Diagnóstico Gratis aquí",
     isSpecific: false,
   },
   formacion: {
@@ -144,7 +144,10 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
         setSuccess(true);
         // Tracking de conversión
         if (typeof window !== 'undefined') {
-          const w = window as Window & { gtag?: Function; fbq?: Function };
+          const w = window as Window & {
+            gtag?: (event: string, action: string, params: Record<string, string | number>) => void;
+            fbq?: (event: string, action: string, params: Record<string, string>) => void;
+          };
           if (w.gtag) w.gtag('event', 'generate_lead', { event_category: 'lead', event_label: interes, value: 1 });
           if (w.fbq) w.fbq('track', 'Lead', { content_name: interes });
         }

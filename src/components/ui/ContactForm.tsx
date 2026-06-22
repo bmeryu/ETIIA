@@ -11,7 +11,7 @@ import { FadeIn } from "./Reveal";
 const contactSchema = z.object({
     name: z.string().min(2, "El nombre es muy corto"),
     email: z.string().email("Correo inválido"),
-    challenge: z.string().min(10, "Cuéntanos un poco más sobre tu desafío"),
+    challenge: z.string().min(10, "Cuéntanos un poco más sobre tu prioridad"),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -63,9 +63,9 @@ export function ContactForm() {
             <FadeIn>
                 <div className="bg-cian/10 border border-cian/30 rounded-2xl p-8 text-center flex flex-col items-center">
                     <CheckCircle2 className="w-16 h-16 text-cian mb-4" />
-                    <h3 className="text-2xl font-bold text-navy mb-2">¡Solicitud Recibida!</h3>
+                    <h3 className="text-2xl font-bold text-navy mb-2">Mensaje recibido</h3>
                     <p className="text-slate-600 mb-6">
-                        Nos pondremos en contacto contigo en breve para coordinar el diagnóstico.
+                        Nos pondremos en contacto contigo en breve para coordinar la conversación.
                     </p>
                     <Button onClick={() => setIsSuccess(false)} variant="outline">
                         Enviar otro mensaje
@@ -81,7 +81,7 @@ export function ContactForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                         <label htmlFor="name" className="text-sm font-semibold text-navy">
-                            Nombre Completo
+                            Nombre completo
                         </label>
                         <input
                             {...register("name")}
@@ -95,7 +95,7 @@ export function ContactForm() {
 
                     <div className="space-y-2">
                         <label htmlFor="email" className="text-sm font-semibold text-navy">
-                            Correo Electrónico Corporativo
+                            Correo corporativo
                         </label>
                         <input
                             {...register("email")}
@@ -111,7 +111,7 @@ export function ContactForm() {
 
                 <div className="space-y-2">
                     <label htmlFor="challenge" className="text-sm font-semibold text-navy flex items-center justify-between">
-                        <span>¿Cuál es tu principal desafío de negocio hoy?</span>
+                        <span>¿Qué prioridad de negocio quieres evaluar?</span>
                     </label>
                     <textarea
                         {...register("challenge")}
@@ -119,7 +119,7 @@ export function ContactForm() {
                         rows={4}
                         required
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cian transition-all bg-slate-50 resize-none"
-                        placeholder="Nuestros datos están silos y no logramos medir el ROI de las iniciativas anteriores..."
+                        placeholder="Queremos evaluar una decisión, proceso o presupuesto donde podría haber valor medible..."
                     />
                     {errors.challenge && <p className="text-red-500 text-xs">{errors.challenge.message}</p>}
                 </div>

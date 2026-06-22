@@ -22,18 +22,18 @@ export default function Footer() {
               <span className="text-blue-400 font-bold">A</span>rtificial
             </p>
             <p className="text-sm text-slate-500 leading-relaxed mt-3">
-              Consultoría en Inteligencia Artificial.
+              Blueprint para decidir antes de construir IA.
             </p>
           </div>
 
-          {/* Servicios */}
+          {/* Oferta */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Servicios</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Oferta</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/servicios#evaluacion" className="hover:text-white transition-colors">Evaluación Gratuita</Link></li>
-              <li><Link href="/demos" className="hover:text-white transition-colors">Soluciones de IA</Link></li>
-              <li><Link href="/servicios#formacion" className="hover:text-white transition-colors">UpSkilling y Formación</Link></li>
-              <li><Link href="/servicios#a-medida" className="hover:text-white transition-colors">Diseñamos Tu Solución</Link></li>
+              <li><Link href="/#diagnostico" className="hover:text-white transition-colors">Diagnóstico gratis</Link></li>
+              <li><Link href="/#blueprint" className="hover:text-white transition-colors">Blueprint ETIIA</Link></li>
+              <li><Link href="/#fases" className="hover:text-white transition-colors">Implementación opcional</Link></li>
+              <li><Link href="/#soluciones" className="hover:text-white transition-colors">Demos como evidencia</Link></li>
             </ul>
           </div>
 
@@ -42,6 +42,7 @@ export default function Footer() {
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/#equipo" className="hover:text-white transition-colors">El Equipo</Link></li>
+              <li><Link href="/insights" className="hover:text-white transition-colors">Perspectivas</Link></li>
               <li><Link href="/politica-de-privacidad" className="hover:text-white transition-colors">Política de Privacidad</Link></li>
               <li><Link href="/terminos-de-servicio" className="hover:text-white transition-colors">Términos de Servicio</Link></li>
             </ul>
@@ -67,7 +68,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  WhatsApp B2B
+                  WhatsApp
                 </a>
               </li>
             </ul>
@@ -91,7 +92,7 @@ export default function Footer() {
             </span>
           </a>
 
-          <span>Partners: AWS · Google Cloud</span>
+          <span>Chile · IA aplicada con ROI</span>
         </div>
       </div>
     </footer>

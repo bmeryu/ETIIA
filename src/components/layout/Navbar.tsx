@@ -11,69 +11,10 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Inicio", href: "/" },
-  { 
-    name: "Servicios", 
-    href: "/servicios",
-    megaMenuTheme: "blue",
-    megaMenu: [
-      {
-        title: "Consultoría & Estrategia",
-        items: [
-          { name: "Estrategia y Gobernanza", desc: "Hojas de ruta, privacidad y seguridad", href: "/servicios#estrategia" }
-        ]
-      },
-      {
-        title: "Ingeniería & Analítica",
-        items: [
-          { name: "Arquitectura de Datos e Infraestructura Cloud", desc: "Centralización y pipelines seguros", href: "/servicios#datos" },
-          { name: "Analítica Avanzada", desc: "Modelos predictivos y dashboards BI", href: "/servicios#analitica" }
-        ]
-      },
-      {
-        title: "Desarrollo e IA",
-        items: [
-          { name: "Desarrollo e IA a Medida", desc: "Integraciones de software a la medida", href: "/servicios#a-medida" }
-        ]
-      }
-    ]
-  },
-  { 
-    name: "Soluciones de IA", 
-    href: "/demos",
-    megaMenuTheme: "blue",
-    megaMenu: [
-      {
-        title: "Atención & Ventas",
-        items: [
-          { name: "AtendeAI", desc: "Agente autónomo RAG", href: "/demos/atendeai" },
-          { name: "VentaAI", desc: "Recomendación retail", href: "/demos/ventaai" },
-          { name: "ProspectAI", desc: "Outbound B2B", href: "/demos/prospectai" }
-        ]
-      },
-      {
-        title: "Backoffice",
-        items: [
-          { name: "FacturAI", desc: "OCR y conciliación", href: "/demos/facturai" },
-          { name: "AutoRend IA", desc: "Rendiciones en ERP", href: "/demos/autorend" }
-        ]
-      },
-      {
-        title: "Legal & RRHH",
-        items: [
-          { name: "LexSearch", desc: "Buscador de contratos", href: "/demos/lexsearch" },
-          { name: "TalentParse", desc: "Ranking de CVs", href: "/demos/talentparse" }
-        ]
-      },
-      {
-        title: "Salud, Agro & Más",
-        items: [
-          { name: "AgendAI", desc: "Predicción de inasistencias", href: "/demos/agendai" },
-          { name: "CosechAI", desc: "ML agrícola predictivo", href: "/demos/cosechai" },
-          { name: "TranscribAI", desc: "Transcripción y análisis", href: "/demos/transcribai" }
-        ]
-      }
-    ]
-  },
+  { name: "Blueprint", href: "/#blueprint" },
+  { name: "Servicios", href: "/servicios" },
+  { name: "Demos", href: "/#soluciones" },
+  { name: "Equipo", href: "/#equipo" },
   { 
     name: "Perspectivas", 
     href: "/insights",
@@ -96,8 +37,8 @@ const navLinks = [
       {
         title: "Recursos B2B",
         items: [
-          { name: "UpSkilling y Formación", desc: "Entrena a tu equipo interno.", href: "/servicios#estrategia" },
-          { name: "Desarrollo a Medida", desc: "Soluciones y arquitecturas RAG.", href: "/servicios#a-medida" }
+          { name: "Blueprint ETIIA", desc: "El documento antes de construir.", href: "/#blueprint" },
+          { name: "Conversemos", desc: "Primero validamos si aplica IA.", href: "/contacto" }
         ]
       }
     ]
@@ -108,22 +49,24 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const pathname = usePathname();
+  const isActiveHref = (href: string) => {
+    if (href === "/") return pathname === "/";
+    if (href.startsWith("/#")) return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   useEffect(() => {
-    setHoveredNav(null);
-    setIsMobileMenuOpen(false);
+    const frame = requestAnimationFrame(() => {
+      setHoveredNav(null);
+      setIsMobileMenuOpen(false);
+    });
+    return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      // Scroll progress bar
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrollProgress(progress);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -159,9 +102,10 @@ export default function Navbar() {
                 href={link.href}
                 className={cn(
                   "nav-link-animated text-sm font-medium flex items-center py-2 transition-colors",
+                  isActiveHref(link.href) && "font-bold",
                   pathname.startsWith("/insights") && !isScrolled && !isMobileMenuOpen
-                    ? "text-slate-300 hover:text-white"
-                    : "text-slate-500 hover:text-[#0F172A]"
+                    ? isActiveHref(link.href) ? "text-white" : "text-slate-300 hover:text-white"
+                    : isActiveHref(link.href) ? "text-[#0F172A]" : "text-slate-500 hover:text-[#0F172A]"
                 )}
               >
                 {link.name}
@@ -221,7 +165,7 @@ export default function Navbar() {
                         "text-xs font-bold flex items-center transition-colors px-4 py-2 rounded-lg",
                         link.megaMenuTheme === "navy" ? "bg-[#0F172A] text-white hover:bg-black" : "bg-blue-700 text-white hover:bg-blue-800"
                       )}>
-                        {link.megaMenuTheme === "navy" ? "Ver todos los artículos" : "Ver catálogo completo"} <ArrowRight className="w-3 h-3 ml-1" />
+                        {link.megaMenuTheme === "navy" ? "Ver todos los artículos" : "Ver detalle completo"} <ArrowRight className="w-3 h-3 ml-1" />
                       </Link>
                     </div>
                   </div>
@@ -283,7 +227,9 @@ export default function Navbar() {
                       "text-lg transition-all py-1",
                       link.name === "Conversemos"
                         ? "bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-5 py-2 rounded-full mt-2"
-                        : "font-medium text-slate-700 hover:text-blue-700"
+                        : isActiveHref(link.href)
+                          ? "font-bold text-blue-700"
+                          : "font-medium text-slate-700 hover:text-blue-700"
                     )}
                   >
                     {link.name}
