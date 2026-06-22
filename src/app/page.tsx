@@ -403,11 +403,14 @@ export default function HomeV2() {
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row justify-center gap-3 fade-in-up" style={{ animationDelay: "0.4s", animationFillMode: "both" }}>
-                <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
-                  {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
-                </a>
-                <Link href="#blueprint" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 px-8 py-4 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-center gap-3 fade-in-up" style={{ animationDelay: "0.4s", animationFillMode: "both" }}>
+                <div className="flex w-full flex-col items-center gap-1.5 sm:w-auto">
+                  <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
+                    {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <span className="text-xs font-normal text-slate-400">20 min · sin compromiso</span>
+                </div>
+                <Link href="#blueprint" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 px-8 py-4 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5">
                   Ver qué trae el Blueprint
                 </Link>
               </div>
@@ -937,11 +940,14 @@ export default function HomeV2() {
               </Reveal>
 
               <Reveal delay={0.2}>
-                <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-center gap-3">
-                  <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={ctaPrimarioClass}>
-                    {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 text-white" />
-                  </a>
-                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-[#0F172A] font-bold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-sm">
+                <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row sm:items-start justify-center gap-3">
+                  <div className="flex w-full flex-col items-center gap-1.5 sm:w-auto">
+                    <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={`${ctaPrimarioClass} w-full sm:w-auto`}>
+                      {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 text-white" />
+                    </a>
+                    <span className="text-xs font-normal text-slate-400">20 min · sin compromiso</span>
+                  </div>
+                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-[#0F172A] font-bold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-sm">
                     Ver agenda en Calendly <Calendar className="w-4 h-4" />
                   </a>
                 </div>
@@ -982,11 +988,14 @@ export default function HomeV2() {
                 Partamos con una conversación inicial. Si existen antecedentes suficientes, pasamos al diagnóstico gratis; si hay valor medible, avanzamos al Blueprint.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0 relative z-10">
-              <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-4 rounded-xl text-sm shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
-                {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
-              </a>
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-white/15 bg-white/10 text-white font-bold px-8 py-4 rounded-xl text-sm hover:bg-white/15 transition-all">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-center gap-3 shrink-0 relative z-10">
+              <div className="flex w-full flex-col items-center gap-1.5 sm:w-auto">
+                <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-4 rounded-xl text-sm shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
+                  {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
+                </a>
+                <span className="text-xs font-normal text-slate-400">20 min · sin compromiso</span>
+              </div>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-white/15 bg-white/10 text-white font-bold px-8 py-4 rounded-xl text-sm hover:bg-white/15 transition-all">
                 Ver agenda en Calendly
               </a>
             </div>
