@@ -22,7 +22,24 @@ import { Reveal } from "@/components/ui/Reveal";
 import DiagnosticoForm from "./DiagnosticoForm";
 import { Carousel } from "./Carousel";
 
+// Camino de conversión único: WhatsApp primario, Calendly secundario (brief §3.2).
+const WHATSAPP_NUMBER = "56976305985";
+const CALENDLY_URL = "https://calendly.com/etiia";
+const wa = (mensaje: string) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+
+// CTA primario dominante: una sola etiqueta y un solo destino en toda la home.
+const CTA_PRIMARIO = "Agenda tu diagnóstico gratis";
+const CTA_PRIMARIO_WA = wa("Hola ETIIA, quiero agendar mi diagnóstico gratis.");
+// Botón primario sólido con el acento de marca (--color-brand = blue-700).
+const ctaPrimarioClass =
+  "inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-3.5 rounded-xl text-sm shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5";
+
+// Nube de dolores (PNG) con lupa — se muestra en desktop. En mobile se usa el
+// auto-diagnóstico interactivo (SignalSelfCheck), más efectivo para CRO (brief §3.3).
 const WORD_CLOUD_IMAGE = "/nube-dolores-etiia.png?v=22";
+const WORD_CLOUD_ALT =
+  "Nube de señales antes del Blueprint ETIIA: todo en Excel, clientes que se fugan, decisiones sin datos, procesos que no conversan, reportes manuales, KPIs a última hora, información dispersa, ventas sin trazabilidad y otras señales operacionales.";
 const MAGNIFIER_SIZE = 168;
 const MAGNIFIER_ZOOM = 1.75;
 
@@ -62,10 +79,10 @@ function WordCloudMagnifier() {
     >
       <Image
         src={WORD_CLOUD_IMAGE}
-        alt="Nube de señales antes del Blueprint ETIIA"
+        alt={WORD_CLOUD_ALT}
         width={1416}
         height={738}
-        sizes="(max-width: 640px) 760px, (max-width: 1024px) 100vw, 1152px"
+        sizes="(max-width: 1024px) 100vw, 1152px"
         className="block h-auto w-full select-none"
         draggable={false}
       />
@@ -87,6 +104,93 @@ function WordCloudMagnifier() {
     </div>
   );
 }
+
+// Auto-diagnóstico interactivo de señales (mobile). El visitante marca las que
+// le pasan: contador en vivo, CTA que se intensifica y mensaje de WhatsApp con
+// las señales marcadas (lead pre-calificado).
+const SELF_CHECK_SIGNALS = [
+  "Clientes se fugan",
+  "Decisiones sin datos",
+  "Todo en Excel",
+  "Reportes manuales",
+  "Procesos que no conversan",
+  "Presupuesto asignado a ojo",
+  "Leads sin respuesta",
+  "Equipo sobrecargado",
+  "Errores repetidos",
+  "KPIs a última hora",
+  "Información dispersa",
+  "Dependencia de personas",
+];
+
+function SignalSelfCheck() {
+  const [picked, setPicked] = useState<string[]>([]);
+  const toggle = (t: string) =>
+    setPicked((prev) => (prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]));
+
+  const n = picked.length;
+  const message =
+    n === 0
+      ? "Toca las que te pasan hoy."
+      : n <= 2
+        ? `Reconoces ${n}: ya hay algo que conviene revisar.`
+        : `Reconoces ${n} señales: conviene ponerle número a lo que cuestan.`;
+  const waMsg =
+    n === 0
+      ? "Hola ETIIA, quiero agendar mi diagnóstico gratis."
+      : `Hola ETIIA, quiero agendar mi diagnóstico gratis. Reconozco ${n} señales (${picked.join(", ")}).`;
+
+  return (
+    <div>
+      <p className="mb-4 text-center text-sm text-slate-500">
+        <span className="font-black text-blue-700">Marca las que te pasan.</span> Tú decides si son suficientes para actuar.
+      </p>
+      <div className="flex flex-wrap items-center justify-center gap-2.5">
+        {SELF_CHECK_SIGNALS.map((t) => {
+          const active = picked.includes(t);
+          return (
+            <button
+              key={t}
+              type="button"
+              onClick={() => toggle(t)}
+              aria-pressed={active}
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-all ${
+                active
+                  ? "border-blue-600 bg-blue-600 text-white shadow-sm"
+                  : "border-slate-200 bg-white text-slate-600 hover:border-blue-300 hover:text-blue-700"
+              }`}
+            >
+              {active ? (
+                <CheckCircle2 className="h-4 w-4 shrink-0" />
+              ) : (
+                <span className="h-4 w-4 shrink-0 rounded-full border border-slate-300" />
+              )}
+              {t}
+            </button>
+          );
+        })}
+      </div>
+      <div
+        className={`mt-6 flex flex-col items-center gap-3 rounded-xl border p-4 text-center transition-colors ${
+          n >= 3 ? "border-blue-200 bg-blue-50/70" : "border-slate-200 bg-slate-50/70"
+        }`}
+      >
+        <p className="text-sm font-semibold text-[#0F172A]">{message}</p>
+        <a
+          href={wa(waMsg)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-flex items-center justify-center gap-2 rounded-xl bg-blue-700 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5 hover:bg-blue-800 ${
+            n >= 3 ? "btn-pulse" : ""
+          }`}
+        >
+          {CTA_PRIMARIO} <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
 const products = [
   {
     nombre: "VentaAI",
@@ -282,7 +386,7 @@ export default function HomeV2() {
               <div className="fade-in-up" style={{ animationDelay: "0.1s", animationFillMode: "both" }}>
                 <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-7">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                  Foco comercial · retención · asignación
+                  Consultoría de IA B2B · Chile y Latam
                 </p>
               </div>
 
@@ -292,7 +396,7 @@ export default function HomeV2() {
 
               <div className="mx-auto max-w-3xl mb-8 fade-in-up" style={{ animationDelay: "0.3s", animationFillMode: "both" }}>
                 <p className="text-base sm:text-lg text-slate-500 leading-relaxed mb-5">
-                  <span className="font-bold text-blue-700">El Blueprint ETIIA mapea proceso, alcance, costos y ROI.</span>{" "} Te entregamos un documento ejecutable para decidir si lo implementas con tu equipo o con el nuestro.
+                  <span className="font-bold text-blue-700">El Blueprint ETIIA mapea proceso, alcance, costos y ROI de tu proyecto de IA.</span>{" "} Un documento ejecutable para decidir con números — lo implementes con tu equipo o con el nuestro.
                 </p>
                 <p className="border-l-4 border-blue-600 bg-blue-50/70 px-4 py-3 text-sm text-[#0F172A] font-semibold leading-relaxed shadow-sm shadow-blue-900/5">
                   <span className="font-black text-blue-700">Primero conversamos.</span>{" "} Revisamos si existen antecedentes suficientes; si no hay valor medible, no recomendamos avanzar con tecnología.
@@ -300,65 +404,37 @@ export default function HomeV2() {
               </div>
 
               <div className="flex flex-col sm:flex-row justify-center gap-3 fade-in-up" style={{ animationDelay: "0.4s", animationFillMode: "both" }}>
-                <Link href="/contacto" className="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
-                  Conversemos <ArrowRight className="w-4 h-4" />
-                </Link>
+                <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
+                  {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
+                </a>
                 <Link href="#blueprint" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 px-8 py-4 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5">
                   Ver qué trae el Blueprint
                 </Link>
               </div>
             </div>
 
-            <div className="mx-auto hidden max-w-5xl lg:block fade-in-up" style={{ animationDelay: "0.5s", animationFillMode: "both" }}>
-              <div className="rounded-[1.75rem] border border-slate-200 bg-white/90 p-4 md:p-5 shadow-[0_24px_80px_-42px_rgba(15,23,42,0.55)]">
-                <div className="rounded-[1.35rem] bg-slate-50/80 border border-slate-200 p-3 md:p-4">
-                  {/* Conversación — bloque previo diferenciado */}
-                  <div className="flex items-center gap-3 rounded-xl border border-dashed border-blue-200 bg-blue-50/60 px-4 py-3 mb-4">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-blue-100 flex items-center justify-center shrink-0">
-                      <MessageCircle className="w-4 h-4 text-blue-600" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[10px] uppercase tracking-widest font-extrabold text-blue-600 leading-tight">Antes de empezar</p>
-                      <p className="text-xs text-slate-600 font-semibold leading-snug">Conversamos 20 min · sin costo · sin compromiso</p>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-2 md:gap-3 mb-4">
-                    {[
-                      { value: "Gratis", label: "Diagnóstico" },
-                      { value: "Pagado", label: "Blueprint central" },
-                      { value: "Opcional", label: "Implementación" },
-                    ].map((s, idx) => (
-                      <div key={s.label} className={`rounded-2xl px-3 md:px-4 py-4 min-h-[104px] md:min-h-[116px] flex flex-col justify-between border ${idx === 1 ? "bg-[#0F172A] text-white border-[#0F172A] shadow-xl shadow-slate-900/15" : "bg-white text-[#0F172A] border-slate-200"}`}>
-                        <div className="flex items-start justify-between gap-2">
-                          <p className={`text-[9px] md:text-[10px] uppercase tracking-wider md:tracking-widest leading-tight font-extrabold ${idx === 1 ? "text-blue-200" : "text-blue-700"}`}>{s.label}</p>
-                          <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-black border ${idx === 1 ? "bg-white/10 border-white/15 text-white" : "bg-blue-50 border-blue-100 text-blue-700"}`}>
-                            {idx + 1}
-                          </span>
-                        </div>
-                        <p className="text-lg md:text-2xl font-black tabular-nums leading-none">{s.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="rounded-2xl border border-slate-200 bg-white p-4 md:p-5">
-                    <div className="flex items-center justify-between gap-4 mb-4">
-                      <span className="text-[10px] uppercase tracking-wider font-extrabold text-blue-700 shrink-0">Dónde buscamos retorno medible</span>
-                      <span className="hidden md:block h-px flex-1 bg-slate-200" />
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {[
-                        "Retención y fuga de clientes",
-                        "Presupuesto mal asignado",
-                        "Horas caras en trabajo manual",
-                        "Errores operacionales repetidos",
-                      ].map((item) => (
-                        <span key={item} className="rounded-xl border border-slate-200 bg-slate-50/80 px-3 py-2 text-sm text-slate-600 font-semibold">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+            {/* Tira de dolores — texto escaneable, visible en mobile y desktop (brief §2.1) */}
+            <div className="mx-auto max-w-4xl fade-in-up" style={{ animationDelay: "0.5s", animationFillMode: "both" }}>
+              <div className="rounded-[1.35rem] border border-slate-200 bg-slate-50/70 p-5 md:p-7">
+                <p className="mb-4 text-center text-sm font-black uppercase tracking-widest text-blue-700 sm:text-left">
+                  ¿Te suena alguno de estos?
+                </p>
+                <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                  {[
+                    "Clientes que se van y nadie alcanza a retenerlos",
+                    "Presupuesto que se reparte a ojo, no donde rinde",
+                    "Horas caras en trabajo manual que se repite",
+                    "Errores operacionales que vuelven mes a mes",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-white px-4 py-3 text-left text-sm font-semibold text-[#0F172A]"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -376,13 +452,14 @@ export default function HomeV2() {
               </h2>
               <p className="mx-auto max-w-3xl text-slate-500 leading-relaxed text-base md:text-lg">
                 <span className="font-bold text-blue-700">No conviene partir implementando tecnología.</span>{" "}
-                Cuando estas señales se repiten, primero hay que diagnosticar si existe una oportunidad real y, si la hay, diseñar tu Blueprint para concentrar la inversión donde pueda generar mayor retorno.
+                Cuando estas señales se repiten, primero hay que poner número a lo que cuesta resolverlo a mano — y recién ahí decidir si vale la pena automatizar.
               </p>
               <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-                <Link href="/contacto" className="inline-flex items-center justify-center gap-2 bg-[#0F172A] hover:bg-slate-800 text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5">
-                  Consultar diagnóstico gratis <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href="#blueprint" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 px-6 py-3.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5">
+                {/* Primario solo en desktop: en mobile lo entrega el auto-diagnóstico de abajo */}
+                <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5">
+                  {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
+                </a>
+                <Link href="#blueprint" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5">
                   Ver qué trae el Blueprint
                 </Link>
               </div>
@@ -390,13 +467,16 @@ export default function HomeV2() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="mx-auto max-w-6xl">
-              <div className="w-full overflow-x-auto pb-2 md:overflow-visible md:pb-0">
-                <div className="min-w-[760px] overflow-hidden rounded-[1.35rem] border border-slate-200 bg-white shadow-[0_30px_90px_-52px_rgba(15,23,42,0.55)] md:min-w-0 lg:rounded-[1.75rem]">
-                  <WordCloudMagnifier />
-                </div>
+            <div className="mx-auto max-w-3xl">
+              {/* Mobile / tablet: auto-diagnóstico interactivo (brief §3.3) */}
+              <div className="rounded-[1.35rem] border border-slate-200 bg-white p-5 shadow-[0_30px_90px_-52px_rgba(15,23,42,0.55)] md:p-7 lg:hidden">
+                <SignalSelfCheck />
               </div>
-              <p className="mx-auto mt-3 max-w-5xl px-4 text-center text-[11px] leading-relaxed text-slate-400 sm:px-0">
+              {/* Desktop: PNG original de la nube con lupa */}
+              <div className="hidden overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_30px_90px_-52px_rgba(15,23,42,0.55)] lg:block">
+                <WordCloudMagnifier />
+              </div>
+              <p className="mx-auto mt-4 max-w-5xl px-4 text-center text-[11px] leading-relaxed text-slate-400 sm:px-0">
                 <span className="font-bold text-slate-500">Referencias:</span>{" "}
                 McKinsey, <em>The State of AI</em>; BCG, <em>Flipping the Odds of Digital Transformation Success</em>; MIT Sloan Management Review &amp; BCG, <em>Artificial Intelligence in Business Gets Real</em>; IBM, <em>AI Adoption Challenges</em>.
               </p>
@@ -424,9 +504,9 @@ export default function HomeV2() {
                     El Blueprint es tuyo: lo puedes ejecutar con ETIIA, con tu equipo o con otro proveedor, sin rehacer el diagnóstico.
                   </p>
                 </div>
-                <Link href="/contacto" className="inline-flex items-center justify-center gap-2 bg-[#0F172A] hover:bg-slate-800 text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5">
-                  Consultar por el Blueprint <ArrowRight className="w-4 h-4" />
-                </Link>
+                <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={ctaPrimarioClass}>
+                  {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
             </Reveal>
 
@@ -487,68 +567,8 @@ export default function HomeV2() {
         </div>
       </section>
 
-      {/* FUNNEL */}
-      <section className="py-20 md:py-24 bg-white" id="fases">
-        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Proceso</p>
-            <div className="mx-auto mb-14 max-w-4xl text-center">
-              <h2 className="text-3xl md:text-5xl font-black tracking-normal text-[#0F172A] leading-tight">
-                Avanzas solo cuando hay suficiente claridad para seguir.
-              </h2>
-              <p className="mx-auto mt-5 max-w-3xl text-slate-500 leading-relaxed">
-                <span className="font-bold text-blue-700">Primero conversamos.</span>{" "} Si existen antecedentes suficientes, hacemos un diagnóstico gratis; después diseñamos el Blueprint. <span className="font-bold text-blue-700">Con ese documento en mano,</span>{" "} decides si construir, cuándo y con quién.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Conversación — bloque previo al embudo */}
-          <Reveal>
-            <div className="flex items-start gap-4 rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50/50 p-5 md:p-6 mb-8">
-              <div className="w-12 h-12 rounded-xl bg-white border border-blue-100 flex items-center justify-center shrink-0 shadow-sm">
-                <MessageCircle className="w-6 h-6 text-blue-600" />
-              </div>
-              <div>
-                <div className="flex flex-wrap items-center gap-3 mb-2">
-                  <h3 className="text-lg font-black text-[#0F172A] tracking-tight">Antes de cualquier fase</h3>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 bg-white border border-blue-100 px-2.5 py-1 rounded-full">20 min · sin costo</span>
-                </div>
-                <p className="text-sm text-slate-500 leading-relaxed">Una conversación breve para entender la prioridad de negocio y ver si existen antecedentes suficientes. Si no se justifica avanzar, lo comunicamos con claridad. No es un servicio ni una fase: es el filtro para decidir si tiene sentido seguir.</p>
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="grid md:grid-cols-3 gap-4 md:gap-5 items-stretch relative">
-            <div className="hidden md:block absolute top-1/2 left-8 right-8 h-px bg-slate-200" aria-hidden="true" />
-            {funnelSteps.map((step, idx) => {
-              const isCore = idx === 1;
-              return (
-                <Reveal key={step.title} delay={0.08 * (idx + 1)}>
-                  <div className={`rounded-2xl p-6 md:p-7 h-full flex flex-col gap-5 transition-all relative z-10 ${isCore ? "bg-[#0F172A] text-white border border-[#0F172A] shadow-2xl shadow-blue-900/20 md:-mt-5 md:mb-5" : "bg-white border border-slate-200 text-[#0F172A] shadow-sm"}`}>
-                    <div className="flex items-start justify-between gap-4">
-                      <div className={`w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 ${isCore ? "bg-white/10 border-white/15 [&_svg]:text-white" : "bg-blue-50 border-blue-100"}`}>
-                        {step.icon}
-                      </div>
-                      <span className={`text-[11px] font-black uppercase tracking-widest ${isCore ? "text-blue-200" : "text-slate-400"}`}>Fase {step.fase}</span>
-                    </div>
-                    <div>
-                      <div className="flex items-baseline justify-between gap-3 mb-2">
-                        <h3 className="text-xl font-black tracking-tight">{step.title}</h3>
-                        <span className={`text-xs font-bold border px-2.5 py-1 rounded-full ${isCore ? "text-white bg-blue-600 border-blue-500" : "text-blue-700 bg-blue-50 border-blue-100"}`}>{step.price}</span>
-                      </div>
-                      <p className={`text-sm leading-relaxed mb-4 ${isCore ? "text-slate-300" : "text-slate-500"}`}>{step.desc}</p>
-                      <p className={`text-sm font-semibold leading-relaxed ${isCore ? "text-white" : "text-[#0F172A]"}`}>{step.deliverable}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* APPLICATION AREAS */}
-      <section className="py-24 bg-slate-50 border-y border-slate-100" id="ambitos-blueprint">
+      <section className="py-24 bg-white border-y border-slate-100" id="ambitos-blueprint">
         <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
           <Reveal>
             <div className="mx-auto mb-14 max-w-5xl text-center">
@@ -609,9 +629,57 @@ export default function HomeV2() {
                 </p>
               </div>
               </div>
-              <Link href="/contacto" className="shrink-0 inline-flex items-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-[#0F172A] font-bold text-sm px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5 group">
-                Conversemos <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={`group shrink-0 ${ctaPrimarioClass}`}>
+                {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* DECISION */}
+      <section className="py-24 bg-slate-50 border-y border-slate-100" id="enfoque">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="mx-auto mb-14 max-w-5xl text-center">
+              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Para decidir con números</p>
+              <h2 className="text-4xl font-black tracking-tight text-[#0F172A] mb-6 leading-tight">
+                Con el Blueprint puedes decidir con información suficiente.
+              </h2>
+              <p className="mx-auto max-w-3xl text-slate-500 leading-relaxed">
+                <span className="font-bold text-blue-700">Ordena la inversión antes de comprometer presupuesto.</span>{" "} El Blueprint muestra qué justifica avanzar, qué conviene dejar fuera y qué tendría que pasar para que el proyecto se pague.
+              </p>
+            </div>
+          </Reveal>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Si se justifica construir",
+                desc: "El caso queda medido contra una línea base, una meta y un retorno esperado en pesos.",
+              },
+              {
+                title: "Qué construir primero",
+                desc: "El alcance se separa por fases para evitar proyectos grandes que no llegan a producción.",
+              },
+              {
+                title: "Con qué equipo ejecutarlo",
+                desc: "Puedes avanzar con ETIIA, con tu equipo interno o pedir cotizaciones con un punto de partida claro.",
+              },
+            ].map((item, idx) => (
+              <Reveal key={item.title} delay={0.08 * (idx + 1)}>
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full">
+                  <CheckCircle2 className="w-5 h-5 text-blue-600 mb-5" />
+                  <h3 className="text-lg font-black text-[#0F172A] tracking-tight mb-3">{item.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.2}>
+            <div className="mt-10 flex justify-center">
+              <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={ctaPrimarioClass}>
+                {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
           </Reveal>
         </div>
@@ -624,11 +692,11 @@ export default function HomeV2() {
             <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Evidencia técnica</p>
             <div className="mx-auto mb-10 max-w-4xl text-center">
               <h2 className="text-4xl md:text-5xl font-black tracking-tight text-[#0F172A] leading-tight">
-                Demos para ver cómo podría verse una ejecución real.
+                Demos que puedes probar antes de comprar.
               </h2>
               <div className="mx-auto mt-5 flex max-w-3xl flex-col gap-2">
                 <p className="text-slate-500 text-lg">
-                  Úsalas como referencia concreta: agentes, automatización, modelos y flujos integrados a sistemas de negocio.
+                  Úsalas como referencia concreta de lo que el Blueprint puede aterrizar: agentes, automatización, modelos y flujos integrados a sistemas de negocio.
                 </p>
                 <p className="text-sm text-blue-600 font-semibold mt-1">
                   Mostrando 3 de{" "}
@@ -656,14 +724,9 @@ export default function HomeV2() {
                   <p className="text-base text-[#0F172A] font-semibold leading-snug mb-4">{p.problema}</p>
                   <h3 className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-500 tracking-tight mb-2">{p.nombre}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed flex-grow mb-6">{p.desc}</p>
-                  <div className="flex gap-3">
-                    <Link href={`/demos/${p.slug}`} className="flex-1 flex items-center justify-center text-xs font-bold text-slate-700 border-2 border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 px-3 py-2 rounded-lg transition-all">
-                      Ver demo
-                    </Link>
-                    <Link href="/contacto" className="flex-1 flex items-center justify-center text-xs font-bold text-white bg-gradient-to-br from-blue-800 to-blue-600 border border-blue-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:from-blue-900 hover:to-blue-700 transition-all px-3 py-2 rounded-lg">
-                      Conversemos
-                    </Link>
-                  </div>
+                  <Link href={`/demos/${p.slug}`} className="group/btn flex items-center justify-center gap-1.5 text-xs font-bold text-slate-700 border-2 border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 px-3 py-2.5 rounded-lg transition-all">
+                    Ver demo <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5" />
+                  </Link>
                 </div>
               </Reveal>
             ))}
@@ -680,8 +743,8 @@ export default function HomeV2() {
                 <Link href="/demos" className="text-sm text-slate-300 hover:text-white font-semibold transition-colors">
                   Ver todas las demos
                 </Link>
-                <a href="https://wa.me/56976305985?text=Hola%20ETIIA%2C%20quiero%20conversar%20sobre%20un%20caso%20para%20evaluar%20si%20tiene%20sentido%20aplicar%20IA." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-[#0B1121] font-bold text-sm px-7 py-3.5 rounded-xl hover:bg-slate-50 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20 group">
-                  Conversemos <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm px-7 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-blue-900/20">
+                  {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </div>
             </div>
@@ -689,73 +752,62 @@ export default function HomeV2() {
         </div>
       </section>
 
-      {/* DIAGNOSTIC */}
-      <section className="py-24 bg-slate-50 border-y border-slate-100" id="diagnostico">
+      {/* FUNNEL */}
+      <section className="py-20 md:py-24 bg-slate-50 border-y border-slate-100" id="fases">
         <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
-          <div className="space-y-10">
-            <div className="mx-auto max-w-4xl text-center">
-              <Reveal>
-                <div>
-                  <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Después de conversar</p>
-                  <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#0F172A] leading-tight mb-6">
-                    Si existen antecedentes suficientes, pasamos al diagnóstico gratis.
-                  </h2>
-                  <p className="text-slate-500 leading-relaxed text-base mb-4">
-                    <span className="font-bold text-blue-700">La primera conversación no es el diagnóstico completo.</span>{" "} En 20 minutos vemos si existe una prioridad de negocio con valor medible y condiciones mínimas para evaluarla bien.
-                  </p>
-                  <p className="text-slate-500 leading-relaxed text-base">
-                    <span className="font-bold text-blue-700">Si corresponde avanzar,</span>{" "} abrimos el diagnóstico gratis y te entregamos un veredicto claro. Si la respuesta es sí, el siguiente paso es un Blueprint con precio y alcance definidos.
-                  </p>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.15}>
-                <div className="grid gap-3 text-left sm:grid-cols-2">
-                  {[
-                    "Antecedentes suficientes para abrir diagnóstico.",
-                    "Luz verde o roja para IA.",
-                    "Orden de magnitud del valor en juego.",
-                    "Tipo de solución probable: BI, automatización o modelo.",
-                    "Siguiente paso: Blueprint, con alcance y precio.",
-                  ].map((item) => (
-                    <div key={item} className="flex gap-3 items-start text-sm text-[#0F172A] font-medium">
-                      <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-blue-600" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.2}>
-                <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-center gap-3">
-                  <a href="https://calendly.com/etiia" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.35)] transition-all hover:-translate-y-0.5 text-sm">
-                    Calendly <Calendar className="w-4 h-4 text-white" />
-                  </a>
-                  <a href="https://wa.me/56976305985?text=Hola%20ETIIA%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratis." target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-[#0F172A] font-bold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-sm">
-                    WhatsApp
-                  </a>
-                </div>
-              </Reveal>
+          <Reveal>
+            <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Proceso</p>
+            <div className="mx-auto mb-14 max-w-4xl text-center">
+              <h2 className="text-3xl md:text-5xl font-black tracking-normal text-[#0F172A] leading-tight">
+                Avanzas solo cuando hay suficiente claridad para seguir.
+              </h2>
+              <p className="mx-auto mt-5 max-w-3xl text-slate-500 leading-relaxed">
+                <span className="font-bold text-blue-700">Primero conversamos.</span>{" "} Si existen antecedentes suficientes, hacemos un diagnóstico gratis; después diseñamos el Blueprint. <span className="font-bold text-blue-700">Con ese documento en mano,</span>{" "} decides si construir, cuándo y con quién.
+              </p>
             </div>
+          </Reveal>
 
-            <Reveal delay={0.15}>
-              <div className="mx-auto max-w-3xl bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
-                <DiagnosticoForm />
-                <div className="mt-5 flex items-start gap-3 bg-emerald-50/50 border border-emerald-100 rounded-xl p-3 text-left">
-                  <div className="bg-emerald-100 p-1.5 rounded-lg text-emerald-700 shrink-0 mt-0.5">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mb-0.5">Privacidad corporativa</p>
-                    <p className="text-[11px] text-emerald-600/90 leading-relaxed font-medium">
-                      No entrenamos modelos públicos con la información confidencial de tu empresa.
-                    </p>
-                  </div>
-                </div>
+          {/* Conversación — bloque previo al embudo */}
+          <Reveal>
+            <div className="flex items-start gap-4 rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50/50 p-5 md:p-6 mb-8">
+              <div className="w-12 h-12 rounded-xl bg-white border border-blue-100 flex items-center justify-center shrink-0 shadow-sm">
+                <MessageCircle className="w-6 h-6 text-blue-600" />
               </div>
-            </Reveal>
+              <div>
+                <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <h3 className="text-lg font-black text-[#0F172A] tracking-tight">Antes de cualquier fase</h3>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 bg-white border border-blue-100 px-2.5 py-1 rounded-full">20 min · sin costo</span>
+                </div>
+                <p className="text-sm text-slate-500 leading-relaxed">Una conversación breve para entender la prioridad de negocio y ver si existen antecedentes suficientes. Si no se justifica avanzar, lo comunicamos con claridad. No es un servicio ni una fase: es el filtro para decidir si tiene sentido seguir.</p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-4 md:gap-5 items-stretch relative">
+            <div className="hidden md:block absolute top-1/2 left-8 right-8 h-px bg-slate-200" aria-hidden="true" />
+            {funnelSteps.map((step, idx) => {
+              const isCore = idx === 1;
+              return (
+                <Reveal key={step.title} delay={0.08 * (idx + 1)}>
+                  <div className={`rounded-2xl p-6 md:p-7 h-full flex flex-col gap-5 transition-all relative z-10 ${isCore ? "bg-[#0F172A] text-white border border-[#0F172A] shadow-2xl shadow-blue-900/20 md:-mt-5 md:mb-5" : "bg-white border border-slate-200 text-[#0F172A] shadow-sm"}`}>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className={`w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 ${isCore ? "bg-white/10 border-white/15 [&_svg]:text-white" : "bg-blue-50 border-blue-100"}`}>
+                        {step.icon}
+                      </div>
+                      <span className={`text-[11px] font-black uppercase tracking-widest ${isCore ? "text-blue-200" : "text-slate-400"}`}>Fase {step.fase}</span>
+                    </div>
+                    <div>
+                      <div className="flex items-baseline justify-between gap-3 mb-2">
+                        <h3 className="text-xl font-black tracking-tight">{step.title}</h3>
+                        <span className={`text-xs font-bold border px-2.5 py-1 rounded-full ${isCore ? "text-white bg-blue-600 border-blue-500" : "text-blue-700 bg-blue-50 border-blue-100"}`}>{step.price}</span>
+                      </div>
+                      <p className={`text-sm leading-relaxed mb-4 ${isCore ? "text-slate-300" : "text-slate-500"}`}>{step.desc}</p>
+                      <p className={`text-sm font-semibold leading-relaxed ${isCore ? "text-white" : "text-[#0F172A]"}`}>{step.deliverable}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -867,43 +919,53 @@ export default function HomeV2() {
         </Reveal>
       </section>
 
-      {/* DECISION */}
-      <section className="py-24 bg-slate-50 border-y border-slate-100" id="enfoque">
+      {/* DIAGNOSTIC */}
+      <section className="py-24 bg-slate-50 border-y border-slate-100" id="diagnostico">
         <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <div className="mx-auto mb-14 max-w-5xl text-center">
-              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Para decidir con números</p>
-              <h2 className="text-4xl font-black tracking-tight text-[#0F172A] mb-6 leading-tight">
-                Con el Blueprint puedes decidir con información suficiente.
-              </h2>
-              <p className="mx-auto max-w-3xl text-slate-500 leading-relaxed">
-                <span className="font-bold text-blue-700">Ordena la inversión antes de comprometer presupuesto.</span>{" "} El Blueprint muestra qué justifica avanzar, qué conviene dejar fuera y qué tendría que pasar para que el proyecto se pague.
-              </p>
-            </div>
-          </Reveal>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Si se justifica construir",
-                desc: "El caso queda medido contra una línea base, una meta y un retorno esperado en pesos.",
-              },
-              {
-                title: "Qué construir primero",
-                desc: "El alcance se separa por fases para evitar proyectos grandes que no llegan a producción.",
-              },
-              {
-                title: "Con qué equipo ejecutarlo",
-                desc: "Puedes avanzar con ETIIA, con tu equipo interno o pedir cotizaciones con un punto de partida claro.",
-              },
-            ].map((item, idx) => (
-              <Reveal key={item.title} delay={0.08 * (idx + 1)}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-7 h-full">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 mb-5" />
-                  <h3 className="text-lg font-black text-[#0F172A] tracking-tight mb-3">{item.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+          <div className="space-y-10">
+            <div className="mx-auto max-w-4xl text-center">
+              <Reveal>
+                <div>
+                  <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">Agenda</p>
+                  <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#0F172A] leading-tight mb-6">
+                    Agenda la conversación de 20 minutos.
+                  </h2>
+                  <p className="text-slate-500 leading-relaxed text-base">
+                    <span className="font-bold text-blue-700">Sin costo y sin compromiso.</span>{" "} Salimos con una lectura clara de si existe una oportunidad con valor medible y cuál es el siguiente paso concreto para tu caso.
+                  </p>
                 </div>
               </Reveal>
-            ))}
+
+              <Reveal delay={0.2}>
+                <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-center gap-3">
+                  <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={ctaPrimarioClass}>
+                    {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 text-white" />
+                  </a>
+                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-[#0F172A] font-bold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-sm">
+                    Ver agenda en Calendly <Calendar className="w-4 h-4" />
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal delay={0.15}>
+              <div className="mx-auto max-w-3xl bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+                <DiagnosticoForm />
+                <div className="mt-5 flex items-start gap-3 bg-emerald-50/50 border border-emerald-100 rounded-xl p-3 text-left">
+                  <div className="bg-emerald-100 p-1.5 rounded-lg text-emerald-700 shrink-0 mt-0.5">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mb-0.5">Privacidad corporativa</p>
+                    <p className="text-[11px] text-emerald-600/90 leading-relaxed font-medium">
+                      No entrenamos modelos públicos con la información confidencial de tu empresa.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -921,11 +983,11 @@ export default function HomeV2() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 shrink-0 relative z-10">
-              <Link href="/contacto" className="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl text-sm hover:from-blue-800 hover:to-indigo-700 shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
-                Conversemos <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a href="https://wa.me/56976305985?text=Hola%20ETIIA%2C%20quiero%20conversar%20sobre%20una%20prioridad%20de%20negocio%20y%20evaluar%20si%20se%20justifica%20aplicar%20IA." target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-white/15 bg-white/10 text-white font-bold px-8 py-4 rounded-xl text-sm hover:bg-white/15 transition-all">
-                Escribir por WhatsApp
+              <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-4 rounded-xl text-sm shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
+                {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
+              </a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-white/15 bg-white/10 text-white font-bold px-8 py-4 rounded-xl text-sm hover:bg-white/15 transition-all">
+                Ver agenda en Calendly
               </a>
             </div>
           </div>
