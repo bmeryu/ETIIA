@@ -408,7 +408,7 @@ export default function HomeV2() {
                   <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
                     {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
                   </a>
-                  <span className="text-xs font-normal text-slate-400">Empecemos con 20 min · sin compromiso</span>
+                  <span className="text-xs font-normal text-slate-400">Sin compromiso</span>
                 </div>
                 <Link href="#blueprint" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 px-8 py-4 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5">
                   Ver qué trae el Blueprint
@@ -945,7 +945,7 @@ export default function HomeV2() {
                     <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={`${ctaPrimarioClass} w-full sm:w-auto`}>
                       {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 text-white" />
                     </a>
-                    <span className="text-xs font-normal text-slate-400">Empecemos con 20 min · sin compromiso</span>
+                    <span className="text-xs font-normal text-slate-400">Sin compromiso</span>
                   </div>
                   <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-[#0F172A] font-bold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-sm">
                     Ver agenda en Calendly <Calendar className="w-4 h-4" />
@@ -993,7 +993,7 @@ export default function HomeV2() {
                 <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-4 rounded-xl text-sm shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
                   {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
                 </a>
-                <span className="text-xs font-normal text-slate-400">Empecemos con 20 min · sin compromiso</span>
+                <span className="text-xs font-normal text-slate-400">Sin compromiso</span>
               </div>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-white/15 bg-white/10 text-white font-bold px-8 py-4 rounded-xl text-sm hover:bg-white/15 transition-all">
                 Ver agenda en Calendly
