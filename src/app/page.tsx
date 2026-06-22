@@ -13,6 +13,7 @@ import {
   Database,
   FileText,
   Hammer,
+  Lock,
   MessageCircle,
   ShieldCheck,
   TrendingUp,
@@ -408,7 +409,7 @@ export default function HomeV2() {
                   <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 btn-pulse">
                     {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
                   </a>
-                  <span className="text-xs font-normal text-slate-400">Sin compromiso</span>
+                  <span className="text-xs font-normal text-slate-400">Te decimos si hay una oportunidad real · sin compromiso</span>
                 </div>
                 <Link href="#blueprint" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 px-8 py-4 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5">
                   Ver qué trae el Blueprint
@@ -635,6 +636,109 @@ export default function HomeV2() {
               <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={`group shrink-0 ${ctaPrimarioClass}`}>
                 {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* PROOF — Blueprint de ejemplo (preview no copiable + muestra gated) */}
+      <section className="py-24 bg-slate-50 border-y border-slate-100" id="prueba">
+        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="mx-auto mb-10 max-w-4xl text-center">
+              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">La prueba</p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-[#0F172A] leading-tight">
+                Mira la calidad del plano antes de decidir.
+              </h2>
+              <p className="mx-auto mt-5 max-w-3xl text-slate-500 leading-relaxed">
+                Un Blueprint de ejemplo, sobre un caso representativo. El mismo nivel de detalle —proceso, arquitectura, costos y ROI— con el que vas a decidir tu inversión.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="mx-auto max-w-5xl">
+              {/* Preview NO copiable: select-none + pointer-events-none en todo el documento */}
+              <div
+                className="select-none pointer-events-none rounded-[1.35rem] border border-slate-200 bg-white p-4 md:p-5 shadow-2xl shadow-slate-900/10"
+                aria-hidden="true"
+              >
+                <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+                  <div className="border-b border-slate-200 px-5 py-4 flex items-center justify-between gap-4 bg-slate-50/80">
+                    <div>
+                      <p className="text-[10px] font-bold text-blue-700 uppercase tracking-widest mb-1">Documento ejecutable</p>
+                      <h3 className="text-xl font-black text-[#0F172A]">Blueprint ETIIA — Ejemplo</h3>
+                    </div>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border border-slate-200 rounded-full px-3 py-1">Caso representativo</span>
+                  </div>
+                  <div className="grid md:grid-cols-2">
+                    {/* Resto del documento: difuminado + bloqueado */}
+                    <div className="relative p-5 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50/80">
+                      <div className="blur-[5px] opacity-70">
+                        <p className="text-xs font-black text-[#0F172A] mb-3">Índice del entregable</p>
+                        <div className="space-y-2">
+                          {blueprintOutline.map((item, idx) => (
+                            <div key={item} className="flex items-center gap-2 text-xs text-slate-600">
+                              <span className="w-5 h-5 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[10px] font-bold text-blue-700">{idx + 1}</span>
+                              <span>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-white/40">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-200 shadow-sm">
+                          <Lock className="w-4 h-4 text-slate-400" />
+                        </span>
+                        <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500">Resto del documento</p>
+                      </div>
+                    </div>
+
+                    {/* Sección ROI: visible y legible + anotaciones */}
+                    <div className="p-5">
+                      <div className="flex items-center justify-between gap-3 mb-4">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-blue-700">Sección ROI · visible</p>
+                        <span className="text-[10px] font-bold text-blue-700 uppercase tracking-widest border border-blue-100 bg-blue-50 rounded-full px-3 py-1">En detalle</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3 mb-4">
+                        {[
+                          ["Línea base", "$3,2M / mes"],
+                          ["Oportunidad", "+$540k / mes"],
+                          ["Payback", "7 meses"],
+                          ["Riesgo", "Medio · mitigado"],
+                        ].map(([label, value]) => (
+                          <div key={label} className="rounded-lg border border-slate-200 p-3">
+                            <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">{label}</p>
+                            <p className="text-base font-black text-[#0F172A]">{value}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="space-y-2.5">
+                        {[
+                          "Línea base medida con datos reales, no estimada a ojo.",
+                          "Payback en meses: sabes cuándo la inversión se paga sola.",
+                          "Cada riesgo viene con su plan de mitigación.",
+                        ].map((nota) => (
+                          <div key={nota} className="flex gap-2 items-start text-xs text-slate-600">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
+                            <span>{nota}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Rótulo + teaser + CTA (fuera del preview, clickeable) */}
+              <div className="mt-6 flex flex-col items-center gap-3 text-center">
+                <p className="text-[11px] text-slate-400">Ejemplo sobre un caso representativo · no es un cliente real.</p>
+                <p className="max-w-xl text-sm text-slate-500">
+                  <span className="font-bold text-blue-700">Vista parcial.</span> El ejemplo completo lo revisamos juntos en la conversación.
+                </p>
+                <a href={wa("Hola ETIIA, quiero pedir el Blueprint de ejemplo para ver el nivel de detalle.")} target="_blank" rel="noopener noreferrer" className={ctaPrimarioClass}>
+                  Pedir el Blueprint de ejemplo <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -945,7 +1049,7 @@ export default function HomeV2() {
                     <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={`${ctaPrimarioClass} w-full sm:w-auto`}>
                       {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 text-white" />
                     </a>
-                    <span className="text-xs font-normal text-slate-400">Sin compromiso</span>
+                    <span className="text-xs font-normal text-slate-400">Te decimos si hay una oportunidad real · sin compromiso</span>
                   </div>
                   <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-[#0F172A] font-bold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-sm">
                     Ver agenda en Calendly <Calendar className="w-4 h-4" />
@@ -993,7 +1097,7 @@ export default function HomeV2() {
                 <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold px-8 py-4 rounded-xl text-sm shadow-lg shadow-blue-900/20 hover:-translate-y-0.5 transition-all">
                   {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
                 </a>
-                <span className="text-xs font-normal text-slate-400">Sin compromiso</span>
+                <span className="text-xs font-normal text-slate-400">Te decimos si hay una oportunidad real · sin compromiso</span>
               </div>
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-white/15 bg-white/10 text-white font-bold px-8 py-4 rounded-xl text-sm hover:bg-white/15 transition-all">
                 Ver agenda en Calendly
