@@ -821,7 +821,7 @@ export default function HomeV2() {
 
               {/* Rótulo + teaser + CTA (fuera del preview, clickeable) */}
               <div className="mt-6 flex flex-col items-center gap-3 text-center">
-                <p className="text-[11px] text-slate-400">Ejemplo sobre un caso representativo · no es un cliente real.</p>
+                <p className="text-[11px] text-slate-400">Ejemplo sobre un caso representativo.</p>
                 <p className="max-w-xl text-sm text-slate-500">
                   <span className="font-bold text-blue-700">Vista parcial.</span> El ejemplo completo lo revisamos juntos en la conversación.
                 </p>
