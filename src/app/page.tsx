@@ -354,7 +354,7 @@ function BlueprintExamplePreview() {
             </span>
             <div className="min-w-0">
               <p className="text-base font-black text-blue-700 leading-tight truncate">Blueprint ETIIA</p>
-              <p className="text-[11px] text-slate-500 leading-tight truncate">Distribuidora B2B</p>
+              <p className="text-[11px] text-slate-500 leading-tight truncate">Distribuidora B2B · Caso representativo · Confidencial</p>
             </div>
           </div>
           <span className="hidden sm:inline-flex items-center text-[11px] font-semibold text-slate-500 shrink-0">
@@ -399,9 +399,9 @@ function BlueprintExamplePreview() {
 
             <div className="space-y-3 mb-2">
               {[
-                ["Ingreso recurrente en riesgo / año", "$312M", "w-full", "bg-blue-600"],
-                ["Fuga evitable (clientes con patrón de recompra)", "$109M", "w-[35%]", "bg-emerald-500"],
-                ["Costo anual de la solución", "$55M", "w-[18%]", "bg-slate-400"],
+                ["Ingreso recurrente en riesgo / año", "$120 MM", "w-full", "bg-blue-600"],
+                ["Fuga evitable (clientes con patrón de recompra)", "$42 MM", "w-[35%]", "bg-emerald-500"],
+                ["Costo anual de la solución", "$22 MM", "w-[18%]", "bg-slate-400"],
               ].map(([label, value, w, color]) => (
                 <div key={label}>
                   <div className="flex items-baseline justify-between gap-3 mb-1">
