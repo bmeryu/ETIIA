@@ -172,7 +172,7 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2.5 md:gap-4 relative" noValidate aria-label="Formulario de diagnóstico">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2.5 md:gap-4 relative" aria-label="Formulario de diagnóstico">
       
       {/* ── BANNER DE CONTEXTO (Solo visible si es específico) ── */}
       {preset.isSpecific && (
