@@ -687,10 +687,32 @@ export default function HomeV2() {
                     })}
                   </div>
 
-                  {/* Página ROI revelada */}
-                  <div className="p-5">
+                  {/* Secciones previas — borrosas (págs. 1–6) */}
+                  <div className="relative overflow-hidden border-b border-slate-200">
+                    <div className="p-5 space-y-3 blur-[6px] opacity-60">
+                      <div className="h-3 w-44 rounded bg-slate-300" />
+                      <div className="space-y-1.5">
+                        <div className="h-2 w-full rounded bg-slate-200" />
+                        <div className="h-2 w-11/12 rounded bg-slate-200" />
+                        <div className="h-2 w-4/5 rounded bg-slate-200" />
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <div className="h-9 rounded bg-slate-200" />
+                        <div className="h-9 rounded bg-slate-200" />
+                        <div className="h-9 rounded bg-slate-200" />
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-white/40 px-4 text-center">
+                      <Lock className="w-4 h-4 text-slate-400" />
+                      <span className="text-[11px] font-semibold text-slate-500">Proceso · Arquitectura · Alcance</span>
+                      <span className="text-[10px] text-slate-400">págs. 1–6 · bloqueadas</span>
+                    </div>
+                  </div>
+
+                  {/* Página ROI revelada (la página abierta) */}
+                  <div className="p-5 border-l-2 border-blue-500">
                     <div className="flex items-center gap-2 mb-4 flex-wrap">
-                      <span className="text-[10px] font-black uppercase tracking-widest text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-3 py-1">Sección ROI · visible</span>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-3 py-1">Sección 7 · ROI</span>
                       <span className="text-xs text-slate-400">Cómo llegamos al número, no solo el número.</span>
                     </div>
 
@@ -699,7 +721,7 @@ export default function HomeV2() {
                       {[
                         ["Ingreso recurrente en riesgo / año", "$312M", "w-full", "bg-blue-600"],
                         ["Fuga evitable (clientes con patrón de recompra)", "$109M", "w-[35%]", "bg-emerald-500"],
-                        ["Costo anual de la solución", "$55M", "w-[18%]", "bg-amber-500"],
+                        ["Costo anual de la solución", "$55M", "w-[18%]", "bg-slate-400"],
                       ].map(([label, value, w, color]) => (
                         <div key={label}>
                           <div className="flex items-baseline justify-between gap-3 mb-1">
@@ -751,33 +773,31 @@ export default function HomeV2() {
                       <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:justify-between">
                         <span className="text-xs font-bold text-[#0F172A]">Riesgo: datos de CRM incompletos</span>
                         <div className="flex gap-1.5 shrink-0">
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-100 rounded px-1.5 py-0.5">Prob. media</span>
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-slate-600 bg-slate-100 border border-slate-200 rounded px-1.5 py-0.5">Prob. media</span>
                           <span className="text-[9px] font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-100 rounded px-1.5 py-0.5">Impacto alto</span>
                         </div>
                       </div>
                       <p className="text-[11px] text-slate-500 mt-1.5">Mitigación: saneamiento de datos en fase 0, antes de construir.</p>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              {/* Secciones bloqueadas: implican profundidad real (gated) */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3 select-none pointer-events-none" aria-hidden="true">
-                {[
-                  ["Arquitectura de datos", "diagrama + integraciones"],
-                  ["Costos por fase", "inversión y recurrentes"],
-                  ["Plan de riesgos", "12 ítems con mitigación"],
-                ].map(([title, sub]) => (
-                  <div key={title} className="rounded-xl border border-dashed border-slate-300 bg-white/60 p-4 flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 border border-slate-200 shrink-0">
-                      <Lock className="w-3.5 h-3.5 text-slate-400" />
-                    </span>
-                    <div>
-                      <p className="text-xs font-bold text-[#0F172A] leading-tight">{title}</p>
-                      <p className="text-[11px] text-slate-400">{sub}</p>
+                  {/* Secciones siguientes — borrosas (págs. 8–24) */}
+                  <div className="relative overflow-hidden border-t border-slate-200">
+                    <div className="p-5 space-y-2.5 blur-[6px] opacity-60">
+                      <div className="h-3 w-36 rounded bg-slate-300" />
+                      <div className="space-y-1.5">
+                        <div className="flex gap-2"><div className="h-2 flex-1 rounded bg-slate-200" /><div className="h-2 w-14 rounded bg-slate-200" /></div>
+                        <div className="flex gap-2"><div className="h-2 flex-1 rounded bg-slate-200" /><div className="h-2 w-14 rounded bg-slate-200" /></div>
+                        <div className="flex gap-2"><div className="h-2 flex-1 rounded bg-slate-200" /><div className="h-2 w-14 rounded bg-slate-200" /></div>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-white/40 px-4 text-center">
+                      <Lock className="w-4 h-4 text-slate-400" />
+                      <span className="text-[11px] font-semibold text-slate-500">Costos por fase · Cronograma · Plan de riesgos</span>
+                      <span className="text-[10px] text-slate-400">págs. 8–24 · se revisan en la conversación</span>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
 
               {/* Rótulo + teaser + CTA (fuera del preview, clickeable) */}
