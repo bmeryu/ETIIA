@@ -5,7 +5,6 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
-  BadgeDollarSign,
   BellRing,
   Calendar,
   CheckCircle2,
@@ -671,85 +670,52 @@ export default function HomeV2() {
         </div>
       </section>
 
-      {/* BLUEPRINT */}
-      <section className="py-20 md:py-24 bg-slate-50 border-y border-slate-100" id="blueprint">
+      {/* BLUEPRINT — sección única: muestra protegida del Blueprint (ex "prueba") */}
+      <section className="py-24 bg-blue-50 border-y border-blue-100" id="blueprint">
         <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
-          <div className="space-y-8 lg:space-y-10">
-            <Reveal>
-              <div className="mx-auto max-w-4xl text-center">
-                <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">El entregable</p>
-                <h2 className="text-3xl md:text-4xl font-black tracking-normal text-[#0F172A] leading-tight mb-5">
-                  Blueprint ETIIA: el documento que queda en tus manos.
-                </h2>
-                <p className="text-slate-500 leading-relaxed mb-5">
-                  Recibes un documento de proyecto con lo necesario para decidir: qué construir, cuánto cuesta, cuánto podría retornar, qué riesgos trae y cómo medir si funcionó.
+          <Reveal>
+            <div className="mx-auto mb-10 max-w-4xl text-center">
+              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">El entregable</p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-[#0F172A] leading-tight">
+                Mira la calidad del plano antes de decidir.
+              </h2>
+              <p className="mx-auto mt-5 max-w-3xl text-slate-500 leading-relaxed">
+                Un Blueprint de ejemplo, sobre un caso representativo. El mismo nivel de detalle —proceso, arquitectura, costos y ROI— con el que vas a decidir tu inversión.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="mx-auto max-w-5xl">
+              <BlueprintExamplePreview />
+
+              {/* Rótulo + teaser + CTA (fuera del preview, clickeable) */}
+              <div className="mt-6 flex flex-col items-center gap-3 text-center">
+                <p className="text-[11px] text-slate-400">Ejemplo sobre un caso representativo.</p>
+                <p className="max-w-xl text-sm text-slate-500">
+                  <span className="font-bold text-blue-700">Vista parcial.</span> El ejemplo completo lo revisamos juntos en la conversación.
                 </p>
-                <div className="mx-auto mb-6 max-w-2xl bg-blue-50/70 border border-blue-100 rounded-xl p-4 text-left">
-                  <p className="text-sm font-black text-[#0F172A] mb-2">Nuestra promesa</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">
-                    El Blueprint es tuyo: lo puedes ejecutar con ETIIA, con tu equipo o con otro proveedor, sin rehacer el diagnóstico.
-                  </p>
-                </div>
-                <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={ctaPrimarioClass}>
-                  {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
+                <a href={wa("Hola ETIIA, quiero pedir el Blueprint de ejemplo para ver el nivel de detalle.")} target="_blank" rel="noopener noreferrer" className={ctaPrimarioClass}>
+                  Pedir el Blueprint de ejemplo <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-            </Reveal>
+            </div>
+          </Reveal>
 
-            <Reveal delay={0.1}>
-              <div className="mx-auto max-w-5xl bg-white border border-slate-200 rounded-[1.35rem] p-4 md:p-5 shadow-2xl shadow-slate-900/10">
-                <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-                  <div className="border-b border-slate-200 px-5 py-4 flex items-center justify-between gap-4 bg-slate-50/80">
-                    <div>
-                      <p className="text-[10px] font-bold text-blue-700 uppercase tracking-widest mb-1">Documento ejecutable</p>
-                      <h3 className="text-xl font-black text-[#0F172A]">Blueprint ETIIA</h3>
-                    </div>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border border-slate-200 rounded-full px-3 py-1">ROI</span>
+          {/* Qué incluye cada Blueprint (lenguaje llano, rescatado del mockup eliminado) */}
+          <Reveal delay={0.15}>
+            <div className="mx-auto mt-10 max-w-3xl">
+              <p className="mb-4 text-center text-[11px] font-black uppercase tracking-widest text-blue-700">Qué incluye cada Blueprint</p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {blueprintIncludes.slice(0, 4).map((item) => (
+                  <div key={item} className="flex items-start gap-2.5 rounded-xl border border-blue-100 bg-white px-4 py-3 text-sm text-slate-600">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                    <span>{item}</span>
                   </div>
-                  <div className="grid md:grid-cols-2">
-                    <div className="p-5 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50/80">
-                      <p className="text-xs font-black text-[#0F172A] mb-3">Índice del entregable</p>
-                      <div className="space-y-2">
-                        {blueprintOutline.map((item, idx) => (
-                          <div key={item} className="flex items-center gap-2 text-xs text-slate-600">
-                            <span className="w-5 h-5 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[10px] font-bold text-blue-700">{idx + 1}</span>
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="p-5">
-                      <div className="rounded-xl border border-blue-100 bg-blue-50/70 p-4 mb-4">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-blue-700 mb-1">Resumen ejecutivo</p>
-                        <p className="text-sm font-bold text-[#0F172A]">Problema, inversión, retorno esperado y recomendación para decidir.</p>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3 mb-4">
-                        {[
-                          ["Base actual", "$"],
-                          ["Meta", "ROI"],
-                          ["Payback", "Meses"],
-                          ["Riesgo", "Plan"],
-                        ].map(([label, value]) => (
-                          <div key={label} className="rounded-lg border border-slate-200 p-3">
-                            <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">{label}</p>
-                            <p className="text-lg font-black text-[#0F172A]">{value}</p>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="space-y-3">
-                        {blueprintIncludes.slice(0, 4).map((item) => (
-                          <div key={item} className="flex gap-3 items-start text-sm text-slate-600">
-                            <BadgeDollarSign className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -818,40 +784,6 @@ export default function HomeV2() {
               <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={`group shrink-0 ${ctaPrimarioClass}`}>
                 {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* PROOF — Blueprint de ejemplo (preview no copiable + muestra gated) */}
-      <section className="py-24 bg-blue-50 border-y border-blue-100" id="prueba">
-        <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <div className="mx-auto mb-10 max-w-4xl text-center">
-              <p className="text-xs text-blue-700 uppercase tracking-widest font-bold mb-3">La prueba</p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-[#0F172A] leading-tight">
-                Mira la calidad del plano antes de decidir.
-              </h2>
-              <p className="mx-auto mt-5 max-w-3xl text-slate-500 leading-relaxed">
-                Un Blueprint de ejemplo, sobre un caso representativo. El mismo nivel de detalle —proceso, arquitectura, costos y ROI— con el que vas a decidir tu inversión.
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mx-auto max-w-5xl">
-              <BlueprintExamplePreview />
-
-              {/* Rótulo + teaser + CTA (fuera del preview, clickeable) */}
-              <div className="mt-6 flex flex-col items-center gap-3 text-center">
-                <p className="text-[11px] text-slate-400">Ejemplo sobre un caso representativo.</p>
-                <p className="max-w-xl text-sm text-slate-500">
-                  <span className="font-bold text-blue-700">Vista parcial.</span> El ejemplo completo lo revisamos juntos en la conversación.
-                </p>
-                <a href={wa("Hola ETIIA, quiero pedir el Blueprint de ejemplo para ver el nivel de detalle.")} target="_blank" rel="noopener noreferrer" className={ctaPrimarioClass}>
-                  Pedir el Blueprint de ejemplo <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
             </div>
           </Reveal>
         </div>
