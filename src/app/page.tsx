@@ -322,6 +322,13 @@ function BlueprintExamplePreview() {
     if (btn) cont.scrollLeft = btn.offsetLeft - cont.clientWidth / 2 + btn.clientWidth / 2;
   }, [active]);
 
+  // Si se abre una sección bloqueada, volver a la muestra de ROI tras unos segundos.
+  useEffect(() => {
+    if (active === roiIndex) return;
+    const t = setTimeout(() => setActive(roiIndex), 3500);
+    return () => clearTimeout(t);
+  }, [active, roiIndex]);
+
   const isRoi = active === roiIndex;
   const activeName = blueprintOutline[active];
 
@@ -370,8 +377,8 @@ function BlueprintExamplePreview() {
                 className={`shrink-0 inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] font-semibold transition-all cursor-pointer hover:scale-105 hover:shadow-sm ${
                   selected
                     ? unlocked
-                      ? "border-blue-300 bg-blue-50 text-blue-700"
-                      : "border-slate-300 bg-slate-100 text-slate-600"
+                      ? "border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-600/25 scale-105"
+                      : "border-slate-700 bg-slate-700 text-white shadow-md scale-105"
                     : "border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-700"
                 }`}
               >
