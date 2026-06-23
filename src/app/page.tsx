@@ -326,7 +326,18 @@ function BlueprintExamplePreview() {
   const activeName = blueprintOutline[active];
 
   return (
-    <div className="select-none rounded-[1.35rem] border border-slate-200 bg-white p-3 md:p-4 shadow-2xl shadow-slate-900/10">
+    <div className="select-none rounded-[1.75rem] bg-[#0F172A] p-2.5 md:p-3 shadow-2xl shadow-slate-900/30">
+      {/* Chrome del visor (la parte oscura) */}
+      <div className="flex items-center justify-between gap-3 px-2.5 pb-2.5 pt-1.5">
+        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-300">
+          <Lock className="w-3 h-3 text-blue-300" /> Vista protegida · solo lectura
+        </span>
+        <span className="flex items-center gap-1" aria-hidden="true">
+          <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+          <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+          <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+        </span>
+      </div>
       <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
         {/* Barra superior del documento */}
         <div className="border-b border-slate-200 px-5 py-3.5 flex items-center justify-between gap-4 bg-slate-50/80">
