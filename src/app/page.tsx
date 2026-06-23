@@ -330,12 +330,17 @@ function BlueprintExamplePreview() {
       <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
         {/* Barra superior del documento */}
         <div className="border-b border-slate-200 px-5 py-3.5 flex items-center justify-between gap-4 bg-slate-50/80">
-          <div className="min-w-0">
-            <p className="text-sm font-black text-[#0F172A] leading-tight truncate">Blueprint ETIIA — Distribuidora B2B</p>
-            <p className="text-[11px] text-slate-400">Caso representativo · v1.0 · Confidencial</p>
+          <div className="min-w-0 flex items-center gap-2.5">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-700 text-white shrink-0">
+              <FileText className="w-4 h-4" />
+            </span>
+            <div className="min-w-0">
+              <p className="text-base font-black text-blue-700 leading-tight truncate">Blueprint ETIIA</p>
+              <p className="text-[11px] text-slate-500 leading-tight truncate">Distribuidora B2B</p>
+            </div>
           </div>
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-500 shrink-0">
-            <FileText className="w-3.5 h-3.5" /> Sección {active + 1} / {blueprintOutline.length}
+          <span className="hidden sm:inline-flex items-center text-[11px] font-semibold text-slate-500 shrink-0">
+            Sección {active + 1} / {blueprintOutline.length}
           </span>
         </div>
 
