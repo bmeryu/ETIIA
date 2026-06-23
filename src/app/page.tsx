@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -305,6 +305,165 @@ const teamMembers = [
   { name: "Implementación & Ops", role: "Ejecución opcional", desc: "Si el cliente decide construir con ETIIA, conecta el Blueprint con ERP, CRM, documentos y flujos existentes sin volver a estimar desde cero.", tags: ["DevOps", "ERP", "Integración"] },
   { name: "Diseño & Producto", role: "Adopción real", desc: "El Blueprint considera quién usará la solución y cómo se incorpora a la operación sin depender de fe ni de capacitaciones eternas.", tags: ["UX", "Producto", "Adopción"] },
 ];
+
+// Visor del Blueprint de ejemplo. Pestañas con los nombres reales de las
+// secciones (blueprintOutline); ROI abierta como muestra, el resto clicable y
+// bloqueado. No copiable (select-none), pero interactivo (las pestañas sí
+// reciben clic, por eso no se usa pointer-events-none).
+function BlueprintExamplePreview() {
+  const roiIndex = Math.max(0, blueprintOutline.indexOf("ROI estimado"));
+  const [active, setActive] = useState(roiIndex);
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const cont = tabsRef.current;
+    if (!cont) return;
+    const btn = cont.querySelector<HTMLButtonElement>(`[data-tab="${active}"]`);
+    if (btn) cont.scrollLeft = btn.offsetLeft - cont.clientWidth / 2 + btn.clientWidth / 2;
+  }, [active]);
+
+  const isRoi = active === roiIndex;
+  const activeName = blueprintOutline[active];
+
+  return (
+    <div className="select-none rounded-[1.35rem] border border-slate-200 bg-white p-3 md:p-4 shadow-2xl shadow-slate-900/10">
+      <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+        {/* Barra superior del documento */}
+        <div className="border-b border-slate-200 px-5 py-3.5 flex items-center justify-between gap-4 bg-slate-50/80">
+          <div className="min-w-0">
+            <p className="text-sm font-black text-[#0F172A] leading-tight truncate">Blueprint ETIIA — Distribuidora B2B</p>
+            <p className="text-[11px] text-slate-400">Caso representativo · v1.0 · Confidencial</p>
+          </div>
+          <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-500 shrink-0">
+            <FileText className="w-3.5 h-3.5" /> Sección {active + 1} / {blueprintOutline.length}
+          </span>
+        </div>
+
+        {/* Pestañas: nombres reales de las secciones del Blueprint */}
+        <div ref={tabsRef} className="flex gap-1.5 px-3 md:px-4 py-2.5 border-b border-slate-200 overflow-x-auto">
+          {blueprintOutline.map((name, i) => {
+            const unlocked = i === roiIndex;
+            const selected = i === active;
+            return (
+              <button
+                key={name}
+                type="button"
+                data-tab={i}
+                onClick={() => setActive(i)}
+                aria-pressed={selected}
+                className={`shrink-0 inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] font-semibold transition-all ${
+                  selected
+                    ? unlocked
+                      ? "border-blue-300 bg-blue-50 text-blue-700"
+                      : "border-slate-300 bg-slate-100 text-slate-600"
+                    : "border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-700"
+                }`}
+              >
+                {!unlocked && <Lock className="w-3 h-3 shrink-0" aria-hidden="true" />}
+                <span className="whitespace-nowrap">{name}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {isRoi ? (
+          /* Página ROI revelada (la muestra abierta) */
+          <div className="p-5 border-l-2 border-blue-500">
+            <div className="flex items-center gap-2 mb-4 flex-wrap">
+              <span className="text-[10px] font-black uppercase tracking-widest text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-3 py-1">Abierta como muestra</span>
+              <span className="text-xs text-slate-400">Cómo llegamos al número, no solo el número.</span>
+            </div>
+
+            <div className="space-y-3 mb-2">
+              {[
+                ["Ingreso recurrente en riesgo / año", "$312M", "w-full", "bg-blue-600"],
+                ["Fuga evitable (clientes con patrón de recompra)", "$109M", "w-[35%]", "bg-emerald-500"],
+                ["Costo anual de la solución", "$55M", "w-[18%]", "bg-slate-400"],
+              ].map(([label, value, w, color]) => (
+                <div key={label}>
+                  <div className="flex items-baseline justify-between gap-3 mb-1">
+                    <span className="text-xs text-slate-500 leading-tight">{label}</span>
+                    <span className="text-sm font-black text-[#0F172A] tabular-nums shrink-0">{value}</span>
+                  </div>
+                  <div className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
+                    <div className={`h-full rounded-full ${w} ${color}`} />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-[11px] text-slate-400 mb-5">Cada cifra se deriva de los datos del caso, no de un promedio de industria.</p>
+
+            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Payback · análisis de sensibilidad</p>
+            <div className="grid grid-cols-3 gap-2.5 mb-5">
+              {[
+                ["Conservador", "9,1 m", false],
+                ["Base", "5,6 m", true],
+                ["Optimista", "3,8 m", false],
+              ].map(([label, value, hi]) => (
+                <div key={label as string} className={`rounded-lg border p-3 ${hi ? "border-blue-200 bg-blue-50/70" : "border-slate-200"}`}>
+                  <p className={`text-[10px] uppercase tracking-widest font-bold ${hi ? "text-blue-700" : "text-slate-400"}`}>{label}</p>
+                  <p className="text-lg font-black text-[#0F172A] tabular-nums">{value}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t border-slate-200 pt-4 mb-4">
+              <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2.5">Supuestos auditables</p>
+              <div className="space-y-2">
+                {[
+                  "Tasa de fuga medida sobre 24 meses de ventas, no estimada a ojo.",
+                  "Solo se cuenta la fuga evitable, no la rotación natural del mercado.",
+                  "El costo incluye modelo, integración a CRM y operación.",
+                ].map((s) => (
+                  <div key={s} className="flex gap-2 items-start text-xs text-slate-600">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
+                    <span>{s}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-lg border border-slate-200 p-3">
+              <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:justify-between">
+                <span className="text-xs font-bold text-[#0F172A]">Riesgo: datos de CRM incompletos</span>
+                <div className="flex gap-1.5 shrink-0">
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-slate-600 bg-slate-100 border border-slate-200 rounded px-1.5 py-0.5">Prob. media</span>
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-100 rounded px-1.5 py-0.5">Impacto alto</span>
+                </div>
+              </div>
+              <p className="text-[11px] text-slate-500 mt-1.5">Mitigación: saneamiento de datos en fase 0, antes de construir.</p>
+            </div>
+          </div>
+        ) : (
+          /* Sección bloqueada: borrosa + candado */
+          <div className="relative overflow-hidden">
+            <div className="p-5 space-y-3 blur-[6px] opacity-60" aria-hidden="true">
+              <div className="h-3 w-44 rounded bg-slate-300" />
+              <div className="space-y-1.5">
+                <div className="h-2 w-full rounded bg-slate-200" />
+                <div className="h-2 w-11/12 rounded bg-slate-200" />
+                <div className="h-2 w-4/5 rounded bg-slate-200" />
+                <div className="h-2 w-10/12 rounded bg-slate-200" />
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <div className="h-12 rounded bg-slate-200" />
+                <div className="h-12 rounded bg-slate-200" />
+                <div className="h-12 rounded bg-slate-200" />
+              </div>
+            </div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-white/55 px-6 text-center">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white border border-slate-200 shadow-sm">
+                <Lock className="w-4 h-4 text-slate-400" />
+              </span>
+              <p className="text-sm font-bold text-[#0F172A]">«{activeName}» está bloqueada</p>
+              <p className="text-xs text-slate-500 max-w-xs">Esta sección la revisamos contigo en la conversación. Dejamos abierta la de ROI como muestra del nivel de detalle.</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function HomeV2() {
   return (
@@ -658,147 +817,7 @@ export default function HomeV2() {
 
           <Reveal delay={0.1}>
             <div className="mx-auto max-w-5xl">
-              {/* Preview NO copiable: select-none + pointer-events-none en todo el documento */}
-              <div
-                className="select-none pointer-events-none rounded-[1.35rem] border border-slate-200 bg-white p-3 md:p-4 shadow-2xl shadow-slate-900/10"
-                aria-hidden="true"
-              >
-                <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
-                  {/* Barra superior del documento */}
-                  <div className="border-b border-slate-200 px-5 py-3.5 flex items-center justify-between gap-4 bg-slate-50/80">
-                    <div className="min-w-0">
-                      <p className="text-sm font-black text-[#0F172A] leading-tight truncate">Blueprint ETIIA — Distribuidora B2B</p>
-                      <p className="text-[11px] text-slate-400">Caso representativo · v1.0 · Confidencial</p>
-                    </div>
-                    <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-500 shrink-0">
-                      <FileText className="w-3.5 h-3.5" /> Página 7 / 24
-                    </span>
-                  </div>
-
-                  {/* Miniaturas de páginas: implican un documento real de 24 págs */}
-                  <div className="flex gap-1.5 px-5 py-2.5 border-b border-slate-200">
-                    {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => {
-                      const isRoi = i === 6;
-                      return (
-                        <div key={i} className={`h-8 flex-1 rounded border flex items-center justify-center ${isRoi ? "border-blue-300 bg-blue-50" : "border-slate-200 bg-slate-50/70 opacity-60"}`}>
-                          {isRoi ? <span className="text-[9px] font-black text-blue-700">ROI</span> : i % 3 === 0 ? <Lock className="w-3 h-3 text-slate-300" /> : null}
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Secciones previas — borrosas (págs. 1–6) */}
-                  <div className="relative overflow-hidden border-b border-slate-200">
-                    <div className="p-5 space-y-3 blur-[6px] opacity-60">
-                      <div className="h-3 w-44 rounded bg-slate-300" />
-                      <div className="space-y-1.5">
-                        <div className="h-2 w-full rounded bg-slate-200" />
-                        <div className="h-2 w-11/12 rounded bg-slate-200" />
-                        <div className="h-2 w-4/5 rounded bg-slate-200" />
-                      </div>
-                      <div className="grid grid-cols-3 gap-2">
-                        <div className="h-9 rounded bg-slate-200" />
-                        <div className="h-9 rounded bg-slate-200" />
-                        <div className="h-9 rounded bg-slate-200" />
-                      </div>
-                    </div>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-white/40 px-4 text-center">
-                      <Lock className="w-4 h-4 text-slate-400" />
-                      <span className="text-[11px] font-semibold text-slate-500">Proceso · Arquitectura · Alcance</span>
-                      <span className="text-[10px] text-slate-400">págs. 1–6 · bloqueadas</span>
-                    </div>
-                  </div>
-
-                  {/* Página ROI revelada (la página abierta) */}
-                  <div className="p-5 border-l-2 border-blue-500">
-                    <div className="flex items-center gap-2 mb-4 flex-wrap">
-                      <span className="text-[10px] font-black uppercase tracking-widest text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-3 py-1">Sección 7 · ROI</span>
-                      <span className="text-xs text-slate-400">Cómo llegamos al número, no solo el número.</span>
-                    </div>
-
-                    {/* Derivación del retorno, en barras */}
-                    <div className="space-y-3 mb-2">
-                      {[
-                        ["Ingreso recurrente en riesgo / año", "$312M", "w-full", "bg-blue-600"],
-                        ["Fuga evitable (clientes con patrón de recompra)", "$109M", "w-[35%]", "bg-emerald-500"],
-                        ["Costo anual de la solución", "$55M", "w-[18%]", "bg-slate-400"],
-                      ].map(([label, value, w, color]) => (
-                        <div key={label}>
-                          <div className="flex items-baseline justify-between gap-3 mb-1">
-                            <span className="text-xs text-slate-500 leading-tight">{label}</span>
-                            <span className="text-sm font-black text-[#0F172A] tabular-nums shrink-0">{value}</span>
-                          </div>
-                          <div className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
-                            <div className={`h-full rounded-full ${w} ${color}`} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    <p className="text-[11px] text-slate-400 mb-5">Cada cifra se deriva de los datos del caso, no de un promedio de industria.</p>
-
-                    {/* Sensibilidad del payback */}
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Payback · análisis de sensibilidad</p>
-                    <div className="grid grid-cols-3 gap-2.5 mb-5">
-                      {[
-                        ["Conservador", "9,1 m", false],
-                        ["Base", "5,6 m", true],
-                        ["Optimista", "3,8 m", false],
-                      ].map(([label, value, hi]) => (
-                        <div key={label as string} className={`rounded-lg border p-3 ${hi ? "border-blue-200 bg-blue-50/70" : "border-slate-200"}`}>
-                          <p className={`text-[10px] uppercase tracking-widest font-bold ${hi ? "text-blue-700" : "text-slate-400"}`}>{label}</p>
-                          <p className="text-lg font-black text-[#0F172A] tabular-nums">{value}</p>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Supuestos auditables */}
-                    <div className="border-t border-slate-200 pt-4 mb-4">
-                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2.5">Supuestos auditables</p>
-                      <div className="space-y-2">
-                        {[
-                          "Tasa de fuga medida sobre 24 meses de ventas, no estimada a ojo.",
-                          "Solo se cuenta la fuga evitable, no la rotación natural del mercado.",
-                          "El costo incluye modelo, integración a CRM y operación.",
-                        ].map((s) => (
-                          <div key={s} className="flex gap-2 items-start text-xs text-slate-600">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
-                            <span>{s}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Una fila del plan de riesgos (honestidad: no se esconde) */}
-                    <div className="rounded-lg border border-slate-200 p-3">
-                      <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:justify-between">
-                        <span className="text-xs font-bold text-[#0F172A]">Riesgo: datos de CRM incompletos</span>
-                        <div className="flex gap-1.5 shrink-0">
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-slate-600 bg-slate-100 border border-slate-200 rounded px-1.5 py-0.5">Prob. media</span>
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-100 rounded px-1.5 py-0.5">Impacto alto</span>
-                        </div>
-                      </div>
-                      <p className="text-[11px] text-slate-500 mt-1.5">Mitigación: saneamiento de datos en fase 0, antes de construir.</p>
-                    </div>
-                  </div>
-
-                  {/* Secciones siguientes — borrosas (págs. 8–24) */}
-                  <div className="relative overflow-hidden border-t border-slate-200">
-                    <div className="p-5 space-y-2.5 blur-[6px] opacity-60">
-                      <div className="h-3 w-36 rounded bg-slate-300" />
-                      <div className="space-y-1.5">
-                        <div className="flex gap-2"><div className="h-2 flex-1 rounded bg-slate-200" /><div className="h-2 w-14 rounded bg-slate-200" /></div>
-                        <div className="flex gap-2"><div className="h-2 flex-1 rounded bg-slate-200" /><div className="h-2 w-14 rounded bg-slate-200" /></div>
-                        <div className="flex gap-2"><div className="h-2 flex-1 rounded bg-slate-200" /><div className="h-2 w-14 rounded bg-slate-200" /></div>
-                      </div>
-                    </div>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-white/40 px-4 text-center">
-                      <Lock className="w-4 h-4 text-slate-400" />
-                      <span className="text-[11px] font-semibold text-slate-500">Costos por fase · Cronograma · Plan de riesgos</span>
-                      <span className="text-[10px] text-slate-400">págs. 8–24 · se revisan en la conversación</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <BlueprintExamplePreview />
 
               {/* Rótulo + teaser + CTA (fuera del preview, clickeable) */}
               <div className="mt-6 flex flex-col items-center gap-3 text-center">
