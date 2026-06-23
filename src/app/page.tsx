@@ -356,7 +356,7 @@ function BlueprintExamplePreview() {
                 data-tab={i}
                 onClick={() => setActive(i)}
                 aria-pressed={selected}
-                className={`shrink-0 inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] font-semibold transition-all ${
+                className={`shrink-0 inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] font-semibold transition-all cursor-pointer hover:scale-105 hover:shadow-sm ${
                   selected
                     ? unlocked
                       ? "border-blue-300 bg-blue-50 text-blue-700"
@@ -806,7 +806,7 @@ export default function HomeV2() {
       </section>
 
       {/* PROOF — Blueprint de ejemplo (preview no copiable + muestra gated) */}
-      <section className="py-24 bg-slate-50 border-y border-slate-100" id="prueba">
+      <section className="py-24 bg-blue-50 border-y border-blue-100" id="prueba">
         <div className="mx-auto max-w-[1380px] px-4 sm:px-6 lg:px-8">
           <Reveal>
             <div className="mx-auto mb-10 max-w-4xl text-center">
