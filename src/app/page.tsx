@@ -31,6 +31,14 @@ const wa = (mensaje: string) =>
 // CTA primario dominante: una sola etiqueta y un solo destino en toda la home.
 const CTA_PRIMARIO = "Agenda tu diagnóstico gratis";
 const CTA_PRIMARIO_WA = wa("Hola ETIIA, quiero agendar mi diagnóstico gratis.");
+// Variantes con contexto de sección (desktop): el destino sigue siendo el mismo
+// diagnóstico, pero el mensaje le dice al equipo desde dónde llegó el lead para
+// calificarlo sin fricción (el visitante no llena nada). Equivalente desktop del
+// enriquecimiento que ya hace el auto-diagnóstico de señales en mobile.
+const CTA_WA_SENALES = wa("Hola ETIIA, me identifico con varias de las señales y quiero agendar mi diagnóstico gratis.");
+const CTA_WA_CAPACITACION = wa("Hola ETIIA, vengo desde la sección de capacitación y quiero agendar mi diagnóstico gratis para mi equipo.");
+const CTA_WA_DECIDIR = wa("Hola ETIIA, quiero agendar mi diagnóstico gratis para decidir mi inversión en IA con números.");
+const CTA_WA_DEMOS = wa("Hola ETIIA, vi las demos y quiero agendar mi diagnóstico gratis para mi caso.");
 // Botón primario sólido con el acento de marca (--color-brand = blue-700).
 const ctaPrimarioClass =
   "inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-3.5 rounded-xl text-sm shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5";
@@ -40,8 +48,10 @@ const ctaPrimarioClass =
 const WORD_CLOUD_IMAGE = "/nube-dolores-etiia.png?v=22";
 const WORD_CLOUD_ALT =
   "Nube de señales antes del Blueprint ETIIA: todo en Excel, clientes que se fugan, decisiones sin datos, procesos que no conversan, reportes manuales, KPIs a última hora, información dispersa, ventas sin trazabilidad y otras señales operacionales.";
-const MAGNIFIER_SIZE = 168;
-const MAGNIFIER_ZOOM = 1.75;
+// Lupa horizontal (cápsula): abarca una franja ancha de palabras con menos zoom.
+const MAGNIFIER_W = 300;
+const MAGNIFIER_H = 150;
+const MAGNIFIER_ZOOM = 1.3;
 
 function WordCloudMagnifier() {
   const [lens, setLens] = useState({
@@ -63,8 +73,8 @@ function WordCloudMagnifier() {
       active: true,
       x,
       y,
-      bgX: -(x * MAGNIFIER_ZOOM - MAGNIFIER_SIZE / 2),
-      bgY: -(y * MAGNIFIER_ZOOM - MAGNIFIER_SIZE / 2),
+      bgX: -(x * MAGNIFIER_ZOOM - MAGNIFIER_W / 2),
+      bgY: -(y * MAGNIFIER_ZOOM - MAGNIFIER_H / 2),
       bgWidth: rect.width * MAGNIFIER_ZOOM,
       bgHeight: rect.height * MAGNIFIER_ZOOM,
     });
@@ -90,8 +100,8 @@ function WordCloudMagnifier() {
         aria-hidden="true"
         className={`pointer-events-none absolute hidden rounded-full border border-blue-200 bg-white ring-4 ring-white/85 shadow-[0_18px_50px_-22px_rgba(15,23,42,0.75)] transition-opacity duration-150 lg:block ${lens.active ? "opacity-100" : "opacity-0"}`}
         style={{
-          width: MAGNIFIER_SIZE,
-          height: MAGNIFIER_SIZE,
+          width: MAGNIFIER_W,
+          height: MAGNIFIER_H,
           left: lens.x,
           top: lens.y,
           transform: "translate(-50%, -50%)",
@@ -390,70 +400,76 @@ function BlueprintExamplePreview() {
 
         {isRoi ? (
           /* Página ROI revelada (la muestra abierta) */
-          <div className="p-5 border-l-2 border-blue-500">
-            <div className="flex items-center gap-2 mb-4 flex-wrap">
+          <div className="p-5 md:p-6 border-l-2 border-blue-500">
+            <div className="flex items-center gap-2 mb-5 flex-wrap">
               <span className="text-[10px] font-black uppercase tracking-widest text-blue-700 bg-blue-50 border border-blue-100 rounded-full px-3 py-1">Abierta como muestra</span>
               <span className="text-xs text-slate-400">Cómo llegamos al número, no solo el número.</span>
             </div>
 
-            <div className="space-y-3 mb-2">
-              {[
-                ["Ingreso recurrente en riesgo / año", "$120 MM", "w-full", "bg-blue-600"],
-                ["Fuga evitable (clientes con patrón de recompra)", "$42 MM", "w-[35%]", "bg-emerald-500"],
-                ["Costo anual de la solución", "$22 MM", "w-[18%]", "bg-slate-400"],
-              ].map(([label, value, w, color]) => (
-                <div key={label}>
-                  <div className="flex items-baseline justify-between gap-3 mb-1">
-                    <span className="text-xs text-slate-500 leading-tight">{label}</span>
-                    <span className="text-sm font-black text-[#0F172A] tabular-nums shrink-0">{value}</span>
-                  </div>
-                  <div className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
-                    <div className={`h-full rounded-full ${w} ${color}`} />
-                  </div>
+            <div className="grid gap-x-8 gap-y-5 md:grid-cols-2">
+              {/* Izquierda: cifras + payback */}
+              <div>
+                <div className="space-y-3 mb-2">
+                  {[
+                    ["Ingreso recurrente en riesgo / año", "$120 MM", "w-full", "bg-blue-600"],
+                    ["Fuga evitable (clientes con patrón de recompra)", "$42 MM", "w-[35%]", "bg-cyan-500"],
+                    ["Costo anual de la solución", "$22 MM", "w-[18%]", "bg-slate-400"],
+                  ].map(([label, value, w, color]) => (
+                    <div key={label}>
+                      <div className="flex items-baseline justify-between gap-3 mb-1">
+                        <span className="text-xs text-slate-500 leading-tight">{label}</span>
+                        <span className="text-sm font-black text-[#0F172A] tabular-nums shrink-0">{value}</span>
+                      </div>
+                      <div className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
+                        <div className={`h-full rounded-full ${w} ${color}`} />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <p className="text-[11px] text-slate-400 mb-5">Cada cifra se deriva de los datos del caso, no de un promedio de industria.</p>
+                <p className="text-[11px] text-slate-400 mb-5">Cada cifra se deriva de los datos del caso, no de un promedio de industria.</p>
 
-            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Payback · análisis de sensibilidad</p>
-            <div className="grid grid-cols-3 gap-2.5 mb-5">
-              {[
-                ["Conservador", "9,1 m", false],
-                ["Base", "5,6 m", true],
-                ["Optimista", "3,8 m", false],
-              ].map(([label, value, hi]) => (
-                <div key={label as string} className={`rounded-lg border p-3 ${hi ? "border-blue-200 bg-blue-50/70" : "border-slate-200"}`}>
-                  <p className={`text-[10px] uppercase tracking-widest font-bold ${hi ? "text-blue-700" : "text-slate-400"}`}>{label}</p>
-                  <p className="text-lg font-black text-[#0F172A] tabular-nums">{value}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="border-t border-slate-200 pt-4 mb-4">
-              <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2.5">Supuestos auditables</p>
-              <div className="space-y-2">
-                {[
-                  "Tasa de fuga medida sobre 24 meses de ventas, no estimada a ojo.",
-                  "Solo se cuenta la fuga evitable, no la rotación natural del mercado.",
-                  "El costo incluye modelo, integración a CRM y operación.",
-                ].map((s) => (
-                  <div key={s} className="flex gap-2 items-start text-xs text-slate-600">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
-                    <span>{s}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-lg border border-slate-200 p-3">
-              <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:justify-between">
-                <span className="text-xs font-bold text-[#0F172A]">Riesgo: datos de CRM incompletos</span>
-                <div className="flex gap-1.5 shrink-0">
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-slate-600 bg-slate-100 border border-slate-200 rounded px-1.5 py-0.5">Prob. media</span>
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-100 rounded px-1.5 py-0.5">Impacto alto</span>
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Payback · análisis de sensibilidad</p>
+                <div className="grid grid-cols-3 gap-2.5">
+                  {[
+                    ["Conservador", "9,1 m", false],
+                    ["Base", "5,6 m", true],
+                    ["Optimista", "3,8 m", false],
+                  ].map(([label, value, hi]) => (
+                    <div key={label as string} className={`rounded-lg border p-3 ${hi ? "border-blue-200 bg-blue-50/70" : "border-slate-200"}`}>
+                      <p className={`text-[10px] uppercase tracking-widest font-bold ${hi ? "text-blue-700" : "text-slate-400"}`}>{label}</p>
+                      <p className="text-lg font-black text-[#0F172A] tabular-nums">{value}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <p className="text-[11px] text-slate-500 mt-1.5">Mitigación: saneamiento de datos en fase 0, antes de construir.</p>
+
+              {/* Derecha: supuestos + riesgo */}
+              <div className="md:border-l md:border-slate-100 md:pl-8">
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2.5">Supuestos auditables</p>
+                <div className="space-y-2">
+                  {[
+                    "Tasa de fuga medida sobre 24 meses de ventas, no estimada a ojo.",
+                    "Solo se cuenta la fuga evitable, no la rotación natural del mercado.",
+                    "El costo incluye modelo, integración a CRM y operación.",
+                  ].map((s) => (
+                    <div key={s} className="flex gap-2 items-start text-xs text-slate-600">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
+                      <span>{s}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 rounded-lg border border-slate-200 p-3">
+                  <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:justify-between">
+                    <span className="text-xs font-bold text-[#0F172A]">Riesgo: datos de CRM incompletos</span>
+                    <div className="flex gap-1.5 shrink-0">
+                      <span className="text-[9px] font-bold uppercase tracking-wider text-slate-600 bg-slate-100 border border-slate-200 rounded px-1.5 py-0.5">Prob. media</span>
+                      <span className="text-[9px] font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-100 rounded px-1.5 py-0.5">Impacto alto</span>
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-slate-500 mt-1.5">Mitigación: saneamiento de datos en fase 0, antes de construir.</p>
+                </div>
+              </div>
             </div>
           </div>
         ) : (
@@ -558,7 +574,7 @@ export default function HomeV2() {
       {/* HERO */}
       <section
         className="pb-16 md:pb-20 bg-white relative overflow-hidden"
-        style={{ paddingTop: "clamp(8.25rem, 9vw, 10rem)" }}
+        style={{ paddingTop: "clamp(6.5rem, 6.5vw, 8rem)" }}
         aria-label="Propuesta principal"
       >
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" aria-hidden="true" />
@@ -566,17 +582,17 @@ export default function HomeV2() {
           <div className="space-y-12">
             <div className="mx-auto max-w-5xl text-center">
               <div className="fade-in-up" style={{ animationDelay: "0.1s", animationFillMode: "both" }}>
-                <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-7">
+                <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-5">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                   Consultoría de IA B2B · Chile y Latam
                 </p>
               </div>
 
-              <h1 className="mx-auto max-w-5xl text-3xl sm:text-5xl xl:text-[4.35rem] font-black tracking-normal text-[#0F172A] leading-[1.08] sm:leading-[1.02] mb-6 fade-in-up" style={{ animationDelay: "0.2s", animationFillMode: "both" }}>
+              <h1 className="mx-auto max-w-5xl text-3xl sm:text-[2.9rem] xl:text-[3.85rem] font-black tracking-normal text-[#0F172A] leading-[1.08] sm:leading-[1.02] mb-5 fade-in-up" style={{ animationDelay: "0.2s", animationFillMode: "both" }}>
                 Te entregamos el plano de ingeniería antes de que gastes un peso en construir.
               </h1>
 
-              <div className="mx-auto max-w-3xl mb-8 fade-in-up" style={{ animationDelay: "0.3s", animationFillMode: "both" }}>
+              <div className="mx-auto max-w-3xl mb-6 fade-in-up" style={{ animationDelay: "0.3s", animationFillMode: "both" }}>
                 <p className="text-base sm:text-lg text-slate-500 leading-relaxed mb-5">
                   <span className="font-bold text-blue-700">El Blueprint ETIIA mapea proceso, alcance, costos y ROI de tu proyecto de IA.</span>{" "} Un documento ejecutable para decidir con números — lo implementes con tu equipo o con el nuestro.
                 </p>
@@ -641,7 +657,7 @@ export default function HomeV2() {
               </p>
               <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
                 {/* Primario solo en desktop: en mobile lo entrega el auto-diagnóstico de abajo */}
-                <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5">
+                <a href={CTA_WA_SENALES} target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/20 hover:-translate-y-0.5">
                   {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
                 </a>
                 <Link href="#blueprint" className="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5">
@@ -658,10 +674,10 @@ export default function HomeV2() {
                 <SignalSelfCheck />
               </div>
               {/* Desktop: PNG original de la nube con lupa */}
-              <div className="hidden overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_30px_90px_-52px_rgba(15,23,42,0.55)] lg:block">
+              <div className="mx-auto hidden max-w-2xl overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_30px_90px_-52px_rgba(15,23,42,0.55)] lg:block">
                 <WordCloudMagnifier />
               </div>
-              <p className="mx-auto mt-4 max-w-5xl px-4 text-center text-[11px] leading-relaxed text-slate-400 sm:px-0">
+              <p className="mx-auto mt-5 max-w-3xl px-4 text-center text-sm leading-relaxed text-slate-500 sm:px-0">
                 <span className="font-bold text-slate-500">Referencias:</span>{" "}
                 McKinsey, <em>The State of AI</em>; BCG, <em>Flipping the Odds of Digital Transformation Success</em>; MIT Sloan Management Review &amp; BCG, <em>Artificial Intelligence in Business Gets Real</em>; IBM, <em>AI Adoption Challenges</em>.
               </p>
@@ -686,7 +702,7 @@ export default function HomeV2() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="mx-auto max-w-5xl">
+            <div className="mx-auto max-w-6xl">
               <BlueprintExamplePreview />
 
               {/* Rótulo + teaser + CTA (fuera del preview, clickeable) */}
@@ -781,7 +797,7 @@ export default function HomeV2() {
                 </p>
               </div>
               </div>
-              <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={`group shrink-0 ${ctaPrimarioClass}`}>
+              <a href={CTA_WA_CAPACITACION} target="_blank" rel="noopener noreferrer" className={`group shrink-0 ${ctaPrimarioClass}`}>
                 {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
@@ -829,7 +845,7 @@ export default function HomeV2() {
           </div>
           <Reveal delay={0.2}>
             <div className="mt-10 flex justify-center">
-              <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className={ctaPrimarioClass}>
+              <a href={CTA_WA_DECIDIR} target="_blank" rel="noopener noreferrer" className={ctaPrimarioClass}>
                 {CTA_PRIMARIO} <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -895,7 +911,7 @@ export default function HomeV2() {
                 <Link href="/demos" className="text-sm text-slate-300 hover:text-white font-semibold transition-colors">
                   Ver todas las demos
                 </Link>
-                <a href={CTA_PRIMARIO_WA} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm px-7 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-blue-900/20">
+                <a href={CTA_WA_DEMOS} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm px-7 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-blue-900/20">
                   {CTA_PRIMARIO} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </div>
@@ -1106,15 +1122,15 @@ export default function HomeV2() {
             <Reveal delay={0.15}>
               <div className="mx-auto max-w-3xl bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
                 <DiagnosticoForm />
-                <div className="mt-5 flex items-start gap-3 bg-emerald-50/50 border border-emerald-100 rounded-xl p-3 text-left">
-                  <div className="bg-emerald-100 p-1.5 rounded-lg text-emerald-700 shrink-0 mt-0.5">
+                <div className="mt-5 flex items-start gap-3 bg-blue-50/50 border border-blue-100 rounded-xl p-3 text-left">
+                  <div className="bg-blue-100 p-1.5 rounded-lg text-blue-700 shrink-0 mt-0.5">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mb-0.5">Privacidad corporativa</p>
-                    <p className="text-[11px] text-emerald-600/90 leading-relaxed font-medium">
+                    <p className="text-[10px] font-bold text-blue-800 uppercase tracking-wider mb-0.5">Privacidad corporativa</p>
+                    <p className="text-[11px] text-blue-600/90 leading-relaxed font-medium">
                       No entrenamos modelos públicos con la información confidencial de tu empresa.
                     </p>
                   </div>

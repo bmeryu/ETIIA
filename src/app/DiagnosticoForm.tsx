@@ -99,7 +99,7 @@ const intentMap: Record<string, { proyecto: string; etapa: string; ctaText: stri
 };
 
 /* ── Form interno ────────────────────────────────────── */
-function FormInner({ presetInteres }: { presetInteres?: string }) {
+function FormInner({ presetInteres, fuente = "home" }: { presetInteres?: string; fuente?: string }) {
   const params = useSearchParams();
   const interes = presetInteres || params.get("interes") || "diagnostico";
   const preset = intentMap[interes] || intentMap["diagnostico"];
@@ -128,11 +128,13 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
       nombre:   (form.elements.namedItem("nombre")  as HTMLInputElement).value,
       empresa:  (form.elements.namedItem("empresa") as HTMLInputElement).value,
       email:    (form.elements.namedItem("email")   as HTMLInputElement).value,
+      telefono: (form.elements.namedItem("telefono") as HTMLInputElement)?.value ?? "",
       tamano_empresa: (form.elements.namedItem("tamano_empresa") as HTMLSelectElement).value,
       proyecto, // El servidor recibe la intención correcta siempre
       etapa,
       interes,
-      _subject: `ETIIA — ${interes ? interes.toUpperCase() : "Diagnóstico"} — ${(form.elements.namedItem("nombre") as HTMLInputElement).value}`,
+      fuente, // home | contacto — para saber desde qué página llegó el lead
+      _subject: `ETIIA — ${interes ? interes.toUpperCase() : "Diagnóstico"} — ${(form.elements.namedItem("nombre") as HTMLInputElement).value} (vía ${fuente})`,
     };
     try {
       const res = await fetch("https://formspree.io/f/xjgarjgw", {
@@ -148,8 +150,8 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
             gtag?: (event: string, action: string, params: Record<string, string | number>) => void;
             fbq?: (event: string, action: string, params: Record<string, string>) => void;
           };
-          if (w.gtag) w.gtag('event', 'generate_lead', { event_category: 'lead', event_label: interes, value: 1 });
-          if (w.fbq) w.fbq('track', 'Lead', { content_name: interes });
+          if (w.gtag) w.gtag('event', 'generate_lead', { event_category: 'lead', event_label: interes, form_source: fuente, value: 1 });
+          if (w.fbq) w.fbq('track', 'Lead', { content_name: interes, source: fuente });
         }
       } else {
         setSendError(true);
@@ -285,10 +287,10 @@ function FormInner({ presetInteres }: { presetInteres?: string }) {
 }
 
 /* ── Export con Suspense (requerido por useSearchParams) */
-export default function DiagnosticoForm({ presetInteres }: { presetInteres?: string }) {
+export default function DiagnosticoForm({ presetInteres, fuente }: { presetInteres?: string; fuente?: string }) {
   return (
     <Suspense fallback={null}>
-      <FormInner presetInteres={presetInteres} />
+      <FormInner presetInteres={presetInteres} fuente={fuente} />
     </Suspense>
   );
 }
