@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://etiia.com"),
   title: {
     template: "%s | ETIIA",
-    default: "Consultoría en Inteligencia Artificial B2B y Agentes Autónomos | ETIIA",
+    default: "Consultoría de IA B2B en Chile y Latam · Blueprint con ROI | ETIIA",
   },
-  description: "Partner Tecnológico B2B: Transformamos tu empresa con Inteligencia Artificial y Software a la medida.",
+  description: "El Blueprint ETIIA mapea proceso, alcance, costos y ROI de tu proyecto de IA. Decides con números antes de construir — lo implementes con tu equipo o con el nuestro.",
   keywords: ["Consultoría Inteligencia Artificial B2B", "Implementación IA empresas", "Agentes IA Autónomos", "Sistemas RAG para empresas", "LLMs Corporativos", "Machine Learning B2B", "IA Chile Latam"],
   authors: [{ name: "Bernardita Mery" }, { name: "Pablo E. Olivares" }],
   creator: "ETIIA",
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Consultoría en Inteligencia Artificial B2B y Agentes Autónomos | ETIIA",
-    description: "Partner Tecnológico B2B: Transformamos tu empresa con Inteligencia Artificial y Software a la medida.",
+    title: "ETIIA · El plano de tu proyecto de IA, con costos y ROI, antes de construir",
+    description: "El Blueprint ETIIA mapea proceso, alcance, costos y ROI de tu proyecto de IA. Decides con números antes de construir — lo implementes con tu equipo o con el nuestro.",
     url: "https://etiia.com",
     siteName: "ETIIA",
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'ETIIA Consultoría en Inteligencia Artificial' }],
@@ -55,8 +55,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Consultoría en Inteligencia Artificial B2B y Agentes Autónomos | ETIIA",
-    description: "Partner Tecnológico B2B: Transformamos tu empresa con Inteligencia Artificial y Software a la medida.",
+    title: "ETIIA · El plano de tu proyecto de IA, con costos y ROI, antes de construir",
+    description: "El Blueprint ETIIA mapea proceso, alcance, costos y ROI de tu proyecto de IA. Decides con números antes de construir — lo implementes con tu equipo o con el nuestro.",
     images: ["/og-image.jpg"],
   },
 };

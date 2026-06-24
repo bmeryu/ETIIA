@@ -1,4 +1,4 @@
-import { ContactForm } from "@/components/ui/ContactForm";
+import DiagnosticoForm from "@/app/DiagnosticoForm";
 
 export const metadata = {
   title: { absolute: "Conversemos | ETIIA" },
@@ -55,8 +55,8 @@ export default function ContactoPage() {
             </div>
           </section>
 
-          <section className="mx-auto max-w-3xl" aria-label="Formulario de contacto">
-            <ContactForm />
+          <section className="mx-auto max-w-3xl rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm" aria-label="Formulario de contacto">
+            <DiagnosticoForm fuente="contacto" />
           </section>
 
           <section className="grid gap-5 lg:grid-cols-3" aria-label="Qué revisamos">
