@@ -29,7 +29,7 @@ const wa = (mensaje: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
 
 // CTA primario dominante: una sola etiqueta y un solo destino en toda la home.
-const CTA_PRIMARIO = "Agenda tu diagnóstico gratis";
+const CTA_PRIMARIO = "Agenda reunión exploratoria";
 const CTA_PRIMARIO_WA = wa("Hola ETIIA, quiero agendar mi diagnóstico gratis.");
 // Variantes con contexto de sección (desktop): el destino sigue siendo el mismo
 // diagnóstico, pero el mensaje le dice al equipo desde dónde llegó el lead para

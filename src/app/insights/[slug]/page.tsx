@@ -176,7 +176,7 @@ export default async function InsightArticle({ params }: { params: Promise<{ slu
               href="/?interes=diagnostico#diagnostico"
               className="inline-flex items-center gap-2 bg-gradient-to-br from-blue-700 to-indigo-600 hover:from-blue-800 hover:to-indigo-700 text-white font-bold px-8 py-4 rounded-xl text-sm transition-all shadow-lg shadow-blue-900/30 hover:-translate-y-0.5"
             >
-              Agendar diagnóstico gratuito <ArrowLeft size={16} className="rotate-180" />
+              Agenda reunión exploratoria <ArrowLeft size={16} className="rotate-180" />
             </Link>
           </div>
         </div>
